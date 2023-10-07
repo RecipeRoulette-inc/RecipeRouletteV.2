@@ -6,6 +6,7 @@ const initialState = {
   recipeList: []
 };
 
+// CAN TURN INTO CREATE YOUR OWN RECIPE SLICE
 // all actions are generalized in terms of the payload, will have to refactor based on how the API presents the information
 export const apiSlice = createSlice({
   name: 'api',
