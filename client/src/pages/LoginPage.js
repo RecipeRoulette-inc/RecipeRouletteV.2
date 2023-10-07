@@ -9,6 +9,13 @@ const LoginPage = () => {
   );
 }
 
-const WrapPage = styled.div``;
+const WrapPage = styled.div`
+display: flex; 
+align-items: center;
+justify-content: center;
+height: 100vh; 
+width: 100vw; 
+overflow: scroll; 
+`;
 
 export default LoginPage; 
