@@ -8,6 +8,7 @@ const PORT = process.env.PORT
 
 // All Route Folders
 const userRoutes = require('./routes/userRoutes')
+const recipeRoutes = require('./routes/recipeRoutes')
 
 
 app.use(express.json());
@@ -19,6 +20,7 @@ app.get('/', (req, res)=>{
 
 // Redirect to Route Folders
 app.use('/user', userRoutes)
+app.use('/recipes', recipeRoutes)
 
 // Catch-All Route Handler
 
