@@ -29,6 +29,7 @@ height: 300px;
 border: 1px solid black;
 border-radius: 5px;
 padding: 20px 20px; 
+box-shadow: 0px 0px 15px 12px rgba(234, 225, 229, 0.43);
 `; 
 
 const Header = styled.div`
@@ -54,10 +55,12 @@ border-radius: 2.5px;
 const Label = styled.label``;
 
 const Submit = styled.button`
+color: white;
 padding: 7px 7px;
 border: none;
 border-radius: 5px;
-background: blue;
+background: #77B6EA;
+cursor: pointer; 
 `;
 
 export default LoginForm;
