@@ -5,7 +5,7 @@ const Router = express.Router();
 
 Router
   .route('/')
-  .get(recipeController.searchRecipes, (req, res) => {
+  .get((req, res) => {
 
   })
 

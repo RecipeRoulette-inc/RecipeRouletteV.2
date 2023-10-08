@@ -2,8 +2,16 @@ import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
 
 const LoginPage = () => {
+
+  const handleClick = () => {
+    console.log('click')
+    fetch('http://localhost:3000/recipes')
+      .then((res) => console.log(res)); 
+  }
+
   return (
     <WrapPage>
+      <button onClick={handleClick}>Make Fetch Request To Server</button>
       <LoginForm />
     </WrapPage>
   );

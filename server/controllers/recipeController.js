@@ -1,43 +1,35 @@
-<<<<<<< HEAD
-const SpoonacularApi = require('spoonacular_api');
+// const SpoonacularApi = require('reciperoulette');
 
-const Spoonacular = SpoonacularApi.ApiClient.instance;
+// const Spoonacular = SpoonacularApi.ApiClient.instance;
 
 
 const recipeController = {}; 
 
-recipeController.query = (req, res, next) => {
-  const searchQuery = 'burger';
-  const searchOpts = {
-    'number': 5,
-    'ingredientsRequired': true,
-    'addRecipeInformation': true,
-    'addRecipeNutrition': true,
-  }
+recipeController.searchRecipies = (req, res, next) => {
+  console.log('searchRecipes');
+  // const searchQuery = 'burger';
+  // const searchOpts = {
+  //   'number': 5,
+  //   'ingredientsRequired': true,
+  //   'addRecipeInformation': true,
+  //   'addRecipeNutrition': true,
+  // }
 
 
-  Spoonacular.searchRecipies(searchQuery, searchOpts, (error, data, response) => {
-    if (error) {
-      console.error('Search error: ', error);
-    } else {
-      const recipes = data.results;
+  // Spoonacular.searchRecipies(searchQuery, searchOpts, (error, data, response) => {
+  //   if (error) {
+  //     console.error('Search error: ', error);
+  //   } else {
+  //     const recipes = data.results;
 
-      console.log('Found recipes: ', recipes);
+  //     console.log('Found recipes: ', recipes);
 
-    }
-  });
+  //   }
+  // });
 
 } 
 
 
 
 
-=======
-const recipeController = {};
-
-recipeController.searchRecipes = (req, res, next) => {
-  console.log('searchRecipes'); 
-}; 
-
 module.exports = recipeController;
->>>>>>> dev
