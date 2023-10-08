@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const SpoonacularApi = require('spoonacular_api');
 
 const Spoonacular = SpoonacularApi.ApiClient.instance;
@@ -31,3 +32,12 @@ recipeController.query = (req, res, next) => {
 
 
 
+=======
+const recipeController = {};
+
+recipeController.searchRecipes = (req, res, next) => {
+  console.log('searchRecipes'); 
+}; 
+
+module.exports = recipeController;
+>>>>>>> dev
