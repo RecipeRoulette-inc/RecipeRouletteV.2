@@ -5,7 +5,9 @@ const LoginPage = () => {
 
   const handleClick = () => {
     console.log('click')
-    fetch('http://localhost:3000/recipes')
+    fetch('http://localhost:3000/recipes', {
+      method: 'GET'
+    })
       .then((res) => console.log(res)); 
   }
 

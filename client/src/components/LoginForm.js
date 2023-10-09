@@ -1,12 +1,27 @@
 import styled from "styled-components";
 import { useForm } from 'react-hook-form'
 const LoginForm = () => {
-  const {register, handleSubmit} = useForm();
+  const { register, handleSubmit } = useForm();
+  
+  const MakeRequest = (data) => {
+    console.log('make request');
+    fetch('http://localhost:3000/user/login', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type':'Application/JSON'
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+      })
+  }
 
   return (
     <WrapForm>
       <Header>Recipe Roulette</Header>
-    <Form onSubmit={handleSubmit((data)=> console.log(data))}>
+    <Form onSubmit={handleSubmit((data)=> MakeRequest(data))}>
       <Input
         {...register('username', {required: 'This is required'})}
         placeholder='Username'

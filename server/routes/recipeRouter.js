@@ -5,8 +5,9 @@ const Router = express.Router();
 
 Router
   .route('/')
-  .get((req, res) => {
-
+  .get(recipeController.searchRecipes, (req, res) => {
+    console.log('recipecontroller get route')
+    res.send('Message received')
   })
 
 module.exports = Router; 

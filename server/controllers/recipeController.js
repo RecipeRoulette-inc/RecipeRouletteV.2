@@ -1,31 +1,30 @@
-// const SpoonacularApi = require('reciperoulette');
+const SpoonacularApi = require('spoonacular_api');
 
-// const Spoonacular = SpoonacularApi.ApiClient.instance;
+const defaultClient = SpoonacularApi.ApiClient.instance;
 
+const apiKeyScheme = defaultClient.authentications['apiKeyScheme']; 
+apiKeyScheme.apiKey = process.env.API_KEY
+console.log(apiKeyScheme)
+console.log(process.env.API_KEY)
+const apiInstance = new SpoonacularApi.RecipesApi();
+
+let opts = {
+  'limitLicense': true, // Boolean | Whether the recipes should have an open license that allows display with proper attribution.
+  'number': 1 // Number | The maximum number of items to return (between 1 and 100). Defaults to 10.
+};
 
 const recipeController = {}; 
 
-recipeController.searchRecipies = (req, res, next) => {
+recipeController.searchRecipes = (req, res, next) => {
   console.log('searchRecipes');
-  // const searchQuery = 'burger';
-  // const searchOpts = {
-  //   'number': 5,
-  //   'ingredientsRequired': true,
-  //   'addRecipeInformation': true,
-  //   'addRecipeNutrition': true,
-  // }
 
-
-  // Spoonacular.searchRecipies(searchQuery, searchOpts, (error, data, response) => {
-  //   if (error) {
-  //     console.error('Search error: ', error);
-  //   } else {
-  //     const recipes = data.results;
-
-  //     console.log('Found recipes: ', recipes);
-
-  //   }
-  // });
+  apiInstance.getRandomRecipes(opts, (error, data, response) => {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log('API called successfully. Returned data: ' + console.log(JSON.stringify(data, null, 2)));
+    }
+  });
 
 } 
 
