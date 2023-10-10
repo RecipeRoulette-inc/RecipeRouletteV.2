@@ -6,10 +6,6 @@ const LoginForm = () => {
   const Login = (data) => {
     console.log('make request');
 
-    const handleRequest = () => {
-      fetch()
-    }
-
     fetch('http://localhost:3000/user/login', {
       method: 'POST',
       credentials: 'include',
@@ -45,7 +41,6 @@ const LoginForm = () => {
 
   return (
     <WrapForm>
-      <button onClick={}>Make Request to Spoonacular API</button>
       <Header>Recipe Roulette</Header>
     <Form onSubmit={handleSubmit((data)=> Login(data))}>
       <Input
