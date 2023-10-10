@@ -4,7 +4,7 @@ const recipeController = require('../controllers/recipeController')
 const Router = express.Router();
 
 Router
-  .route('/')
+  .route('/recipes')
   .get(recipeController.searchRecipes, (req, res) => {
     console.log('recipecontroller get route')
     res.send('Message received')
