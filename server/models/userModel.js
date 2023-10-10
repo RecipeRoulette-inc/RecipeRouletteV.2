@@ -1,22 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
+const SALT_WORK_FACTOR = 10;
 
 //user schema
 const userSchema = new Schema({
-    userName: {type: String, required:true},
+    username: {type: String, required:true},
     password: {type: String, required: true},
     savedRecipes: []
 });
-// userSchema.pre('save', function(next) {
-//     this.password = bcrypt.hashSync(this.password, 10);
-//     return next();
-// })
 
-userSchema.pre('save', async function (next) {
+userSchema.pre('save', function (next) {
     console.log('userSchema.pre')
     if (this.isModified('password')) {
-        this.password = await bcrypt.hashSync(this.password, SALT_WORK_FACTOR);
+        this.password = bcrypt.hashSync(this.password, SALT_WORK_FACTOR);
     }
     return next();
 })
@@ -37,6 +34,4 @@ userSchema.pre('save', async function (next) {
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = {
-    User
-};
+module.exports = User;

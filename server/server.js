@@ -6,6 +6,7 @@ const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT;
 const {DB_URI} = process.env;
+const cookieParser = require('cookie-parser')
 
 mongoose.connect(DB_URI)
   .then(() => {
@@ -17,13 +18,13 @@ mongoose.connect(DB_URI)
 
 
 app.use(cors({ origin: 'http://localhost:8080', credentials: true }));
+app.use(cookieParser())
+app.use(express.json());
 
 // All Route Folders
 const userRoutes = require('./routes/userRoutes')
 const recipeRoutes = require('./routes/recipeRoutes')
 
-
-app.use(express.json());
 
 // Currently acting as a catch all SWITCHED to GET from USE
 app.get('/', (req, res)=>{

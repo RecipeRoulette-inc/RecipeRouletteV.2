@@ -6,11 +6,11 @@ authenticationController.createCookie = async (req, res, next) => {
     try {
         // desctructure id off incoming user from res locals
         const { user_id } = res.locals.user._id
-        //jwt.sign
-        let token = jwt.sign({id: user_id}, process.env.KEY)
-        res.cookie("jwtToken", token)
-
-
+        //jwt.sign - creates JWT token 
+        let jwtToken = jwt.sign({id: user_id}, process.env.KEY)
+        // check cookie params with cors once front and backend connect
+        res.cookie("jwtToken", jwtToken, {httpOnly: true, secure: true})
+        return next()
     } catch (error) {
         return next({
             log: "Error occurred creating the cookie",
@@ -23,6 +23,7 @@ authenticationController.createCookie = async (req, res, next) => {
 // not built out yet
 authenticationController.verifyCookie = async (req, res, next) => {
     try {
+        const { cookies } = req.body
         //jwt.verify
 
     } catch (error) {
@@ -37,7 +38,12 @@ authenticationController.verifyCookie = async (req, res, next) => {
 // not built out yet
 authenticationController.clearCookie = async (req, res, next) => {
     try {
-
+        // why can't we pull the cookie off?
+        console.log('<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>')
+        // console.log(req.cookies)
+        // const { cookies } = req
+        res.clearCookie("jwtToken");
+        return next()
     } catch (error) {
         return next({
             log: "Error occurred clearing the cookie",
@@ -46,3 +52,5 @@ authenticationController.clearCookie = async (req, res, next) => {
         })
     }
 }
+
+module.exports = authenticationController;
