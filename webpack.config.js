@@ -12,6 +12,11 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.svg$/,
+                use: ['file-loader']
+
+            },
+            {
                 test:/\.jsx?/,
                 exclude: /node_modules/,
                 use: {

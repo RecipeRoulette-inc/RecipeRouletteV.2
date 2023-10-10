@@ -1,24 +1,34 @@
-const SpoonacularApi = require('spoonacular-api-library')
+const SpoonacularApi = require('spoonacular_api');
+
 const defaultClient = SpoonacularApi.ApiClient.instance;
-const apiKeyScheme = defaultClient.authentications['apiKeyScheme'];
-// store this in .env later
-apiKeyScheme.apiKey = "381bd0a555a044cab5991326e1ac33a9"
-const api = new SpoonacularApi.DefaultApi()
-const analyzeRecipeRequest = new SpoonacularApi.AnalyzeRecipeRequest();
 
-recipeController = {};
+const apiKeyScheme = defaultClient.authentications['apiKeyScheme']; 
+apiKeyScheme.apiKey = process.env.API_KEY
+console.log(apiKeyScheme)
+console.log(process.env.API_KEY)
+const apiInstance = new SpoonacularApi.RecipesApi();
 
-recipeController.searchRecipes = async (req, res, next) => {
-    try {
+let opts = {
+  'limitLicense': true, // Boolean | Whether the recipes should have an open license that allows display with proper attribution.
+  'number': 1 // Number | The maximum number of items to return (between 1 and 100). Defaults to 10.
+};
 
-        return next()
-    } catch (error) {
-        return next({
-            log: "Error occurred searching for the recipes",
-            status: 400,
-            message: { error: "Error in searchRecipes controller" },
-          })
+const recipeController = {}; 
+
+recipeController.searchRecipes = (req, res, next) => {
+  console.log('searchRecipes');
+
+  apiInstance.getRandomRecipes(opts, (error, data, response) => {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log('API called successfully. Returned data: ' + console.log(JSON.stringify(data, null, 2)));
     }
-}
+  });
+
+} 
+
+
+
 
 module.exports = recipeController;
