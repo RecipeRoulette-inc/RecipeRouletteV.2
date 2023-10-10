@@ -15,11 +15,11 @@ mongoose.connect(DB_URI)
     console.log('Error connecting to MongoDB', err);
 });
 
-
 app.use(cors({ origin: 'http://localhost:8080', credentials: true }));
 
 // All Route Folders
 const userRoutes = require('./routes/userRoutes')
+const recipeRouter = require('./routes/recipeRouter')
 
 
 app.use(express.json());
@@ -31,6 +31,8 @@ app.get('/', (req, res)=>{
 
 // Redirect to Route Folders
 app.use('/user', userRoutes)
+
+app.use('/recipes', recipeRouter)
 
 // Catch-All Route Handler
 
