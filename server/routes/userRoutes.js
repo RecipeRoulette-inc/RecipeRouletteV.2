@@ -8,7 +8,9 @@ Router.post('/signup',
     userController.createUser, 
     authenticationController.createCookie, 
     (req,res) => {
-        console.log('almostout')
+        console.log('successfully created user')
+        console.log('---Req.body', req);
+        console.log('---Res.body', res);
     return res.status(200).redirect('/home')
 })
 
