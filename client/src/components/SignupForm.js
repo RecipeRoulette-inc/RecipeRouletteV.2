@@ -4,15 +4,13 @@ import { useForm } from "react-hook-form";
 const SignupForm = () => {
   const { register, handleSubmit } = useForm();
   
-  const Login = (data) => {
-    console.log('make request');
+  const Signup = (data) => {
     fetch('http://localhost:3000/user/signup', {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
-    
       }
     })
       .then((res) => {
@@ -43,7 +41,7 @@ const SignupForm = () => {
   return (
     <WrapForm>
       <Header>Recipe Roulette</Header>
-    <Form onSubmit={handleSubmit((data)=> Login(data))}>
+    <Form onSubmit={handleSubmit((data)=> Signup(data))}>
       <Input
         {...register('username', {required: 'This is required'})}
         placeholder='Username'
