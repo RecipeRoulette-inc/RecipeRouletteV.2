@@ -5,7 +5,6 @@ const LoginForm = () => {
   
   const Login = (data) => {
     console.log('make request');
-
     fetch('http://localhost:3000/user/login', {
       method: 'POST',
       credentials: 'include',
