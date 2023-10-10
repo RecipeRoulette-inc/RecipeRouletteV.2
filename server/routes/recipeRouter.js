@@ -5,7 +5,7 @@ const Router = express.Router();
 
 Router
   .route('/')
-  .get(recipeController.searchRecipes, (req, res) => {
+  .get(recipeController.getRandomRecipe, (req, res) => {
     console.log('recipecontroller get route')
     res.send('Message received')
   })

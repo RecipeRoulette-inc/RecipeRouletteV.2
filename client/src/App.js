@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import RecipeCard from './components/recipeCard/index'
 import FlipCard from './components/flipCard/FlipCard';
 import AllergyPage from './pages/AllergySelection';
+import SignupPage from './pages/SignupPage';
 
 
 
@@ -357,7 +358,7 @@ const App = () => {
   return (
     <Screen>
       <GlobalStyle />
-      <HomePage/>
+      <LoginPage/>
     </Screen>
   )
 };
