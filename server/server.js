@@ -32,7 +32,7 @@ app.get('/', (req, res)=>{
 // Redirect to Route Folders
 app.use('/user', userRoutes)
 
-app.use('/recipe', recipeRouter)
+app.use('/recipes', recipeRouter)
 
 // Catch-All Route Handler
 
