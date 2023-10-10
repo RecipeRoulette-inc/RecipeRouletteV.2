@@ -4,10 +4,12 @@ authenticationController = {};
 
 authenticationController.createCookie = async (req, res, next) => {
     try {
+        console.log(res.locals);
         // desctructure id off incoming user from res locals
-        const { user_id } = res.locals.user._id
+        const { _id } = res.locals.user._id
+        console.log('---UserID', _id);
         //jwt.sign - creates JWT token 
-        let jwtToken = jwt.sign({id: user_id}, process.env.KEY)
+        let jwtToken = jwt.sign({id: _id}, process.env.KEY)
         // check cookie params with cors once front and backend connect
         res.cookie("jwtToken", jwtToken, {httpOnly: true, secure: true})
         return next()

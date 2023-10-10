@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const userController = {};
 
 userController.createUser = async (req, res, next) => {
+    console.log('createUser');
     try {
         const { username, password } = req.body;
         // How can we create a pop up for an invalid username or password?

@@ -33,7 +33,7 @@ app.get('/', (req, res)=>{
 
 // Redirect to Route Folders
 app.use('/user', userRoutes)
-app.use('/recipes', recipeRoutes)
+// app.use('/recipes', recipeRoutes)
 
 app.use('/recipes', recipeRouter)
 
