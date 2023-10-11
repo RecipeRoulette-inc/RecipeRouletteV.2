@@ -28,7 +28,11 @@ recipeController.getRandomRecipe = (req, res, next) => {
 
 } 
 
-
+recipeController.saveRecipe = (req, res, next) => {
+  console.log(req.body)
+  const { recipe } = req.body;
+  
+}
 
 
 module.exports = recipeController;
