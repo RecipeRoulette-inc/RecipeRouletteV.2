@@ -25,7 +25,9 @@ recipeController.getRandomRecipe = (req, res, next) => {
     if (error) {
       console.error(error);
     } else {
-      console.log('API called successfully. Returned data: ' + console.log(JSON.stringify(data, null, 2)));
+      console.log('API called successfully. Returned data: ' + console.log(JSON.stringify(data, null, 2)))
+      res.locals.randomRecipe = JSON.stringify(data);
+      return next()
     }
   });
 
@@ -33,13 +35,21 @@ recipeController.getRandomRecipe = (req, res, next) => {
 
 // JC New Code: Update savedRecipes property on userDoc
 recipeController.updateSavedRecipes = async (req, res, next) => {
+
   try {
-    const { savedRecipes } = req.body;
+    const saveNewRecipe = req.body;
     
     // JC: Example variable from cookies to query DB for this specific user. 
-    const { username } = req.cookies;
+    const { id } = res.locals.user;
+    console.log(id)
+    console.log("PRE FIND BY ID")
 
-    const userDoc = await User.findOneAndUpdate({ username: username }, { $set: { savedRecipes: savedRecipes } }, { new: true });
+    const userDoc = await User.findByIdAndUpdate({ _id: id },
+      {
+      $push: {
+        savedRecipes: saveNewRecipe,
+      },
+    },);
     return next();
   }
   catch(err) {

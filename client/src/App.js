@@ -2,11 +2,11 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';
 import RecipeCard from './components/recipeCard/index'
 import FlipCard from './components/flipCard/FlipCard';
 import AllergyPage from './pages/AllergySelection';
-import SignupPage from './pages/SignupPage';
 
 
 
