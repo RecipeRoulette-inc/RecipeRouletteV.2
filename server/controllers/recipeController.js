@@ -22,7 +22,7 @@ recipeController.getRandomRecipe = (req, res, next) => {
     if (error) {
       console.error(error);
     } else {
-      console.log('API called successfully. Returned data: ' + console.log(JSON.stringify(data, null, 2)));
+      console.log('API called successfully. Returned data: ' + data);
     }
   });
 

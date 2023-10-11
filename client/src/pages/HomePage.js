@@ -5,17 +5,69 @@ import ScrollBar from '../components/scrollBar/ScrollBar';
   
 const HomePage = () => {
 
+  const onSubmit = (data) => {
+    fetch('http://localhost:3000/recipes', {
+      method: 'POST',
+      credentials: 'include',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type' : 'application/json'
+      }
+    })
+      .then((res) => {
+        if (!res.ok) {
+          console.log('res not ok')
+        }
+        
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+    })
+  }
+
+  const handleGetRandomRecipe = () => {
+
+    fetch('http://localhost:3000/recipes', {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then(({ error }) => {
+            // create an Error object from error property or response statusText
+            throw new Error(error|| res.statusText)
+          })
+        }
+        
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((error) => {
+        console.error(error); 
+      })
+  }; 
+
+
   return (
     <Wrapper>
-      <SearchBar />
+      <SearchBar onSubmit={onSubmit} />
       <ScrollBar />
+      <button onClick={handleGetRandomRecipe}>Get Random Recipe</button>
     </Wrapper>
   )
 
 };
 
 const Wrapper = styled.div`
-
 `;
+
+
+
 
 export default HomePage;
