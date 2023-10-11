@@ -1,15 +1,56 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCutlery } from '@fortawesome/free-solid-svg-icons';
-import { useForm } from 'react-hook-form'; 
+import { useForm, Controller } from 'react-hook-form'; 
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+
+
+const cuisine = ['African', 'Asian', 'American', 'British', 'Cajun', 'Caribbean', 'Chinese', 'Eastern European', 'European', 'French', 'German', 'Greek',
+'Indian', 'Irish', 'Italian', 'Japanese', 'Jewish', 'Korean', 'Latin American', 'Mediterranean', 'Mexican', 'Middle Eastern', 'Nordic',
+'Southern', 'Spanish', 'Thai', 'Vietnamese'];
+
+const diets = [
+  "Gluten Free",
+  "Ketogenic",
+  "Vegetarian",
+  "Lacto-Vegetarian",
+  "Ovo-Vegetarian",
+  "Vegan",
+  "Pescetarian",
+  "Paleo",
+  "Primal",
+  "Low FODMAP",
+  "Whole30"
+];
+
+const intolerances = [
+  "Dairy",
+  "Egg",
+  "Gluten",
+  "Grain",
+  "Peanut",
+  "Seafood",
+  "Sesame",
+  "Shellfish",
+  "Soy",
+  "Sulfite",
+  "Tree Nut",
+  "Wheat"
+];
 
 const SearchBar = ({onSubmit}) => {
-  const { register, handleSubmit, watch } = useForm();
+  const { control, register, handleSubmit, watch } = useForm();
+
+  const viewSubmission = (data) => {
+    console.log(data)
+  }
 
   return (
-    <Wrapper onSubmit={handleSubmit(onSubmit)}>
+    <Wrapper onSubmit={handleSubmit(viewSubmission)}>
       <SearchBarWrapper>
         <SearchInput
+          autoComplete='off'
           minLength='1'
           required
           {...register('query')}
@@ -21,47 +62,105 @@ const SearchBar = ({onSubmit}) => {
         </SearchButton>
       </SearchBarWrapper>
 
-      <label>Cuisine: </label>
-      <select name="cuisine" {...register('opts.cuisine')} > 
-        <option value="">
-        <em>None</em>
-        </option>
-        <option value="American">American</option>
-        <option value="Thai">Thai</option>
-        <option value="Japanese">Japanese</option>
-      </select>
+      <DoubleWrapped className='doubleWrapped'>
+      <Controller
+        name="opts.cuisine"
+        control={control} // From useForm
+        defaultValue={[]} // Initial default value
+        render={({ field: { onChange, value } }) => (
+          <Autocomplete
+            multiple
+            id="cuisine"
+            options={cuisine}
+            getOptionLabel={(option) => option}
+            value={value}
+            onChange={(event, newValue) => onChange(newValue)} // Update the value
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="standard"
+                label="Cuisine"
+                placeholder="Cuisine"
+              />
+            )}
+          />
+        )}
+        />
+        
+        <Controller
+        name="opts.diet"
+        control={control} // From useForm
+        defaultValue={[]} // Initial default value
+        render={({ field: { onChange, value } }) => (
+          <Autocomplete
+            multiple
+            id="diet"
+            options={diets}
+            getOptionLabel={(option) => option}
+            value={value}
+            onChange={(event, newValue) => onChange(newValue)} // Update the value
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="standard"
+                label="Diet"
+                placeholder="Diet"
+              />
+            )}
+          />
+        )}
+      />
+        
+      <Controller
+        name="opts.intolerence"
+        control={control} // From useForm
+        defaultValue={[]} // Initial default value
+        render={({ field: { onChange, value } }) => (
+          <Autocomplete
+            multiple
+            id="intolerences"
+            options={intolerances}
+            getOptionLabel={(option) => option}
+            value={value}
+            onChange={(event, newValue) => onChange(newValue)} // Update the value
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                variant="standard"
+                label="Intolerences"
+                placeholder="Intolerences"
+              />
+            )}
+          />
+        )}
+        />
+      </DoubleWrapped>
 
-      <label>Intolerances: </label>
-      <select name="intolerances" {...register('opts.intolerances')}>
-        <option value="">
-        <em>None</em>
-        </option>
-        <option value="Gluten">Gluten</option>
-        <option value='Shellfish'>Shellfish</option>
-        <option value='Tree Nut'>Tree Nut</option>
-      </select>
 
-      <label>Diet: </label>
-      <select name="diet" {...register('opts.diet')} >
-        <option value="">
-          <em>None</em>
-        </option>
-        <option value="Gluten Free">Gluten Free</option>
-        <option value="Ketogenic">Ketogenic</option>
-        <option value="Vegetarian">Vegetarian</option>
-      </select>
     </Wrapper>
   )
 };
 
-
 const Wrapper = styled.form`
 background:white; 
 width: 70vw;
-padding: 3em;
+padding: 1em;
 box-shadow: 0 0 3em rgba(0,0,0,.15);
 position: relative;
 `; 
+
+const DoubleWrapped = styled.div`
+position: absolute;
+top: 100%;
+width: 100%;
+padding: 3em;
+width: calc(70vw - 40px);
+z-index: 10;
+background: white;
+border-radius: 3px; 
+border: 1px solid black;
+display: block;
+`;
 
 const SearchBarWrapper = styled.div`
 --size: 60px; 
@@ -75,8 +174,7 @@ position: relative;
 transition: width 450ms cubic-bezier(0.68, -0.55, 0.27, 1.15);
 overflow: hidden;
 
-&:focus-within, 
-input:valid {
+&:focus-within{
   width: 100%;
 
   input {
@@ -93,10 +191,10 @@ input:valid {
   &:hover {
     outline: 0; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-
     }
   }
 }
+
 
 }
 

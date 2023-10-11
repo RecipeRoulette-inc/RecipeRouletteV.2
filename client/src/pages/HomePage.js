@@ -56,9 +56,12 @@ const HomePage = () => {
 
   return (
     <Wrapper>
-      <SearchBar onSubmit={onSubmit} />
+      {/* <SearchBar onSubmit={onSubmit} /> */}
+      <DailyRecipe>
+        <LeftSection />
+        <RightSection/>
+      </DailyRecipe>
       <ScrollBar />
-      <button onClick={handleGetRandomRecipe}>Get Random Recipe</button>
     </Wrapper>
   )
 
@@ -67,6 +70,17 @@ const HomePage = () => {
 const Wrapper = styled.div`
 `;
 
+const DailyRecipe = styled.div`
+display: flex; 
+flex-direction: row;
+height: 400px; 
+width: 100%;
+border: 1px solid black;
+`;
+
+const LeftSection = styled.div``;
+
+const RightSection = styled.div``;
 
 
 
