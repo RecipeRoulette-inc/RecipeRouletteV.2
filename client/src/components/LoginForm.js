@@ -61,9 +61,12 @@ const LoginForm = () => {
 const WrapForm = styled.div`
 width: 300px; 
 height: 300px;
-border: 1px solid black;
+border: 3px solid #363636;
 border-radius: 5px;
+box-shadow: 10px 5px 5px black;
 padding: 20px 20px; 
+background-color: #D9D9D9;
+opacity: 1
 `; 
 
 const Header = styled.div`
@@ -72,6 +75,9 @@ display: flex;
 align-items: center;
 justify-content: center;
 padding: 20px 20px;
+font-size: 30px;
+font-weight: 700;
+text-shadow: 2px 2px 1px gray;
 `;
 
 
@@ -94,7 +100,7 @@ color: white;
 padding: 7px 7px;
 border: none;
 border-radius: 5px;
-background: grey;
+background: #363636;
 cursor: pointer; 
 
 &:hover {

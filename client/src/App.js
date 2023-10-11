@@ -349,6 +349,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
+  font-family: 'Abhaya Libre', serif;
   height: 100vh;  
 }  
 `;
@@ -358,11 +359,8 @@ const App = () => {
   return (
     <Screen>
       <GlobalStyle />
-
-      {/* <LoginPage/> */}
-      {/* <HomePage /> */}
-      <HomePage/>
-      {/* <LoginPage/> */}
+      {/* <HomePage/> */}
+      <LoginPage/>
 
     </Screen>
   )

@@ -13,6 +13,7 @@ const LoginPage = () => {
 
 const WrapPage = styled.div`
 background-image: ${({src}) => `url(${src})`};
+background-size: cover;
 display: flex; 
 align-items: center;
 justify-content: center;
