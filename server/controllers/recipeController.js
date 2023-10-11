@@ -18,7 +18,7 @@ let opts = {
 
 const recipeController = {}; 
 
-recipeController.searchRecipes = (req, res, next) => {
+recipeController.getRandomRecipe = (req, res, next) => {
   console.log('searchRecipes');
 
   apiInstance.getRandomRecipes(opts, (error, data, response) => {
