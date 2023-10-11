@@ -66,6 +66,7 @@ padding: 20px 20px;
 `; 
 
 const Header = styled.div`
+
 display: flex; 
 align-items: center;
 justify-content: center;
