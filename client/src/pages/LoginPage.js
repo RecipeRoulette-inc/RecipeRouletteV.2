@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
-import img from "/Users/christinaraether/Downloads/top-view-fresh-vegetables-various-spices-small-bowls-wooden-spoons-table-free-space.jpg";
+import img from "/Users/christinaraether/Desktop/Screenshot 2023-10-11 at 3.05.35 PM.png";
 
 const LoginPage = () => {
 
@@ -20,6 +20,7 @@ justify-content: center;
 height: 100vh; 
 width: 100vw; 
 // overflow: scroll; 
+border-radius: 10px;
 `;
 
 export default LoginPage; 

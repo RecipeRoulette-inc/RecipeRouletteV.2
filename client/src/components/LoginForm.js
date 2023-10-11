@@ -59,13 +59,13 @@ const LoginForm = () => {
 }; 
 
 const WrapForm = styled.div`
-width: 300px; 
-height: 300px;
-border: 3px solid #363636;
-border-radius: 5px;
+width: 350px; 
+height: 350px;
+border: 20px solid #F24236;
+border-radius: 150px;
 box-shadow: 10px 5px 5px black;
 padding: 20px 20px; 
-background-color: #D9D9D9;
+background-color: #01BAEF;
 opacity: 1
 `; 
 
@@ -74,7 +74,9 @@ const Header = styled.div`
 display: flex; 
 align-items: center;
 justify-content: center;
-padding: 20px 20px;
+padding: 15px 10px;
+text-align: center;
+line-height: 1.3;
 font-size: 30px;
 font-weight: 700;
 text-shadow: 2px 2px 1px gray;
@@ -108,5 +110,9 @@ cursor: pointer;
 }
 
 `;
+
+// const p = styled.p `
+// border-radius: 10;
+// `;
 
 export default LoginForm;

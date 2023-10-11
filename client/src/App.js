@@ -349,7 +349,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  font-family: 'Abhaya Libre', serif;
+  font-family: 'Gluten', cursive;
   height: 100vh;  
 }  
 `;
