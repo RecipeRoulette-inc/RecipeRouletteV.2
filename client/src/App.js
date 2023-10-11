@@ -32,7 +32,10 @@ const App = () => {
   return (
     <Screen>
       <GlobalStyle />
-      <HomePage/>
+
+      {/* <LoginPage/> */}
+      <HomePage />
+
     </Screen>
   )
 };
