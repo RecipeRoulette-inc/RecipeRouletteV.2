@@ -23,7 +23,7 @@ app.use(express.json());
 // All Route Folders
 const userRoutes = require('./routes/userRoutes')
 const recipeRoutes = require('./routes/recipeRoutes')
-const recipeRouter = require('./routes/recipeRouter')
+const recipeRouter = require('./routes/recipeRoutes')
 
 
 // Currently acting as a catch all SWITCHED to GET from USE
@@ -35,7 +35,7 @@ app.get('/', (req, res)=>{
 app.use('/user', userRoutes)
 // app.use('/recipes', recipeRoutes)
 
-app.use('/recipes', recipeRouter)
+app.use('/recipes', recipeRoutes)
 
 // Catch-All Route Handler
 
