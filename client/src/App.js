@@ -358,7 +358,10 @@ const App = () => {
   return (
     <Screen>
       <GlobalStyle />
-      <LoginPage/>
+
+      {/* <LoginPage/> */}
+      <HomePage />
+
     </Screen>
   )
 };
