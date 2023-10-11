@@ -39,6 +39,6 @@ export const flipCardSlice = createSlice({
   },
 });
 
-export const { saveRecipe, removeRecipe } = flipCardSlice.actions;
+export const { save, unsave } = flipCardSlice.actions;
 
 export default flipCardSlice.reducer;

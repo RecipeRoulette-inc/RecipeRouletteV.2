@@ -35,7 +35,7 @@ app.get('/', (req, res)=>{
 app.use('/user', userRoutes)
 // app.use('/recipes', recipeRoutes)
 
-app.use('/recipes', recipeRouter)
+app.use('/recipes', recipeRoutes)
 
 // Catch-All Route Handler
 

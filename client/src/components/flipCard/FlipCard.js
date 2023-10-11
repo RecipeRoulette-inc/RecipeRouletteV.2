@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { addRecipe } from '../../../slices/queryInfo(useless)';
+import { save } from '../../../slices/flipCardSlice'
+import { saveRecipe, removeRecipe } from '../../../slices/savedRecipesSlice'
 
 const FlipCard = () => {
   // JC: NOTE (Edwin): Need Index for each card to properly splice/remove them from the savedRecipes array
   const { savedRecipes } = useSelector((state) => state.savedRecipes);
-  const { saved } = useSelector((state) => state.saved);
+  const { saved } = useSelector((state) => state.flipCard);
   const dispatch = useDispatch();
 
   /** JC:
@@ -105,21 +106,22 @@ const FlipCard = () => {
     ]
   }
 
-  function handleSaveRecipe() {
+  function handleSaveRecipe(e) {
     e.preventDefault();
 
     // JC: Save recipe if not saved.
     if (!saved) {
       dispatch(save());
-      dispatch(addRecipe(testRecipe))
+      dispatch(saveRecipe(testRecipe))
       // JC: The same as addRecipe action in savedRecipesSlice, but this is for the fetch request.
-      savedRecipes.push(testRecipe);
+      // savedRecipes.push(testRecipe);
     }
     // JC: Remove recipe if saved.
     else {
-      dispatch(unsave());
-      dispatch(removeRecipe(index));
-      savedRecipes.slice(index, 1);
+      // ----CURRENTLY TESTING JUST SAVE----
+      // dispatch(unsave());
+      // dispatch(removeRecipe(index));
+      // savedRecipes.slice(index, 1);
     }
 
     /** JC:
@@ -128,14 +130,17 @@ const FlipCard = () => {
      */
     const reqOptions = {
       method: 'PATCH',
+      credentials: 'include',
       headers: { 
         'Content-Type': 'application/json' 
       },
       body: JSON.stringify(savedRecipes)
+        // Only want an individual recipe before sending
+
     };
 
     // JC: Dummy URL:
-    fetch('http://localhost:3000/saveRecipeTest', reqOptions)
+    fetch('http://localhost:3000/recipes/updateSavedRecipes', reqOptions)
       .catch((err) => {throw new Error(err);});
   }
 
@@ -143,7 +148,7 @@ const FlipCard = () => {
   return (
     <Wrapper>
         <div>
-          <button onClick={handleSaveRecipe}>SAVE</button>
+          <button onClick={(e)=>handleSaveRecipe(e)}>SAVE</button>
         </div>
       <Card>
         <Front></Front>

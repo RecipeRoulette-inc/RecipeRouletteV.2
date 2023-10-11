@@ -24,6 +24,7 @@ authenticationController.createCookie = async (req, res, next) => {
 
 // not built out yet
 authenticationController.verifyCookie = async (req, res, next) => {
+
     try {
         if(!req.cookies.jwtToken){
             console.log('Please log in or create and account before making requests :)')
@@ -37,8 +38,8 @@ authenticationController.verifyCookie = async (req, res, next) => {
                 res.send(err.message)
             } else {
                 // what do we want do with the verifiedJwt? 
-                console.log(verifiedJwt)
-                res.send(verifiedJwt)
+        
+                res.locals.user = verifiedJwt;
             }
         })
     return next() 
