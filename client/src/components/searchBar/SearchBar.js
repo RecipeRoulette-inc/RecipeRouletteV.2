@@ -57,7 +57,7 @@ const SearchBar = ({onSubmit}) => {
           placeholder='hungry for?'
           aria-label='search'
         />
-        <SearchButton type="submit" aria-label='submit search' class='searchBar-Button'>
+        <SearchButton type="submit" aria-label='submit search' className='searchBar-Button'>
           <FontAwesomeIcon icon={faCutlery} />
         </SearchButton>
 

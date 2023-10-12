@@ -1,15 +1,21 @@
+// libraries
 import React from 'react'
-import { Route, Routes, createRoutesFromElements, createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
-import LoginPage from './pages/LoginPage';
+import { Route, Routes, createRoutesFromElements, createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+
+//loaders
+import { bulkRecipesLoader } from './pages/HomePage';
+
+//pages
 import SignupPage from './pages/SignupPage';
-import HomePage, { careersloader } from './pages/HomePage';
-import RecipeCard from './components/recipeCard/index'
-import FlipCard from './components/flipCard/FlipCard';
+import LoginPage from './pages/LoginPage';
 import AllergyPage from './pages/AllergySelection';
-import Navbar from './components/Navbar/Navbar';
 import RecipePage from './pages/RecipePage';
-import { Login } from '@mui/icons-material';
+import HomePage from './pages/HomePage';
+
+// navbar
+import Navbar from './components/Navbar/Navbar';
+import RootLayout from './layouts/RootLayout';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -59,42 +65,41 @@ body {
 //   )
 // )
 
-
-
-export const bulkRecipesLoader = async () => {
-  console.log('recipesLoader')
-  const res = await fetch('http://localhost:3000/test'); 
-
-  return res.json();
-}
-
-// ! Trial Run 
 const Router = createBrowserRouter(
   createRoutesFromElements(
-    <Route
-      element={
-        <>
-        <GlobalStyle />
-        <Navbar/>
-        <Outlet />
-        </>
-    }
-    >
-      <Route index path='/home' element={<HomePage />}
-      loader={bulkRecipesLoader}
-      >
-        <Route path=':id' element={<RecipePage/>}/>
-      </Route>
-      <Route path='/' element={<LoginPage />}/>
-      <Route path='/signup' element={<SignupPage/>} />
+    <Route path='/' element={<RootLayout />}>
+      <Route index element={<HomePage />}
+        loader={ bulkRecipesLoader } />
+      <Route path='login' element={<LoginPage />} />
+      <Route path='signup' element={<SignupPage/>} />
     </Route>
   )
 )
 
+// const Router = createBrowserRouter(
+//   createRoutesFromElements(
+//     <Route
+//       element={
+//         <>
+//         <GlobalStyle />
+//         <Navbar/>
+//         <Outlet />
+//         </>
+//     }
+//     >
+//       <Route path='/' element={<LoginPage />} />
+//       <Route index path='/home' element={<HomePage />}
+//       loader={bulkRecipesLoader}
+//       />
+//         <Route path='home/:id' element={<RecipePage/>}/>
+//       <Route path='/signup' element={<SignupPage/>} />
+//     </Route>
+//   )
+// )
+
 const App = () => {
   return (<RouterProvider router={ Router } />)
 }
-
 
 const Screen = styled.div`
 display:flex;

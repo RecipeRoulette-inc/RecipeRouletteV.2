@@ -31,6 +31,11 @@ Router.patch('/updateSavedRecipes',
   }
 )
 
+Router.route('/test').get((req, res) => {
+  console.log('test passed')
+  res.status(200).json('You shall pass')
+})
+
 
 
 module.exports = Router; 
