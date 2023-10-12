@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import SearchBar from '../components/searchBar/SearchBar';
 import ScrollBar from '../components/scrollBar/ScrollBar';
+import { useLoaderData, Link } from 'react-router-dom';
 
   
 const HomePage = () => {
+
+  const careers = useLoaderData();
 
   const onSubmit = (data) => {
     fetch('http://localhost:3000/recipes', {
@@ -63,9 +66,27 @@ const HomePage = () => {
       </DailyRecipe>
       <ScrollBar />
     </Wrapper>
+  //  {
+  //   careers.map(career => (
+  //     <Link to='/' key={career.id}>
+  //       <p>{career.title}</p>
+  //       <p>{careeer.location}</p>
+  //     </Link>
+  //   ))
+  // }
   )
 
 };
+
+//loader function
+// when we click on link of route associated with loader...data is fetched
+export const careersloader = async () => {
+  // make a request to the API endpoint to get recipe data
+  const res = await fetch('');
+
+  // this is a promise, this promise will be resolved by react router
+  return res.json(); 
+}
 
 const Wrapper = styled.div`
 `;

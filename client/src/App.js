@@ -1,13 +1,15 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, createRoutesFromElements, createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-import HomePage from './pages/HomePage';
+import HomePage, { careersloader } from './pages/HomePage';
 import RecipeCard from './components/recipeCard/index'
 import FlipCard from './components/flipCard/FlipCard';
 import AllergyPage from './pages/AllergySelection';
 import Navbar from './components/Navbar/Navbar';
+import RecipePage from './pages/RecipePage';
+import { Login } from '@mui/icons-material';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -28,26 +30,71 @@ body {
 }  
 `;
 
+// ! Sample Code
+// const Router = createBrowserRoutes(
+//   createRoutesFromElements(
+//     <Route path='/' element={<RootLayout />} >
+//       <Route index element={<Home/>} />
+//       <Route path='about' element={<About/>} />
+
+//       <Route path='help' element={<HelpLayout/>} >
+//       <Route path='faq' element={<About/>} />
+//       <Route path='contact' element={<About/>} />
+//     </Route>
+
+//       <Route path='careers' element={<CareersLayout />}>
+//         <Route 
+//           index 
+//           element={<Careers />} 
+//           loader={careersloader}
+//         />
+//          <Route
+//          path="id
+//          element={careerDetails}
+//          />
+//       </Route>
+
+//     <Route path='*' element={<NotFound/>}/>
+//     </Route>  
+//   )
+// )
+
+
+
+export const bulkRecipesLoader = async () => {
+  console.log('recipesLoader')
+  const res = await fetch('http://localhost:3000/test'); 
+
+  return res.json();
+}
+
+// ! Trial Run 
+const Router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route
+      element={
+        <>
+        <GlobalStyle />
+        <Navbar/>
+        <Outlet />
+        </>
+    }
+    >
+      <Route index path='/home' element={<HomePage />}
+      loader={bulkRecipesLoader}
+      >
+        <Route path=':id' element={<RecipePage/>}/>
+      </Route>
+      <Route path='/' element={<LoginPage />}/>
+      <Route path='/signup' element={<SignupPage/>} />
+    </Route>
+  )
+)
 
 const App = () => {
+  return (<RouterProvider router={ Router } />)
+}
 
-  // const location = useLocation();
-  // const showBackground = location.pathname !== '/login';
-
-  return (
-    <Router>  
-      <GlobalStyle />
-      <Navbar />
-      <Screen >
-        <Routes>
-          <Route path='/home' element={<HomePage/>} />
-          <Route path='/' element={<LoginPage />} />
-          <Route path='/signup' element={<SignupPage />} />
-        </Routes>
-    </Screen>
-    </Router>
-  )
-};
 
 const Screen = styled.div`
 display:flex;

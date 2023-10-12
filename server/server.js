@@ -37,6 +37,11 @@ app.use('/user', userRoutes)
 
 app.use('/recipes', recipeRoutes)
 
+app.use('/test', (req, res) => {
+  console.log('test passed'); 
+  res.sendStatus(200);
+})
+
 // Catch-All Route Handler
 
 
