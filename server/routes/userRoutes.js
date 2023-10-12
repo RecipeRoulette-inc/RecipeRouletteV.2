@@ -19,7 +19,7 @@ Router.post('/login',
     userController.verifyUser, 
     authenticationController.createCookie, 
     (req,res) => {
-    return res.status(200).redirect('/home')
+    return res.sendStatus(200)
 })
 
 Router.post('/logout', 

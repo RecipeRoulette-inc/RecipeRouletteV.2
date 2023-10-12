@@ -57,10 +57,9 @@ const SearchBar = ({onSubmit}) => {
           placeholder='hungry for?'
           aria-label='search'
         />
-        <SearchButton type="submit" aria-label='submit search'>
+        <SearchButton type="submit" aria-label='submit search' class='searchBar-Button'>
           <FontAwesomeIcon icon={faCutlery} />
         </SearchButton>
-      </SearchBarWrapper>
 
       <DoubleWrapped className='doubleWrapped'>
       <Controller
@@ -135,6 +134,8 @@ const SearchBar = ({onSubmit}) => {
         )}
         />
       </DoubleWrapped>
+      </SearchBarWrapper>
+
 
 
     </Wrapper>
@@ -150,16 +151,16 @@ position: relative;
 `; 
 
 const DoubleWrapped = styled.div`
-position: absolute;
-top: 100%;
+position: fixed;
+top: 13vh;
 width: 100%;
-padding: 3em;
+padding: 2em;
 width: calc(70vw - 40px);
-z-index: 10;
+z-index: 100;
 background: white;
 border-radius: 3px; 
 border: 1px solid black;
-display: block;
+display: none;
 `;
 
 const SearchBarWrapper = styled.div`
@@ -177,13 +178,17 @@ overflow: hidden;
 &:focus-within{
   width: 100%;
 
+  &:not(:placeholder-shown) {
+
+  }
+
   input {
     opacity: 1;
     cursor: initial;  
     width: calc(100% - var(--size));
   }
 
-  button{
+  .searchBar-Button {
     background: var(--clr-primary);
     color:white;
 
@@ -193,6 +198,14 @@ overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     }
   }
+  
+  .doubleWrapped {
+    display:block;
+    visibility: visible;
+    opacity: 1;
+    }
+
+
 }
 
 

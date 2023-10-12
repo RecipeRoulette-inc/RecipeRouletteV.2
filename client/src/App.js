@@ -40,11 +40,10 @@ const App = () => {
       <Navbar />
       <Screen >
         <Routes>
-          <Route path='/' element={<HomePage/>} />
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='signup' element={<SignupPage />} />
+          <Route path='/home' element={<HomePage/>} />
+          <Route path='/' element={<LoginPage />} />
+          <Route path='/signup' element={<SignupPage />} />
         </Routes>
-        
     </Screen>
     </Router>
   )
