@@ -31,7 +31,7 @@ authenticationController.verifyCookie = async (req, res, next) => {
         }
 
         const { jwtToken } = req.cookies
-        console.log('<<<<<<token>>>>>>>', jwtToken)
+        // console.log('<<<<<<token>>>>>>>', jwtToken)
         //jwt.verify
         jwt.verify(jwtToken, process.env.KEY, (err, verifiedJwt) => {
             if(err){
