@@ -12,14 +12,19 @@ const apiInstance = new SpoonacularApi.RecipesApi();
 const User = require('../models/userModel');
 
 let opts = {
+  'query': 'beef',
+  'cuisine': 'indian',
+  'instructionsRequired': true, // Boolean | Whether the recipes must have instructions.
+  'addRecipeInformation': true, // Boolean | If set to true, you get more information about the recipes returned.
   'limitLicense': true, // Boolean | Whether the recipes should have an open license that allows display with proper attribution.
-  'number': 1 // Number | The maximum number of items to return (between 1 and 100). Defaults to 10.
+  'intolerances': 'gluten', // String | A comma-separated list of intolerances. All recipes returned must not contain ingredients that are not suitable for people with the intolerances entered. See a full list of supported intolerances.
+  'number': 10 // Number | The maximum number of items to return (between 1 and 100). Defaults to 10.
 };
 
 const recipeController = {}; 
 
 recipeController.getRandomRecipe = (req, res, next) => {
-  console.log('searchRecipes');
+  console.log('getRandomRecipe Controller');
 
   apiInstance.getRandomRecipes(opts, (error, data, response) => {
     if (error) {
@@ -28,6 +33,32 @@ recipeController.getRandomRecipe = (req, res, next) => {
       console.log('API called successfully. Returned data: ' + console.log(JSON.stringify(data, null, 2)))
       res.locals.randomRecipe = JSON.stringify(data);
       return next()
+    }
+  });
+
+} 
+
+recipeController.searchRecipes = (req, res, next) => {
+  console.log('searchRecipes Controller');
+
+  apiInstance.searchRecipes(opts, (error, data, response) => {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log('API called successfully. Returned data: ' + console.log(JSON.stringify(data, null, 2)))
+      res.locals.searchedRecipes = JSON.stringify(data);
+      const ids = res.locals.searchedRecipes.forEach()
+      return next()
+    }
+  });
+  // Inner Api Query based on IDs of first query?
+  // The second part of this route has NOT been tested
+  // Be mindful that these will result in two requests each time... or more
+  apiInstance.getRecipeInformationBulk(ids, opts, (error, data, response) => {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log('API called successfully. Returned data: ' + data);
     }
   });
 
