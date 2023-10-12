@@ -1,7 +1,12 @@
 import styled from "styled-components";
-import { useForm } from 'react-hook-form'
+import { useNavigate, Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+
+
 const LoginForm = () => {
   const { register, handleSubmit } = useForm();
+
+  const navigate = useNavigate();
   
   const Login = (data) => {
     console.log('make request');
@@ -22,13 +27,17 @@ const LoginForm = () => {
             throw new Error(error|| res.statusText)
           })
         }
-        return res.json();
+        // ! the response being sent from the server is not JSON
+        return res;
       })
       .then((data) => {
+        console.log('success')
         // handle successful login
         // store token
         // update redux state
-        // navigate to homepage
+        // TODO: LINK GOES HERE 
+        navigate('/home')
+
       })
       .catch((error) => {
         // display error in console
@@ -49,11 +58,13 @@ const LoginForm = () => {
     
       <Input
         {...register('password', {required: 'This is required'})}
-        placeholder='Password'
+          placeholder='Password'
+          type="password"
         />
         
       <Submit type='submit' > Log in</Submit>
-    </Form>
+      </Form>
+      <p> Don't have an account? <Link to={'/signup'}>Sign up</Link> </p>
     </WrapForm>
   )
 }; 

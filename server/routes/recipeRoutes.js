@@ -6,17 +6,19 @@ const authenticationController = require('../controllers/authenticationControlle
 
 
 Router.get('/randomRecipe', 
+  authenticationController.verifyCookie,
   recipeController.getRandomRecipe, 
   (req, res) => {
     console.log('PRE SEND BACK YOOOOOO')
     return res.status(200).send(res.locals.randomRecipe)
   })
 
-Router.get('/searchRecipe',
+Router.get('/searchRecipes',
 authenticationController.verifyCookie,
+recipeController.searchRecipes,
   (req,res) => {
-    console.log('cookieCheck passed')
-    return res.status(200)
+    console.log('Search Recipe Complete')
+    return res.status(200).send(res.locals.searchedRecipes)
   }
 )
 
