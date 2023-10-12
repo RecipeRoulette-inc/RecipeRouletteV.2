@@ -4,7 +4,6 @@ import { save } from '../../../slices/flipCardSlice'
 import { saveRecipe, removeRecipe } from '../../../slices/savedRecipesSlice'
 
 const FlipCard = () => {
-  // JC: NOTE (Edwin): Need Index for each card to properly splice/remove them from the savedRecipes array
   const { savedRecipes } = useSelector((state) => state.savedRecipes);
   const { saved } = useSelector((state) => state.flipCard);
   const dispatch = useDispatch();
@@ -110,11 +109,9 @@ const FlipCard = () => {
     e.preventDefault();
 
     // JC: Save recipe if not saved.
-    if (!saved) {
+    if (saved === false) {
       dispatch(save());
       dispatch(saveRecipe(testRecipe))
-      // JC: The same as addRecipe action in savedRecipesSlice, but this is for the fetch request.
-      // savedRecipes.push(testRecipe);
     }
     // JC: Remove recipe if saved.
     else {
@@ -124,10 +121,6 @@ const FlipCard = () => {
       // savedRecipes.slice(index, 1);
     }
 
-    /** JC:
-     * The fetch request is just an example of the PATCH we'll be doing to send this data over
-     * to the backend using whatever route to update the userDoc with the new favorited recipe
-     */
     const reqOptions = {
       method: 'PATCH',
       credentials: 'include',
@@ -136,11 +129,14 @@ const FlipCard = () => {
       },
       body: JSON.stringify(savedRecipes)
         // Only want an individual recipe before sending
-
     };
 
-    // JC: Dummy URL:
     fetch('http://localhost:3000/recipes/updateSavedRecipes', reqOptions)
+      // .then((res) => {
+      //   if (res.status === 200) {
+          
+      //   }
+      // })
       .catch((err) => {throw new Error(err);});
   }
 

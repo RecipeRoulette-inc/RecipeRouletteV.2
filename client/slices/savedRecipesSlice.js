@@ -13,8 +13,8 @@ export const savedRecipesSlice = createSlice({
       state.savedRecipes.push(action.payload);
     },
     /**
-     * Will need the index of the card as the action.payload OR included in it that this recipe lives on in order to splice 
-     * it off of the state AND the userDoc's savedRecipe property.
+     * Instead of individual card index, use totalSaved state from flipCardSlice.js or savedRecipes.length... 
+     * Either one indicates the number of saved recipies, making removeRecipe function properly.
      */
     removeRecipe: (state, action) => {
       state.savedRecipes.splice(action.payload, 1);
