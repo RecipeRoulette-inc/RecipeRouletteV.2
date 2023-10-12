@@ -61,12 +61,16 @@ const LoginForm = () => {
 const WrapForm = styled.div`
 width: 390px; 
 height: 275px;
-border: 20px solid #7A706E;
+border: 15px solid #2C1A1D;
 border-radius: 150px;
 box-shadow: 10px 5px 5px black;
 padding: 20px 20px; 
-background-color: #01BAEF;
-opacity: 1
+// background-color: #01BAEF;
+// background-color: #F1BE24;
+background-color: #d30502;
+// opacity: 1
+position: relative;
+top: -100px;
 `; 
 
 const Header = styled.div`
@@ -79,7 +83,7 @@ text-align: center;
 line-height: 1.3;
 font-size: 30px;
 font-weight: 700;
-text-shadow: 2px 2px 1px gray;
+text-shadow: 2px 2px 1px #3d3d3d;
 `;
 
 

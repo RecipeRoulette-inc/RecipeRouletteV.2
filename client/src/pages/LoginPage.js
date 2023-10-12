@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
-import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/bw images/Screenshot 2023-10-12 at 12.34.08 PM.png";
+import img from "/Users/christinaraether/Downloads/AdobeStock_620122396_Preview.jpeg";
 
 const LoginPage = () => {
 
@@ -14,7 +14,7 @@ const LoginPage = () => {
 const WrapPage = styled.div`
 background-image: ${({src}) => `url(${src})`};
 background-size: cover;
-background-color: black;
+background-color: #333;
 display: flex; 
 align-items: center;
 justify-content: center;
@@ -22,9 +22,9 @@ height: 75vh;
 width: 50vw; 
 border: black;
 border-style: solid;
-border-width: 15px 15px 15px;
+border-width: 13px 13px 13px;
 // overflow: scroll; 
-border-radius: 10px;
+border-radius: 35px;
 `;
 
 export default LoginPage; 

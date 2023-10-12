@@ -7,7 +7,7 @@ import HomePage from './pages/HomePage';
 import RecipeCard from './components/recipeCard/index'
 import FlipCard from './components/flipCard/FlipCard';
 import AllergyPage from './pages/AllergySelection';
-import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/bw images/beautiful-seamless-hand-drawn-fast-food-images-set-vectors_621139-35.jpg";
+import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/bw images/fast-food-doodles-hand-drawn-colorful-vector-symbols-objects_217204-778.jpg";
 // import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/Screenshot 2023-10-12 at 12.35.22 PM.png";
 
 
@@ -350,7 +350,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  font-family: 'Kranky', serif;
+  font-family: 'Chelsea Market';
   height: 100vh;  
 }  
 `;
@@ -360,8 +360,8 @@ const App = () => {
   return (
     <Screen src={img}>
       <GlobalStyle />
-      {/* <HomePage/> */}
-      <LoginPage/>
+      <HomePage/>
+      {/* <LoginPage/> */}
 
     </Screen>
   )
@@ -369,7 +369,7 @@ const App = () => {
 
 const Screen = styled.div`
 background-image: ${({src}) => `url(${src})`};
-background-size: cover;
+background-size: 50%;
 display:flex;
 align-items:center;
 justify-content: center;
