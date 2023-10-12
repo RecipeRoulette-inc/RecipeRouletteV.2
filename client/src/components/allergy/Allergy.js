@@ -1,12 +1,12 @@
 import styled, {keyframes} from "styled-components";
 
-const Allergy = ({ allergen }) => {
+const Allergy = ({ allergen, addAllergy }) => {
   
   const randomTop = `${Math.random() * 100}%`; 
   const randomLeft = `${Math.random() * 100}%`; 
 
   return (
-    <Wrapper style={{top: randomTop, left: randomLeft}}>
+    <Wrapper style={{top: randomTop, left: randomLeft}} onClick={()=> addAllergy(allergen)}>
       {allergen}
     </Wrapper>
   )
