@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
-import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/Screenshot 2023-10-12 at 12.35.04 PM.png";
+import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/AdobeStock_351574443_Preview.jpeg";
 
 const LoginPage = () => {
 
@@ -17,8 +17,10 @@ background-size: cover;
 display: flex; 
 align-items: center;
 justify-content: center;
-height: 100vh; 
-width: 100vw; 
+height: 75vh; 
+width: 50vw; 
+border-style: solid;
+border-width: 15px 15px 15px;
 // overflow: scroll; 
 border-radius: 10px;
 `;
