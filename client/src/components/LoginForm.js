@@ -59,9 +59,9 @@ const LoginForm = () => {
 }; 
 
 const WrapForm = styled.div`
-width: 350px; 
-height: 350px;
-border: 20px solid #F24236;
+width: 390px; 
+height: 275px;
+border: 20px solid #7A706E;
 border-radius: 150px;
 box-shadow: 10px 5px 5px black;
 padding: 20px 20px; 
@@ -84,9 +84,11 @@ text-shadow: 2px 2px 1px gray;
 
 
 const Form = styled.form`
+justify-content: center;
 display: flex; 
 flex-direction: column; 
-gap: 10px
+gap: 30px
+padding: 20px;
 `;
 
 const Input = styled.input`

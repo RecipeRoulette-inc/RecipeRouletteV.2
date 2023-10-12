@@ -7,7 +7,7 @@ import HomePage from './pages/HomePage';
 import RecipeCard from './components/recipeCard/index'
 import FlipCard from './components/flipCard/FlipCard';
 import AllergyPage from './pages/AllergySelection';
-import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/AdobeStock_199274981_Preview.jpeg";
+import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/bw images/beautiful-seamless-hand-drawn-fast-food-images-set-vectors_621139-35.jpg";
 // import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/Screenshot 2023-10-12 at 12.35.22 PM.png";
 
 
@@ -350,7 +350,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  font-family: 'Gluten', cursive;
+  font-family: 'Kranky', serif;
   height: 100vh;  
 }  
 `;
