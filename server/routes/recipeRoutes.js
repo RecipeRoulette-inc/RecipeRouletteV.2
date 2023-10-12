@@ -13,12 +13,22 @@ Router.get('/randomRecipe',
     return res.status(200).send(res.locals.randomRecipe)
   })
 
+Router.get('/getRecipeInformationBulk',
+authenticationController.verifyCookie,
+recipeController.getRecipeInformationBulk,
+  (req,res) => {
+    console.log('Search Recipe Complete')
+    return res.status(200).send(res.locals.bulkRecipeInformation)
+  }
+)
+
 Router.get('/searchRecipes',
 authenticationController.verifyCookie,
 recipeController.searchRecipes,
   (req,res) => {
     console.log('Search Recipe Complete')
-    return res.status(200).send(res.locals.searchedRecipes)
+    console.log(res.locals.recipes)
+    return res.status(200).send(res.locals.recipes)
   }
 )
 
