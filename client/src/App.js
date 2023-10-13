@@ -5,7 +5,6 @@ import { Route, Routes, createRoutesFromElements, createBrowserRouter, Outlet, R
 
 //loaders
 import { bulkRecipesLoader } from './pages/HomePage';
-
 //layouts 
 import RootLayout from './layouts/RootLayout';
 
@@ -15,6 +14,7 @@ import LoginPage from './pages/LoginPage';
 import AllergyPage from './pages/AllergySelection';
 import RecipePage from './pages/RecipePage';
 import HomePage from './pages/HomePage';
+import SingleRecipePage, { getRecipeInformationBulk } from './components/singleRecipePage/SingleRecipePage';
 
 // navbar
 import Navbar from './components/Navbar/Navbar';
@@ -86,7 +86,9 @@ const Router = createBrowserRouter(
       <Route path='/' element={<HomePage />} 
       loader={bulkRecipesLoader}
       >
-        <Route path=':id' />
+        <Route path=':id' element={<SingleRecipePage />}
+        loader={getRecipeInformationBulk}
+        />
       </Route>
       <Route path='login' element={<LoginPage />} />
       <Route path='signup' element={<SignupPage />} />

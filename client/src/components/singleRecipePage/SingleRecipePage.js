@@ -42,8 +42,8 @@ export const getRecipeInformationBulk = async ({params}) => {
           'Content-Type': 'application/json' 
         },
         body: JSON.stringify(id)
-      };
-
+    };
+  
     const res = await fetch('http://localhost:3000/recipes/getRecipeInformationBulk', reqOptions);
     console.log('Response Received')
     const recipe = await res.json()

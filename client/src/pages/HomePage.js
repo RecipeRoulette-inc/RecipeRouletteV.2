@@ -36,20 +36,10 @@ const HomePage = () => {
 
   return (
     <Wrapper>
-      {/* <SearchBar onSubmit={onSubmit} /> */}
       <DailyRecipe>
       </DailyRecipe>
       <ScrollBarRandom />
     </Wrapper>
-  //  {
-  //   careers.map(career => (
-  //     <Link to='/' key={career.id}>
-  //       <p>{career.title}</p>
-  //       <p>{careeer.location}</p>
-  //     </Link>
-  //   ))
-  // }
-
   )
 };
 

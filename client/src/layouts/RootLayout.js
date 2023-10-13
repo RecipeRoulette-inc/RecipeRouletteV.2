@@ -19,9 +19,6 @@ const GlobalStyle = createGlobalStyle`
 
 const RootLayout = () => {
 
-  // const location = useLocation(); 
-  // console.log(location);
-
   const onSubmit = (data) => {
     console.log(data);
     fetch('http://localhost:3000/recipes', {

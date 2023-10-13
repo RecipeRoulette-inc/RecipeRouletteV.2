@@ -7,14 +7,20 @@ const authenticationController = require('../controllers/authenticationControlle
 // app.use()
 // GET POST PATH 
 
-Router
-  .route('/randomRecipe')
-  .get(authenticationController.verifyCookie,
-  recipeController.getRandomRecipe, 
-  (req, res) => {
-    console.log('PRE SEND BACK YOOOOOO')
-    return res.status(200).send(res.locals.randomRecipe)
-  })
+// Router
+//   .route('/randomRecipe')
+//   .get(recipeController.getRandomRecipe, 
+//   (req, res) => {
+//     console.log('PRE SEND BACK YOOOOOO')
+//     return res.status(200).send(res.locals.randomRecipe)
+//   })
+
+Router.
+  route('/randomRecipe')
+  .post((req, res) => {
+    console.log('Post Route')
+  console.log(req.body);
+})
 
 Router
   .route('/getRecipeInformationBulk')

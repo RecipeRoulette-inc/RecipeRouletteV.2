@@ -48,6 +48,7 @@ recipeController.getRecipeInformationBulk = (req, res, next) => {
 
 recipeController.getRandomRecipe = (req, res, next) => {
   console.log('-------> getRandomRecipe Controller');
+  console.log(req.body);
 
   apiInstance.getRandomRecipes(opts, (error, data, response) => {
     if (error) {
