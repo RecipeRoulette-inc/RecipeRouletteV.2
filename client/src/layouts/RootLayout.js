@@ -24,7 +24,7 @@ const RootLayout = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    fetch('http://localhost:3000/recipes', {
+    fetch('http://localhost:3000/recipes/searchRecipes', {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(data),
