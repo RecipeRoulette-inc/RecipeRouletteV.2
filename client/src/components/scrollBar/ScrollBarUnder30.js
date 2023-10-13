@@ -76,12 +76,14 @@ const ScrollBarUnder30 = () => {
 const Wrapper = styled.div`
 display: flex;
 flex-direction: column;
-
+background-color: rgb(255,255,255, .95);
+border-radius: 1rem; 
 `;
 
 const Header = styled.div`
 display: flex;
 flex-direction: row;
+margin: 10px;
 `;
 
 const CardsContainer = styled.div`

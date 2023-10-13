@@ -83,7 +83,7 @@ padding: 20px 20px;
 background-color: #ee6352;
 position: relative;
 top: 37px;
-left: 197px;
+left: 190px;
 `; 
 
 const Header = styled.div`

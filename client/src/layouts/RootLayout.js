@@ -66,8 +66,10 @@ const RootLayout = () => {
         <Nav>
           <Logo>Recipe Roulette</Logo>
           <SearchBar onSubmit={onSubmit} />
-          <NavLink to='/login'>Login</NavLink>
-          <NavLink to='/signup'>Signup</NavLink>
+          <ButtonBox>
+          <LoginLink to='/login'>Login</LoginLink>
+          <SignUpLink to='/signup'>Signup</SignUpLink>
+          </ButtonBox>
         </Nav>
       </Header>
       <Main>
@@ -126,5 +128,33 @@ min-width: 600px;
 margin: 40px auto; 
 padding: 30px ;
 `;
+
+const LoginLink = styled(NavLink)`
+display: flex;
+justify-content: center;
+background-color: black;
+color: white;
+height: 60px;
+width: 80px;
+border-radius: 1rem;
+padding: 16px;
+`
+const SignUpLink = styled(NavLink)`
+display: flex;
+justify-content: center;
+background-color: black;
+color: white;
+height: 60px;
+width: 80px;
+border-radius: 1rem;
+padding: 16px;
+`
+
+
+const ButtonBox = styled.div`
+display: flex;
+flex-direction: column;
+gap: 5px;
+`
 
 export default RootLayout;

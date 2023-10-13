@@ -164,7 +164,6 @@ const FlipCard = ({ recipeInfo }) => {
     <Wrapper>
 
       <Card>
-
         <Front bg={image}>
         </Front>
 
@@ -184,11 +183,9 @@ const FlipCard = ({ recipeInfo }) => {
       </Card>
       <br></br>
 
-
-      <button onClick={(e)=>handleSaveRecipe(e)}>SAVE</button>
-
       <FrontHeader>
         <h3>{title}</h3>
+        <SaveButton onClick={(e)=>handleSaveRecipe(e)}>SAVE</SaveButton>
       </FrontHeader>
 
     </Wrapper>
@@ -240,7 +237,7 @@ box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
 position:absolute;
 backface-visibility:hidden;
 transform: rotateY(180deg);
-background-color: grey;
+background-color: #EE6352;
 display:flex;
 flex-direction: column;
 justify-content: center; 
@@ -248,9 +245,26 @@ align-items:center;
 gap: 5rem;
 `;
 
+
+//background-color: rgb(252,252,255);
 const FrontHeader = styled.div`
-text-shadow: 1px 1px #F3F3F3
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-shadow: 1px 1px #F3F3F3;
+h3 {
+  text-align: center;
+}
 `;
+
+const SaveButton = styled.button`
+background: black;
+color: white;
+border-radius: 1rem;
+width: 60px;
+padding: 4px;
+`
 
 
 export default FlipCard; 
