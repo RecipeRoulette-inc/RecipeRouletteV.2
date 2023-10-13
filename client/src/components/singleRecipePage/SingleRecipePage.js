@@ -10,7 +10,7 @@ function SingleRecipePage() {
 
     return (
         <Wrapper>
-            <PhotoContainer bg={image}></PhotoContainer>
+            {/* <PhotoContainer bg={image}></PhotoContainer> */}
             <br></br>
 
             <p>Title={recipe.title}</p>

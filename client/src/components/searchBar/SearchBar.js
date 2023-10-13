@@ -146,7 +146,7 @@ box-shadow: 0 0 3em rgba(0,0,0,.15);
 position: relative;
 border-style: solid;
 border-radius: 25px;
-box-shadow: 3px 3px 2px black;
+// box-shadow: 3px 3px 2px black;
 `; 
 
 const DoubleWrapped = styled.div`

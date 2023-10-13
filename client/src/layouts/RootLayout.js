@@ -4,12 +4,13 @@ import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import SearchBar from '../components/searchBar/SearchBar';
 import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/bw images/fast-food-doodles-hand-drawn-colorful-vector-symbols-objects_217204-778.jpg";
 
-
+//add fonts here
 const GlobalStyle = createGlobalStyle`
 * {
-    margin: 0; 
-    padding:0; 
+    // margin: auto; 
+    // padding: 10px 10px; 
     box-sizing: border-box;
+    font-family: 'Chelsea Market';
 }
 
 :root {
@@ -54,7 +55,7 @@ const RootLayout = () => {
       <GlobalStyle/>
       <Header>
         <Nav>
-          <h1>Recipe Roulette</h1>
+          <Logo>Recipe Roulette</Logo>
           <SearchBar onSubmit={onSubmit} />
           <NavLink to='/login'>Login</NavLink>
           <NavLink to='/signup'>Signup</NavLink>
@@ -80,8 +81,17 @@ padding: 115px 50px;
 `;
 
 const Header = styled.header`
+display: flex;
+justify-content: center;
+align-text: center;
 margin: 0 auto;
-background: gray;
+background: #ee6352;
+border-radius: 15px;
+padding: 15px 15px;
+`;
+
+const Logo = styled.h1`
+  background: red;
 `;
 
 const Nav = styled.nav`
@@ -95,8 +105,13 @@ margin: 0 auto;
 `;
 
 const Main = styled.main`
+display: flex;
+justify-content: center;
+align-content: center;
 max-width: 1200px; 
+min-width: 600px;
 margin: 40px auto; 
+padding: 30px ;
 `;
 
 export default RootLayout;

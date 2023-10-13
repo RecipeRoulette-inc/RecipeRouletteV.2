@@ -49,7 +49,7 @@ const LoginForm = () => {
 
   return (
     <WrapForm>
-      <Header>Recipe Roulette</Header>
+      <Header>Log in</Header>
     <Form onSubmit={handleSubmit((data)=> Login(data))}>
       <Input
         {...register('username', {required: 'This is required'})}
@@ -70,19 +70,20 @@ const LoginForm = () => {
 }; 
 
 const WrapForm = styled.div`
-width: 255px; 
-height: 255px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+text-align: center;
+width: 400px; 
+height: 400px;
 border: 15px solid #2C1A1D;
-border-radius: 150px;
+border-radius: 200px;
 box-shadow: 10px 5px 5px black;
 padding: 20px 20px; 
-// background-color: #01BAEF;
-// background-color: #F1BE24;
-background-color: #d30502;
-// opacity: 1
+background-color: #ee6352;
 position: relative;
-top: -2px;
-left: 7px;
+top: 37px;
+left: 197px;
 `; 
 
 const Header = styled.div`
@@ -104,7 +105,7 @@ justify-content: center;
 display: flex; 
 flex-direction: column; 
 gap: 30px
-padding: 20px;
+padding: 30px 30px;
 `;
 
 const Input = styled.input`
@@ -129,8 +130,5 @@ cursor: pointer;
 
 `;
 
-// const p = styled.p `
-// border-radius: 10;
-// `;
 
 export default LoginForm;

@@ -21,116 +21,30 @@ import HomePage from './pages/HomePage';
 import Navbar from './components/Navbar/Navbar';
 import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
 
-
-const GlobalStyle = createGlobalStyle`
-* {
-    margin: 0; 
-    padding:0; 
-    box-sizing: border-box;
-    // position: relative;
-}
-
-:root {
-  --clr-primary: #ee6352;
-  --clr-body: #333;
-  --clr-bg: #ddd;
-}
-
-body {
-  font-family: 'Chelsea Market';
-  height: 100vh; 
-  position: relative; 
-}  
-`;
-
-// ! Sample Code
-// const Router = createBrowserRoutes(
-//   createRoutesFromElements(
-//     <Route path='/' element={<RootLayout />} >
-//       <Route index element={<Home/>} />
-//       <Route path='about' element={<About/>} />
-
-//       <Route path='help' element={<HelpLayout/>} >
-//       <Route path='faq' element={<About/>} />
-//       <Route path='contact' element={<About/>} />
-//     </Route>
-
-//       <Route path='careers' element={<CareersLayout />}>
-//         <Route 
-//           index 
-//           element={<Careers />} 
-//           loader={careersloader}
-//         />
-//          <Route
-//          path="id
-//          element={careerDetails}
-//          />
-//       </Route>
-
-//     <Route path='*' element={<NotFound/>}/>
-//     </Route>  
-//   )
-// )
-
-{/* <Route path='recipe' element={<RecipeLayout />}
-  <Route
-    index
-    element={<Receipes />}
-    loader={recipesloader}
-  />
-  <Route
-  path='id'
-  element={careerDetails}
-  />
-  </Route> */}
-
 const Router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout />}>
-      <Route path='/' element={<HomePage />} 
-      loader={bulkRecipesLoader}
-      >
-        <Route path=':id' />
+      <Route index element={<LoginPage />} 
+      // loader={bulkRecipesLoader}
+      />
+      <Route path=':id'
+        element={<SingleRecipePage />}
+        // loader={getRecipeInformationBulk}
+      />
+
+        {/* <Route path='search/q:'
+        element={<SearchResults/>}
+        loader={getSearchResults}
+        /> */}
+        
+    {   <Route path='login' element={<LoginPage />} /> }
+   <Route path='signup' element={<SignupPage />} /> 
       </Route>
-      <Route path='login' element={<LoginPage />} />
-      <Route path='signup' element={<SignupPage />} />
-    </Route>
   )
 );
-
-// const Router = createBrowserRouter(
-//   createRoutesFromElements(
-//     <Route
-//       element={
-//         <>
-//         <GlobalStyle />
-//         <Navbar/>
-//         <Outlet />
-//         </>
-//     }
-//     >
-//       <Route path='/' element={<LoginPage />} />
-//       <Route index path='/home' element={<HomePage />}
-//       loader={bulkRecipesLoader}
-//       />
-//         <Route path='home/:id' element={<RecipePage/>}/>
-//       <Route path='/signup' element={<SignupPage/>} />
-//     </Route>
-//   )
-// )
 
 const App = () => {
   return (<RouterProvider router={ Router } />)
 }
-
-const Screen = styled.div`
-background-image: ${({src}) => `url(${src})`};
-background-size: 50%;
-display:flex;
-align-items:center;
-justify-content: center;
-margin: auto;
-padding: 115px 50px;
-`;
 
 export default App;
