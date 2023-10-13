@@ -31,8 +31,8 @@ Router
   .route('/getRecipeInformationBulk/:id')
   .get(recipeController.getRecipeInformationBulk,
   (req,res) => {
-    console.log('Search Recipe Complete')
-    return res.status(200).json(res.locals.bulkRecipeInformation)
+    console.log('Search Recipe Complete :id')
+    return res.status(200).json(res.locals.getRecipeInfo)
   }
 )
 
