@@ -4,7 +4,7 @@ import { useLoaderData, Link } from 'react-router-dom';
 
 // components
 import SearchBar from '../components/searchBar/SearchBar';
-import ScrollBar from '../components/scrollBar/ScrollBar';
+import ScrollBarRandom from '../components/scrollBar/ScrollBarRandom';
 
   
 const HomePage = () => {
@@ -39,7 +39,7 @@ const HomePage = () => {
       {/* <SearchBar onSubmit={onSubmit} /> */}
       <DailyRecipe>
       </DailyRecipe>
-      <ScrollBar />
+      <ScrollBarRandom />
     </Wrapper>
   //  {
   //   careers.map(career => (

@@ -4,26 +4,26 @@ const userController = require('../controllers/userController')
 const authenticationController = require('../controllers/authenticationController')
 
 // Sign Up Routes should redirect home if passing all middleware
-Router.post('/signup', 
-    userController.createUser, 
+Router
+    .route('/signup')
+    .post(userController.createUser, 
     authenticationController.createCookie, 
     (req,res) => {
-        console.log('successfully created user')
-        console.log('---Req.body', req);
-        console.log('---Res.body', res);
     return res.status(200).redirect('/home')
 })
 
 // Login in Route should redirect home if passing, otherwise to signup 
-Router.post('/login', 
-    userController.verifyUser, 
+Router
+    .route('/login')
+    .post(userController.verifyUser, 
     authenticationController.createCookie, 
     (req,res) => {
     return res.sendStatus(200)
 })
 
-Router.post('/logout', 
-    authenticationController.clearCookie, 
+Router
+    .route('/logout')
+    .post(authenticationController.clearCookie, 
     (req, res) => {
     return res.status(200).redirect('/welcome')
 })

@@ -18,6 +18,7 @@ import HomePage from './pages/HomePage';
 
 // navbar
 import Navbar from './components/Navbar/Navbar';
+import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
 
 
 const GlobalStyle = createGlobalStyle`
