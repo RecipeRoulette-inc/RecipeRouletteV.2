@@ -2,25 +2,15 @@ const express = require('express');
 const Router = express.Router();
 
 const recipeController = require('../controllers/recipeController')
-const authenticationController = require('../controllers/authenticationController')
-
-// app.use()
-// GET POST PATH 
-
-// Router
-//   .route('/randomRecipe')
-//   .get(recipeController.getRandomRecipe, 
-//   (req, res) => {
-//     console.log('PRE SEND BACK YOOOOOO')
-//     return res.status(200).send(res.locals.randomRecipe)
-//   })
+const authenticationController = require('../controllers/authenticationController');
 
 Router.
   route('/randomRecipe')
   .post((req, res) => {
     console.log('Post Route')
-  console.log(req.body);
-})
+    console.log(req.body);
+  });
+
 Router
   .route('/randomRecipe')
   .get(recipeController.getRandomRecipe, 
@@ -42,7 +32,7 @@ Router
   .get(recipeController.getRecipeInformationBulk,
   (req,res) => {
     console.log('Search Recipe Complete')
-    return res.status(200).send(res.locals.bulkRecipeInformation)
+    return res.status(200).json(res.locals.bulkRecipeInformation)
   }
 )
 

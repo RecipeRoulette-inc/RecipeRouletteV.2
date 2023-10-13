@@ -55,19 +55,8 @@ recipeController.getRandomRecipe = (req, res, next) => {
   'includeNutrition': true,
   'addRecipeInformation': true, 
   'limitLicense': true, // Boolean | Whether the recipes should have an open license that allows display with proper attribution.
-  'intolerances': 'gluten', // String | A comma-separated list of intolerances. All recipes returned must not contain ingredients that are not suitable for people with the intolerances entered. See a full list of supported intolerances.
-  'number': 1 // Number | The maximum number of items to return (between 1 and 100). Defaults to 10.
-};
-
-const recipeController = {}; 
-
-recipeController.getRecipeInformationBulk = (req, res, next) => {
-  console.log('getRandomRecipe Controller'); 
-};
-
-recipeController.getRandomRecipe = (req, res, next) => {
-  console.log('-------> getRandomRecipe Controller');
-  console.log(req.body);
+  'number': 5
+  }
 
   apiInstance.getRandomRecipes(opts, (error, data, response) => {
     if (error) {
@@ -142,13 +131,21 @@ recipeController.getRecipeInformationBulk = (req, res, next) => {
   console.log('-------> from getRecipeInformationBulk');
   console.log('REQ.PARAMS: ', req.params);
   let ids = req.params.id;
-
+  const opts = {
+    'instructionsRequired': true, // Boolean | Whether the recipes must have instructions.
+  'addRecipeNutrition': true, // Boolean | If set to true, you get more information about the recipes returned.
+  'includeNutrition': true,
+  'addRecipeInformation': true, 
+  'limitLicense': true, // Boolean | Whether the recipes should have an open license that allows display with proper attribution.
+  'number': 1
+  };
+  
   apiInstance.getRecipeInformationBulk(ids, opts, (error, data, response) => {
     if (error) {
       console.error(error);
     } else {
       console.log(data)
-
+      res.locals.getRecipeInfo = data;
       return next()
     }
   });

@@ -34,21 +34,18 @@ export const getRecipeInformationBulk = async ({params}) => {
     console.log('getRecipeInformationBulk')
 
     const id = params.id;
-
-    const reqOptions = {
-        method: 'GET',
-        credentials: 'include',
-        headers: { 
-          'Content-Type': 'application/json' 
-        },
-        body: JSON.stringify(id)
-    };
   
-    const res = await fetch('http://localhost:3000/recipes/getRecipeInformationBulk', reqOptions);
-    console.log('Response Received')
-    // const recipe = await res.json()
-    console.log(res);
-    return [res];
+    fetch(`http://localhost:3000/recipes/getRecipeInformationBulk/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log('Response data', data);
+        });
+    // console.log('Response Received')
+    // console.log('----Response', res); 
+    // console.log('----ResponseBody', res.body );
+    // const recipe = res.json()
+    // console.log(recipe);
+    // return recipe;
   }
 
 

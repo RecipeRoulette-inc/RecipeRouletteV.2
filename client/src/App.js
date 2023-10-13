@@ -5,6 +5,7 @@ import { Route, Routes, createRoutesFromElements, createBrowserRouter, Outlet, R
 
 //loaders
 import { bulkRecipesLoader } from './pages/HomePage';
+import { getRecipeInformationBulk } from './components/singleRecipePage/SingleRecipePage';
 //layouts 
 import RootLayout from './layouts/RootLayout';
 
@@ -14,13 +15,10 @@ import LoginPage from './pages/LoginPage';
 import AllergyPage from './pages/AllergySelection';
 import RecipePage from './pages/RecipePage';
 import HomePage from './pages/HomePage';
-import SingleRecipePage, { getRecipeInformationBulk } from './components/singleRecipePage/SingleRecipePage';
+import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
 
 // navbar
 import Navbar from './components/Navbar/Navbar';
-import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
-import { getRecipeInformationBulk } from './components/singleRecipePage/SingleRecipePage';
-
 
 const GlobalStyle = createGlobalStyle`
 * {
