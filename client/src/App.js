@@ -1,5 +1,5 @@
 import React from 'react'
-import { createBrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, createRoutesFromElements, createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
@@ -9,6 +9,8 @@ import FlipCard from './components/flipCard/FlipCard';
 import AllergyPage from './pages/AllergySelection';
 import Navbar from './components/Navbar/Navbar';
 import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
+import { bulkRecipesLoader } from './pages/HomePage';
+import { getRecipeInformationBulk } from './components/singleRecipePage/SingleRecipePage';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -29,28 +31,47 @@ body {
 }  
 `;
 
+const Router = createBrowserRouter(
+  createRoutesFromElements(
+    // <Route path='/' element={<RootLayout />}>
+      <Route path='/' element={<HomePage />} 
+        loader={bulkRecipesLoader}
+      >
+        <Route path=':id' element={<SingleRecipePage />}
+        loader={getRecipeInformationBulk}
+        />
+      </Route>
+      // <Route path='login' element={<LoginPage />} />
+      // <Route path='signup' element={<SignupPage />} />
+    // </Route>
+  )
+);
 
 const App = () => {
+  return (<RouterProvider router={ Router } />)
+}
 
-  // const location = useLocation();
-  // const showBackground = location.pathname !== '/login';
+// const App = () => {
 
-  return (
-    <Router>  
-      <GlobalStyle />
-      <Navbar />
-      <Screen >
-        <Routes>
-          <Route path='/home' element={<HomePage/>} >
-            <Route path=':id' element={<SingleRecipePage/>}> </Route>
-          </Route>
-          <Route path='/' element={<LoginPage />} />
-          <Route path='/signup' element={<SignupPage />} />
-        </Routes>
-    </Screen>
-    </Router>
-  )
-};
+//   // const location = useLocation();
+//   // const showBackground = location.pathname !== '/login';
+
+//   return (
+//     <Router>  
+//       <GlobalStyle />
+//       <Navbar />
+//       <Screen >
+//         <Routes>
+//           <Route path='/home' element={<HomePage/>} >
+//             {/* <Route path=':id' element={<SingleRecipePage/>}> </Route> */}
+//           </Route>
+//           <Route path='/' element={<LoginPage />} />
+//           <Route path='/signup' element={<SignupPage />} />
+//         </Routes>
+//     </Screen>
+//     </Router>
+//   )
+// };
 
 const Screen = styled.div`
 display:flex;

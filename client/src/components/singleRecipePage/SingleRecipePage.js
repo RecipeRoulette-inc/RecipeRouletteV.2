@@ -34,21 +34,13 @@ export const getRecipeInformationBulk = async ({params}) => {
     console.log('getRecipeInformationBulk')
 
     const id = params.id;
-
-    const reqOptions = {
-        method: 'GET',
-        credentials: 'include',
-        headers: { 
-          'Content-Type': 'application/json' 
-        },
-        body: JSON.stringify(id)
-      };
-
-    const res = await fetch('http://localhost:3000/recipes/getRecipeInformationBulk', reqOptions);
+    console.log('-------> from getRecipeInformationBulk ID: ', id);
+    // https://api.spoonacular.com/recipes/informationBulk?ids=715538,716429
+    const res = await fetch(`http://localhost:3000/recipes/getRecipeInformationBulk/${id}`);
     console.log('Response Received')
-    const recipe = await res.json()
-    console.log(recipe);
-    return [recipe];
+    // const recipe = await res.json()
+    console.log(res);
+    return [res];
   }
 
 

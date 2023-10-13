@@ -11,7 +11,8 @@ const FlipCard = ({ recipeInfo }) => {
   const dispatch = useDispatch();
 
   const { id, title, image, servings, readyInMinutes } = recipeInfo;
-
+  console.log('-------> RECIPE INFO: ', recipeInfo);
+  console.log('-------> ID: ', id);
   const testRecipe = {
     "vegetarian":true,
     "dairyFree":false,
@@ -173,8 +174,8 @@ const FlipCard = ({ recipeInfo }) => {
             <h2>Servings: {servings}</h2>
             <br></br>
 
-            <button onClick={getRecipeInformationBulk(id)}>LOADER TEST</button>
-            <Link to={'/recipes/' + id} ></Link>
+            {/* <button onClick={getRecipeInformationBulk(id)}>LOADER TEST</button> */}
+            <Link to={'/' + id} >SEND ID</Link>
             {/* <h2><Link to='NEED PATH HERE'><button oncli>More Info</button></Link></h2> */}
             
           </center>

@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { populate, clear, clearGlutenFree, populateGlutenFree } from '../../../slices/queryRecipesSlice'
 
 
-const ScrollBarGlutenFree = () => {
+const ScrollBarVegan = () => {
   const { queryRecipes, queryRecipesGlutenFreeState, queryStatus } = useSelector((state) => state.queryRecipes);
   const queryRecipesGlutenFree = [];
   const dispatch = useDispatch();

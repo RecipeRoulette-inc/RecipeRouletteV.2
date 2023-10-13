@@ -8,7 +8,7 @@ import { populate, clear } from '../../../slices/queryRecipesSlice'
 
 
 const ScrollBarUnder30 = () => {
-  const { queryRecipes, queryRecipesUnder30State,  queryStatus } = useSelector((state) => state.queryRecipes);
+  const { queryRecipes, queryRecipesUnder30State, queryStatus } = useSelector((state) => state.queryRecipes);
   const queryRecipesUnder30 = [];
   const dispatch = useDispatch();
 
@@ -20,12 +20,12 @@ const ScrollBarUnder30 = () => {
         }
     }
 
-    dispatch(clear());
-    dispatch(populate(queryRecipesUnder30));
+    dispatch(clearUnder30());
+    dispatch(populateUnder30(queryRecipesUnder30));
 
     const cardsRow = [];
-    for (let i = 0; i < queryRecipesUnder30.length; i++) {
-      cardsRow.push(<FlipCard id={i} key={i} recipeInfo={queryRecipesUnder30[i]}/>)
+    for (let i = 0; i < queryRecipesUnder30State.length; i++) {
+      cardsRow.push(<FlipCard id={i} key={i} recipeInfo={queryRecipesUnder30State[i]}/>)
     }
 
     return (

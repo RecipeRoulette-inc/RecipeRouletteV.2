@@ -93,7 +93,9 @@ recipeController.searchRecipes = (req, res, next) => {
 // If we decide to make a separate page, we will need this controller for additional calls
 // Otherwise this can be included in the earlier call nested
 recipeController.getRecipeInformationBulk = (req, res, next) => {
-  console.log('bulk');
+  console.log('-------> from getRecipeInformationBulk');
+  console.log('REQ.PARAMS: ', req.params);
+  let ids = req.params.id;
 
   apiInstance.getRecipeInformationBulk(ids, opts, (error, data, response) => {
     if (error) {

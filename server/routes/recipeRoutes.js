@@ -7,8 +7,7 @@ const authenticationController = require('../controllers/authenticationControlle
 
 Router
   .route('/randomRecipe')
-  .get(authenticationController.verifyCookie,
-  recipeController.getRandomRecipe, 
+  .get(recipeController.getRandomRecipe, 
   (req, res) => {
     console.log('PRE SEND BACK YOOOOOO')
     return res.status(200).send(res.locals.randomRecipe)
@@ -16,8 +15,16 @@ Router
 
 Router
   .route('/getRecipeInformationBulk')
-  .get(authenticationController.verifyCookie,
-  recipeController.getRecipeInformationBulk,
+  .get(recipeController.getRecipeInformationBulk,
+  (req,res) => {
+    console.log('Search Recipe Complete')
+    return res.status(200).send(res.locals.bulkRecipeInformation)
+  }
+)
+
+Router
+  .route('/getRecipeInformationBulk/:id')
+  .get(recipeController.getRecipeInformationBulk,
   (req,res) => {
     console.log('Search Recipe Complete')
     return res.status(200).send(res.locals.bulkRecipeInformation)

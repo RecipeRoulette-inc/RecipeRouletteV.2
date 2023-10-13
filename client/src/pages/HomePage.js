@@ -67,6 +67,16 @@ const HomePage = () => {
 
 };
 
+//loader function
+export const bulkRecipesLoader = async () => {
+  console.log('bulkRecipesLoader')
+  const res = await fetch('http://localhost:3000/recipes/randomRecipe'); 
+  console.log('Response Received')
+  const recipe = await res.json()
+  console.log(recipe);
+  return [recipe];
+}
+
 const Wrapper = styled.div`
 `;
 
