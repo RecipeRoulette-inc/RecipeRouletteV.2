@@ -50,7 +50,7 @@ const RootLayout = () => {
   }
 
   return (
-    <Layout>
+    <Layout src={img}>
       <GlobalStyle/>
       <Header>
         <Nav>
