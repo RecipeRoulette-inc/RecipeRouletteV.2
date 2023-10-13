@@ -2,18 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { save } from '../../../slices/flipCardSlice'
 import { saveRecipe, removeRecipe } from '../../../slices/savedRecipesSlice'
+import { Link } from 'react-router-dom';
 
-const FlipCard = () => {
+const FlipCard = ({ recipeInfo }) => {
   const { savedRecipes } = useSelector((state) => state.savedRecipes);
   const { saved } = useSelector((state) => state.flipCard);
   const dispatch = useDispatch();
 
-  /** JC:
-   * EXAMPLE PIECE OF STATE for each card from Redux would have to deconstruct from the query 
-   *  based on these example properties.
-   * NOTE: Keep in mind the state is actually an ARRAY. Would need to push this new recipe object into that array.
-   *  Only then can you properly update the userDoc savedRecipes property and Redux state.
-   */
+  const { id, title, image, servings, readyInMinutes } = recipeInfo;
+
   const testRecipe = {
     "vegetarian":true,
     "dairyFree":false,
@@ -140,31 +137,65 @@ const FlipCard = () => {
       .catch((err) => {throw new Error(err);});
   }
 
+  function handleSingleRecipeRoute(e) {
+    e.preventDefault();
+
+    const reqOptions = {
+      method: 'GET',
+      credentials: 'include',
+      headers: { 
+        'Content-Type': 'application/json' 
+      },
+      body: JSON.stringify(id)
+    };
+
+    // NEED URL HERE:
+    fetch('http://localhost:3000/recipes/PROPPERPATH', reqOptions)
+      .catch((err) => {throw new Error(err);});
+  }
 
   return (
     <Wrapper>
-        <div>
-          <button onClick={(e)=>handleSaveRecipe(e)}>SAVE</button>
-        </div>
+
       <Card>
-        <Front></Front>
+
+        <Front bg={image}>
+        </Front>
+
         <Back>
-          <h1>Back of Card</h1>
-          <p>Additional info on the back of the card</p>
+          <center>
+            <h1>Ready In: {readyInMinutes} minutes</h1>
+            <h2>Servings: {servings}</h2>
+            <br></br>
+            <h2><Link to='NEED PATH HERE'><button>More Info</button></Link></h2>
+            
+          </center>
         </Back>
+
       </Card>
+
+
+      <saveBtn>
+        <button onClick={(e)=>handleSaveRecipe(e)}>SAVE</button>
+      </saveBtn> 
+      <FrontHeader>
+        <h2>{title}</h2>
+      </FrontHeader>
+
     </Wrapper>
   )
 };
 
+// height before: 500px
 const Wrapper = styled.div`
-width: 350px; 
-height: 500px; 
+width: 320px; 
+height: 360px; 
 perspective: 800px; 
 `;
 
+// adjusted height and moved Card to 'top' of the wrapper to make room for save button and info
 const Card = styled.div`
-height: 100%;
+height: 300px;
 width: 100%; 
 position:relative; 
 transition: transform 1500ms;
@@ -179,17 +210,23 @@ ${Wrapper}:hover & {
 const Front = styled.div`
 height: 100%;
 width: 100%;
-border-radius: 2rem; 
+border-radius: 1rem; 
+border-style: solid;
 box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25); 
-background-image: url(https://source.unsplash.com/random/350X500);
+background-image: url(${(props) => props.bg});
+background-repeat: no-repeat;
+background-size: cover;
 position: absolute;
 backface-visibility:hidden;
 `;
 
+
+
 const Back = styled.div`
 height: 100%;
 width:100%;
-border-radius: 2rem; 
+border-radius: 1rem; 
+border-style: solid;
 box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25); 
 position:absolute;
 backface-visibility:hidden;
@@ -201,5 +238,10 @@ justify-content: center;
 align-items:center;
 gap: 5rem;
 `;
+
+const FrontHeader = styled.div`
+text-shadow: 1px 1px #F3F3F3
+`;
+
 
 export default FlipCard; 

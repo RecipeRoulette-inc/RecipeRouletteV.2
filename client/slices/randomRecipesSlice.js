@@ -9,7 +9,9 @@ export const randomRecipesSlice = createSlice({
   initialState,
   reducers: {
     populate: (state, action) => {
-      state.randomRecipes.push(action.payload);
+      for (let i = 0; i < action.payload.length; i++) {
+        state.randomRecipes.push(action.payload[i]);
+      }
     },
     clear: (state) => {
       state.randomRecipes = [];
