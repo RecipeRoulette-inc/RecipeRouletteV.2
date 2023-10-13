@@ -341,6 +341,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0; 
     padding:0; 
     box-sizing: border-box;
+    // position: relative;
 }
 
 :root {
@@ -351,7 +352,8 @@ const GlobalStyle = createGlobalStyle`
 
 body {
   font-family: 'Chelsea Market';
-  height: 100vh;  
+  height: 100vh; 
+  position: relative; 
 }  
 `;
 
@@ -360,8 +362,8 @@ const App = () => {
   return (
     <Screen src={img}>
       <GlobalStyle />
-      {/* <HomePage/> */}
-      <LoginPage/>
+      <HomePage/>
+      {/* <LoginPage/> */}
 
     </Screen>
   )

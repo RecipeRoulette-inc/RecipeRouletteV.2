@@ -59,8 +59,8 @@ const LoginForm = () => {
 }; 
 
 const WrapForm = styled.div`
-width: 390px; 
-height: 275px;
+width: 255px; 
+height: 255px;
 border: 15px solid #2C1A1D;
 border-radius: 150px;
 box-shadow: 10px 5px 5px black;
@@ -70,7 +70,8 @@ padding: 20px 20px;
 background-color: #d30502;
 // opacity: 1
 position: relative;
-top: -100px;
+top: -2px;
+left: 7px;
 `; 
 
 const Header = styled.div`
