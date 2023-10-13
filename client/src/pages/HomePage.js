@@ -9,33 +9,6 @@ import ScrollBar from '../components/scrollBar/ScrollBar';
   
 const HomePage = () => {
 
-  const careers = useLoaderData();
-
-
-  const onSubmit = (data) => {
-    fetch('http://localhost:3000/recipes', {
-      method: 'POST',
-      credentials: 'include',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type' : 'application/json'
-      }
-    })
-      .then((res) => {
-        if (!res.ok) {
-          console.log('res not ok')
-        }
-        
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error(error);
-    })
-  }
-
   const handleGetRandomRecipe = () => {
 
     fetch('http://localhost:3000/recipes', {
@@ -65,8 +38,6 @@ const HomePage = () => {
     <Wrapper>
       {/* <SearchBar onSubmit={onSubmit} /> */}
       <DailyRecipe>
-        <LeftSection />
-        <RightSection/>
       </DailyRecipe>
       <ScrollBar />
     </Wrapper>
@@ -78,16 +49,18 @@ const HomePage = () => {
   //     </Link>
   //   ))
   // }
-  )
 
+  )
 };
 
 //loader function
 export const bulkRecipesLoader = async () => {
-  console.log('recipesLoader')
-  const res = await fetch('http://localhost:3000/test/test'); 
-  console.log('Res Received')
-  return res.json();
+  console.log('bulkRecipesLoader')
+  const res = await fetch('http://localhost:3000/recipes/randomRecipe'); 
+  console.log('Response Received')
+  const recipe = await res.json()
+  console.log(recipe);
+  return [recipe];
 }
 
 const Wrapper = styled.div`
@@ -100,11 +73,6 @@ border: 1px solid black;
 background:red;
 `;
 
-const LeftSection = styled.div`
-
-`;
-
-const RightSection = styled.div``;
 
 
 

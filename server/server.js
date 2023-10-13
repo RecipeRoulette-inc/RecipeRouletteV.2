@@ -37,8 +37,6 @@ app.use('/user', userRoutes)
 
 app.use('/recipes', recipeRoutes)
 
-app.use('/test', recipeRoutes)
-
 // Catch-All Route Handler
 
 

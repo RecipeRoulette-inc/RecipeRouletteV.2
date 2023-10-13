@@ -42,12 +42,8 @@ const intolerances = [
 const SearchBar = ({onSubmit}) => {
   const { control, register, handleSubmit, watch } = useForm();
 
-  const viewSubmission = (data) => {
-    console.log(data)
-  }
-
   return (
-    <Wrapper onSubmit={handleSubmit(viewSubmission)}>
+    <Wrapper onSubmit={handleSubmit(onSubmit)}>
       <SearchBarWrapper>
         <SearchInput
           autoComplete='off'

@@ -6,6 +6,9 @@ import { Route, Routes, createRoutesFromElements, createBrowserRouter, Outlet, R
 //loaders
 import { bulkRecipesLoader } from './pages/HomePage';
 
+//layouts 
+import RootLayout from './layouts/RootLayout';
+
 //pages
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
@@ -15,7 +18,6 @@ import HomePage from './pages/HomePage';
 
 // navbar
 import Navbar from './components/Navbar/Navbar';
-import RootLayout from './layouts/RootLayout';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -65,16 +67,31 @@ body {
 //   )
 // )
 
+{/* <Route path='recipe' element={<RecipeLayout />}
+  <Route
+    index
+    element={<Receipes />}
+    loader={recipesloader}
+  />
+  <Route
+  path='id'
+  element={careerDetails}
+  />
+  </Route> */}
+
 const Router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout />}>
-      <Route index element={<HomePage />}
-        loader={ bulkRecipesLoader } />
+      <Route path='/' element={<HomePage />} 
+      loader={bulkRecipesLoader}
+      >
+        <Route path=':id' />
+      </Route>
       <Route path='login' element={<LoginPage />} />
-      <Route path='signup' element={<SignupPage/>} />
+      <Route path='signup' element={<SignupPage />} />
     </Route>
   )
-)
+);
 
 // const Router = createBrowserRouter(
 //   createRoutesFromElements(

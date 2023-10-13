@@ -4,15 +4,16 @@ const Router = express.Router();
 const recipeController = require('../controllers/recipeController')
 const authenticationController = require('../controllers/authenticationController')
 
+// app.use()
+// GET POST PATH 
 
-Router.get('/randomRecipe', 
-  authenticationController.verifyCookie,
-  recipeController.getRandomRecipe, 
-  (req, res) => {
+Router
+  .route('/randomRecipe')
+  .get(recipeController.getRandomRecipe, (req, res) => {
     console.log('PRE SEND BACK YOOOOOO')
     return res.status(200).send(res.locals.randomRecipe)
   })
-
+ 
 Router.get('/getRecipeInformationBulk',
 authenticationController.verifyCookie,
 recipeController.getRecipeInformationBulk,

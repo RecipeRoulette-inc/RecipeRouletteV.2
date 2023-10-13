@@ -1,5 +1,5 @@
 import styled, {createGlobalStyle} from 'styled-components';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
 import SearchBar from '../components/searchBar/SearchBar';
 
@@ -15,19 +15,45 @@ const GlobalStyle = createGlobalStyle`
   --clr-body: #333;
   --clr-bg: #ddd;
 }
-
-
-
 `;
 
 const RootLayout = () => {
+
+  // const location = useLocation(); 
+  // console.log(location);
+
+  const onSubmit = (data) => {
+    console.log(data);
+    fetch('http://localhost:3000/recipes', {
+      method: 'POST',
+      credentials: 'include',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type' : 'application/json'
+      }
+    })
+      .then((res) => {
+        if (!res.ok) {
+          console.log('res not ok')
+        }
+        
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+    })
+  }
+
   return (
     <Layout>
       <GlobalStyle/>
       <Header>
         <Nav>
           <h1>Recipe Roulette</h1>
-          <SearchBar/>
+          <SearchBar onSubmit={onSubmit} />
           <NavLink to='/login'>Login</NavLink>
           <NavLink to='/signup'>Signup</NavLink>
         </Nav>
@@ -50,7 +76,12 @@ margin: 0 auto;
 
 const Nav = styled.nav`
 display: flex;
-flex-direction: row;
+gap: 16px;
+justify-content: end
+max-width: 1200px;
+margin: 0 auto;
+
+
 `;
 
 const Main = styled.main`
