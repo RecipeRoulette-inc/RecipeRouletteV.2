@@ -5,9 +5,62 @@ import ScrollBar from '../components/scrollBar/ScrollBar';
   
 const HomePage = () => {
 
+  const onSubmit = (data) => {
+    fetch('http://localhost:3000/recipes', {
+      method: 'POST',
+      credentials: 'include',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type' : 'application/json'
+      }
+    })
+      .then((res) => {
+        if (!res.ok) {
+          console.log('res not ok')
+        }
+        
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+    })
+  }
+
+  const handleGetRandomRecipe = () => {
+
+    fetch('http://localhost:3000/recipes', {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then(({ error }) => {
+            // create an Error object from error property or response statusText
+            throw new Error(error|| res.statusText)
+          })
+        }
+        
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((error) => {
+        console.error(error); 
+      })
+  }; 
+
+
   return (
     <Wrapper>
-      <SearchBar />
+      {/* <SearchBar onSubmit={onSubmit} /> */}
+      <DailyRecipe>
+        <LeftSection />
+        <RightSection/>
+      </DailyRecipe>
       <ScrollBar />
     </Wrapper>
   )
@@ -15,7 +68,20 @@ const HomePage = () => {
 };
 
 const Wrapper = styled.div`
-
 `;
+
+const DailyRecipe = styled.div`
+display: flex; 
+flex-direction: row;
+height: 400px; 
+width: 100%;
+border: 1px solid black;
+`;
+
+const LeftSection = styled.div``;
+
+const RightSection = styled.div``;
+
+
 
 export default HomePage;

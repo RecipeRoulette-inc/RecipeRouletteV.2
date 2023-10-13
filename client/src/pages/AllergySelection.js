@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 import Allergy from '../components/allergy/Allergy';
+import { useState } from 'react';
 
 const AllergyPage = () => {
 
-  const intolerences = ['dairy', 'egg', 'gluten', 'grain', 'peanut', 'seafood', 'sesame', 'shellfish', 'soy', 'sulfite', 'tree nut', 'wheat'].map(allergen => <Allergy allergen={allergen} />);
-  
+  const [allergies, setAllergies] = useState([]);
+
+  const handleAddAllergy = (allergy) => {
+    setAllergies((prev) => [...prev, allergy])
+  }; 
+
+  const intolerences = ['dairy', 'egg', 'gluten', 'grain', 'peanut', 'seafood', 'sesame', 'shellfish', 'soy', 'sulfite', 'tree nut', 'wheat'].map(allergen => <Allergy allergen={allergen} addAllergy={handleAddAllergy} />);
 
   return (
     <Wrapper>
