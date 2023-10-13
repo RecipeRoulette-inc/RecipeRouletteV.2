@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 // Action Imports:
 import { populate, clear } from '../../../slices/randomRecipesSlice'
+import { Card } from "@mui/material";
 
 
 const ScrollBarRandom = () => {
@@ -35,18 +36,19 @@ const ScrollBarRandom = () => {
 
   const cardsRow = [];
   for (let i = 0; i < randomRecipes.length; i++) {
-    console.log(randomRecipes[i]);
     cardsRow.push(<FlipCard id={i} key={i} recipeInfo={randomRecipes[i]}/>)
   }
 
   return (
     <Wrapper>
 
-      <div>
+      <Header>
         <h1>Random:</h1>
-      </div>
-      
-      {cardsRow}
+      </Header>
+
+      <CardsContainer>
+        {cardsRow}
+      </CardsContainer>
 
     </Wrapper>
   );
@@ -55,15 +57,26 @@ const ScrollBarRandom = () => {
 const Wrapper = styled.div`
 display: flex;
 flex-direction: column;
+
+`;
+
+const Header = styled.div`
+display: flex;
+flex-direction: row;
+`;
+
+const CardsContainer = styled.div`
+display: flex;
+flex-direction: row;
 width: 70vw;
-gap: 1rem; 
+gap: 2rem; 
 flex-wrap:nowrap;
 overflow-x: auto;
 padding: 1.5rem 1.5rem;
 
-// div {
-//   flex: 0 0 350px;
-// }
+div {
+  flex: 0 0 350px;
+}
 `;
 
 

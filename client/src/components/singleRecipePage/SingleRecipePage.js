@@ -4,16 +4,15 @@ import { Link, useLoaderData } from 'react-router-dom';
 import styled from 'styled-components';
 
 function SingleRecipePage() {
-    const recipe = useLoaderData()
-    console.log(recipe);
+    const loaderData = useLoaderData();
+    const recipe = loaderData[0];
     
 
     return (
         <Wrapper>
-            {/* <PhotoContainer bg={image}></PhotoContainer> */}
             <br></br>
 
-            <p>Title={recipe.title}</p>
+            <p>{recipe.title}</p>
 
             <h1>Recipe Name</h1>
             <br></br>
@@ -34,21 +33,11 @@ export const getRecipeInformationBulk = async ({params}) => {
     console.log('getRecipeInformationBulk')
 
     const id = params.id;
-
-    const reqOptions = {
-        method: 'GET',
-        credentials: 'include',
-        headers: { 
-          'Content-Type': 'application/json' 
-        },
-        body: JSON.stringify(id)
-      };
-
-    const res = await fetch('http://localhost:3000/recipes/getRecipeInformationBulk', reqOptions);
-    console.log('Response Received')
-    const recipe = await res.json()
-    console.log(recipe);
-    return [recipe];
+    const res = await fetch(`http://localhost:3000/recipes/getRecipeInformationBulk/${id}`);
+    const recipe = await res.json();
+    console.log(recipe)
+    return recipe;
+    
   }
 
 

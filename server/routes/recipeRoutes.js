@@ -2,10 +2,14 @@ const express = require('express');
 const Router = express.Router();
 
 const recipeController = require('../controllers/recipeController')
-const authenticationController = require('../controllers/authenticationController')
+const authenticationController = require('../controllers/authenticationController');
 
-// app.use()
-// GET POST PATH 
+Router.
+  route('/randomRecipe')
+  .post((req, res) => {
+    console.log('Post Route')
+    console.log(req.body);
+  });
 
 Router
   .route('/randomRecipe')
@@ -24,12 +28,21 @@ Router
 )
 
 Router
+  .route('/getRecipeInformationBulk/:id')
+  .get(recipeController.getRecipeInformationBulk,
+  (req,res) => {
+    console.log('Search Recipe Complete :id')
+    return res.status(200).json(res.locals.getRecipeInfo)
+  }
+)
+
+Router
   .route('/searchRecipes')
   .post(recipeController.searchRecipes,
   (req,res) => {
     console.log('Search Recipe Complete')
     console.log(res.locals.recipes)
-    return res.status(200).send(res.locals.recipes)
+    return res.status(200).json(res.locals.recipes)
   }
 )
 

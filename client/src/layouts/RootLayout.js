@@ -2,7 +2,6 @@ import styled, {createGlobalStyle} from 'styled-components';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
 import SearchBar from '../components/searchBar/SearchBar';
-import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/bw images/fast-food-doodles-hand-drawn-colorful-vector-symbols-objects_217204-778.jpg";
 
 //add fonts here
 const GlobalStyle = createGlobalStyle`
@@ -22,11 +21,13 @@ const GlobalStyle = createGlobalStyle`
 
 const RootLayout = () => {
 
-  // const location = useLocation(); 
-  // console.log(location);
+  const dispatch = useDispatch();
+  const queryRecipes = useSelector(state => state.queryRecipes.queryRecipes)
+  // console.log('RootLayout queryRecipes: ', queryRecipes);
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log('-------> BEFORE DATA FROM ROOT LAYOUT: ', data);
+    
     fetch('http://localhost:3000/recipes/searchRecipes', {
       method: 'POST',
       credentials: 'include',
@@ -43,7 +44,11 @@ const RootLayout = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        // console.log('-------> THEN DATA FROM ROOT LAYOUT: ', data);
+        dispatch(clearMain());
+        dispatch(populateMain(data));
+        dispatch(queryMade());
+        // console.log('-------> RootLayout queryRecipes: ', queryRecipes);
       })
       .catch((error) => {
         console.error(error);

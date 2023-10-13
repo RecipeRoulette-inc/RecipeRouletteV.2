@@ -5,7 +5,9 @@ import { useLoaderData, Link } from 'react-router-dom';
 // components
 import SearchBar from '../components/searchBar/SearchBar';
 import ScrollBarRandom from '../components/scrollBar/ScrollBarRandom';
-
+import ScrollBarUnder30 from '../components/scrollBar/ScrollBarUnder30';
+import ScrollBarVegan from '../components/scrollBar/ScrollBarVegan';
+import ScrollBarGlutenFree from '../components/scrollBar/ScrollBarGlutenFree';
   
 const HomePage = () => {
 
@@ -36,20 +38,13 @@ const HomePage = () => {
 
   return (
     <Wrapper>
-      {/* <SearchBar onSubmit={onSubmit} /> */}
       <DailyRecipe>
       </DailyRecipe>
       <ScrollBarRandom />
+      <ScrollBarUnder30 />
+      <ScrollBarVegan />
+      <ScrollBarGlutenFree />
     </Wrapper>
-  //  {
-  //   careers.map(career => (
-  //     <Link to='/' key={career.id}>
-  //       <p>{career.title}</p>
-  //       <p>{careeer.location}</p>
-  //     </Link>
-  //   ))
-  // }
-
   )
 };
 

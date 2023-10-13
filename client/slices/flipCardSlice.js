@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   totalSaved: 0,
   saved: false,
-  gluttenFree: false,
+  GlutenFree: false,
   vegetarian: false,
   dairyFree: false,
 };
@@ -21,11 +21,11 @@ export const flipCardSlice = createSlice({
         state.saved = false;
         state.totalSaved -= 1;
     },
-    isGluttenFree: (state) => {
-        state.gluttenFree = true;
+    isGlutenFree: (state) => {
+        state.GlutenFree = true;
     },
-    notGluttenFree: (state) => {
-        state.gluttenFree = false;
+    notGlutenFree: (state) => {
+        state.GlutenFree = false;
     },
     isVegetarian: (state) => {
         state.vegetarian = true;
