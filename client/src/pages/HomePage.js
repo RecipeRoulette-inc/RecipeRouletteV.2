@@ -8,7 +8,6 @@ import ScrollBarRandom from '../components/scrollBar/ScrollBarRandom';
 import ScrollBarUnder30 from '../components/scrollBar/ScrollBarUnder30';
 import ScrollBarVegan from '../components/scrollBar/ScrollBarVegan';
 import ScrollBarGlutenFree from '../components/scrollBar/ScrollBarGlutenFree';
-
   
 const HomePage = () => {
 
