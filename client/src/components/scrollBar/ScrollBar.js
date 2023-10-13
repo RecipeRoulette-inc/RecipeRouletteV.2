@@ -15,9 +15,10 @@ const ScrollBar = () => {
 const Wrapper = styled.div`
 display: flex;
 flex-direction: row;
-width: 70vw;
+width: 100%;
 gap: 1rem; 
 flex-wrap:nowrap;
+overflow:hidden;
 overflow-x: auto;
 padding: 1.5rem 1.5rem;
 

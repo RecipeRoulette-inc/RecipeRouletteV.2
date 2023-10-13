@@ -1,8 +1,11 @@
 import styled from "styled-components";
+import {useNavigate, Link} from 'react-router-dom'
 import { useForm } from "react-hook-form";
 
 const SignupForm = () => {
   const { register, handleSubmit } = useForm();
+
+  const navigate = useNavigate();
   
   const Signup = (data) => {
     fetch('http://localhost:3000/user/signup', {
@@ -22,13 +25,16 @@ const SignupForm = () => {
             throw new Error(error|| res.statusText)
           })
         }
-        return res.json();
+        // ! VERIFY the information being returned from the server, if not JSON, do not .json()
+        // return res.json();
+        return res;
       })
       .then((data) => {
-        // handle successful login
+        // handle successful signup
         // store token
         // update redux state
-        // navigate to homepage
+        // ? on successful signup redirect to login page. 
+        navigate('/login'); 
       })
       .catch((error) => {
         // display error in console

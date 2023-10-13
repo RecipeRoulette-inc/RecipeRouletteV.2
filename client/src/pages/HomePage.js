@@ -1,21 +1,79 @@
+// libraries
 import styled from 'styled-components';
+import { useLoaderData, Link } from 'react-router-dom';
+
+// components
 import SearchBar from '../components/searchBar/SearchBar';
-import ScrollBar from '../components/scrollBar/ScrollBar';
+import ScrollBarRandom from '../components/scrollBar/ScrollBarRandom';
 
   
 const HomePage = () => {
 
+  const handleGetRandomRecipe = () => {
+
+    fetch('http://localhost:3000/recipes', {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then(({ error }) => {
+            // create an Error object from error property or response statusText
+            throw new Error(error|| res.statusText)
+          })
+        }
+        
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((error) => {
+        console.error(error); 
+      })
+  }; 
+
+
   return (
     <Wrapper>
-      <SearchBar />
-      <ScrollBar />
+      {/* <SearchBar onSubmit={onSubmit} /> */}
+      <DailyRecipe>
+      </DailyRecipe>
+      <ScrollBarRandom />
     </Wrapper>
-  )
+  //  {
+  //   careers.map(career => (
+  //     <Link to='/' key={career.id}>
+  //       <p>{career.title}</p>
+  //       <p>{careeer.location}</p>
+  //     </Link>
+  //   ))
+  // }
 
+  )
 };
 
-const Wrapper = styled.div`
+//loader function
+export const bulkRecipesLoader = async () => {
+  console.log('bulkRecipesLoader')
+  const res = await fetch('http://localhost:3000/recipes/randomRecipe'); 
+  console.log('Response Received')
+  const recipe = await res.json()
+  console.log(recipe);
+  return [recipe];
+}
 
+const Wrapper = styled.div`
 `;
+
+const DailyRecipe = styled.div`
+height: 400px; 
+width: 100%;
+border: 1px solid black;
+background:red;
+`;
+
+
+
 
 export default HomePage;
