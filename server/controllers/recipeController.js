@@ -144,8 +144,7 @@ recipeController.getRecipeInformationBulk = (req, res, next) => {
     if (error) {
       console.error(error);
     } else {
-      console.log(data)
-      res.locals.getRecipeInfo = data;
+      res.locals.getRecipeInfo = data; 
       return next()
     }
   });

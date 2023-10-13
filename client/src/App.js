@@ -12,8 +12,6 @@ import RootLayout from './layouts/RootLayout';
 //pages
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
-import AllergyPage from './pages/AllergySelection';
-import RecipePage from './pages/RecipePage';
 import HomePage from './pages/HomePage';
 import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
 
@@ -41,13 +39,13 @@ body {
 const Router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout />}>
-      <Route path='/' element={<HomePage />} 
+      <Route index element={<HomePage />} 
         loader={bulkRecipesLoader}
-      >
-        <Route path=':id' element={<SingleRecipePage />}
+      />
+      <Route path=':id'
+        element={<SingleRecipePage />}
         loader={getRecipeInformationBulk}
         />
-      </Route>
        <Route path='login' element={<LoginPage />} />
        <Route path='signup' element={<SignupPage />} />
      </Route>
