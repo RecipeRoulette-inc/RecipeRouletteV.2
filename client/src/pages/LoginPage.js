@@ -14,6 +14,9 @@ const LoginPage = () => {
 const WrapPage = styled.div`
 background-image: ${({src}) => `url(${src})`};
 background-size: cover;
+
+background-attachment: fixed;
+
 margin: auto;
 // display: block;
 // background-color: #333;
@@ -28,6 +31,7 @@ border-style: solid;
 border-width: 13px 13px 13px;
 // overflow: scroll; 
 border-radius: 35px;
+padding 20px 20px: 
 `;
 
 export default LoginPage; 
