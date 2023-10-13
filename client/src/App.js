@@ -13,118 +13,38 @@ import RootLayout from './layouts/RootLayout';
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import AllergyPage from './pages/AllergySelection';
-import RecipePage from './pages/RecipePage';
+import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/bw images/fast-food-doodles-hand-drawn-colorful-vector-symbols-objects_217204-778.jpg";
+// import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/Screenshot 2023-10-12 at 12.35.22 PM.png";import RecipePage from './pages/RecipePage';
 import HomePage from './pages/HomePage';
 
 // navbar
 import Navbar from './components/Navbar/Navbar';
 import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
 
-
-const GlobalStyle = createGlobalStyle`
-* {
-    margin: 0; 
-    padding:0; 
-    box-sizing: border-box;
-}
-
-:root {
-  --clr-primary: #ee6352;
-  --clr-body: #333;
-  --clr-bg: #ddd;
-}
-
-body {
-  height: 100vh;  
-}  
-`;
-
-// ! Sample Code
-// const Router = createBrowserRoutes(
-//   createRoutesFromElements(
-//     <Route path='/' element={<RootLayout />} >
-//       <Route index element={<Home/>} />
-//       <Route path='about' element={<About/>} />
-
-//       <Route path='help' element={<HelpLayout/>} >
-//       <Route path='faq' element={<About/>} />
-//       <Route path='contact' element={<About/>} />
-//     </Route>
-
-//       <Route path='careers' element={<CareersLayout />}>
-//         <Route 
-//           index 
-//           element={<Careers />} 
-//           loader={careersloader}
-//         />
-//          <Route
-//          path="id
-//          element={careerDetails}
-//          />
-//       </Route>
-
-//     <Route path='*' element={<NotFound/>}/>
-//     </Route>  
-//   )
-// )
-
-{/* <Route path='recipe' element={<RecipeLayout />}
-  <Route
-    index
-    element={<Receipes />}
-    loader={recipesloader}
-  />
-  <Route
-  path='id'
-  element={careerDetails}
-  />
-  </Route> */}
-
 const Router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout />}>
-      <Route path='/' element={<HomePage />} 
-      loader={bulkRecipesLoader}
-      >
-        <Route path=':id' />
+      <Route index element={<HomePage />} 
+      // loader={bulkRecipesLoader}
+      />
+      <Route path=':id'
+        element={<SingleRecipePage />}
+        // loader={getRecipeInformationBulk}
+      />
+
+        {/* <Route path='search/q:'
+        element={<SearchResults/>}
+        loader={getSearchResults}
+        /> */}
+        
+    {   <Route path='login' element={<LoginPage />} /> }
+   <Route path='signup' element={<SignupPage />} /> 
       </Route>
-      <Route path='login' element={<LoginPage />} />
-      <Route path='signup' element={<SignupPage />} />
-    </Route>
   )
 );
-
-// const Router = createBrowserRouter(
-//   createRoutesFromElements(
-//     <Route
-//       element={
-//         <>
-//         <GlobalStyle />
-//         <Navbar/>
-//         <Outlet />
-//         </>
-//     }
-//     >
-//       <Route path='/' element={<LoginPage />} />
-//       <Route index path='/home' element={<HomePage />}
-//       loader={bulkRecipesLoader}
-//       />
-//         <Route path='home/:id' element={<RecipePage/>}/>
-//       <Route path='/signup' element={<SignupPage/>} />
-//     </Route>
-//   )
-// )
 
 const App = () => {
   return (<RouterProvider router={ Router } />)
 }
-
-const Screen = styled.div`
-display:flex;
-align-items:center;
-justify-content: center;
-margin: auto;
-padding: 115px 50px;
-`;
 
 export default App;
