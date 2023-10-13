@@ -4,12 +4,14 @@ const Router = express.Router();
 const recipeController = require('../controllers/recipeController')
 const authenticationController = require('../controllers/authenticationController')
 
+// app.use()
+// GET POST PATH 
 
 Router
   .route('/randomRecipe')
   .get(recipeController.getRandomRecipe, 
+  .get(recipeController.getRandomRecipe, 
   (req, res) => {
-    console.log('PRE SEND BACK YOOOOOO')
     return res.status(200).send(res.locals.randomRecipe)
   })
 
@@ -33,8 +35,7 @@ Router
 
 Router
   .route('/searchRecipes')
-  .get(authenticationController.verifyCookie,
-  recipeController.searchRecipes,
+  .post(recipeController.searchRecipes,
   (req,res) => {
     console.log('Search Recipe Complete')
     console.log(res.locals.recipes)
@@ -51,6 +52,11 @@ Router
     return res.status(200).send('Hi Pal')
   }
 )
+
+Router.route('/test').get((req, res) => {
+  console.log('test passed')
+  res.status(200).json('You shall pass')
+})
 
 
 

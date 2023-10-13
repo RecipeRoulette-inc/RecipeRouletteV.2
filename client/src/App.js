@@ -1,12 +1,23 @@
+// libraries
 import React from 'react'
 import { Route, Routes, createRoutesFromElements, createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
-import LoginPage from './pages/LoginPage';
+import { Route, Routes, createRoutesFromElements, createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+
+//loaders
+import { bulkRecipesLoader } from './pages/HomePage';
+
+//layouts 
+import RootLayout from './layouts/RootLayout';
+
+//pages
 import SignupPage from './pages/SignupPage';
-import HomePage from './pages/HomePage';
-import RecipeCard from './components/recipeCard/index'
-import FlipCard from './components/flipCard/FlipCard';
+import LoginPage from './pages/LoginPage';
 import AllergyPage from './pages/AllergySelection';
+import RecipePage from './pages/RecipePage';
+import HomePage from './pages/HomePage';
+
+// navbar
 import Navbar from './components/Navbar/Navbar';
 import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
 import { bulkRecipesLoader } from './pages/HomePage';

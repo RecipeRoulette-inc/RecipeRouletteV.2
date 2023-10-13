@@ -1,33 +1,13 @@
+// libraries
 import styled from 'styled-components';
+import { useLoaderData, Link } from 'react-router-dom';
+
+// components
 import SearchBar from '../components/searchBar/SearchBar';
 import ScrollBarRandom from '../components/scrollBar/ScrollBarRandom';
 
   
 const HomePage = () => {
-
-  const onSubmit = (data) => {
-    fetch('http://localhost:3000/recipes', {
-      method: 'POST',
-      credentials: 'include',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type' : 'application/json'
-      }
-    })
-      .then((res) => {
-        if (!res.ok) {
-          console.log('res not ok')
-        }
-        
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error(error);
-    })
-  }
 
   const handleGetRandomRecipe = () => {
 
@@ -58,13 +38,19 @@ const HomePage = () => {
     <Wrapper>
       {/* <SearchBar onSubmit={onSubmit} /> */}
       <DailyRecipe>
-        <LeftSection />
-        <RightSection/>
       </DailyRecipe>
       <ScrollBarRandom />
     </Wrapper>
-  )
+  //  {
+  //   careers.map(career => (
+  //     <Link to='/' key={career.id}>
+  //       <p>{career.title}</p>
+  //       <p>{careeer.location}</p>
+  //     </Link>
+  //   ))
+  // }
 
+  )
 };
 
 //loader function
@@ -81,16 +67,12 @@ const Wrapper = styled.div`
 `;
 
 const DailyRecipe = styled.div`
-display: flex; 
-flex-direction: row;
 height: 400px; 
 width: 100%;
 border: 1px solid black;
+background:red;
 `;
 
-const LeftSection = styled.div``;
-
-const RightSection = styled.div``;
 
 
 

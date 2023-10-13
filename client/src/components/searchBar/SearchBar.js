@@ -42,12 +42,8 @@ const intolerances = [
 const SearchBar = ({onSubmit}) => {
   const { control, register, handleSubmit, watch } = useForm();
 
-  const viewSubmission = (data) => {
-    console.log(data)
-  }
-
   return (
-    <Wrapper onSubmit={handleSubmit(viewSubmission)}>
+    <Wrapper onSubmit={handleSubmit(onSubmit)}>
       <SearchBarWrapper>
         <SearchInput
           autoComplete='off'
@@ -57,7 +53,7 @@ const SearchBar = ({onSubmit}) => {
           placeholder='hungry for?'
           aria-label='search'
         />
-        <SearchButton type="submit" aria-label='submit search' class='searchBar-Button'>
+        <SearchButton type="submit" aria-label='submit search' className='searchBar-Button'>
           <FontAwesomeIcon icon={faCutlery} />
         </SearchButton>
 
