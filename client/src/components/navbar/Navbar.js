@@ -18,7 +18,7 @@ z-index: 400;
 width: 100%;
 height: 100px;
 background: white;
-border: 1px solid black;
+// border: 50px solid black;
 `; 
 
 const StyledHeader = styled.header`

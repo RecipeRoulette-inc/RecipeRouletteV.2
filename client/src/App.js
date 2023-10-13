@@ -18,28 +18,12 @@ import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
 // navbar
 import Navbar from './components/Navbar/Navbar';
 
-const GlobalStyle = createGlobalStyle`
-* {
-    margin: 0; 
-    padding:0; 
-    box-sizing: border-box;
-}
-
-:root {
-  --clr-primary: #ee6352;
-  --clr-body: #333;
-  --clr-bg: #ddd;
-}
-
-body {
-  height: 100vh;  
-}  
-`;
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout />}>
       <Route index element={<HomePage />} 
+
         loader={bulkRecipesLoader}
       />
       <Route path=':id'
@@ -55,13 +39,5 @@ const Router = createBrowserRouter(
 const App = () => {
   return (<RouterProvider router={ Router } />)
 }
-
-const Screen = styled.div`
-display:flex;
-align-items:center;
-justify-content: center;
-margin: auto;
-padding: 115px 50px;
-`;
 
 export default App;
