@@ -28,27 +28,35 @@ for (const recipe of data){
 return newData
 }
 
+// opts for Testing purposes, individual opts created per search
+// let opts = {
+//   'query': 'chicken',
+//   'cuisine': 'indian',
+//   'instructionsRequired': true, // Boolean | Whether the recipes must have instructions.
+//   'addRecipeNutrition': true, // Boolean | If set to true, you get more information about the recipes returned.
+//   'includeNutrition': true,
+//   'addRecipeInformation': true, 
+//   'limitLicense': true, // Boolean | Whether the recipes should have an open license that allows display with proper attribution.
+//   'intolerances': 'gluten', // String | A comma-separated list of intolerances. All recipes returned must not contain ingredients that are not suitable for people with the intolerances entered. See a full list of supported intolerances.
+//   'number': 75 // Number | The maximum number of items to return (between 1 and 100). Defaults to 10.
+// };
 
-let opts = {
-  'query': 'chicken',
-  'cuisine': 'indian',
+const recipeController = {}; 
+
+// recipeController.getRecipeInformationBulk = (req, res, next) => {
+//   console.log('getRandomRecipe Controller'); 
+// };
+
+recipeController.getRandomRecipe = (req, res, next) => {
+  console.log('-------> getRandomRecipe Controller');
+  let opts = {
   'instructionsRequired': true, // Boolean | Whether the recipes must have instructions.
   'addRecipeNutrition': true, // Boolean | If set to true, you get more information about the recipes returned.
   'includeNutrition': true,
   'addRecipeInformation': true, 
   'limitLicense': true, // Boolean | Whether the recipes should have an open license that allows display with proper attribution.
-  'intolerances': 'gluten', // String | A comma-separated list of intolerances. All recipes returned must not contain ingredients that are not suitable for people with the intolerances entered. See a full list of supported intolerances.
-  'number': 1 // Number | The maximum number of items to return (between 1 and 100). Defaults to 10.
-};
-
-const recipeController = {}; 
-
-recipeController.getRecipeInformationBulk = (req, res, next) => {
-  console.log('getRandomRecipe Controller'); 
-};
-
-recipeController.getRandomRecipe = (req, res, next) => {
-  console.log('-------> getRandomRecipe Controller');
+  'number': 75
+  }
 
   apiInstance.getRandomRecipes(opts, (error, data, response) => {
     if (error) {
@@ -63,6 +71,22 @@ recipeController.getRandomRecipe = (req, res, next) => {
 } 
 
 recipeController.searchRecipes = (req, res, next) => {
+  console.log(req.body)
+  let opts = {
+    'instructionsRequired': true, // Boolean | Whether the recipes must have instructions.
+  'addRecipeNutrition': true, // Boolean | If set to true, you get more information about the recipes returned.
+  'includeNutrition': true,
+  'number': 75
+  }
+  // initialize a query prop in opts
+  opts.query = req.body.query 
+  // add search to opts
+  for (let key in req.body.opts){
+    if(!opts[key]) opts[key] = req.body.opts[key].toString()
+}
+console.log('>>>>>>>>>>> Opts Obj <<<<<<<<<<<<<<<<<<<<,')
+console.log(opts)
+console.log('>>>>>>>>>>> Pre Search <<<<<<<<<<<<<<<<<<<<,')
 
   apiInstance.searchRecipes(opts, (error, data, response) => {
     if (error) {
@@ -99,6 +123,8 @@ recipeController.searchRecipes = (req, res, next) => {
 // Otherwise this can be included in the earlier call nested
 recipeController.getRecipeInformationBulk = (req, res, next) => {
   console.log('bulk');
+  // temp solution HASN'T BEEN TESET
+  let ids = req.body.id
 
   apiInstance.getRecipeInformationBulk(ids, opts, (error, data, response) => {
     if (error) {
