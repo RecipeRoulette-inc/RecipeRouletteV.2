@@ -19,6 +19,7 @@ import SingleRecipePage, { getRecipeInformationBulk } from './components/singleR
 // navbar
 import Navbar from './components/Navbar/Navbar';
 import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
+import { getRecipeInformationBulk } from './components/singleRecipePage/SingleRecipePage';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -39,83 +40,21 @@ body {
 }  
 `;
 
-// ! Sample Code
-// const Router = createBrowserRoutes(
-//   createRoutesFromElements(
-//     <Route path='/' element={<RootLayout />} >
-//       <Route index element={<Home/>} />
-//       <Route path='about' element={<About/>} />
-
-//       <Route path='help' element={<HelpLayout/>} >
-//       <Route path='faq' element={<About/>} />
-//       <Route path='contact' element={<About/>} />
-//     </Route>
-
-//       <Route path='careers' element={<CareersLayout />}>
-//         <Route 
-//           index 
-//           element={<Careers />} 
-//           loader={careersloader}
-//         />
-//          <Route
-//          path="id
-//          element={careerDetails}
-//          />
-//       </Route>
-
-//     <Route path='*' element={<NotFound/>}/>
-//     </Route>  
-//   )
-// )
-
-{/* <Route path='recipe' element={<RecipeLayout />}
-  <Route
-    index
-    element={<Receipes />}
-    loader={recipesloader}
-  />
-  <Route
-  path='id'
-  element={careerDetails}
-  />
-  </Route> */}
-
 const Router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout />}>
       <Route path='/' element={<HomePage />} 
-      loader={bulkRecipesLoader}
+        loader={bulkRecipesLoader}
       >
         <Route path=':id' element={<SingleRecipePage />}
         loader={getRecipeInformationBulk}
         />
       </Route>
-      <Route path='login' element={<LoginPage />} />
-      <Route path='signup' element={<SignupPage />} />
-    </Route>
+       <Route path='login' element={<LoginPage />} />
+       <Route path='signup' element={<SignupPage />} />
+     </Route>
   )
 );
-
-// const Router = createBrowserRouter(
-//   createRoutesFromElements(
-//     <Route
-//       element={
-//         <>
-//         <GlobalStyle />
-//         <Navbar/>
-//         <Outlet />
-//         </>
-//     }
-//     >
-//       <Route path='/' element={<LoginPage />} />
-//       <Route index path='/home' element={<HomePage />}
-//       loader={bulkRecipesLoader}
-//       />
-//         <Route path='home/:id' element={<RecipePage/>}/>
-//       <Route path='/signup' element={<SignupPage/>} />
-//     </Route>
-//   )
-// )
 
 const App = () => {
   return (<RouterProvider router={ Router } />)

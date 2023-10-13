@@ -4,6 +4,9 @@ import { faSearch, faCutlery } from '@fortawesome/free-solid-svg-icons';
 import { useForm, Controller } from 'react-hook-form'; 
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import { useDispatch, useSelector } from "react-redux";
+
+import { queryEnded, queryMade } from "../../../slices/queryRecipesSlice";
 
 
 const cuisine = ['African', 'Asian', 'American', 'British', 'Cajun', 'Caribbean', 'Chinese', 'Eastern European', 'European', 'French', 'German', 'Greek',
@@ -41,7 +44,24 @@ const intolerances = [
 
 const SearchBar = ({onSubmit}) => {
   const { control, register, handleSubmit, watch } = useForm();
+  const {queryStatus} = useSelector(state => state.queryRecipes);
+  const dispatch = useDispatch();
+  // function onSubmit(data) {
+  //   dispatch(queryMade());
+  //   console.log('Data from onSubmit: ', data);
+  // }
+  // function handleHelperFunc() {
+  //   console.log('From handleHelperFunc');
+  //   onSubmit('Hi');
+  //   // e.preventDefault();
+  //   // console.log('-------> before queryMade, queryStatus: ', queryStatus);
+  //   dispatch(queryMade());
+  //   // console.log('-------> after queryMade, queryStatus: ', queryStatus);
 
+  //   // handleSubmit(onSubmit);
+  // }
+
+  // on submit, dispatch action to change queryStatus to true, to render other scroll bars
   return (
     <Wrapper onSubmit={handleSubmit(onSubmit)}>
       <SearchBarWrapper>

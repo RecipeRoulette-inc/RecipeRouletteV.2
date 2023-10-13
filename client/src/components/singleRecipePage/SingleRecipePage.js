@@ -46,9 +46,9 @@ export const getRecipeInformationBulk = async ({params}) => {
   
     const res = await fetch('http://localhost:3000/recipes/getRecipeInformationBulk', reqOptions);
     console.log('Response Received')
-    const recipe = await res.json()
-    console.log(recipe);
-    return [recipe];
+    // const recipe = await res.json()
+    console.log(res);
+    return [res];
   }
 
 

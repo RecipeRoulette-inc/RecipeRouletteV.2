@@ -21,11 +21,25 @@ Router.
     console.log('Post Route')
   console.log(req.body);
 })
+Router
+  .route('/randomRecipe')
+  .get(recipeController.getRandomRecipe, 
+  (req, res) => {
+    return res.status(200).send(res.locals.randomRecipe)
+  })
 
 Router
   .route('/getRecipeInformationBulk')
-  .get(authenticationController.verifyCookie,
-  recipeController.getRecipeInformationBulk,
+  .get(recipeController.getRecipeInformationBulk,
+  (req,res) => {
+    console.log('Search Recipe Complete')
+    return res.status(200).send(res.locals.bulkRecipeInformation)
+  }
+)
+
+Router
+  .route('/getRecipeInformationBulk/:id')
+  .get(recipeController.getRecipeInformationBulk,
   (req,res) => {
     console.log('Search Recipe Complete')
     return res.status(200).send(res.locals.bulkRecipeInformation)
@@ -34,12 +48,11 @@ Router
 
 Router
   .route('/searchRecipes')
-  .get(authenticationController.verifyCookie,
-  recipeController.searchRecipes,
+  .post(recipeController.searchRecipes,
   (req,res) => {
     console.log('Search Recipe Complete')
     console.log(res.locals.recipes)
-    return res.status(200).send(res.locals.recipes)
+    return res.status(200).json(res.locals.recipes)
   }
 )
 
