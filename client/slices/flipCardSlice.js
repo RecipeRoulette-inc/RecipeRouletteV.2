@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
+  totalSaved: 0,
   saved: false,
   gluttenFree: false,
   vegetarian: false,
@@ -9,14 +10,16 @@ const initialState = {
 
 
 export const flipCardSlice = createSlice({
-  name: 'query',
+  name: 'flipCard',
   initialState,
   reducers: {
     save: (state) => {
       state.saved = true;
+      state.totalSaved += 1;
     },
     unsave: (state) => {
         state.saved = false;
+        state.totalSaved -= 1;
     },
     isGluttenFree: (state) => {
         state.gluttenFree = true;
