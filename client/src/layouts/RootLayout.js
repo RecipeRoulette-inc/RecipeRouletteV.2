@@ -23,11 +23,13 @@ const GlobalStyle = createGlobalStyle`
 
 const RootLayout = () => {
 
-  // const location = useLocation(); 
-  // console.log(location);
+  const dispatch = useDispatch();
+  const queryRecipes = useSelector(state => state.queryRecipes.queryRecipes)
+  // console.log('RootLayout queryRecipes: ', queryRecipes);
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log('-------> BEFORE DATA FROM ROOT LAYOUT: ', data);
+    
     fetch('http://localhost:3000/recipes/searchRecipes', {
       method: 'POST',
       credentials: 'include',
@@ -44,7 +46,11 @@ const RootLayout = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        // console.log('-------> THEN DATA FROM ROOT LAYOUT: ', data);
+        dispatch(clearMain());
+        dispatch(populateMain(data));
+        dispatch(queryMade());
+        // console.log('-------> RootLayout queryRecipes: ', queryRecipes);
       })
       .catch((error) => {
         console.error(error);
