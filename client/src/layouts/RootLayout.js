@@ -1,5 +1,7 @@
 import styled, {createGlobalStyle} from 'styled-components';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { queryMade, populateMain, clearMain } from '../../slices/queryRecipesSlice';
 
 import SearchBar from '../components/searchBar/SearchBar';
 // import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/bw images/fast-food-doodles-hand-drawn-colorful-vector-symbols-objects_217204-778.jpg";
