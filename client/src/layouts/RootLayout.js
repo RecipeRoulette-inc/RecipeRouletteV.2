@@ -81,6 +81,7 @@ padding: 115px 50px;
 
 const Header = styled.header`
 margin: 0 auto;
+background: gray;
 `;
 
 const Nav = styled.nav`

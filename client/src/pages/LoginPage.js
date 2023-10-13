@@ -15,7 +15,7 @@ const WrapPage = styled.div`
 background-image: ${({src}) => `url(${src})`};
 background-size: cover;
 
-background-attachment: fixed;
+// background-attachment: fixed;
 
 margin: auto;
 // display: block;
