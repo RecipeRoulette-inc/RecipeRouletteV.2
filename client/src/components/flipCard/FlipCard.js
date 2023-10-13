@@ -11,8 +11,8 @@ const FlipCard = ({ recipeInfo }) => {
   const dispatch = useDispatch();
 
   const { id, title, image, servings, readyInMinutes } = recipeInfo;
-  console.log('-------> RECIPE INFO: ', recipeInfo);
-  console.log('-------> ID: ', id);
+  // console.log('-------> RECIPE INFO: ', recipeInfo);
+  // console.log('-------> ID: ', id);
   const testRecipe = {
     "vegetarian":true,
     "dairyFree":false,
@@ -182,13 +182,13 @@ const FlipCard = ({ recipeInfo }) => {
         </Back>
 
       </Card>
+      <br></br>
 
 
-      <saveBtn>
-        <button onClick={(e)=>handleSaveRecipe(e)}>SAVE</button>
-      </saveBtn> 
+      <button onClick={(e)=>handleSaveRecipe(e)}>SAVE</button>
+
       <FrontHeader>
-        <h2>{title}</h2>
+        <h3>{title}</h3>
       </FrontHeader>
 
     </Wrapper>

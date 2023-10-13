@@ -55,7 +55,7 @@ recipeController.getRandomRecipe = (req, res, next) => {
   'includeNutrition': true,
   'addRecipeInformation': true, 
   'limitLicense': true, // Boolean | Whether the recipes should have an open license that allows display with proper attribution.
-  'number': 75
+  'number': 5
   }
 
   apiInstance.getRandomRecipes(opts, (error, data, response) => {
@@ -71,12 +71,17 @@ recipeController.getRandomRecipe = (req, res, next) => {
 } 
 
 recipeController.searchRecipes = (req, res, next) => {
-  console.log(req.body)
+  console.log('from searchRecipes')
+
+  console.log('searchRecipes req.body: ', req.body);
+  const {opts: data} = req.body;
+  console.log('searchRecipes opts: data : ', data);
+
   let opts = {
     'instructionsRequired': true, // Boolean | Whether the recipes must have instructions.
   'addRecipeNutrition': true, // Boolean | If set to true, you get more information about the recipes returned.
   'includeNutrition': true,
-  'number': 75
+  'number': 3
   }
   // initialize a query prop in opts
   opts.query = req.body.query 
@@ -88,7 +93,8 @@ console.log('>>>>>>>>>>> Opts Obj <<<<<<<<<<<<<<<<<<<<,')
 console.log(opts)
 console.log('>>>>>>>>>>> Pre Search <<<<<<<<<<<<<<<<<<<<,')
 
-  apiInstance.searchRecipes(opts, (error, data, response) => {
+  // remember that we changed 'opts' to 'data'
+  apiInstance.searchRecipes(data, (error, data, response) => {
     if (error) {
       console.error(error);
     } else {

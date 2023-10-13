@@ -4,59 +4,89 @@ import FlipCard from "../flipCard/FlipCard";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 // Action Imports:
-import { populate, clear, clearGlutenFree, populateGlutenFree } from '../../../slices/queryRecipesSlice'
+import { clearGlutenFree, populateGlutenFree } from '../../../slices/queryRecipesSlice'
 
 
-const ScrollBarGlutenFree = () => {
-  const { queryRecipes, queryRecipesGlutenFreeState, queryStatus } = useSelector((state) => state.queryRecipes);
-  const queryRecipesGlutenFree = [];
+const ScrollBarUnder30 = () => {
+  const { queryRecipes, queryRecipesGlutenFreeState } = useSelector((state) => state.queryRecipes);
   const dispatch = useDispatch();
 
-  // queryStatus must change from searchBar and must get data from searchBar request
   useEffect(() => {
-    for (let i = 0; i < queryRecipes.length; i++) {
-        if (queryRecipes[i].GlutenFree === true) {
-            queryRecipesGlutenFree.push(queryRecipes[i]);
-        }
+    async function sendGlutenFreeOpts() {
+
+      const reqOptions = {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 
+          'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify({ 
+          opts: {
+            diet: 'gluten free',
+            number: 3,
+            sort: 'random'
+          }
+        })
+      };
+
+      const response = await fetch('http://localhost:3000/recipes/searchRecipes', reqOptions)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log('sendVeganOpts data: ', data);
+          dispatch(clearGlutenFree(data));
+          dispatch(populateGlutenFree(data));
+        })
+        .catch((err) => {throw new Error(err);});
+      // const data = await response.json();
     }
 
-    dispatch(clearGlutenFree());
-    dispatch(populateGlutenFree(queryRecipesGlutenFree));
+    sendGlutenFreeOpts();
+  }, []);
 
-    const cardsRow = [];
-    for (let i = 0; i < queryRecipesGlutenFreeState.length; i++) {
-      cardsRow.push(<FlipCard id={i} key={i} recipeInfo={queryRecipesGlutenFreeState[i]}/>)
-    }
+   const cardsRowGlutenFree = [];
 
-    return (
-      <Wrapper>
-  
-        <div>
-          <h1>Under 30min:</h1>
-        </div>
-        
-        {cardsRow}
+   for (let i = 0; i < queryRecipesGlutenFreeState.length; i++) {
+     console.log('CREATING FLIP CARDS: ', queryRecipesGlutenFreeState[i]);
+     cardsRowGlutenFree.push(<FlipCard id={i} key={i} recipeInfo={queryRecipesGlutenFreeState[i]}/>)
+   }
 
-      </Wrapper>
-    );
-
-  }, [queryStatus]);
-
+   return (
+    <Wrapper>
+      <Header>
+        <h1>Gluten Free:</h1>
+      </Header> 
+      
+      <CardsContainer>
+        {cardsRowGlutenFree}
+      </CardsContainer>
+     </Wrapper>
+   );
 
 };
 
 const Wrapper = styled.div`
 display: flex;
 flex-direction: column;
+
+`;
+
+const Header = styled.div`
+display: flex;
+flex-direction: row;
+`;
+
+const CardsContainer = styled.div`
+display: flex;
+flex-direction: row;
 width: 70vw;
-gap: 1rem; 
+gap: 2rem; 
 flex-wrap:nowrap;
 overflow-x: auto;
 padding: 1.5rem 1.5rem;
 
-// div {
-//   flex: 0 0 350px;
-// }
+div {
+  flex: 0 0 350px;
+}
 `;
 
 

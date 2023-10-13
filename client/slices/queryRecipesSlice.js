@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, current } from '@reduxjs/toolkit'
 
 const initialState = {
   queryStatus: false,
@@ -13,7 +13,12 @@ export const queryRecipesSlice = createSlice({
   initialState,
   reducers: {
     populateMain: (state, action) => {
-      state.queryRecipes.push(action.payload);
+      console.log('From populateMain');
+      console.log('From populateMain action: ', action);
+      // state.queryRecipes.push(action.payload);
+      state.queryRecipes = action.payload;
+      console.log('From AFTER populateMain action QUERY RECIPES: ', state.queryRecipes);
+      
     },
     clearMain: (state) => {
       state.queryRecipes = [];
@@ -42,24 +47,26 @@ export const queryRecipesSlice = createSlice({
     },
     populateVegan: (state, action) => {
       for (let i = 0; i < action.payload.length; i++) {
-        state.queryRecipesGlutenFreeState.push(action.payload[i]);
+        state.queryRecipesVeganState.push(action.payload[i]);
       }
     },
-    clearGlutenFree: (state) => {
-      state.queryRecipesGlutenFreeState = [];
+    clearVegan: (state) => {
+      state.queryRecipesVeganState = [];
     },
   },
 });
 
 export const { 
-  populate, 
-  clear, 
+  populateMain, 
+  clearMain, 
   queryMade, 
   queryEnded, 
   populateUnder30, 
   clearUnder30, 
   populateGlutenFree, 
-  clearGlutenFree
+  clearGlutenFree,
+  populateVegan, 
+  clearVegan
 } = queryRecipesSlice.actions;
 
 export default queryRecipesSlice.reducer;

@@ -5,6 +5,9 @@ import { useLoaderData, Link } from 'react-router-dom';
 // components
 import SearchBar from '../components/searchBar/SearchBar';
 import ScrollBarRandom from '../components/scrollBar/ScrollBarRandom';
+import ScrollBarUnder30 from '../components/scrollBar/ScrollBarUnder30';
+import ScrollBarVegan from '../components/scrollBar/ScrollBarVegan';
+import ScrollBarGlutenFree from '../components/scrollBar/ScrollBarGlutenFree';
 
   
 const HomePage = () => {
@@ -40,6 +43,9 @@ const HomePage = () => {
       <DailyRecipe>
       </DailyRecipe>
       <ScrollBarRandom />
+      <ScrollBarUnder30 />
+      <ScrollBarVegan />
+      <ScrollBarGlutenFree />
     </Wrapper>
   //  {
   //   careers.map(career => (

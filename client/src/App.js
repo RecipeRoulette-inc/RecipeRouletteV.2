@@ -1,6 +1,5 @@
 // libraries
 import React from 'react'
-import { Route, Routes, createRoutesFromElements, createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Route, Routes, createRoutesFromElements, createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
@@ -20,7 +19,6 @@ import HomePage from './pages/HomePage';
 // navbar
 import Navbar from './components/Navbar/Navbar';
 import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
-import { bulkRecipesLoader } from './pages/HomePage';
 import { getRecipeInformationBulk } from './components/singleRecipePage/SingleRecipePage';
 
 
@@ -44,7 +42,7 @@ body {
 
 const Router = createBrowserRouter(
   createRoutesFromElements(
-    // <Route path='/' element={<RootLayout />}>
+    <Route path='/' element={<RootLayout />}>
       <Route path='/' element={<HomePage />} 
         loader={bulkRecipesLoader}
       >
@@ -52,37 +50,15 @@ const Router = createBrowserRouter(
         loader={getRecipeInformationBulk}
         />
       </Route>
-      // <Route path='login' element={<LoginPage />} />
-      // <Route path='signup' element={<SignupPage />} />
-    // </Route>
+       <Route path='login' element={<LoginPage />} />
+       <Route path='signup' element={<SignupPage />} />
+     </Route>
   )
 );
 
 const App = () => {
   return (<RouterProvider router={ Router } />)
 }
-
-// const App = () => {
-
-//   // const location = useLocation();
-//   // const showBackground = location.pathname !== '/login';
-
-//   return (
-//     <Router>  
-//       <GlobalStyle />
-//       <Navbar />
-//       <Screen >
-//         <Routes>
-//           <Route path='/home' element={<HomePage/>} >
-//             {/* <Route path=':id' element={<SingleRecipePage/>}> </Route> */}
-//           </Route>
-//           <Route path='/' element={<LoginPage />} />
-//           <Route path='/signup' element={<SignupPage />} />
-//         </Routes>
-//     </Screen>
-//     </Router>
-//   )
-// };
 
 const Screen = styled.div`
 display:flex;

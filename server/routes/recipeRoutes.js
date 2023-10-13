@@ -10,7 +10,6 @@ const authenticationController = require('../controllers/authenticationControlle
 Router
   .route('/randomRecipe')
   .get(recipeController.getRandomRecipe, 
-  .get(recipeController.getRandomRecipe, 
   (req, res) => {
     return res.status(200).send(res.locals.randomRecipe)
   })
@@ -39,7 +38,7 @@ Router
   (req,res) => {
     console.log('Search Recipe Complete')
     console.log(res.locals.recipes)
-    return res.status(200).send(res.locals.recipes)
+    return res.status(200).json(res.locals.recipes)
   }
 )
 
