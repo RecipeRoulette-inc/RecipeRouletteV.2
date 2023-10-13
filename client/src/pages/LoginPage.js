@@ -14,18 +14,12 @@ const LoginPage = () => {
 //fork and knife image
 const WrapPage = styled.div`
 background-image: ${({src}) => `url(${src})`};
-background-color: blue;
+// background-color: blue;
 background-size: cover;
-max-width: 100vw;
-min-width: 50vw;
-max-height: 100vh;
-min-height: 50vh;
-// background-attachment: fixed;
-// margin: auto;
-// margin-top: 100px;
-// margin-bottom: 100px;
-// margin-right: 150px;
-// margin-left: 80px;
+// max-width: 100vw;
+// min-width: 50vw;
+// max-height: 100vh;
+// min-height: 50vh;
 display: flex;
 align-self: center 
 position: relative;
@@ -38,7 +32,7 @@ border-style: solid;
 border-width: 10px 10px 10px;
 // overflow: scroll; 
 border-radius: 35px;
-padding 30px 30px: 
+// padding 30px 30px: 
 `;
 
 export default LoginPage; 

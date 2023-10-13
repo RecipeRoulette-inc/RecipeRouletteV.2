@@ -24,7 +24,7 @@ import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
 const Router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout />}>
-      <Route index element={<LoginPage />} 
+      <Route index element={<HomePage />} 
       // loader={bulkRecipesLoader}
       />
       <Route path=':id'

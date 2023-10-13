@@ -91,7 +91,11 @@ padding: 15px 15px;
 `;
 
 const Logo = styled.h1`
-  background: red;
+  // background: red;
+  display: flex;
+  // align-text: center;
+  justify-content: center;
+  font-size: 30px;
 `;
 
 const Nav = styled.nav`
