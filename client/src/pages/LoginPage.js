@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
-import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/final_image.jpeg";
-
+// import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/final_image.jpeg";
+import img from "../public/plateForkKnife.jpeg"
 const LoginPage = () => {
 
   return (

@@ -13,7 +13,7 @@ import RootLayout from './layouts/RootLayout';
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import AllergyPage from './pages/AllergySelection';
-import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/bw images/fast-food-doodles-hand-drawn-colorful-vector-symbols-objects_217204-778.jpg";
+// import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/bw images/fast-food-doodles-hand-drawn-colorful-vector-symbols-objects_217204-778.jpg";
 // import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/Screenshot 2023-10-12 at 12.35.22 PM.png";import RecipePage from './pages/RecipePage';
 import HomePage from './pages/HomePage';
 
