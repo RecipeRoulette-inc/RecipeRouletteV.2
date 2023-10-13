@@ -1,0 +1,2207 @@
+{
+  "recipes": [
+    {
+      "id": 715602,
+      "title": "Green Chili Cheddar Dip (Guest Post)",
+      "image": "https://spoonacular.com/recipeImages/715602-556x370.png",
+      "imageType": "png",
+      "servings": 2,
+      "readyInMinutes": 45,
+      "sourceName": "Pink When",
+      "sourceUrl": "http://www.pinkwhen.com/green-chili-cheddar-dip-guest-post/",
+      "spoonacularSourceUrl": "https://spoonacular.com/green-chili-cheddar-dip-guest-post-715602",
+      "aggregateLikes": 122,
+      "healthScore": 7,
+      "pricePerServing": 205.62,
+      "cheap": false,
+      "creditsText": "Jen West",
+      "dairyFree": false,
+      "gaps": "no",
+      "glutenFree": true,
+      "instructions": "In a medium bowl microwave the cream cheese for 30-60 seconds or until it is softened.Mix in the green chilis, cheddar, and garlic. Mix well.Microwave the dip for 45 seconds, stir and then an additional 45 seconds or until it is heated through.Alternately, you can spread the mixture in a baking dish and bake at 350 degrees F for 20-30 min or until heated through.Serve with tortilla chips and enjoy the game (or the food!)",
+      "lowFodmap": false,
+      "sustainable": false,
+      "vegan": false,
+      "vegetarian": true,
+      "veryHealthy": false,
+      "veryPopular": false,
+      "weightWatcherSmartPoints": 26,
+      "summary": "Green Chili Cheddar Dip (Guest Post) is an American hor d'oeuvre. For <b>$2.06 per serving</b>, this recipe <b>covers 14%</b> of your daily requirements of vitamins and minerals. This recipe serves 2. Watching your figure? This gluten free, lacto ovo vegetarian, and primal recipe has <b>646 calories</b>, <b>20g of protein</b>, and <b>58g of fat</b> per serving. <b>The Super Bowl</b> will be even more special with this recipe. This recipe is liked by 122 foodies and cooks. From preparation to the plate, this recipe takes about <b>45 minutes</b>. If you have sharp cheddar cheese, garlic powder, chilis, and a few other ingredients on hand, you can make it. It is brought to you by Pink When. All things considered, we decided this recipe <b>deserves a spoonacular score of 58%</b>. This score is good. Try <a href=\"https://spoonacular.com/recipes/guest-post-from-diethood-garlic-and-cheddar-drop-biscuits-515122\">Guest Post from Diethood – Garlic and Cheddar Drop Biscuits</a>, <a href=\"https://spoonacular.com/recipes/turkey-picadillo-quinoa-chili-guest-post-505017\">Turkey Picadillo Quinoa Chili {guest post}</a>, and <a href=\"https://spoonacular.com/recipes/guest-post-slow-cooker-veggie-chili-582423\">Guest Post: Slow Cooker Veggie Chili</a> for similar recipes.",
+      "analyzedInstructions": [
+        {
+          "name": "",
+          "steps": [
+            {
+              "number": 1,
+              "step": "In a medium bowl microwave the cream cheese for 30-60 seconds or until it is softened.",
+              "ingredients": [
+                {
+                  "id": 1017,
+                  "name": "cream cheese",
+                  "localizedName": "cream cheese",
+                  "image": "cream-cheese.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404762,
+                  "name": "microwave",
+                  "localizedName": "microwave",
+                  "image": "microwave.jpg"
+                },
+                {
+                  "id": 404783,
+                  "name": "bowl",
+                  "localizedName": "bowl",
+                  "image": "bowl.jpg"
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "step": "Mix in the green chilis, cheddar, and garlic.",
+              "ingredients": [
+                {
+                  "id": 31015,
+                  "name": "green chili pepper",
+                  "localizedName": "green chili pepper",
+                  "image": "chili-peppers-green.jpg"
+                },
+                {
+                  "id": 1009,
+                  "name": "cheddar cheese",
+                  "localizedName": "cheddar cheese",
+                  "image": "cheddar-cheese.png"
+                },
+                {
+                  "id": 11215,
+                  "name": "garlic",
+                  "localizedName": "garlic",
+                  "image": "garlic.png"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 3,
+              "step": "Mix well.Microwave the dip for 45 seconds, stir and then an additional 45 seconds or until it is heated through.Alternately, you can spread the mixture in a baking dish and bake at 350 degrees F for 20-30 min or until heated through.",
+              "ingredients": [
+                {
+                  "id": 0,
+                  "name": "spread",
+                  "localizedName": "spread",
+                  "image": ""
+                },
+                {
+                  "id": 0,
+                  "name": "dip",
+                  "localizedName": "dip",
+                  "image": ""
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404646,
+                  "name": "baking pan",
+                  "localizedName": "baking pan",
+                  "image": "roasting-pan.jpg"
+                },
+                {
+                  "id": 404762,
+                  "name": "microwave",
+                  "localizedName": "microwave",
+                  "image": "microwave.jpg"
+                },
+                {
+                  "id": 404784,
+                  "name": "oven",
+                  "localizedName": "oven",
+                  "image": "oven.jpg",
+                  "temperature": {
+                    "number": 350,
+                    "unit": "Fahrenheit"
+                  }
+                }
+              ],
+              "length": {
+                "number": 30,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 4,
+              "step": "Serve with tortilla chips and enjoy the game (or the food!)",
+              "ingredients": [
+                {
+                  "id": 19056,
+                  "name": "tortilla chips",
+                  "localizedName": "tortilla chips",
+                  "image": "tortilla-chips.jpg"
+                },
+                {
+                  "id": 0,
+                  "name": "game meat",
+                  "localizedName": "game meat",
+                  "image": "whole-chicken.jpg"
+                }
+              ],
+              "equipment": []
+            }
+          ]
+        }
+      ],
+      "cuisines": [
+        "American"
+      ],
+      "diets": [
+        "gluten free",
+        "lacto ovo vegetarian",
+        "primal"
+      ],
+      "occasions": [
+        "super bowl"
+      ],
+      "dishTypes": [
+        "antipasti",
+        "condiment",
+        "starter",
+        "snack",
+        "appetizer",
+        "dip",
+        "antipasto",
+        "hor d'oeuvre",
+        "spread"
+      ],
+      "extendedIngredients": [
+        {
+          "aisle": "Cheese",
+          "amount": 8,
+          "id": 1017,
+          "image": "cream-cheese.jpg",
+          "name": "cream cheese",
+          "original": "8 oz Cream Cheese",
+          "originalName": "Cream Cheese",
+          "unit": "oz",
+          "measures": {
+            "metric": {
+              "amount": 226.796,
+              "unitLong": "grams",
+              "unitShort": "g"
+            },
+            "us": {
+              "amount": 8,
+              "unitLong": "ounces",
+              "unitShort": "oz"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Spices and Seasonings",
+          "amount": 0.5,
+          "id": 1022020,
+          "image": "garlic-powder.png",
+          "name": "garlic powder",
+          "original": "grated ½ tsp Garlic Powder",
+          "originalName": "grated Garlic Powder",
+          "unit": "tsp",
+          "measures": {
+            "metric": {
+              "amount": 0.5,
+              "unitLong": "teaspoons",
+              "unitShort": "tsps"
+            },
+            "us": {
+              "amount": 0.5,
+              "unitLong": "teaspoons",
+              "unitShort": "tsps"
+            }
+          },
+          "meta": [
+            "grated"
+          ]
+        },
+        {
+          "aisle": "Produce",
+          "amount": 4,
+          "id": 31015,
+          "image": "chili-peppers-green.jpg",
+          "name": "chilis",
+          "original": "4 oz Green Chilis (1 small can)",
+          "originalName": "Green Chilis (1 small can)",
+          "unit": "oz",
+          "measures": {
+            "metric": {
+              "amount": 113.398,
+              "unitLong": "grams",
+              "unitShort": "g"
+            },
+            "us": {
+              "amount": 4,
+              "unitLong": "ounces",
+              "unitShort": "oz"
+            }
+          },
+          "meta": [
+            "green",
+            "(1 small can)"
+          ]
+        },
+        {
+          "aisle": "Cheese",
+          "amount": 4,
+          "id": 1031009,
+          "image": "cheddar-cheese.png",
+          "name": "sharp cheddar cheese",
+          "original": "4 oz Sharp Cheddar Cheese",
+          "originalName": "Sharp Cheddar Cheese",
+          "unit": "oz",
+          "measures": {
+            "metric": {
+              "amount": 113.398,
+              "unitLong": "grams",
+              "unitShort": "g"
+            },
+            "us": {
+              "amount": 4,
+              "unitLong": "ounces",
+              "unitShort": "oz"
+            }
+          },
+          "meta": []
+        }
+      ]
+    },
+    {
+      "id": 657723,
+      "title": "Radish and Watercress Salad",
+      "image": "https://spoonacular.com/recipeImages/657723-556x370.jpg",
+      "imageType": "jpg",
+      "servings": 1,
+      "readyInMinutes": 45,
+      "license": "CC BY 3.0",
+      "sourceName": "Foodista",
+      "sourceUrl": "https://www.foodista.com/recipe/4NSWH37V/radish-and-watercress-salad",
+      "spoonacularSourceUrl": "https://spoonacular.com/radish-and-watercress-salad-657723",
+      "aggregateLikes": 2,
+      "healthScore": 4,
+      "pricePerServing": 104.01,
+      "cheap": false,
+      "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+      "dairyFree": true,
+      "gaps": "no",
+      "glutenFree": true,
+      "instructions": "Combine salt, garlic powder. Dijon mustard, vinegar, liquid shortening, and lemon juice in screw top jar.\nShake to blend. \nPlace watercress and sliced radishes in a salad bowl. Add dressing; toss to blend.",
+      "lowFodmap": false,
+      "sustainable": false,
+      "vegan": true,
+      "vegetarian": true,
+      "veryHealthy": false,
+      "veryPopular": false,
+      "weightWatcherSmartPoints": 9,
+      "summary": "Need a <b>gluten free, dairy free, paleolithic, and lacto ovo vegetarian hor d'oeuvre</b>? Radish and Watercress Salad could be an outstanding recipe to try. This recipe serves 1 and costs $1.04 per serving. One serving contains <b>276 calories</b>, <b>2g of protein</b>, and <b>28g of fat</b>. 2 people have made this recipe and would make it again. Head to the store and pick up salt, garlic powder, radishes, and a few other things to make it today. From preparation to the plate, this recipe takes approximately <b>45 minutes</b>. It is brought to you by Foodista. With a spoonacular <b>score of 36%</b>, this dish is not so outstanding. Try <a href=\"https://spoonacular.com/recipes/radish-and-watercress-salad-169936\">Radish and Watercress Salad</a>, <a href=\"https://spoonacular.com/recipes/watercress-onion-and-radish-salad-96460\">Watercress, Onion, and Radish Salad</a>, and <a href=\"https://spoonacular.com/recipes/refreshing-daikon-radish-and-watercress-salad-13763\">Refreshing Daikon Radish And Watercress Salad</a> for similar recipes.",
+      "analyzedInstructions": [
+        {
+          "name": "",
+          "steps": [
+            {
+              "number": 1,
+              "step": "Combine salt, garlic powder. Dijon mustard, vinegar, liquid shortening, and lemon juice in screw top jar.",
+              "ingredients": [
+                {
+                  "id": 1032046,
+                  "name": "dijon mustard",
+                  "localizedName": "dijon mustard",
+                  "image": "dijon-mustard.jpg"
+                },
+                {
+                  "id": 1022020,
+                  "name": "garlic powder",
+                  "localizedName": "garlic powder",
+                  "image": "garlic-powder.png"
+                },
+                {
+                  "id": 9152,
+                  "name": "lemon juice",
+                  "localizedName": "lemon juice",
+                  "image": "lemon-juice.jpg"
+                },
+                {
+                  "id": 4615,
+                  "name": "shortening",
+                  "localizedName": "shortening",
+                  "image": "shortening.jpg"
+                },
+                {
+                  "id": 2053,
+                  "name": "vinegar",
+                  "localizedName": "vinegar",
+                  "image": "vinegar-(white).jpg"
+                },
+                {
+                  "id": 2047,
+                  "name": "salt",
+                  "localizedName": "salt",
+                  "image": "salt.jpg"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 2,
+              "step": "Shake to blend.",
+              "ingredients": [
+                {
+                  "id": 0,
+                  "name": "shake",
+                  "localizedName": "shake",
+                  "image": ""
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 3,
+              "step": "Place watercress and sliced radishes in a salad bowl.",
+              "ingredients": [
+                {
+                  "id": 11591,
+                  "name": "watercress",
+                  "localizedName": "watercress",
+                  "image": "watercress.jpg"
+                },
+                {
+                  "id": 11429,
+                  "name": "radish",
+                  "localizedName": "radish",
+                  "image": "radishes.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404783,
+                  "name": "bowl",
+                  "localizedName": "bowl",
+                  "image": "bowl.jpg"
+                }
+              ]
+            },
+            {
+              "number": 4,
+              "step": "Add dressing; toss to blend.",
+              "ingredients": [],
+              "equipment": []
+            }
+          ]
+        }
+      ],
+      "cuisines": [],
+      "diets": [
+        "gluten free",
+        "dairy free",
+        "paleolithic",
+        "lacto ovo vegetarian",
+        "primal",
+        "whole 30",
+        "vegan"
+      ],
+      "occasions": [],
+      "dishTypes": [
+        "side dish",
+        "antipasti",
+        "salad",
+        "starter",
+        "snack",
+        "appetizer",
+        "antipasto",
+        "hor d'oeuvre"
+      ],
+      "extendedIngredients": [
+        {
+          "aisle": "Spices and Seasonings",
+          "amount": 1,
+          "id": 2047,
+          "image": "salt.jpg",
+          "name": "salt",
+          "original": "1 teaspoon Salt",
+          "originalName": "Salt",
+          "unit": "teaspoon",
+          "measures": {
+            "metric": {
+              "amount": 1,
+              "unitLong": "teaspoon",
+              "unitShort": "tsp"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "teaspoon",
+              "unitShort": "tsp"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Spices and Seasonings",
+          "amount": 1,
+          "id": 1022020,
+          "image": "garlic-powder.png",
+          "name": "garlic powder",
+          "original": "1 teaspoon Garlic powder",
+          "originalName": "Garlic powder",
+          "unit": "teaspoon",
+          "measures": {
+            "metric": {
+              "amount": 1,
+              "unitLong": "teaspoon",
+              "unitShort": "tsp"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "teaspoon",
+              "unitShort": "tsp"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Condiments",
+          "amount": 1,
+          "id": 1032046,
+          "image": "dijon-mustard.jpg",
+          "name": "dijon mustard",
+          "original": "1 teaspoon Dijon mustard",
+          "originalName": "Dijon mustard",
+          "unit": "teaspoon",
+          "measures": {
+            "metric": {
+              "amount": 1,
+              "unitLong": "teaspoon",
+              "unitShort": "tsp"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "teaspoon",
+              "unitShort": "tsp"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Oil, Vinegar, Salad Dressing",
+          "amount": 1,
+          "id": 1022068,
+          "image": "red-wine-vinegar.jpg",
+          "name": "red wine vinegar",
+          "original": "1 tablespoon red wine vinegar",
+          "originalName": "red wine vinegar",
+          "unit": "tablespoon",
+          "measures": {
+            "metric": {
+              "amount": 1,
+              "unitLong": "Tbsp",
+              "unitShort": "Tbsp"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "Tbsp",
+              "unitShort": "Tbsp"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Oil, Vinegar, Salad Dressing",
+          "amount": 2,
+          "id": 4053,
+          "image": "olive-oil.jpg",
+          "name": "olive oil",
+          "original": "2 tablespoons olive oil",
+          "originalName": "olive oil",
+          "unit": "tablespoons",
+          "measures": {
+            "metric": {
+              "amount": 2,
+              "unitLong": "Tbsps",
+              "unitShort": "Tbsps"
+            },
+            "us": {
+              "amount": 2,
+              "unitLong": "Tbsps",
+              "unitShort": "Tbsps"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Produce",
+          "amount": 2,
+          "id": 9152,
+          "image": "lemon-juice.jpg",
+          "name": "lemon juice",
+          "original": "2 teaspoons Lemon juice",
+          "originalName": "Lemon juice",
+          "unit": "teaspoons",
+          "measures": {
+            "metric": {
+              "amount": 2,
+              "unitLong": "teaspoons",
+              "unitShort": "tsps"
+            },
+            "us": {
+              "amount": 2,
+              "unitLong": "teaspoons",
+              "unitShort": "tsps"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Produce",
+          "amount": 1,
+          "id": 11591,
+          "image": "watercress.jpg",
+          "name": "watercress",
+          "original": "1 bunch watercress",
+          "originalName": "watercress",
+          "unit": "bunch",
+          "measures": {
+            "metric": {
+              "amount": 1,
+              "unitLong": "bunch",
+              "unitShort": "bunch"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "bunch",
+              "unitShort": "bunch"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Produce",
+          "amount": 1,
+          "id": 11429,
+          "image": "radishes.jpg",
+          "name": "radishes",
+          "original": "1 bunch Red radishes, thinly sliced",
+          "originalName": "Red radishes, thinly sliced",
+          "unit": "bunch",
+          "measures": {
+            "metric": {
+              "amount": 1,
+              "unitLong": "bunch",
+              "unitShort": "bunch"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "bunch",
+              "unitShort": "bunch"
+            }
+          },
+          "meta": [
+            "red",
+            "thinly sliced"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 664359,
+      "title": "Veal Piccatas",
+      "image": "https://spoonacular.com/recipeImages/664359-556x370.jpg",
+      "imageType": "jpg",
+      "servings": 4,
+      "readyInMinutes": 45,
+      "license": "CC BY 3.0",
+      "sourceName": "Foodista",
+      "sourceUrl": "https://www.foodista.com/recipe/4Z5SV5FY/veal-piccatas",
+      "spoonacularSourceUrl": "https://spoonacular.com/veal-piccatas-664359",
+      "aggregateLikes": 4,
+      "healthScore": 1,
+      "pricePerServing": 72.63,
+      "cheap": false,
+      "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+      "dairyFree": false,
+      "gaps": "no",
+      "glutenFree": false,
+      "instructions": "Season veal scaloppine with salt and pepper, then dust with flour. In a skillet add the butter and the vegetable oil, and heat over medium-high.\nSaut the scaloppine 2-3 minutes on one side. Flip the scaloppine over and saut the other side 1-2 minutes with the pan covered. Transfer the scaloppine to a warmed platter; pour off the fat from the pan.\nDeglaze pan with wine and add minced garlic. Cook until garlic is slightly brown and liquid is nearly evaporated, about 2 minutes.\nAdd broth, lemon juice and capers. Return veal scaloppine to pan and cook on each side for 1 minute. Transfer to a warm plates.\nFinish sauce with butter and lemons. Once butter melts, pour sauce over veal.\nGarnish with chopped fresh parsley and serve.",
+      "lowFodmap": false,
+      "sustainable": false,
+      "vegan": false,
+      "vegetarian": false,
+      "veryHealthy": false,
+      "veryPopular": false,
+      "weightWatcherSmartPoints": 6,
+      "summary": "The recipe Veal Piccatas can be made <b>in around 45 minutes</b>. For <b>73 cents per serving</b>, this recipe <b>covers 6%</b> of your daily requirements of vitamins and minerals. One portion of this dish contains roughly <b>2g of protein</b>, <b>13g of fat</b>, and a total of <b>160 calories</b>. This recipe serves 4. It works well as a hor d'oeuvre. Head to the store and pick up veal scaloppine, capers, parsley, and a few other things to make it today. Only a few people made this recipe, and 4 would say it hit the spot. It is brought to you by Foodista. With a spoonacular <b>score of 11%</b>, this dish is not so super. If you like this recipe, take a look at these similar recipes: <a href=\"https://spoonacular.com/recipes/veal-giuseppe-754816\">Veal Giuseppe</a>, <a href=\"https://spoonacular.com/recipes/veal-scallopini-415460\">Veal Scallopini</a>, and <a href=\"https://spoonacular.com/recipes/veal-saltimbocca-754876\">Veal Saltimbocca</a>.",
+      "analyzedInstructions": [
+        {
+          "name": "",
+          "steps": [
+            {
+              "number": 1,
+              "step": "Season veal scaloppine with salt and pepper, then dust with flour. In a skillet add the butter and the vegetable oil, and heat over medium-high.",
+              "ingredients": [
+                {
+                  "id": 1102047,
+                  "name": "salt and pepper",
+                  "localizedName": "salt and pepper",
+                  "image": "salt-and-pepper.jpg"
+                },
+                {
+                  "id": 4669,
+                  "name": "vegetable oil",
+                  "localizedName": "vegetable oil",
+                  "image": "vegetable-oil.jpg"
+                },
+                {
+                  "id": 1001,
+                  "name": "butter",
+                  "localizedName": "butter",
+                  "image": "butter-sliced.jpg"
+                },
+                {
+                  "id": 20081,
+                  "name": "all purpose flour",
+                  "localizedName": "all purpose flour",
+                  "image": "flour.png"
+                },
+                {
+                  "id": 17142,
+                  "name": "veal",
+                  "localizedName": "veal",
+                  "image": "veal.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404645,
+                  "name": "frying pan",
+                  "localizedName": "frying pan",
+                  "image": "pan.png"
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "step": "Saut the scaloppine 2-3 minutes on one side. Flip the scaloppine over and saut the other side 1-2 minutes with the pan covered.",
+              "ingredients": [],
+              "equipment": [
+                {
+                  "id": 404645,
+                  "name": "frying pan",
+                  "localizedName": "frying pan",
+                  "image": "pan.png"
+                }
+              ],
+              "length": {
+                "number": 5,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 3,
+              "step": "Transfer the scaloppine to a warmed platter; pour off the fat from the pan.",
+              "ingredients": [],
+              "equipment": [
+                {
+                  "id": 404645,
+                  "name": "frying pan",
+                  "localizedName": "frying pan",
+                  "image": "pan.png"
+                }
+              ]
+            },
+            {
+              "number": 4,
+              "step": "Deglaze pan with wine and add minced garlic. Cook until garlic is slightly brown and liquid is nearly evaporated, about 2 minutes.",
+              "ingredients": [
+                {
+                  "id": 0,
+                  "name": "minced garlic",
+                  "localizedName": "minced garlic",
+                  "image": "garlic.png"
+                },
+                {
+                  "id": 11215,
+                  "name": "garlic",
+                  "localizedName": "garlic",
+                  "image": "garlic.png"
+                },
+                {
+                  "id": 14084,
+                  "name": "wine",
+                  "localizedName": "wine",
+                  "image": "red-wine.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404645,
+                  "name": "frying pan",
+                  "localizedName": "frying pan",
+                  "image": "pan.png"
+                }
+              ],
+              "length": {
+                "number": 2,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 5,
+              "step": "Add broth, lemon juice and capers. Return veal scaloppine to pan and cook on each side for 1 minute.",
+              "ingredients": [
+                {
+                  "id": 9152,
+                  "name": "lemon juice",
+                  "localizedName": "lemon juice",
+                  "image": "lemon-juice.jpg"
+                },
+                {
+                  "id": 2054,
+                  "name": "capers",
+                  "localizedName": "capers",
+                  "image": "capers.jpg"
+                },
+                {
+                  "id": 1006615,
+                  "name": "broth",
+                  "localizedName": "broth",
+                  "image": "chicken-broth.png"
+                },
+                {
+                  "id": 17142,
+                  "name": "veal",
+                  "localizedName": "veal",
+                  "image": "veal.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404645,
+                  "name": "frying pan",
+                  "localizedName": "frying pan",
+                  "image": "pan.png"
+                }
+              ],
+              "length": {
+                "number": 1,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 6,
+              "step": "Transfer to a warm plates.",
+              "ingredients": [],
+              "equipment": []
+            },
+            {
+              "number": 7,
+              "step": "Finish sauce with butter and lemons. Once butter melts, pour sauce over veal.",
+              "ingredients": [
+                {
+                  "id": 1001,
+                  "name": "butter",
+                  "localizedName": "butter",
+                  "image": "butter-sliced.jpg"
+                },
+                {
+                  "id": 9150,
+                  "name": "lemon",
+                  "localizedName": "lemon",
+                  "image": "lemon.png"
+                },
+                {
+                  "id": 0,
+                  "name": "sauce",
+                  "localizedName": "sauce",
+                  "image": ""
+                },
+                {
+                  "id": 17142,
+                  "name": "veal",
+                  "localizedName": "veal",
+                  "image": "veal.jpg"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 8,
+              "step": "Garnish with chopped fresh parsley and serve.",
+              "ingredients": [
+                {
+                  "id": 10511297,
+                  "name": "fresh parsley",
+                  "localizedName": "fresh parsley",
+                  "image": "parsley.jpg"
+                }
+              ],
+              "equipment": []
+            }
+          ]
+        }
+      ],
+      "cuisines": [],
+      "diets": [],
+      "occasions": [],
+      "dishTypes": [
+        "antipasti",
+        "starter",
+        "snack",
+        "appetizer",
+        "antipasto",
+        "hor d'oeuvre"
+      ],
+      "extendedIngredients": [
+        {
+          "aisle": "Meat",
+          "amount": 8,
+          "id": 17142,
+          "image": "meat-ground.jpg",
+          "name": "veal scaloppine",
+          "original": "8 veal scaloppine",
+          "originalName": "veal scaloppine",
+          "unit": "",
+          "measures": {
+            "metric": {
+              "amount": 8,
+              "unitLong": "",
+              "unitShort": ""
+            },
+            "us": {
+              "amount": 8,
+              "unitLong": "",
+              "unitShort": ""
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Meat",
+          "amount": 8,
+          "id": 17142,
+          "image": "veal.jpg",
+          "name": "veal scaloppine",
+          "original": "8 veal scaloppine",
+          "originalName": "veal scaloppine",
+          "unit": "",
+          "measures": {
+            "metric": {
+              "amount": 8,
+              "unitLong": "",
+              "unitShort": ""
+            },
+            "us": {
+              "amount": 8,
+              "unitLong": "",
+              "unitShort": ""
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Spices and Seasonings",
+          "amount": 4,
+          "id": 1102047,
+          "image": "salt-and-pepper.jpg",
+          "name": "salt and pepper",
+          "original": "Salt and Pepper",
+          "originalName": "Salt and Pepper",
+          "unit": "servings",
+          "measures": {
+            "metric": {
+              "amount": 4,
+              "unitLong": "servings",
+              "unitShort": "servings"
+            },
+            "us": {
+              "amount": 4,
+              "unitLong": "servings",
+              "unitShort": "servings"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Baking",
+          "amount": 4,
+          "id": 20081,
+          "image": "flour.png",
+          "name": "flour",
+          "original": "All-purpose flour",
+          "originalName": "All-purpose flour",
+          "unit": "servings",
+          "measures": {
+            "metric": {
+              "amount": 4,
+              "unitLong": "servings",
+              "unitShort": "servings"
+            },
+            "us": {
+              "amount": 4,
+              "unitLong": "servings",
+              "unitShort": "servings"
+            }
+          },
+          "meta": [
+            "all-purpose"
+          ]
+        },
+        {
+          "aisle": "Milk, Eggs, Other Dairy",
+          "amount": 2,
+          "id": 1145,
+          "image": "butter-sliced.jpg",
+          "name": "butter",
+          "original": "2 Tbsp unsalted butter",
+          "originalName": "unsalted butter",
+          "unit": "Tbsp",
+          "measures": {
+            "metric": {
+              "amount": 2,
+              "unitLong": "Tbsps",
+              "unitShort": "Tbsps"
+            },
+            "us": {
+              "amount": 2,
+              "unitLong": "Tbsps",
+              "unitShort": "Tbsps"
+            }
+          },
+          "meta": [
+            "unsalted"
+          ]
+        },
+        {
+          "aisle": "Oil, Vinegar, Salad Dressing",
+          "amount": 2,
+          "id": 4669,
+          "image": "vegetable-oil.jpg",
+          "name": "vegetable oil",
+          "original": "2 Tbsp vegetable oil",
+          "originalName": "vegetable oil",
+          "unit": "Tbsp",
+          "measures": {
+            "metric": {
+              "amount": 2,
+              "unitLong": "Tbsps",
+              "unitShort": "Tbsps"
+            },
+            "us": {
+              "amount": 2,
+              "unitLong": "Tbsps",
+              "unitShort": "Tbsps"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Alcoholic Beverages",
+          "amount": 0.25,
+          "id": 14106,
+          "image": "white-wine.jpg",
+          "name": "wine",
+          "original": "¼ cup dry white wine",
+          "originalName": "dry white wine",
+          "unit": "cup",
+          "measures": {
+            "metric": {
+              "amount": 60,
+              "unitLong": "milliliters",
+              "unitShort": "ml"
+            },
+            "us": {
+              "amount": 0.25,
+              "unitLong": "cups",
+              "unitShort": "cups"
+            }
+          },
+          "meta": [
+            "dry white"
+          ]
+        },
+        {
+          "aisle": "Produce",
+          "amount": 1,
+          "id": 11215,
+          "image": "garlic.png",
+          "name": "garlic",
+          "original": "1 tsp minced garlic",
+          "originalName": "minced garlic",
+          "unit": "tsp",
+          "measures": {
+            "metric": {
+              "amount": 1,
+              "unitLong": "teaspoon",
+              "unitShort": "tsp"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "teaspoon",
+              "unitShort": "tsp"
+            }
+          },
+          "meta": [
+            "minced"
+          ]
+        },
+        {
+          "aisle": "Canned and Jarred",
+          "amount": 0.5,
+          "id": 6194,
+          "image": "chicken-broth.png",
+          "name": "chicken broth",
+          "original": "½ cup chicken broth",
+          "originalName": "chicken broth",
+          "unit": "cup",
+          "measures": {
+            "metric": {
+              "amount": 117.5,
+              "unitLong": "milliliters",
+              "unitShort": "ml"
+            },
+            "us": {
+              "amount": 0.5,
+              "unitLong": "cups",
+              "unitShort": "cups"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Produce",
+          "amount": 2,
+          "id": 9152,
+          "image": "lemon-juice.jpg",
+          "name": "lemon juice",
+          "original": "2 Tbsp fresh lemon juice",
+          "originalName": "fresh lemon juice",
+          "unit": "Tbsp",
+          "measures": {
+            "metric": {
+              "amount": 2,
+              "unitLong": "Tbsps",
+              "unitShort": "Tbsps"
+            },
+            "us": {
+              "amount": 2,
+              "unitLong": "Tbsps",
+              "unitShort": "Tbsps"
+            }
+          },
+          "meta": [
+            "fresh"
+          ]
+        },
+        {
+          "aisle": "Canned and Jarred",
+          "amount": 1,
+          "id": 2054,
+          "image": "capers.jpg",
+          "name": "capers",
+          "original": "1 Tbsp capers, drained",
+          "originalName": "capers, drained",
+          "unit": "Tbsp",
+          "measures": {
+            "metric": {
+              "amount": 1,
+              "unitLong": "Tbsp",
+              "unitShort": "Tbsp"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "Tbsp",
+              "unitShort": "Tbsp"
+            }
+          },
+          "meta": [
+            "drained"
+          ]
+        },
+        {
+          "aisle": "Produce",
+          "amount": 4,
+          "id": 10511297,
+          "image": "parsley.jpg",
+          "name": "parsley",
+          "original": "Chopped fresh parsley",
+          "originalName": "Chopped fresh parsley",
+          "unit": "servings",
+          "measures": {
+            "metric": {
+              "amount": 4,
+              "unitLong": "servings",
+              "unitShort": "servings"
+            },
+            "us": {
+              "amount": 4,
+              "unitLong": "servings",
+              "unitShort": "servings"
+            }
+          },
+          "meta": [
+            "fresh",
+            "chopped"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 157344,
+      "title": "Spicy Salad with Kidney Beans, Cheddar, and Nuts",
+      "image": "https://spoonacular.com/recipeImages/157344-556x370.jpg",
+      "imageType": "jpg",
+      "servings": 1,
+      "readyInMinutes": 10,
+      "sourceName": "spoonacular.com",
+      "sourceUrl": "http://spoonacular.com/-1384191937003",
+      "spoonacularSourceUrl": "https://spoonacular.com/spicy-salad-with-kidney-beans-cheddar-and-nuts-157344",
+      "aggregateLikes": 6,
+      "healthScore": 78,
+      "pricePerServing": 458.2,
+      "cheap": false,
+      "creditsText": "coffeebean",
+      "dairyFree": false,
+      "gaps": "no",
+      "glutenFree": true,
+      "instructions": "<p>     1. Rinse and drain the kidney beans, cut the sundried tomatoes, and tear the slice of cheese into small pieces.</p><p>     2. Put the mixed greens in a bowl and top with kidney beans, sundried tomatoes, cheddar cheese, and nuts.</p><p>     3. Mix together the olive oil, balsamic vinegar, and hot sauce in a small bowl. Pour the dressing over the salad.</p><p>     Fast, easy, and healthy-- one of my favorite lunches!</p>",
+      "lowFodmap": false,
+      "sustainable": false,
+      "vegan": false,
+      "vegetarian": true,
+      "veryHealthy": true,
+      "veryPopular": false,
+      "weightWatcherSmartPoints": 21,
+      "summary": "You can never have too many main course recipes, so give Spicy Salad with Kidney Beans, Cheddar, and Nuts a try. For <b>$4.58 per serving</b>, this recipe <b>covers 38%</b> of your daily requirements of vitamins and minerals. One serving contains <b>719 calories</b>, <b>27g of protein</b>, and <b>49g of fat</b>. This recipe serves 1. It is a good option if you're following a <b>gluten free and lacto ovo vegetarian</b> diet. From preparation to the plate, this recipe takes approximately <b>10 minutes</b>. Head to the store and pick up kidney beans, greens, cheddar cheese, and a few other things to make it today. It is brought to you by spoonacular user <a href=\"/profile/coffeebean\">coffeebean</a>. If you like this recipe, take a look at these similar recipes: <a href=\"https://spoonacular.com/recipes/spicy-salad-with-kidney-beans-cheddar-and-nuts-1393987\">Spicy Salad with Kidney Beans, Cheddar, and Nuts</a>, <a href=\"https://spoonacular.com/recipes/spicy-salad-with-kidney-beans-cheddar-and-nuts-1264443\">Spicy Salad with Kidney Beans, Cheddar, and Nuts</a>, and <a href=\"https://spoonacular.com/recipes/spicy-salad-with-kidney-beans-cheddar-and-nuts-1200375\">Spicy Salad with Kidney Beans, Cheddar, and Nuts</a>.",
+      "analyzedInstructions": [
+        {
+          "name": "",
+          "steps": [
+            {
+              "number": 1,
+              "step": "Rinse and drain the kidney beans, cut the sundried tomatoes, and tear the slice of cheese into small pieces.",
+              "ingredients": [
+                {
+                  "id": 11955,
+                  "name": "sun dried tomatoes",
+                  "localizedName": "sun dried tomatoes",
+                  "image": "sundried-tomatoes.jpg"
+                },
+                {
+                  "id": 16033,
+                  "name": "kidney beans",
+                  "localizedName": "kidney beans",
+                  "image": "kidney-beans.jpg"
+                },
+                {
+                  "id": 1041009,
+                  "name": "cheese",
+                  "localizedName": "cheese",
+                  "image": "cheddar-cheese.png"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 2,
+              "step": "Put the mixed greens in a bowl and top with kidney beans, sundried tomatoes, cheddar cheese, and nuts.",
+              "ingredients": [
+                {
+                  "id": 11955,
+                  "name": "sun dried tomatoes",
+                  "localizedName": "sun dried tomatoes",
+                  "image": "sundried-tomatoes.jpg"
+                },
+                {
+                  "id": 1009,
+                  "name": "cheddar cheese",
+                  "localizedName": "cheddar cheese",
+                  "image": "cheddar-cheese.png"
+                },
+                {
+                  "id": 16033,
+                  "name": "kidney beans",
+                  "localizedName": "kidney beans",
+                  "image": "kidney-beans.jpg"
+                },
+                {
+                  "id": 21052,
+                  "name": "mixed greens",
+                  "localizedName": "mixed greens",
+                  "image": "mixed-greens-or-mesclun.jpg"
+                },
+                {
+                  "id": 12135,
+                  "name": "nuts",
+                  "localizedName": "nuts",
+                  "image": "nuts-mixed.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404783,
+                  "name": "bowl",
+                  "localizedName": "bowl",
+                  "image": "bowl.jpg"
+                }
+              ]
+            },
+            {
+              "number": 3,
+              "step": "Mix together the olive oil, balsamic vinegar, and hot sauce in a small bowl.",
+              "ingredients": [
+                {
+                  "id": 2069,
+                  "name": "balsamic vinegar",
+                  "localizedName": "balsamic vinegar",
+                  "image": "balsamic-vinegar.jpg"
+                },
+                {
+                  "id": 6168,
+                  "name": "hot sauce",
+                  "localizedName": "hot sauce",
+                  "image": "hot-sauce-or-tabasco.png"
+                },
+                {
+                  "id": 4053,
+                  "name": "olive oil",
+                  "localizedName": "olive oil",
+                  "image": "olive-oil.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404783,
+                  "name": "bowl",
+                  "localizedName": "bowl",
+                  "image": "bowl.jpg"
+                }
+              ]
+            },
+            {
+              "number": 4,
+              "step": "Pour the dressing over the salad.",
+              "ingredients": [],
+              "equipment": []
+            },
+            {
+              "number": 5,
+              "step": "Fast, easy, and healthy-- one of my favorite lunches!",
+              "ingredients": [],
+              "equipment": []
+            }
+          ]
+        }
+      ],
+      "cuisines": [],
+      "diets": [
+        "gluten free",
+        "lacto ovo vegetarian"
+      ],
+      "occasions": [],
+      "dishTypes": [
+        "side dish",
+        "lunch",
+        "main course",
+        "salad",
+        "main dish",
+        "dinner"
+      ],
+      "extendedIngredients": [
+        {
+          "aisle": "Nuts",
+          "amount": 15,
+          "id": 12061,
+          "image": "almonds.jpg",
+          "name": "almonds",
+          "original": "15 grams almonds",
+          "originalName": "almonds",
+          "unit": "grams",
+          "measures": {
+            "metric": {
+              "amount": 15,
+              "unitLong": "grams",
+              "unitShort": "g"
+            },
+            "us": {
+              "amount": 0.529,
+              "unitLong": "ounces",
+              "unitShort": "oz"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Produce",
+          "amount": 0.5,
+          "id": 9037,
+          "image": "avocado.jpg",
+          "name": "avocado",
+          "original": "1/2 avocado",
+          "originalName": "avocado",
+          "unit": "",
+          "measures": {
+            "metric": {
+              "amount": 0.5,
+              "unitLong": "",
+              "unitShort": ""
+            },
+            "us": {
+              "amount": 0.5,
+              "unitLong": "",
+              "unitShort": ""
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Oil, Vinegar, Salad Dressing",
+          "amount": 5,
+          "id": 2069,
+          "image": "balsamic-vinegar.jpg",
+          "name": "balsamic vinegar",
+          "original": "5 ml balsamic vinegar",
+          "originalName": "balsamic vinegar",
+          "unit": "ml",
+          "measures": {
+            "metric": {
+              "amount": 5,
+              "unitLong": "milliliters",
+              "unitShort": "ml"
+            },
+            "us": {
+              "amount": 0.182,
+              "unitLong": "fl. ozs",
+              "unitShort": "fl. oz"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Cheese",
+          "amount": 30,
+          "id": 1009,
+          "image": "cheddar-cheese.png",
+          "name": "cheddar cheese",
+          "original": "1/4 cup (30 grams) cheddar cheese",
+          "originalName": "1/4 cup cheddar cheese",
+          "unit": "grams",
+          "measures": {
+            "metric": {
+              "amount": 30,
+              "unitLong": "grams",
+              "unitShort": "g"
+            },
+            "us": {
+              "amount": 1.058,
+              "unitLong": "ounces",
+              "unitShort": "oz"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Canned and Jarred",
+          "amount": 113,
+          "id": 16033,
+          "image": "kidney-beans.jpg",
+          "name": "kidney beans",
+          "original": "1/2 cup (113 grams) cooked kidney beans",
+          "originalName": "1/2 cup cooked kidney beans",
+          "unit": "grams",
+          "measures": {
+            "metric": {
+              "amount": 113,
+              "unitLong": "grams",
+              "unitShort": "g"
+            },
+            "us": {
+              "amount": 3.986,
+              "unitLong": "ounces",
+              "unitShort": "oz"
+            }
+          },
+          "meta": [
+            "cooked"
+          ]
+        },
+        {
+          "aisle": "Produce",
+          "amount": 150,
+          "id": 21052,
+          "image": "mixed-greens-or-mesclun.jpg",
+          "name": "greens",
+          "original": "150 grams mixed greens",
+          "originalName": "mixed greens",
+          "unit": "grams",
+          "measures": {
+            "metric": {
+              "amount": 150,
+              "unitLong": "grams",
+              "unitShort": "g"
+            },
+            "us": {
+              "amount": 5.291,
+              "unitLong": "ounces",
+              "unitShort": "oz"
+            }
+          },
+          "meta": [
+            "mixed"
+          ]
+        },
+        {
+          "aisle": "Oil, Vinegar, Salad Dressing",
+          "amount": 10,
+          "id": 4053,
+          "image": "olive-oil.jpg",
+          "name": "olive oil",
+          "original": "10 ml olive oil",
+          "originalName": "olive oil",
+          "unit": "ml",
+          "measures": {
+            "metric": {
+              "amount": 10,
+              "unitLong": "milliliters",
+              "unitShort": "ml"
+            },
+            "us": {
+              "amount": 0.309,
+              "unitLong": "fl. ozs",
+              "unitShort": "fl. oz"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Nuts",
+          "amount": 15,
+          "id": 12585,
+          "image": "cashews.jpg",
+          "name": "roasted cashews",
+          "original": "15 grams roasted salted cashews",
+          "originalName": "roasted salted cashews",
+          "unit": "grams",
+          "measures": {
+            "metric": {
+              "amount": 15,
+              "unitLong": "grams",
+              "unitShort": "g"
+            },
+            "us": {
+              "amount": 0.529,
+              "unitLong": "ounces",
+              "unitShort": "oz"
+            }
+          },
+          "meta": [
+            "salted"
+          ]
+        },
+        {
+          "aisle": "Produce",
+          "amount": 2,
+          "id": 11955,
+          "image": "sundried-tomatoes.jpg",
+          "name": "sundried tomatoes",
+          "original": "2-3 sundried tomatoes",
+          "originalName": "sundried tomatoes",
+          "unit": "",
+          "measures": {
+            "metric": {
+              "amount": 2,
+              "unitLong": "",
+              "unitShort": ""
+            },
+            "us": {
+              "amount": 2,
+              "unitLong": "",
+              "unitShort": ""
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Condiments",
+          "amount": 2,
+          "id": 1026168,
+          "image": "hot-sauce-or-tabasco.png",
+          "name": "tabasco",
+          "original": "2 dashes (or more if you like it hot!) Tabasco",
+          "originalName": "(or more if you like it hot!) Tabasco",
+          "unit": "dashes",
+          "measures": {
+            "metric": {
+              "amount": 2,
+              "unitLong": "dashes",
+              "unitShort": "dashes"
+            },
+            "us": {
+              "amount": 2,
+              "unitLong": "dashes",
+              "unitShort": "dashes"
+            }
+          },
+          "meta": [
+            "( if you like it hot!)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 652393,
+      "title": "Moosewood Lentil Soup",
+      "image": "https://spoonacular.com/recipeImages/652393-556x370.jpg",
+      "imageType": "jpg",
+      "servings": 6,
+      "readyInMinutes": 45,
+      "sourceName": "foodista.com",
+      "sourceUrl": "http://www.foodista.com/recipe/TNZ67L5Y/moosewood-lentil-soup",
+      "spoonacularSourceUrl": "https://spoonacular.com/moosewood-lentil-soup-652393",
+      "aggregateLikes": 2,
+      "healthScore": 100,
+      "pricePerServing": 74.36,
+      "cheap": false,
+      "creditsText": "foodista.com",
+      "dairyFree": true,
+      "gaps": "no",
+      "glutenFree": true,
+      "instructions": "<ol><li>Place lentils and water in a soup pot or Dutch oven.</li><li>Bring to a boil, lower heat to a simmer, and let cook until lentils are mushy (about 45 minutes).</li><li>Add more water as needed, until the soup is your favorite consistency.</li><li>Heat oil or melt butter in a medium-sized skillet.</li><li>Add onion, celery, and carrots, and saut over medium heat for about 10 minutes.</li><li>Add garlic, salt, pepper, and herbs of your choice, and saut about 5 minutes longer. Transfer to lentils.</li><li>Stir in wine, if desired, lemon juice and molasses or brown sugar.</li><li>Taste to correct seasonings, then simmer for</li><li>At least 15 minutes longer. Serve hot, with a little vinegar drizzled onto each serving, and a sprinkling of minced</li><li>Scallions or parsley on top, if desired.</li></ol>",
+      "lowFodmap": false,
+      "sustainable": false,
+      "vegan": true,
+      "vegetarian": true,
+      "veryHealthy": true,
+      "veryPopular": false,
+      "weightWatcherSmartPoints": 9,
+      "summary": "Moosewood Lentil Soup might be a good recipe to expand your main course recipe box. This gluten free, dairy free, lacto ovo vegetarian, and vegan recipe serves 6 and costs <b>74 cents per serving</b>. One portion of this dish contains roughly <b>26g of protein</b>, <b>4g of fat</b>, and a total of <b>396 calories</b>. A mixture of pepper, lentils, salt, and a handful of other ingredients are all it takes to make this recipe so yummy. 2 people found this recipe to be flavorful and satisfying. It is perfect for <b>Autumn</b>. From preparation to the plate, this recipe takes roughly <b>45 minutes</b>. It is brought to you by Foodista. All things considered, we decided this recipe <b>deserves a spoonacular score of 95%</b>. This score is spectacular. Similar recipes are <a href=\"https://spoonacular.com/recipes/moosewood-lentil-soup-1319699\">Moosewood Lentil Soup</a>, <a href=\"https://spoonacular.com/recipes/moosewood-mushroom-barley-soup-143909\">Moosewood Mushroom Barley Soup!</a>, and <a href=\"https://spoonacular.com/recipes/hungarian-mushroom-soup-from-the-moosewood-cookbook-143242\">Hungarian Mushroom Soup, from the Moosewood Cookbook</a>.",
+      "analyzedInstructions": [
+        {
+          "name": "",
+          "steps": [
+            {
+              "number": 1,
+              "step": "Place lentils and water in a soup pot or Dutch oven.Bring to a boil, lower heat to a simmer, and let cook until lentils are mushy (about 45 minutes).",
+              "ingredients": [
+                {
+                  "id": 10316069,
+                  "name": "lentils",
+                  "localizedName": "lentils",
+                  "image": "lentils-brown.jpg"
+                },
+                {
+                  "id": 14412,
+                  "name": "water",
+                  "localizedName": "water",
+                  "image": "water.png"
+                },
+                {
+                  "id": 0,
+                  "name": "soup",
+                  "localizedName": "soup",
+                  "image": ""
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404667,
+                  "name": "dutch oven",
+                  "localizedName": "dutch oven",
+                  "image": "dutch-oven.jpg"
+                }
+              ],
+              "length": {
+                "number": 45,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 2,
+              "step": "Add more water as needed, until the soup is your favorite consistency.",
+              "ingredients": [
+                {
+                  "id": 14412,
+                  "name": "water",
+                  "localizedName": "water",
+                  "image": "water.png"
+                },
+                {
+                  "id": 0,
+                  "name": "soup",
+                  "localizedName": "soup",
+                  "image": ""
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 3,
+              "step": "Heat oil or melt butter in a medium-sized skillet.",
+              "ingredients": [
+                {
+                  "id": 1001,
+                  "name": "butter",
+                  "localizedName": "butter",
+                  "image": "butter-sliced.jpg"
+                },
+                {
+                  "id": 4582,
+                  "name": "cooking oil",
+                  "localizedName": "cooking oil",
+                  "image": "vegetable-oil.jpg"
+                }
+              ],
+              "equipment": [
+                {
+                  "id": 404645,
+                  "name": "frying pan",
+                  "localizedName": "frying pan",
+                  "image": "pan.png"
+                }
+              ]
+            },
+            {
+              "number": 4,
+              "step": "Add onion, celery, and carrots, and saut over medium heat for about 10 minutes.",
+              "ingredients": [
+                {
+                  "id": 11124,
+                  "name": "carrot",
+                  "localizedName": "carrot",
+                  "image": "sliced-carrot.png"
+                },
+                {
+                  "id": 11143,
+                  "name": "celery",
+                  "localizedName": "celery",
+                  "image": "celery.jpg"
+                },
+                {
+                  "id": 11282,
+                  "name": "onion",
+                  "localizedName": "onion",
+                  "image": "brown-onion.png"
+                }
+              ],
+              "equipment": [],
+              "length": {
+                "number": 10,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 5,
+              "step": "Add garlic, salt, pepper, and herbs of your choice, and saut about 5 minutes longer.",
+              "ingredients": [
+                {
+                  "id": 11215,
+                  "name": "garlic",
+                  "localizedName": "garlic",
+                  "image": "garlic.png"
+                },
+                {
+                  "id": 1002030,
+                  "name": "pepper",
+                  "localizedName": "pepper",
+                  "image": "pepper.jpg"
+                },
+                {
+                  "id": 1002044,
+                  "name": "herbs",
+                  "localizedName": "herbs",
+                  "image": "mixed-fresh-herbs.jpg"
+                },
+                {
+                  "id": 2047,
+                  "name": "salt",
+                  "localizedName": "salt",
+                  "image": "salt.jpg"
+                }
+              ],
+              "equipment": [],
+              "length": {
+                "number": 5,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 6,
+              "step": "Transfer to lentils.Stir in wine, if desired, lemon juice and molasses or brown sugar.Taste to correct seasonings, then simmer for",
+              "ingredients": [
+                {
+                  "id": 19334,
+                  "name": "brown sugar",
+                  "localizedName": "brown sugar",
+                  "image": "dark-brown-sugar.png"
+                },
+                {
+                  "id": 9152,
+                  "name": "lemon juice",
+                  "localizedName": "lemon juice",
+                  "image": "lemon-juice.jpg"
+                },
+                {
+                  "id": 1042027,
+                  "name": "seasoning",
+                  "localizedName": "seasoning",
+                  "image": "seasoning.png"
+                },
+                {
+                  "id": 19304,
+                  "name": "molasses",
+                  "localizedName": "molasses",
+                  "image": "molasses.jpg"
+                },
+                {
+                  "id": 10316069,
+                  "name": "lentils",
+                  "localizedName": "lentils",
+                  "image": "lentils-brown.jpg"
+                },
+                {
+                  "id": 14084,
+                  "name": "wine",
+                  "localizedName": "wine",
+                  "image": "red-wine.jpg"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 7,
+              "step": "At least 15 minutes longer.",
+              "ingredients": [],
+              "equipment": [],
+              "length": {
+                "number": 15,
+                "unit": "minutes"
+              }
+            },
+            {
+              "number": 8,
+              "step": "Serve hot, with a little vinegar drizzled onto each serving, and a sprinkling of minced",
+              "ingredients": [
+                {
+                  "id": 2053,
+                  "name": "vinegar",
+                  "localizedName": "vinegar",
+                  "image": "vinegar-(white).jpg"
+                }
+              ],
+              "equipment": []
+            },
+            {
+              "number": 9,
+              "step": "Scallions or parsley on top, if desired.",
+              "ingredients": [
+                {
+                  "id": 11291,
+                  "name": "green onions",
+                  "localizedName": "green onions",
+                  "image": "spring-onions.jpg"
+                },
+                {
+                  "id": 11297,
+                  "name": "parsley",
+                  "localizedName": "parsley",
+                  "image": "parsley.jpg"
+                }
+              ],
+              "equipment": []
+            }
+          ]
+        }
+      ],
+      "cuisines": [],
+      "diets": [
+        "gluten free",
+        "dairy free",
+        "lacto ovo vegetarian",
+        "vegan"
+      ],
+      "occasions": [
+        "fall",
+        "winter"
+      ],
+      "dishTypes": [
+        "soup",
+        "lunch",
+        "main course",
+        "main dish",
+        "dinner"
+      ],
+      "extendedIngredients": [
+        {
+          "aisle": "Spices and Seasonings",
+          "amount": 6,
+          "id": 1002030,
+          "image": "pepper.jpg",
+          "name": "pepper",
+          "original": "Freshly-ground black pepper",
+          "originalName": "Freshly-ground black pepper",
+          "unit": "servings",
+          "measures": {
+            "metric": {
+              "amount": 6,
+              "unitLong": "servings",
+              "unitShort": "servings"
+            },
+            "us": {
+              "amount": 6,
+              "unitLong": "servings",
+              "unitShort": "servings"
+            }
+          },
+          "meta": [
+            "black",
+            "freshly-ground"
+          ]
+        },
+        {
+          "aisle": "Baking",
+          "amount": 1,
+          "id": 19334,
+          "image": "light-brown-sugar.jpg",
+          "name": "brown sugar",
+          "original": "1 tablespoon molasses or brown sugar",
+          "originalName": "molasses or brown sugar",
+          "unit": "tablespoon",
+          "measures": {
+            "metric": {
+              "amount": 1,
+              "unitLong": "Tbsp",
+              "unitShort": "Tbsp"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "Tbsp",
+              "unitShort": "Tbsp"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Baking",
+          "amount": 1,
+          "id": 19334,
+          "image": "dark-brown-sugar.png",
+          "name": "brown sugar",
+          "original": "1 tablespoon molasses or brown sugar",
+          "originalName": "molasses or brown sugar",
+          "unit": "tablespoon",
+          "measures": {
+            "metric": {
+              "amount": 1,
+              "unitLong": "Tbsp",
+              "unitShort": "Tbsp"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "Tbsp",
+              "unitShort": "Tbsp"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Produce",
+          "amount": 1,
+          "id": 11124,
+          "image": "sliced-carrot.png",
+          "name": "carrots",
+          "original": "1 cup chopped carrots",
+          "originalName": "chopped carrots",
+          "unit": "cup",
+          "measures": {
+            "metric": {
+              "amount": 128,
+              "unitLong": "grams",
+              "unitShort": "g"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "cup",
+              "unitShort": "cup"
+            }
+          },
+          "meta": [
+            "chopped"
+          ]
+        },
+        {
+          "aisle": "Produce",
+          "amount": 1,
+          "id": 11143,
+          "image": "celery.jpg",
+          "name": "celery",
+          "original": "1 cup minced celery",
+          "originalName": "minced celery",
+          "unit": "cup",
+          "measures": {
+            "metric": {
+              "amount": 101,
+              "unitLong": "grams",
+              "unitShort": "g"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "cup",
+              "unitShort": "cup"
+            }
+          },
+          "meta": [
+            "minced"
+          ]
+        },
+        {
+          "aisle": "Spices and Seasonings",
+          "amount": 3,
+          "id": 1022042,
+          "image": "dried-herbs.png",
+          "name": "herbs",
+          "original": "3 pinches of dried herbs (thyme, oregano, or basil)",
+          "originalName": "dried herbs (thyme, oregano, or basil)",
+          "unit": "pinches",
+          "measures": {
+            "metric": {
+              "amount": 3,
+              "unitLong": "pinches",
+              "unitShort": "pinches"
+            },
+            "us": {
+              "amount": 3,
+              "unitLong": "pinches",
+              "unitShort": "pinches"
+            }
+          },
+          "meta": [
+            "dried",
+            "(thyme, oregano, or basil)"
+          ]
+        },
+        {
+          "aisle": "Produce",
+          "amount": 1,
+          "id": 11215,
+          "image": "garlic.png",
+          "name": "garlic",
+          "original": "1 clove garlic, chopped,",
+          "originalName": "garlic, chopped",
+          "unit": "clove",
+          "measures": {
+            "metric": {
+              "amount": 1,
+              "unitLong": "clove",
+              "unitShort": "clove"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "clove",
+              "unitShort": "clove"
+            }
+          },
+          "meta": [
+            "chopped"
+          ]
+        },
+        {
+          "aisle": "Oil, Vinegar, Salad Dressing",
+          "amount": 1,
+          "id": 4517,
+          "image": "vegetable-oil.jpg",
+          "name": "grapeseed oil",
+          "original": "1 tablespoon grapeseed oil or butter",
+          "originalName": "grapeseed oil or butter",
+          "unit": "tablespoon",
+          "measures": {
+            "metric": {
+              "amount": 1,
+              "unitLong": "Tbsp",
+              "unitShort": "Tbsp"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "Tbsp",
+              "unitShort": "Tbsp"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Produce",
+          "amount": 2,
+          "id": 9152,
+          "image": "lemon-juice.jpg",
+          "name": "lemon juice",
+          "original": "2 tablespoons fresh lemon juice",
+          "originalName": "fresh lemon juice",
+          "unit": "tablespoons",
+          "measures": {
+            "metric": {
+              "amount": 2,
+              "unitLong": "Tbsps",
+              "unitShort": "Tbsps"
+            },
+            "us": {
+              "amount": 2,
+              "unitLong": "Tbsps",
+              "unitShort": "Tbsps"
+            }
+          },
+          "meta": [
+            "fresh"
+          ]
+        },
+        {
+          "aisle": "Pasta and Rice",
+          "amount": 3,
+          "id": 10316069,
+          "image": "lentils-brown.jpg",
+          "name": "lentils",
+          "original": "3 cups lentils, any type",
+          "originalName": "lentils, any type",
+          "unit": "cups",
+          "measures": {
+            "metric": {
+              "amount": 576,
+              "unitLong": "grams",
+              "unitShort": "g"
+            },
+            "us": {
+              "amount": 3,
+              "unitLong": "cups",
+              "unitShort": "cups"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Produce",
+          "amount": 1,
+          "id": 11282,
+          "image": "brown-onion.png",
+          "name": "onion",
+          "original": "1 large onion, finely chopped",
+          "originalName": "onion, finely chopped",
+          "unit": "large",
+          "measures": {
+            "metric": {
+              "amount": 1,
+              "unitLong": "large",
+              "unitShort": "large"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "large",
+              "unitShort": "large"
+            }
+          },
+          "meta": [
+            "finely chopped"
+          ]
+        },
+        {
+          "aisle": "Oil, Vinegar, Salad Dressing",
+          "amount": 6,
+          "id": 1022068,
+          "image": "red-wine-vinegar.jpg",
+          "name": "red wine vinegar",
+          "original": "Red wine vinegar for the top",
+          "originalName": "Red wine vinegar for the top",
+          "unit": "servings",
+          "measures": {
+            "metric": {
+              "amount": 6,
+              "unitLong": "servings",
+              "unitShort": "servings"
+            },
+            "us": {
+              "amount": 6,
+              "unitLong": "servings",
+              "unitShort": "servings"
+            }
+          },
+          "meta": [
+            "for the top"
+          ]
+        },
+        {
+          "aisle": "Spices and Seasonings",
+          "amount": 0.5,
+          "id": 2047,
+          "image": "salt.jpg",
+          "name": "salt",
+          "original": "1/2 teaspoon salt",
+          "originalName": "salt",
+          "unit": "teaspoon",
+          "measures": {
+            "metric": {
+              "amount": 0.5,
+              "unitLong": "teaspoons",
+              "unitShort": "tsps"
+            },
+            "us": {
+              "amount": 0.5,
+              "unitLong": "teaspoons",
+              "unitShort": "tsps"
+            }
+          },
+          "meta": []
+        },
+        {
+          "aisle": "Produce",
+          "amount": 1,
+          "id": 11529,
+          "image": "tomato.png",
+          "name": "tomatoes",
+          "original": "medium ripe tomatoes, chopped",
+          "originalName": "ripe tomatoes, chopped",
+          "unit": "medium",
+          "measures": {
+            "metric": {
+              "amount": 1,
+              "unitLong": "medium",
+              "unitShort": "medium"
+            },
+            "us": {
+              "amount": 1,
+              "unitLong": "medium",
+              "unitShort": "medium"
+            }
+          },
+          "meta": [
+            "ripe",
+            "chopped"
+          ]
+        },
+        {
+          "aisle": "Beverages",
+          "amount": 0.25,
+          "id": 14412,
+          "image": "water.png",
+          "name": "water",
+          "original": "1/4 cup Boiling water",
+          "originalName": "Boiling water",
+          "unit": "cup",
+          "measures": {
+            "metric": {
+              "amount": 59.147,
+              "unitLong": "milliliters",
+              "unitShort": "ml"
+            },
+            "us": {
+              "amount": 0.25,
+              "unitLong": "cups",
+              "unitShort": "cups"
+            }
+          },
+          "meta": [
+            "boiling"
+          ]
+        }
+      ]
+    }
+  ]
+}

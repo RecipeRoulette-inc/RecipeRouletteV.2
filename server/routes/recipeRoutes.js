@@ -4,6 +4,8 @@ const Router = express.Router();
 const recipeController = require('../controllers/recipeController')
 const authenticationController = require('../controllers/authenticationController')
 
+// app.use()
+// GET POST PATH 
 
 Router
   .route('/randomRecipe')
@@ -44,6 +46,11 @@ Router
     return res.status(200).send('Hi Pal')
   }
 )
+
+Router.route('/test').get((req, res) => {
+  console.log('test passed')
+  res.status(200).json('You shall pass')
+})
 
 
 

@@ -10,15 +10,12 @@ const RecipeCard = ({ recipe }) => {
   const {
     title,
     image, 
-    readyInMinutes: time,
-    sourceName, 
-    sourceUrl, 
-    spoonacularSourceUrl,
+    readyInMinutes,
     dairyFree,
     glutenFree,
     vegan,
     vegetarian,
-    cheap
+    diets
   } = recipe[0]; 
 
   const badges = [{type: 'dairyFree', value: dairyFree}, {type: 'glutenFree', value: glutenFree}, {type: 'vegan', value: vegan}, {type: 'vegetarian', value: vegetarian}]; 

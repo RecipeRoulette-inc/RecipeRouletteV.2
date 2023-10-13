@@ -42,6 +42,10 @@ let opts = {
 
 const recipeController = {}; 
 
+recipeController.getRecipeInformationBulk = (req, res, next) => {
+  console.log('getRandomRecipe Controller'); 
+};
+
 recipeController.getRandomRecipe = (req, res, next) => {
   console.log('-------> getRandomRecipe Controller');
 
