@@ -29,7 +29,7 @@ return newData
 }
 
 let opts = {
-  'query': 'beef',
+  'query': 'chicken',
   'cuisine': 'indian',
   'instructionsRequired': true, // Boolean | Whether the recipes must have instructions.
   'addRecipeNutrition': true, // Boolean | If set to true, you get more information about the recipes returned.
@@ -37,7 +37,7 @@ let opts = {
   'addRecipeInformation': true, 
   'limitLicense': true, // Boolean | Whether the recipes should have an open license that allows display with proper attribution.
   'intolerances': 'gluten', // String | A comma-separated list of intolerances. All recipes returned must not contain ingredients that are not suitable for people with the intolerances entered. See a full list of supported intolerances.
-  'number': 5 // Number | The maximum number of items to return (between 1 and 100). Defaults to 10.
+  'number': 100 // Number | The maximum number of items to return (between 1 and 100). Defaults to 10.
 };
 
 const recipeController = {}; 
