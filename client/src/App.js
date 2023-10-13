@@ -360,8 +360,8 @@ const App = () => {
   return (
     <Screen src={img}>
       <GlobalStyle />
-      <HomePage/>
-      {/* <LoginPage/> */}
+      {/* <HomePage/> */}
+      <LoginPage/>
 
     </Screen>
   )

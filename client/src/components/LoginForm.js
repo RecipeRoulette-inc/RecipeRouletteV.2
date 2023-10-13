@@ -83,7 +83,7 @@ text-align: center;
 line-height: 1.3;
 font-size: 30px;
 font-weight: 700;
-text-shadow: 2px 2px 1px #3d3d3d;
+text-shadow: 2px 2px 1px white;
 `;
 
 
