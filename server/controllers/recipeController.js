@@ -28,6 +28,7 @@ for (const recipe of data){
 return newData
 }
 
+
 let opts = {
   'query': 'chicken',
   'cuisine': 'indian',
