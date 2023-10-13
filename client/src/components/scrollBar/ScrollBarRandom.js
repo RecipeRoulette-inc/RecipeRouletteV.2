@@ -43,10 +43,11 @@ const ScrollBarRandom = () => {
     <Wrapper>
 
       <div>
-        <h1>Random Recipies: </h1>
+        <h1>Random:</h1>
       </div>
       
       {cardsRow}
+
     </Wrapper>
   );
 };

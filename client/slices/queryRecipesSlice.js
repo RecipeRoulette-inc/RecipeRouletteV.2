@@ -1,19 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  queryRecipes: []
+  queryStatus: false,
+  queryRecipes: [],
+  queryRecipesUnder30State: [],
+  queryRecipesGluttenFreeState: [],
 };
 
 export const queryRecipesSlice = createSlice({
   name: 'queryRecipes',
   initialState,
   reducers: {
-    populate: (state, action) => {
+    populateMain: (state, action) => {
       state.queryRecipes.push(action.payload);
     },
-    clear: (state) => {
+    clearMain: (state) => {
       state.queryRecipes = [];
     },
+    queryMade: (state) => {
+      state.queryStatus = true;
+    },
+    queryEnded: (state) => {
+      state.queryStatus = false;
+    }
   },
 });
 

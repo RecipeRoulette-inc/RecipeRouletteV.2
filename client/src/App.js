@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { createBrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
@@ -8,6 +8,7 @@ import RecipeCard from './components/recipeCard/index'
 import FlipCard from './components/flipCard/FlipCard';
 import AllergyPage from './pages/AllergySelection';
 import Navbar from './components/Navbar/Navbar';
+import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -40,7 +41,9 @@ const App = () => {
       <Navbar />
       <Screen >
         <Routes>
-          <Route path='/home' element={<HomePage/>} />
+          <Route path='/home' element={<HomePage/>} >
+            <Route path=':id' element={<SingleRecipePage/>}> </Route>
+          </Route>
           <Route path='/' element={<LoginPage />} />
           <Route path='/signup' element={<SignupPage />} />
         </Routes>

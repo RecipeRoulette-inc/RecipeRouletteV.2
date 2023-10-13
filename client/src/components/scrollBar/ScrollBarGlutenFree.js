@@ -8,35 +8,35 @@ import { populate, clear } from '../../../slices/queryRecipesSlice'
 
 
 const ScrollBarUnder30 = () => {
-  const { queryRecipes, queryRecipesUnder30State,  queryStatus } = useSelector((state) => state.queryRecipes);
-  const queryRecipesUnder30 = [];
+  const { queryRecipes,  queryStatus } = useSelector((state) => state.queryRecipes);
+  const queryRecipesGluttenFree = [];
   const dispatch = useDispatch();
 
   // queryStatus must change from searchBar and must get data from searchBar request
   useEffect(() => {
     for (let i = 0; i < queryRecipes.length; i++) {
-        if (queryRecipes[i].readyInMinutes < 30) {
-            queryRecipesUnder30.push(queryRecipes[i]);
+        if (queryRecipes[i].gluttenFree === true) {
+            queryRecipesGluttenFree.push(queryRecipes[i]);
         }
     }
 
-    dispatch(clear());
-    dispatch(populate(queryRecipesUnder30));
+    dispatch(clearMain());
+    dispatch(populateMain(queryRecipesGluttenFree));
 
     const cardsRow = [];
-    for (let i = 0; i < queryRecipesUnder30.length; i++) {
-      cardsRow.push(<FlipCard id={i} key={i} recipeInfo={queryRecipesUnder30[i]}/>)
+    for (let i = 0; i < queryRecipesGluttenFree.length; i++) {
+      cardsRow.push(<FlipCard id={i} key={i} recipeInfo={queryRecipesGluttenFree[i]}/>)
     }
 
     return (
       <Wrapper>
   
         <div>
-          <h1>Under 30min:</h1>
+          <h1>Glutten Free:</h1>
         </div>
         
         {cardsRow}
-
+        
       </Wrapper>
     );
 

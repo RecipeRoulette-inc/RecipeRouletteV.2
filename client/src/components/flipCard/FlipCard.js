@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { save } from '../../../slices/flipCardSlice'
 import { saveRecipe, removeRecipe } from '../../../slices/savedRecipesSlice'
 import { Link } from 'react-router-dom';
+import { getRecipeInformationBulk } from '../singleRecipePage/SingleRecipePage';
 
 const FlipCard = ({ recipeInfo }) => {
   const { savedRecipes } = useSelector((state) => state.savedRecipes);
@@ -154,6 +155,10 @@ const FlipCard = ({ recipeInfo }) => {
       .catch((err) => {throw new Error(err);});
   }
 
+  function handlePassID() {
+
+  }
+
   return (
     <Wrapper>
 
@@ -167,7 +172,10 @@ const FlipCard = ({ recipeInfo }) => {
             <h1>Ready In: {readyInMinutes} minutes</h1>
             <h2>Servings: {servings}</h2>
             <br></br>
-            <h2><Link to='NEED PATH HERE'><button>More Info</button></Link></h2>
+
+            <button onClick={getRecipeInformationBulk(id)}>LOADER TEST</button>
+            <Link to={'/recipes/' + id} ></Link>
+            {/* <h2><Link to='NEED PATH HERE'><button oncli>More Info</button></Link></h2> */}
             
           </center>
         </Back>
