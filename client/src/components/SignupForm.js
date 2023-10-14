@@ -11,7 +11,7 @@ const SignupForm = () => {
 
   return (
     <WrapForm>
-      <Header>Recipe Roulette</Header>
+      <Header>Sign Up</Header>
     <Form onSubmit={handleSubmit((data)=> onSignup(data))}>
       <Input
         {...register('username', {required: 'This is required'})}
@@ -20,7 +20,8 @@ const SignupForm = () => {
     
       <Input
         {...register('password', {required: 'This is required'})}
-        placeholder='Password'
+          placeholder='Password'
+          type='password'
         />
         
       <Submit type='submit' >Sign up</Submit>

@@ -67,7 +67,6 @@ const LoginForm = () => {
         
       <Submit type='submit' > Log in</Submit>
       </Form>
-      <p> Don't have an account? <Link to={'/signup'}>Sign up</Link> </p>
     </WrapForm>
   )
 }; 

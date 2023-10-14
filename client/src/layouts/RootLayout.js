@@ -88,10 +88,16 @@ const RootLayout = () => {
             token && (<button type='button' onClick={onLogout}>Sign Out</button>)
           }
           <ButtonBox>
-              <LoginLink to='/login'>LogIn</LoginLink>
+            {!token && location.pathname =='/login' || location.pathname =='/signup'  ? (
+              <>
+                <LoginLink to='/login'>LogIn</LoginLink>
+                <SignUpLink to='/signup'>SignUp</SignUpLink>
+              </>
+            ) : (
               <LogoutLink to='/login'>LogOut</LogoutLink>
-              <SignUpLink to='/signup'>SignUp</SignUpLink>
+            )}
           </ButtonBox>
+
             </Nav>
           </Header>
 

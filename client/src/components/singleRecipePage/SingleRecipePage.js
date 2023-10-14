@@ -19,10 +19,12 @@ function SingleRecipePage() {
             <h2>Ready In: {recipe.readyInMinutes} minutes</h2>
 
             <h2>Servings: {recipe.servings}</h2>
-    
-            <ul>Diet: {recipe.diets.map((e)=> {
+        
+            {recipe.diets.length !== 0 && (
+            <ul>{recipe.diets.map((e)=> {
                 return (<li>{e}</li>)
             })}</ul>
+            )}
             
             <br></br>
 
