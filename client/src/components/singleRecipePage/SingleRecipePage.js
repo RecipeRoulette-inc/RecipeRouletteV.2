@@ -8,12 +8,10 @@ function SingleRecipePage() {
     const recipe = loaderData[0];
 
     const ingredients = [];
-
     for (let i = 0; i < recipe.extendedIngredients.length; i++) {
         let { name, amount, unit } = recipe.extendedIngredients[i];
         ingredients.push({ name, amount, unit});
     }
-    console.log('--------> ingredients: ', ingredients);
 
     let filteredInstructions;
     filteredInstructions = recipe.instructions.replaceAll('<ol>', '');
