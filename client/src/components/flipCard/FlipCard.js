@@ -171,8 +171,7 @@ const FlipCard = ({ recipeInfo }) => {
           <center>
             <h1>Ready In: {readyInMinutes} minutes</h1>
             <h2>Servings: {servings}</h2>
-            <br></br>
-
+    
             {/* <button onClick={getRecipeInformationBulk(id)}>LOADER TEST</button> */}
             <Link to={'/' + id} >SEND ID</Link>
             {/* <h2><Link to='NEED PATH HERE'><button oncli>More Info</button></Link></h2> */}
@@ -181,7 +180,7 @@ const FlipCard = ({ recipeInfo }) => {
         </Back>
 
       </Card>
-      <br></br>
+
 
       <FrontHeader>
         <h3>{title}</h3>
@@ -195,13 +194,13 @@ const FlipCard = ({ recipeInfo }) => {
 // height before: 500px
 const Wrapper = styled.div`
 width: 320px; 
-height: 360px; 
-perspective: 800px; 
+height: 380px; 
+perspective: 2000px; 
 `;
 
 // adjusted height and moved Card to 'top' of the wrapper to make room for save button and info
 const Card = styled.div`
-height: 300px;
+height: 270px;
 width: 100%; 
 position:relative; 
 transition: transform 1500ms;

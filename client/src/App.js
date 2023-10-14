@@ -18,25 +18,27 @@ import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
 // navbar
 import Navbar from './components/Navbar/Navbar';
 
-
-const Router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path='/' element={<RootLayout />}>
-      <Route index element={<HomePage />} 
-
-        loader={bulkRecipesLoader}
-      />
-      <Route path=':id'
-        element={<SingleRecipePage />}
-        loader={getRecipeInformationBulk}
-        />
-       <Route path='login' element={<LoginPage />} />
-       <Route path='signup' element={<SignupPage />} />
-     </Route>
-  )
-);
-
 const App = () => {
+  const sayHi = () => {
+    console.log('hello!')
+  }
+  const Router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path='/' element={<RootLayout />}>
+        <Route index element={<HomePage />} 
+        />
+        <Route path='home' element={<HomePage />}
+        loader={bulkRecipesLoader}
+        />
+        <Route path=':id'
+          element={<SingleRecipePage />}
+          loader={getRecipeInformationBulk}
+          />
+        <Route path='login' element={<LoginPage handleLogin={sayHi} />} />
+         <Route path='signup' element={<SignupPage />} />
+       </Route>
+    )
+  );
   return (<RouterProvider router={ Router } />)
 }
 

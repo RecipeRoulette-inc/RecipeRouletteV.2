@@ -60,12 +60,12 @@ const ScrollBarUnder30 = () => {
    }
 
    return (
-    <Wrapper>
-      <Header>
-        <h1>Under 30min:</h1>
+    <Wrapper className='ScrollBar__Container'>
+      <Header className='Header_Under30'>
+        <Title>Under 30min:</Title>
       </Header> 
       
-      <CardsContainer>
+      <CardsContainer className='CardsUnder30_Container'>
         {cardsRowUnder30}
       </CardsContainer>
      </Wrapper>
@@ -76,7 +76,7 @@ const ScrollBarUnder30 = () => {
 const Wrapper = styled.div`
 display: flex;
 flex-direction: column;
-background-color: rgb(255,255,255, .95);
+background-color: rgb(255,255,255);
 border-radius: 1rem; 
 `;
 
@@ -84,6 +84,11 @@ const Header = styled.div`
 display: flex;
 flex-direction: row;
 margin: 10px;
+`;
+
+const Title = styled.div`
+padding: 0 0; 
+margin: 5px 5px; 
 `;
 
 const CardsContainer = styled.div`
