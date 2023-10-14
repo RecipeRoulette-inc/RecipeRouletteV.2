@@ -12,7 +12,7 @@ const SignupForm = () => {
   return (
     <WrapForm>
       <Header>Sign Up</Header>
-    <Form onSubmit={handleSubmit((data)=> onSignup(data))}>
+    <Form onSubmit={handleSubmit((data)=> Signup(data))}>
       <Input
         {...register('username', {required: 'This is required'})}
         placeholder='Username'
@@ -43,8 +43,8 @@ box-shadow: 10px 5px 5px black;
 padding: 20px 20px; 
 background-color: #ee6352;
 position: relative;
-top: 37px;
-left: 190px;
+top: 0px;
+left: 152px;
 `; 
 
 const Header = styled.div`
