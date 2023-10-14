@@ -7,6 +7,8 @@ function SingleRecipePage() {
     const loaderData = useLoaderData();
     const recipe = loaderData[0];
     
+    console.log(JSON.stringify(recipe, null, 2));
+    console.log(JSON.stringify(recipe.analyzedInstructions, null, 2));
 
     return (
         <Wrapper>
