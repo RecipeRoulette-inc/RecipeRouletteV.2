@@ -30,25 +30,41 @@ const SignupForm = () => {
 }; 
 
 const WrapForm = styled.div`
-width: 300px; 
-height: 300px;
-border: 1px solid black;
-border-radius: 5px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+text-align: center;
+width: 400px; 
+height: 400px;
+border: 15px solid #2C1A1D;
+border-radius: 200px;
+box-shadow: 10px 5px 5px black;
 padding: 20px 20px; 
+background-color: #ee6352;
+position: relative;
+top: 37px;
+left: 190px;
 `; 
 
 const Header = styled.div`
 display: flex; 
 align-items: center;
 justify-content: center;
-padding: 20px 20px;
+padding: 15px 10px;
+text-align: center;
+line-height: 1.3;
+font-size: 30px;
+font-weight: 700;
+text-shadow: 2px 2px 1px white;
 `;
 
 
 const Form = styled.form`
+justify-content: center;
 display: flex; 
 flex-direction: column; 
-gap: 10px
+gap: 30px
+padding: 30px 30px;
 `;
 
 const Input = styled.input`
@@ -64,13 +80,12 @@ color: white;
 padding: 7px 7px;
 border: none;
 border-radius: 5px;
-background: grey;
+background: #363636;
 cursor: pointer; 
 
 &:hover {
   background: black;
 }
-
 `;
 
 export default SignupForm; 

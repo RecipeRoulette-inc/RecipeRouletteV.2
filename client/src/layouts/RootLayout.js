@@ -88,8 +88,9 @@ const RootLayout = () => {
             token && (<button type='button' onClick={onLogout}>Sign Out</button>)
           }
           <ButtonBox>
-              <LoginLink to='/login'>Login</LoginLink>
-              <SignUpLink to='/signup'>Signup</SignUpLink>
+              <LoginLink to='/login'>LogIn</LoginLink>
+              <LogoutLink to='/login'>LogOut</LogoutLink>
+              <SignUpLink to='/signup'>SignUp</SignUpLink>
           </ButtonBox>
             </Nav>
           </Header>
@@ -158,6 +159,17 @@ padding: 30px ;
 `;
 
 const LoginLink = styled(NavLink)`
+display: flex;
+justify-content: center;
+background-color: black;
+color: white;
+height: 60px;
+width: 80px;
+border-radius: 1rem;
+padding: 16px;
+backgroundImage : ${rouletteWheel};
+`
+const LogoutLink = styled(NavLink)`
 display: flex;
 justify-content: center;
 background-color: black;

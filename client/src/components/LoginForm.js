@@ -130,7 +130,6 @@ cursor: pointer;
 &:hover {
   background: black;
 }
-
 `;
 
 
