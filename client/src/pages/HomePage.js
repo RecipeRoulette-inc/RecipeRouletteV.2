@@ -8,6 +8,7 @@ import ScrollBarRandom from '../components/scrollBar/ScrollBarRandom';
 import ScrollBarUnder30 from '../components/scrollBar/ScrollBarUnder30';
 import ScrollBarVegan from '../components/scrollBar/ScrollBarVegan';
 import ScrollBarGlutenFree from '../components/scrollBar/ScrollBarGlutenFree';
+import DailyRecipe from '../components/dailyRecipe/DailyRecipe';
   
 const HomePage = () => {
 
@@ -35,11 +36,9 @@ const HomePage = () => {
       })
   }; 
 
-
   return (
     <Wrapper>
-      <DailyRecipe>
-      </DailyRecipe>
+      <DailyRecipe/>
       <ScrollBarRandom />
       <ScrollBarUnder30 />
       <ScrollBarVegan />
@@ -55,20 +54,27 @@ export const bulkRecipesLoader = async () => {
   console.log('Response Received')
   const recipe = await res.json()
   console.log(recipe);
-  return [recipe];
+  return recipe;
 }
 
 const Wrapper = styled.div`
+display: flex;
+flex-direction: column; 
+gap: 1rem;
 `;
 
-const DailyRecipe = styled.div`
-height: 400px; 
-width: 100%;
-border: 1px solid black;
-background:red;
+// const DailyRecipe = styled.div`
+// height: 400px; 
+// width: 100%;
+// border: 1px solid black;
+// background:red;
+// `;
+
+const DisplayContainer = styled.div`
+display: flex;
+flex-direction: row;
+width: 70vw;
+background-color: #FEFDF5;
 `;
-
-
-
 
 export default HomePage;

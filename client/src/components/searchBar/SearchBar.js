@@ -159,6 +159,7 @@ const SearchBar = ({onSubmit}) => {
 };
 
 const Wrapper = styled.form`
+
 background:white; 
 width: 70vw;
 padding: 1em;
@@ -166,16 +167,17 @@ box-shadow: 0 0 3em rgba(0,0,0,.15);
 position: relative;
 border-style: solid;
 border-radius: 25px;
+z-index: 2000;
 // box-shadow: 3px 3px 2px black;
 `; 
 
 const DoubleWrapped = styled.div`
 position: fixed;
-top: 13vh;
+top: 10vh;
 width: 100%;
 padding: 2em;
 width: calc(70vw - 40px);
-z-index: 100;
+z-index: 1000;
 background: white;
 border-radius: 3px; 
 border: 1px solid black;
@@ -233,6 +235,8 @@ overflow: hidden;
 `;
 
 const SearchButton = styled.button`
+  // display: flex;
+  // align-items: center;
   font-size: 1.5rem;
   cursor: pointer; 
   border: 0; 

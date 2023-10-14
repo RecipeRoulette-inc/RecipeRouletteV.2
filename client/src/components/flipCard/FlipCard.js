@@ -164,7 +164,6 @@ const FlipCard = ({ recipeInfo }) => {
     <Wrapper>
 
       <Card>
-
         <Front bg={image}>
         </Front>
 
@@ -172,8 +171,7 @@ const FlipCard = ({ recipeInfo }) => {
           <center>
             <h1>Ready In: {readyInMinutes} minutes</h1>
             <h2>Servings: {servings}</h2>
-            <br></br>
-
+    
             {/* <button onClick={getRecipeInformationBulk(id)}>LOADER TEST</button> */}
             <Link to={'/' + id} >SEND ID</Link>
             {/* <h2><Link to='NEED PATH HERE'><button oncli>More Info</button></Link></h2> */}
@@ -182,13 +180,11 @@ const FlipCard = ({ recipeInfo }) => {
         </Back>
 
       </Card>
-      <br></br>
 
-
-      <button onClick={(e)=>handleSaveRecipe(e)}>SAVE</button>
 
       <FrontHeader>
         <h3>{title}</h3>
+        <SaveButton onClick={(e)=>handleSaveRecipe(e)}>SAVE</SaveButton>
       </FrontHeader>
 
     </Wrapper>
@@ -198,13 +194,13 @@ const FlipCard = ({ recipeInfo }) => {
 // height before: 500px
 const Wrapper = styled.div`
 width: 320px; 
-height: 360px; 
-perspective: 800px; 
+height: 380px; 
+perspective: 2000px; 
 `;
 
 // adjusted height and moved Card to 'top' of the wrapper to make room for save button and info
 const Card = styled.div`
-height: 300px;
+height: 270px;
 width: 100%; 
 position:relative; 
 transition: transform 1500ms;
@@ -240,7 +236,7 @@ box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
 position:absolute;
 backface-visibility:hidden;
 transform: rotateY(180deg);
-background-color: grey;
+background-color: #EE6352;
 display:flex;
 flex-direction: column;
 justify-content: center; 
@@ -248,9 +244,26 @@ align-items:center;
 gap: 5rem;
 `;
 
+
+//background-color: rgb(252,252,255);
 const FrontHeader = styled.div`
-text-shadow: 1px 1px #F3F3F3
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-shadow: 1px 1px #F3F3F3;
+h3 {
+  text-align: center;
+}
 `;
+
+const SaveButton = styled.button`
+background: black;
+color: white;
+border-radius: 1rem;
+width: 60px;
+padding: 4px;
+`
 
 
 export default FlipCard; 

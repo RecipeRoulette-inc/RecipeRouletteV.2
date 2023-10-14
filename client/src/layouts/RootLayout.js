@@ -6,6 +6,7 @@ import { queryMade, populateMain, clearMain } from '../../slices/queryRecipesSli
 import SearchBar from '../components/searchBar/SearchBar';
 // import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/bw images/fast-food-doodles-hand-drawn-colorful-vector-symbols-objects_217204-778.jpg";
 import img from "../public/mainBackground.jpg"
+import rouletteWheel from "../public/rouletteWheel.svg"
 
 //add fonts here
 const GlobalStyle = createGlobalStyle`
@@ -60,16 +61,21 @@ const RootLayout = () => {
   }
 
   return (
+    
     <Layout src={img}>
       <GlobalStyle/>
-      <Header>
+
+          <Header>
         <Nav>
-          <Logo>Recipe Roulette</Logo>
+              <LogoLink  to='/'>Recipe Roulette</LogoLink>
           <SearchBar onSubmit={onSubmit} />
-          <NavLink to='/login'>Login</NavLink>
-          <NavLink to='/signup'>Signup</NavLink>
-        </Nav>
-      </Header>
+          <ButtonBox>
+              <LoginLink to='/login'>Login</LoginLink>
+              <SignUpLink to='/signup'>Signup</SignUpLink>
+          </ButtonBox>
+            </Nav>
+          </Header>
+
       <Main>
         <Outlet/>
       </Main>
@@ -90,6 +96,8 @@ padding: 115px 50px;
 `;
 
 const Header = styled.header`
+position:fixed;
+top:0; 
 display: flex;
 justify-content: center;
 align-text: center;
@@ -97,14 +105,19 @@ margin: 0 auto;
 background: #ee6352;
 border-radius: 15px;
 padding: 15px 15px;
+z-index:1000;
 `;
 
-const Logo = styled.h1`
-  // background: red;
+const LogoLink = styled(NavLink)`
   display: flex;
-  // align-text: center;
   justify-content: center;
-  font-size: 30px;
+  background-color: black;
+  color: white;
+  align-text: center;
+  align-items: center;
+  font-size: 30px;  
+  border-radius: 1rem;
+  padding: 16px;
 `;
 
 const Nav = styled.nav`
@@ -113,8 +126,6 @@ gap: 16px;
 justify-content: end
 max-width: 1200px;
 margin: 0 auto;
-
-
 `;
 
 const Main = styled.main`
@@ -126,5 +137,35 @@ min-width: 600px;
 margin: 40px auto; 
 padding: 30px ;
 `;
+
+const LoginLink = styled(NavLink)`
+display: flex;
+justify-content: center;
+background-color: black;
+color: white;
+height: 60px;
+width: 80px;
+border-radius: 1rem;
+padding: 16px;
+backgroundImage : ${rouletteWheel};
+`
+const SignUpLink = styled(NavLink)`
+display: flex;
+justify-content: center;
+aliign-items: center;
+background-color: black;
+color: white;
+height: 60px;
+width: 80px;
+border-radius: 1rem;
+padding: 16px;
+`
+
+
+const ButtonBox = styled.div`
+display: flex;
+flex-direction: column;
+gap: 5px;
+`
 
 export default RootLayout;
