@@ -1,14 +1,38 @@
 import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
-
+// import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/final_image.jpeg";
+import img from "../public/plateForkKnife.jpeg"
 const LoginPage = () => {
+
   return (
-    <WrapPage>
+    <WrapPage src={img}>
       <LoginForm />
     </WrapPage>
   );
 }
 
-const WrapPage = styled.div``;
+//fork and knife image
+const WrapPage = styled.div`
+background-image: ${({src}) => `url(${src})`};
+// background-color: blue;
+background-size: cover;
+// max-width: 100vw;
+// min-width: 50vw;
+// max-height: 100vh;
+// min-height: 50vh;
+display: flex;
+align-self: center 
+position: relative;
+align-items: center;
+// justify-content: center;
+height: 100vh; 
+width: 50vw; 
+border: black;
+border-style: solid;
+border-width: 10px 10px 10px;
+// overflow: scroll; 
+border-radius: 35px;
+// padding 30px 30px: 
+`;
 
 export default LoginPage; 
