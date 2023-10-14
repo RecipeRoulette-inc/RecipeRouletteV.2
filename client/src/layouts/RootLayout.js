@@ -2,11 +2,17 @@ import styled, {createGlobalStyle} from 'styled-components';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { queryMade, populateMain, clearMain } from '../../slices/queryRecipesSlice';
-
+import { createContext, useContext } from 'react';
 import SearchBar from '../components/searchBar/SearchBar';
 // import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/bw images/fast-food-doodles-hand-drawn-colorful-vector-symbols-objects_217204-778.jpg";
 import img from "../public/mainBackground.jpg"
 import rouletteWheel from "../public/rouletteWheel.svg"
+
+//custom hooks
+import useAuth from '../components/hooks/useAuth';
+
+// components 
+
 
 //add fonts here
 const GlobalStyle = createGlobalStyle`
@@ -24,7 +30,16 @@ const GlobalStyle = createGlobalStyle`
 }
 `;
 
+import AuthProvider from '../components/authentication/AuthProvider';
+
+
+
 const RootLayout = () => {
+
+  const { token, onLogout } = useAuth();
+  const location = useLocation();
+
+  console.log('Location', location);
 
   const dispatch = useDispatch();
   const queryRecipes = useSelector(state => state.queryRecipes.queryRecipes)
@@ -61,14 +76,17 @@ const RootLayout = () => {
   }
 
   return (
-    
+    <AuthProvider>
     <Layout src={img}>
       <GlobalStyle/>
 
           <Header>
         <Nav>
               <LogoLink  to='/'>Recipe Roulette</LogoLink>
-          <SearchBar onSubmit={onSubmit} />
+          {location.pathname != '/login' && location.pathname !='/signup' &&(<SearchBar onSubmit={onSubmit} />)}
+          {
+            token && (<button type='button' onClick={onLogout}>Sign Out</button>)
+          }
           <ButtonBox>
               <LoginLink to='/login'>Login</LoginLink>
               <SignUpLink to='/signup'>Signup</SignUpLink>
@@ -79,7 +97,8 @@ const RootLayout = () => {
       <Main>
         <Outlet/>
       </Main>
-    </Layout>
+      </Layout>
+      </AuthProvider>
   )
 }; 
 

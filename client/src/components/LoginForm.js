@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import useAuth from "./hooks/useAuth";
 
 
 const LoginForm = () => {
   const { register, handleSubmit } = useForm();
+
+  const { onLogin } = useAuth(); 
 
   const navigate = useNavigate();
   
@@ -50,7 +53,7 @@ const LoginForm = () => {
   return (
     <WrapForm>
       <Header>Log in</Header>
-    <Form onSubmit={handleSubmit((data)=> Login(data))}>
+    <Form onSubmit={handleSubmit((data)=> onLogin(data))}>
       <Input
         {...register('username', {required: 'This is required'})}
         placeholder='Username'
