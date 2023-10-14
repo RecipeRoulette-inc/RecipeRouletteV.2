@@ -24,7 +24,7 @@ const ScrollBarUnder30 = () => {
         body: JSON.stringify({ 
           opts: {
             maxReadyTime: 30,
-            number: 3,
+            number: 10,
             sort: 'random'
           }
         })
@@ -55,7 +55,6 @@ const ScrollBarUnder30 = () => {
    const cardsRowUnder30 = [];
 
    for (let i = 0; i < queryRecipesUnder30State.length; i++) {
-     console.log('CREATING FLIP CARDS: ', queryRecipesUnder30State[i]);
      cardsRowUnder30.push(<FlipCard id={i} key={i} recipeInfo={queryRecipesUnder30State[i]}/>)
    }
 

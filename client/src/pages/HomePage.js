@@ -45,12 +45,11 @@ const HomePage = () => {
 
   return (
     <Wrapper>
-      <h1> Authenticated as {token}</h1>
       <DailyRecipe/>
+      <ScrollBarGlutenFree />
       <ScrollBarRandom />
       <ScrollBarUnder30 />
       <ScrollBarVegan />
-      <ScrollBarGlutenFree />
     </Wrapper>
   )
 };

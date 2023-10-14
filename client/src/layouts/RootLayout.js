@@ -64,10 +64,15 @@ const RootLayout = () => {
         return res.json();
       })
       .then((data) => {
-        // console.log('-------> THEN DATA FROM ROOT LAYOUT: ', data);
+        console.log('-------> THEN DATA FROM ROOT LAYOUT: ', data);
+
+
+        // loop through data, filter for glutenFree, vegan
+
         dispatch(clearMain());
         dispatch(populateMain(data));
         dispatch(queryMade());
+        console.log('STATE----------------->',queryRecipes)
         // console.log('-------> RootLayout queryRecipes: ', queryRecipes);
       })
       .catch((error) => {

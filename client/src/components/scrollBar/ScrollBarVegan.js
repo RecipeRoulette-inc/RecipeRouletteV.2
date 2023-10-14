@@ -23,7 +23,7 @@ const ScrollBarUnder30 = () => {
         body: JSON.stringify({ 
           opts: {
             diet: 'vegan',
-            number: 3,
+            number: 10,
             sort: 'random'
           }
         })
@@ -46,7 +46,6 @@ const ScrollBarUnder30 = () => {
    const cardsRowVegan = [];
 
    for (let i = 0; i < queryRecipesVeganState.length; i++) {
-     console.log('CREATING FLIP CARDS: ', queryRecipesVeganState[i]);
      cardsRowVegan.push(<FlipCard id={i} key={i} recipeInfo={queryRecipesVeganState[i]}/>)
    }
 

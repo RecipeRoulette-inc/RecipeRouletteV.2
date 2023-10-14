@@ -45,15 +45,14 @@ const ScrollBarUnder30 = () => {
 
    const cardsRowGlutenFree = [];
 
-   for (let i = 0; i < queryRecipesGlutenFreeState.length; i++) {
-     console.log('CREATING FLIP CARDS: ', queryRecipesGlutenFreeState[i]);
-     cardsRowGlutenFree.push(<FlipCard id={i} key={i} recipeInfo={queryRecipesGlutenFreeState[i]}/>)
+   for (let i = 0; i < queryRecipes.length; i++) {
+     cardsRowGlutenFree.push(<FlipCard id={i} key={i} recipeInfo={queryRecipes[i]}/>)
    }
 
    return (
     <Wrapper>
       <Header>
-        <Title>Gluten Free:</Title>
+        <Title>Search Results:</Title>
       </Header> 
       
       <CardsContainer>
