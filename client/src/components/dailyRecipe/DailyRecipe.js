@@ -39,15 +39,15 @@ const DailyRecipe = () => {
 
   return (
     <Wrapper>
-
-        <Photo bg={image}></Photo>
-
+      <Photo>
+        <DailyPhoto src={image}></DailyPhoto>
         <center>
             <h1>Recipe of the Day:</h1>
             <h2>{title}</h2>
             <h3>Ready in: {readyInMinutes} minutes</h3>
             <h3>Servings: {servings}</h3>
         </center>
+        </Photo>
 
     </Wrapper>
   );
@@ -58,21 +58,29 @@ direction: flex;
 flex-direction: row;
 align-items: center;
 width: 70vw;
-background: var(--clr-bg);
+// background: var(--clr-bg);
 border-radius: 1rem;
 border: 4px solid rgba(0, 0, 0);
 `;
 
+const DailyPhoto = styled.img`
+display: flex;
+object-fit: contain;
+align-items: center;
+margin: 25px;
+border: 1px solid black;
+border-radius: 1rem;
+`
 
 const Photo = styled.div`
-height: 600px;
-background-image: url(${(props) => props.bg});
-border-radius: 1rem; 
-// border: 4px solid rgba(0, 0, 0, 0.50);
-border-style: solid;
-// box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
-background-repeat: no-repeat;
-background-size: cover;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background-color: rgb(255,255,255);
+// border: 1px solid black;
+border-radius: 1rem;
+gap: 10px;
 `;
 
 

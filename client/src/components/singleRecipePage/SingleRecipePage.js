@@ -15,12 +15,17 @@ function SingleRecipePage() {
     }
     console.log('--------> ingredients: ', ingredients);
 
+    let filteredInstructions;
+    filteredInstructions = recipe.instructions.replaceAll('<ol>', '');
+    filteredInstructions = recipe.instructions.replaceAll('</ol>', '');
+    filteredInstructions = filteredInstructions.replaceAll('<li>', '');
+    filteredInstructions = filteredInstructions.replaceAll('</li>', '');
+
     return (
         <Wrapper>
           <PhotoContainer>
             <SinglePhoto src={recipe.image}></SinglePhoto>
             </PhotoContainer>
-      
         
             <TitleContainer>
             <h1>{recipe.title}</h1>
@@ -28,6 +33,7 @@ function SingleRecipePage() {
 
             <h2>Servings: {recipe.servings}</h2>
             </TitleContainer>
+            
     
             <h2>Diet:</h2>
             {recipe.diets.length !== 0 && (
@@ -47,7 +53,7 @@ function SingleRecipePage() {
          
 
             <h2>Instructions:</h2>
-            <p>{recipe.instructions}</p>
+            <p>{filteredInstructions}</p>
             <br></br>
 
             <h2>Sources: {recipe.sourceName}</h2>
@@ -90,10 +96,12 @@ display: flex;
 flex-direction: column;
 align-items: center;
 h1 {
-    font-size: 32px;
+    font-size: 36px;
+    margin: 4px;
 };
 h2 {
     font-size: 20px;
+    margin: 4px;
 }
 `
 
