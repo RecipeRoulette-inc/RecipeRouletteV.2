@@ -4,12 +4,26 @@ import img from "../public/plateForkKnife.jpeg"
 
 const SignupPage = () => {
   return (
-    <SignupWrap>
+    <SignupWrap src={img}>
       <SignupForm/>
     </SignupWrap>
   ); 
 };
 
-const SignupWrap = styled.div``;
+const SignupWrap = styled.div`
+background-image: ${({src}) => `url(${src})`};
+background-size: cover;
+display: flex;
+align-self: center 
+position: relative;
+align-items: center;
+height: 100vh; 
+width: 50vw; 
+border: black;
+border-style: solid;
+border-width: 10px 10px 10px;
+border-radius: 35px;
+`;
+
 
 export default SignupPage; 

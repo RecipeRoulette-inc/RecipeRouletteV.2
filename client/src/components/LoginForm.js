@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import useAuth from "./hooks/useAuth";
 
 
 const LoginForm = () => {
   const { register, handleSubmit } = useForm();
+
+  const { onLogin } = useAuth(); 
 
   const navigate = useNavigate();
   
@@ -50,7 +53,7 @@ const LoginForm = () => {
   return (
     <WrapForm>
       <Header>Log in</Header>
-    <Form onSubmit={handleSubmit((data)=> Login(data))}>
+    <Form onSubmit={handleSubmit((data)=> onLogin(data))}>
       <Input
         {...register('username', {required: 'This is required'})}
         placeholder='Username'
@@ -64,7 +67,6 @@ const LoginForm = () => {
         
       <Submit type='submit' > Log in</Submit>
       </Form>
-      <p> Don't have an account? <Link to={'/signup'}>Sign up</Link> </p>
     </WrapForm>
   )
 }; 
@@ -82,8 +84,8 @@ box-shadow: 10px 5px 5px black;
 padding: 20px 20px; 
 background-color: #ee6352;
 position: relative;
-top: 37px;
-left: 190px;
+top: 0px;
+left: 152px;
 `; 
 
 const Header = styled.div`
@@ -127,7 +129,6 @@ cursor: pointer;
 &:hover {
   background: black;
 }
-
 `;
 
 

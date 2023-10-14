@@ -128,6 +128,8 @@ console.log('>>>>>>>>>>> Pre Search <<<<<<<<<<<<<<<<<<<<,')
 // If we decide to make a separate page, we will need this controller for additional calls
 // Otherwise this can be included in the earlier call nested
 recipeController.getRecipeInformationBulk = (req, res, next) => {
+  // console.log(req.body)
+  // let ids = req.body.id
   console.log('-------> from getRecipeInformationBulk');
   console.log('REQ.PARAMS: ', req.params);
   let ids = req.params.id;
