@@ -66,13 +66,13 @@ const RootLayout = () => {
       <GlobalStyle/>
 
           <Header>
-            <Nav>
+        <Nav>
               <LogoLink  to='/'>Recipe Roulette</LogoLink>
-              <SearchBar onSubmit={onSubmit} />
-              <ButtonBox>
+          <SearchBar onSubmit={onSubmit} />
+          <ButtonBox>
               <LoginLink to='/login'>Login</LoginLink>
               <SignUpLink to='/signup'>Signup</SignUpLink>
-              </ButtonBox>
+          </ButtonBox>
             </Nav>
           </Header>
 
@@ -105,6 +105,7 @@ margin: 0 auto;
 background: #ee6352;
 border-radius: 15px;
 padding: 15px 15px;
+z-index:1000;
 `;
 
 const LogoLink = styled(NavLink)`

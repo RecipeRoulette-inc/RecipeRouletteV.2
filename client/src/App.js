@@ -1,5 +1,5 @@
 // libraries
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import styled, { createGlobalStyle } from 'styled-components';
 import { Route, Routes, createRoutesFromElements, createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
@@ -19,9 +19,6 @@ import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
 import Navbar from './components/Navbar/Navbar';
 
 const App = () => {
-  const sayHi = () => {
-    console.log('hello!')
-  }
   const Router = createBrowserRouter(
     createRoutesFromElements(
       <Route path='/' element={<RootLayout />}>
@@ -34,11 +31,12 @@ const App = () => {
           element={<SingleRecipePage />}
           loader={getRecipeInformationBulk}
           />
-        <Route path='login' element={<LoginPage handleLogin={sayHi} />} />
-         <Route path='signup' element={<SignupPage />} />
+        <Route path='login' element={<LoginPage />} />
+        <Route path='signup' element={<SignupPage />} />
        </Route>
-    )
+      )
   );
+
   return (<RouterProvider router={ Router } />)
 }
 
