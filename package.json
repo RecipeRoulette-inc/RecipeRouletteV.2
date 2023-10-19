@@ -48,7 +48,6 @@
     "react-redux": "^8.1.3",
     "react-router-dom": "^6.16.0",
     "save": "^2.9.0",
-    "spoonacular_api": "github:RecipeRoulette/spoonacular-javascript-client-api",
     "spoonacular-api-library": "^1.0.5"
   },
   "devDependencies": {
