@@ -4,14 +4,14 @@ authenticationController = {};
 
 authenticationController.createCookie = async (req, res, next) => {
     try {
-        console.log(res.locals);
-        // desctructure id off incoming user from res locals
-        const { _id } = res.locals.user._id
-        console.log('---UserID', _id);
-        //jwt.sign - creates JWT token 
-        let jwtToken = jwt.sign({id: _id}, process.env.KEY)
-        // check cookie params with cors once front and backend connect
-        res.cookie("jwtToken", jwtToken, {httpOnly: true, secure: true})
+        // console.log(res.locals);
+        // // desctructure id off incoming user from res locals
+        // const { _id } = res.locals.user._id
+        // console.log('---UserID', _id);
+        // //jwt.sign - creates JWT token 
+        // let jwtToken = jwt.sign({id: _id}, process.env.KEY)
+        // // check cookie params with cors once front and backend connect
+        // res.cookie("jwtToken", jwtToken, {httpOnly: true, secure: true})
         return next()
     } catch (error) {
         return next({
@@ -26,22 +26,22 @@ authenticationController.createCookie = async (req, res, next) => {
 authenticationController.verifyCookie = async (req, res, next) => {
 
     try {
-        if(!req.cookies.jwtToken){
-            console.log('Please log in or create and account before making requests :)')
-        }
+        // if(!req.cookies.jwtToken){
+        //     console.log('Please log in or create and account before making requests :)')
+        // }
 
-        const { jwtToken } = req.cookies
-        // console.log('<<<<<<token>>>>>>>', jwtToken)
-        //jwt.verify
-        jwt.verify(jwtToken, process.env.KEY, (err, verifiedJwt) => {
-            if(err){
-                res.send(err.message)
-            } else {
-                // what do we want do with the verifiedJwt? 
+        // const { jwtToken } = req.cookies
+        // // console.log('<<<<<<token>>>>>>>', jwtToken)
+        // //jwt.verify
+        // jwt.verify(jwtToken, process.env.KEY, (err, verifiedJwt) => {
+        //     if(err){
+        //         res.send(err.message)
+        //     } else {
+        //         // what do we want do with the verifiedJwt? 
         
-                res.locals.user = verifiedJwt;
-            }
-        })
+        //         res.locals.user = verifiedJwt;
+        //     }
+        // })
     return next() 
     } catch (error) {
         return next({
