@@ -17,6 +17,7 @@ import HomePage from './pages/HomePage';
 import SingleRecipePage from './components/singleRecipePage/SingleRecipePage';
 import AuthProvider from './components/authentication/AuthProvider';
 import ProtectedRoute from './components/protectedRoute/protectedRoute';
+import UserProfile from './pages/UserProfile'
 
 // components
 import NoMatch from './components/routing/NoMatch';
