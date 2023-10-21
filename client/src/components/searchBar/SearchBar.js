@@ -68,7 +68,6 @@ const SearchBar = ({onSubmit}) => {
         <SearchInput
           autoComplete='off'
           minLength='1'
-          required
           {...register('query')}
           placeholder='hungry for?'
           aria-label='search'

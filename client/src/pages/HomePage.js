@@ -46,7 +46,7 @@ const HomePage = () => {
   return (
     <Wrapper>
       <DailyRecipe/>
-      <ScrollBarGlutenFree />
+      {/* <ScrollBarGlutenFree /> */}
       <ScrollBarRandom />
       <ScrollBarUnder30 />
       <ScrollBarVegan />

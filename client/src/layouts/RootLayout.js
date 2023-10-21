@@ -3,6 +3,7 @@ import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { queryMade, populateMain, clearMain } from '../../slices/queryRecipesSlice';
 import { createContext, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SearchBar from '../components/searchBar/SearchBar';
 // import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/bw images/fast-food-doodles-hand-drawn-colorful-vector-symbols-objects_217204-778.jpg";
 import img from "../public/mainBackground.jpg"
@@ -35,7 +36,7 @@ import AuthProvider from '../components/authentication/AuthProvider';
 
 
 const RootLayout = () => {
-
+  const navigate = useNavigate()
   const { token, onLogout } = useAuth();
   const location = useLocation();
 
@@ -72,6 +73,7 @@ const RootLayout = () => {
         dispatch(clearMain());
         dispatch(populateMain(data));
         dispatch(queryMade());
+        navigate('hello')
         console.log('STATE----------------->',queryRecipes)
         // console.log('-------> RootLayout queryRecipes: ', queryRecipes);
       })
@@ -90,7 +92,9 @@ const RootLayout = () => {
               <LogoLink  to='/'>Recipe Roulette</LogoLink>
           {location.pathname != '/login' && location.pathname !='/signup' &&(<SearchBar onSubmit={onSubmit} />)}
           {
-            token && (<button type='button' onClick={onLogout}>Sign Out</button>)
+            token && (
+              <button type='button' onClick={onLogout}>Sign Out</button>
+              )
           }
           <ButtonBox>
             {!token && location.pathname =='/login' || location.pathname =='/signup'  ? (
@@ -99,7 +103,10 @@ const RootLayout = () => {
                 <SignUpLink to='/signup'>SignUp</SignUpLink>
               </>
             ) : (
+              <div>
               <LogoutLink to='/login'>LogOut</LogoutLink>
+              <LogoutLink to='/profile'>profile page</LogoutLink>
+              </div>
             )}
           </ButtonBox>
 
@@ -117,7 +124,7 @@ const RootLayout = () => {
 const Layout = styled.div`
 display: flex;
 flex-direction: column;
-background-image: ${({src}) => `url(${src})`};
+// background-image: ${({src}) => `url(${src})`};
 background-size: 50%;
 display:flex;
 align-items:center;

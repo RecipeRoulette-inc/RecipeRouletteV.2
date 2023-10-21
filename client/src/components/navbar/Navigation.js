@@ -19,7 +19,9 @@ const Navigation = () => {
         </Button>
         )
       }
-
+      <button>
+        profile page
+      </button>
     </Nav>
   );
 };
