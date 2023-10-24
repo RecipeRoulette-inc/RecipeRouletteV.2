@@ -41,7 +41,7 @@ Router
   .post(recipeController.searchRecipes,
   (req,res) => {
     console.log('Search Recipe Complete')
-    console.log(res.locals.recipes)
+    // console.log(res.locals.recipes)
     return res.status(200).json(res.locals.recipes)
   }
 )

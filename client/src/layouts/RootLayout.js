@@ -68,7 +68,7 @@ const RootLayout = () => {
         console.log('-------> THEN DATA FROM ROOT LAYOUT: ', data);
 
 
-        // loop through data, filter for glutenFree, vegan
+        // need to take the params from the search bar query
 
         dispatch(clearMain());
         dispatch(populateMain(data));
@@ -105,7 +105,7 @@ const RootLayout = () => {
             ) : (
               <div>
               <LogoutLink to='/login'>LogOut</LogoutLink>
-              <LogoutLink to='/profile'>profile page</LogoutLink>
+              <LogoutLink to='/profile'>Profile Page</LogoutLink>
               </div>
             )}
           </ButtonBox>
