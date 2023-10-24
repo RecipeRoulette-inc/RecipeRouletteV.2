@@ -49,8 +49,7 @@
     "react-hook-form": "^7.47.0",
     "react-redux": "^8.1.3",
     "react-router-dom": "^6.16.0",
-    "save": "^2.9.0",
-    "spoonacular-api-library": "^1.0.5"
+    "save": "^2.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.0",
