@@ -38,7 +38,9 @@ app.use('/user', userRoutes)
 
 app.use('/recipes', recipeRoutes)
 
-app.use('/uploadImage', photoRoutes)
+app.use('/image', photoRoutes)
+
+
 // Catch-All Route Handler
 
 

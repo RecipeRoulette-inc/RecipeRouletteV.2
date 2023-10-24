@@ -26,9 +26,10 @@ const App = () => {
   const Router = createBrowserRouter(
     createRoutesFromElements(
       <Route path='/' element={
-        <AuthProvider>
-          <RootLayout />
-        </AuthProvider>
+        <UserProfile />
+        // <AuthProvider>
+        //   <RootLayout />
+        // </AuthProvider>
           }
       >
         <Route index element={

@@ -23,6 +23,7 @@
   "homepage": "https://github.com/RecipeRoulette/RecipeRoulette#readme",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.431.0",
+    "@aws-sdk/s3-request-presigner": "^3.431.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^5.0.8",
@@ -45,6 +46,7 @@
     "mongoose": "^7.5.4",
     "multer": "^1.4.5-lts.1",
     "parser": "^0.1.4",
+    "pg": "^8.11.3",
     "react": "^17.0.0 || ^18.0.0",
     "react-hook-form": "^7.47.0",
     "react-redux": "^8.1.3",
