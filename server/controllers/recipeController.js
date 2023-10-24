@@ -71,25 +71,27 @@ recipeController.getRandomRecipe = (req, res, next) => {
 } 
 
 recipeController.searchRecipes = (req, res, next) => {
-  console.log('from searchRecipes')
-  console.log('Search Query NOW ------------>>', req.body)
+  // console.log('from searchRecipes')
+  // console.log('Search Query NOW ------------>>', req.body)
   const {opts: data} = req.body;
+  // console.log('this is the req.params', req.params)
+  console.log(req.body)
 
   let opts = {
     'instructionsRequired': true, // Boolean | Whether the recipes must have instructions.
-  'addRecipeNutrition': true, // Boolean | If set to true, you get more information about the recipes returned.
-  'includeNutrition': true,
-  'number': 10
+    'addRecipeNutrition': true, // Boolean | If set to true, you get more information about the recipes returned.
+    'includeNutrition': true,
+    'number': 10
   }
   // initialize a query prop in opts
-  console.log('OPTS w. QUERY AFTER', opts)
+  // console.log('OPTS w. QUERY AFTER', opts)
   opts.query = req.body.query 
   // add search to opts
   for (let key in req.body.opts){
     if(!opts[key]) opts[key] = req.body.opts[key].toString()
 }
 
-console.log('OPTS w. QUERY AFTER', opts)
+// console.log('OPTS w. QUERY AFTER', opts)
 
   // remember that we changed 'opts' to 'data'
   apiInstance.searchRecipes(opts, (error, data, response) => {
@@ -128,8 +130,8 @@ console.log('OPTS w. QUERY AFTER', opts)
 recipeController.getRecipeInformationBulk = (req, res, next) => {
   // console.log(req.body)
   // let ids = req.body.id
-  console.log('-------> from getRecipeInformationBulk');
-  console.log('REQ.PARAMS: ', req.params);
+  // console.log('-------> from getRecipeInformationBulk');
+  // console.log('REQ.PARAMS: ', req.params);
   let ids = req.params.id;
   const opts = {
     'instructionsRequired': true, // Boolean | Whether the recipes must have instructions.
