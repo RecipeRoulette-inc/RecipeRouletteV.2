@@ -59,11 +59,11 @@ userController.verifyUser = async (req, res, next) => {
 
     // console.log(existingUser, 'existing user');
     if (existingUser.rowCount === 0) {
-        res.redirect('/signup');
+        return res.redirect('/signup');
     };
 
     console.log('made it to bcrypt in userController.verifyUser');
-
+    console.log(existingUser)
     try {
         bcrypt
             .compare(password, existingUser.rows[0].password)
