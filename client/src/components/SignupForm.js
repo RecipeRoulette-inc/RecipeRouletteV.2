@@ -12,7 +12,7 @@ const SignupForm = () => {
   return (
     <WrapForm>
       <Header>Sign Up</Header>
-    <Form onSubmit={handleSubmit((data)=> Signup(data))}>
+    <Form onSubmit={handleSubmit((data) => Signup(data))}>
       <Input
         {...register('username', {required: 'This is required'})}
         placeholder='Username'

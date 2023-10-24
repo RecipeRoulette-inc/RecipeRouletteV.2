@@ -68,13 +68,12 @@ const SearchBar = ({onSubmit}) => {
         <SearchInput
           autoComplete='off'
           minLength='1'
-          required
           {...register('query')}
           placeholder='hungry for?'
           aria-label='search'
         />
         <SearchButton type="submit" aria-label='submit search' className='searchBar-Button'>
-          <FontAwesomeIcon icon={faCutlery} />
+          <FontAwesomeIcon icon={faCutlery}/>
         </SearchButton>
 
       <DoubleWrapped className='doubleWrapped'>
@@ -151,15 +150,14 @@ const SearchBar = ({onSubmit}) => {
         />
       </DoubleWrapped>
       </SearchBarWrapper>
-
-
-
     </Wrapper>
   )
 };
 
 const Wrapper = styled.form`
-
+justify-content: center;
+align-items: center;
+height: 75px;
 background:white; 
 width: 70vw;
 padding: 1em;
@@ -187,6 +185,7 @@ display: none;
 const SearchBarWrapper = styled.div`
 --size: 60px; 
 display: flex; 
+align-items: center;
 border: 2px solid var(--clr-primary);
 border-radius: 1000px; 
 height: var(--size);
@@ -236,7 +235,7 @@ overflow: hidden;
 
 const SearchButton = styled.button`
   // display: flex;
-  // align-items: center;
+  align-items: center;
   font-size: 1.5rem;
   cursor: pointer; 
   border: 0; 
@@ -245,6 +244,7 @@ const SearchButton = styled.button`
   width: calc(var(--size) - 10px);
   height: calc(var(--size) - 10px);
   margin-left: auto; 
+  padding: 0;
   transition: background 150ms ease-in-out;
 `;
 
