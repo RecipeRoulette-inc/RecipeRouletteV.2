@@ -179,7 +179,24 @@ recipeController.updateSavedRecipes = async (req, res, next) => {
   }
 }
 
+recipeController.getRecipeNutritionLabel = (req, res, next) => {
+  console.log('-------> getRecipeNutritionLabel Controller');
+  let id = req.params.recipeId; // Number | The recipe id.
+  let opts = {
+    'showOptionalNutrients': false, // Boolean | Whether to show optional nutrients.
+    'showZeroValues': false, // Boolean | Whether to show zero values.
+    'showIngredients': false // Boolean | Whether to show a list of ingredients.
+  };
 
+  apiInstance.recipeNutritionLabelImage(id, opts, (error, data, response) => {
+    if (error) {
+      console.error(error);
+    } else {
+      res.locals.nutritionLabel = data;
+      return next()
+    }
+  });
+} 
 
 
 module.exports = recipeController;
