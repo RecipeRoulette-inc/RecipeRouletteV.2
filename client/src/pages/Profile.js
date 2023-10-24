@@ -22,18 +22,7 @@ export default function ProfilePage() {
     .then(() => setLoading(false))
 
   }
-    // .then((data) => {
-      // setUserInfo(data)
-    // });
 
-    // console.log('userInfo', userInfo);
-
-  // const username = ''
-  // const userPhoto = ''
-
-  // const uploadPhoto = () => {
-
-  // }
 
   if (loading) {
     return <div>loading ...</div>
@@ -41,7 +30,7 @@ export default function ProfilePage() {
 
   return (
     <div> 
-
+      <img src={userInfo.image}></img>
       <p>Hello, {userInfo.username}</p>
 
       {/* <img src={userPhoto}></img>
