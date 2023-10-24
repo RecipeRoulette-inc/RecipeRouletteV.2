@@ -173,7 +173,7 @@ const FlipCard = ({ recipeInfo }) => {
             <h2>Servings: {servings}</h2>
     
             {/* <button onClick={getRecipeInformationBulk(id)}>LOADER TEST</button> */}
-            <Link to={'/' + id} >SEND ID</Link>
+            <Link to={'/' + id} >More Info</Link>
             {/* <h2><Link to='NEED PATH HERE'><button oncli>More Info</button></Link></h2> */}
             
           </center>

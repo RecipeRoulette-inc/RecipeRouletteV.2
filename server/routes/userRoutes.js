@@ -9,7 +9,7 @@ Router
     .post(userController.createUser, 
     authenticationController.createCookie, 
     (req,res) => {
-    return res.status(200).redirect('/home')
+    return res.sendStatus(200)
 })
 
 // Login in Route should redirect home if passing, otherwise to signup 
