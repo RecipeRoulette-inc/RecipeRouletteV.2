@@ -22,6 +22,7 @@ import ProtectedRoute from './components/protectedRoute/protectedRoute';
 import NoMatch from './components/routing/NoMatch';
 
 const App = () => {
+  // add the logic below to a authProvider component 
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
@@ -51,7 +52,7 @@ const App = () => {
             <RootLayout />
           </AuthProvider>
         }
-        >
+        />
           <Route index element={
             <ProtectedRoute>
               <HomePage />

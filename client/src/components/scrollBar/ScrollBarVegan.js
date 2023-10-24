@@ -23,7 +23,7 @@ const ScrollBarUnder30 = () => {
         body: JSON.stringify({ 
           opts: {
             diet: 'vegan',
-            number: 3,
+            number: 10,
             sort: 'random'
           }
         })
@@ -46,7 +46,6 @@ const ScrollBarUnder30 = () => {
    const cardsRowVegan = [];
 
    for (let i = 0; i < queryRecipesVeganState.length; i++) {
-     console.log('CREATING FLIP CARDS: ', queryRecipesVeganState[i]);
      cardsRowVegan.push(<FlipCard id={i} key={i} recipeInfo={queryRecipesVeganState[i]}/>)
    }
 
@@ -69,6 +68,9 @@ display: flex;
 flex-direction: column;
 background-color: rgb(255,255,255);
 border-radius: 1rem; 
+border: 5px solid rgba(0, 0, 0, 1);
+border-style: solid;
+box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25); 
 `;
 
 const Header = styled.div`
@@ -80,6 +82,7 @@ margin: 10px;
 const Title = styled.div`
 padding: 0 0; 
 margin: 5px 5px; 
+font-size: 24px;
 `;
 
 const CardsContainer = styled.div`

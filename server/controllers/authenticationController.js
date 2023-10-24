@@ -7,13 +7,11 @@ authenticationController = {};
 authenticationController.createCookie = async (req, res, next) => {
 
     try {
-
         if (req.cookies.SSID) res.clearCookie('SSID')
 
         const user_id = res.locals.user_id;
         const jToken = jwt.sign({ user_id }, process.env.SECRET, { expiresIn: '1h' })
         res.cookie('SSID', jToken, { expires: new Date(Date.now() + 300000), httpOnly: true })
-
         return next()
 
     } catch (error) {
@@ -27,7 +25,6 @@ authenticationController.createCookie = async (req, res, next) => {
 
 // not built out yet
 authenticationController.verifyCookie = async (req, res, next) => {
-
     const jToken = req.cookies.SSID
 
     if (!jToken) {
