@@ -6,6 +6,7 @@ const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const multer = require('multer');
 const db = require('../database/connectToDb');
 const crypto = require('crypto');
+require('dotenv').config();
 
 const storage = multer.memoryStorage();
 const upload = multer({storage: storage});
@@ -37,11 +38,36 @@ Router
 
     const command = new GetObjectCommand(getObjectParams);
     const url = await getSignedUrl(s3, command, { expiresIn: 3600 })
+    console.log('url', url);
     res.locals.userInfo.image = url;
+    console.log('res locals', res.locals.userInfo);
 
     res.status(200).send(res.locals.userInfo);
 
   });
+
+  Router   
+    .route('/uploadPhoto')
+    .post(upload.single('image'), async (req, res) => {
+
+        const params = {
+            Bucket: bucketName,
+            Key: photoName,
+            Body: req.file.buffer,
+            ContentType: req.file.mimetype,
+        }
+    
+        const command = new PutObjectCommand(params)
+    
+        await s3.send(command);
+        
+        const text = 'INSERT INTO photo (photo_name) VALUES ($1);';
+    
+        await db.query(text, [photoName]);
+
+        res.sendStatus(200);
+    
+      })
 
 
 

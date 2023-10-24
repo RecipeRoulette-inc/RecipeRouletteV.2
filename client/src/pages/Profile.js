@@ -17,10 +17,23 @@ export default function ProfilePage() {
       return res.json();
     })
     .then((res) => {
-      setUserInfo({username: res.username, image: 'example.jpg'})
+      setUserInfo({username: res.username, image: res.image})
     })
     .then(() => setLoading(false))
 
+  };
+
+  function uploadPhoto() {
+
+    fetch('/profile/uploadPhoto')
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        console.log('upload status', res)
+      })
+      .then(() => alert('Photo uploaded successfully'))
+      .catch((err) => alert('Error occurred while uploading photo'))
   }
 
 
@@ -29,19 +42,17 @@ export default function ProfilePage() {
   } else {
 
   return (
-    <div> 
+    <div display='flex' justify-content='center' align-items='center'> 
       <img src={userInfo.image}></img>
-      <p>Hello, {userInfo.username}</p>
-
-      {/* <img src={userPhoto}></img>
+      <p display='flex' justify-content='center' align-items='center'>{userInfo.username}</p>
+      <br></br>
       <button onClick={uploadPhoto}>add photo</button>
-      <text>{username}</text>
       <br></br>
       <h3>Saved Recipes</h3>
       <br></br>
       <h3>Dietary Restrictions</h3>
       <br></br>
-      <h3>Uploaded Recipes</h3> */}
+      <h3>Uploaded Recipes</h3> 
 
     </div>
   )
