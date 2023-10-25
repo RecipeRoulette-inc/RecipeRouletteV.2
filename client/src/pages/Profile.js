@@ -3,7 +3,7 @@ import React, {useState, setState, useEffect } from "react";
 
 export default function ProfilePage() {
 
-  const [userInfo, setUserInfo] = useState({username: '', image: ''});
+  const [userInfo, setUserInfo] = useState({username: '', image: '', savedRecipes: '', allergies: '', restrictions: ''});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function ProfilePage() {
       return res.json();
     })
     .then((res) => {
-      setUserInfo({username: res.username, image: res.image})
+      setUserInfo({username: res.username, image: res.image, savedRecipes: res.savedRecipes, allergies: res.allergies, restrictions: res.restrictions})
     })
     .then(() => setLoading(false))
 
@@ -34,7 +34,7 @@ export default function ProfilePage() {
       })
       .then(() => alert('Photo uploaded successfully'))
       .catch((err) => alert('Error occurred while uploading photo'))
-  }
+  };
 
 
   if (loading) {
@@ -57,4 +57,4 @@ export default function ProfilePage() {
     </div>
   )
 }
-}
+};
