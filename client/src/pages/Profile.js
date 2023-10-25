@@ -17,7 +17,7 @@ export default function ProfilePage() {
       return res.json();
     })
     .then((res) => {
-      setUserInfo({username: res.username, image: res.image, savedRecipes: res.savedRecipes, allergies: res.allergies, restrictions: res.restrictions})
+      setUserInfo({username: res.username, image: res.imageURL, savedRecipes: res.savedRecipes, allergies: res.allergies, restrictions: res.restrictions})
     })
     .then(() => setLoading(false))
 
@@ -46,11 +46,19 @@ export default function ProfilePage() {
       <img src={userInfo.image}></img>
       <p display='flex' justify-content='center' align-items='center'>{userInfo.username}</p>
       <br></br>
-      <button onClick={uploadPhoto}>add photo</button>
+      <button name='image' onClick={uploadPhoto}>add photo</button>
       <br></br>
       <h3>Saved Recipes</h3>
       <br></br>
+      <h4>{userInfo.savedRecipes}</h4>
+      <br></br>
+      <h3>Allergies</h3>
+      <br></br>
+      <h4>{userInfo.allergies}</h4>
+      <br></br>
       <h3>Dietary Restrictions</h3>
+      <br></br>
+      <h4>{userInfo.restrictions}</h4>
       <br></br>
       <h3>Uploaded Recipes</h3> 
 

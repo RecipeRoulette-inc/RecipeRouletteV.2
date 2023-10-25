@@ -48,7 +48,7 @@ Router
 
   Router   
     .route('/uploadPhoto')
-    .post(profileController.getUserId, profileController.getUserInfo, upload.single('image'), profileController.uploadImage, profileController.removeImage, (req, res) => {
+    .post(upload.single('image'), profileController.getUserId, profileController.getUserInfo, profileController.uploadImage, profileController.removeImage, (req, res) => {
 
         // const params = {
         //     Bucket: bucketName,
