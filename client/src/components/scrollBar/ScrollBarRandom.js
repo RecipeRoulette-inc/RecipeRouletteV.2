@@ -73,6 +73,7 @@ margin: 10px;
 const Title = styled.div`
 padding: 0 0; 
 margin: 5px 5px; 
+font-size: 24px;
 `;
 
 const CardsContainer = styled.div`

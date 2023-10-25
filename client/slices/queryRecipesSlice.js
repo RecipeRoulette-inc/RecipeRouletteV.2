@@ -22,6 +22,7 @@ export const queryRecipesSlice = createSlice({
     },
     clearMain: (state) => {
       state.queryRecipes = [];
+      state.queryStatus = false;
     },
     queryMade: (state) => {
       state.queryStatus = true;

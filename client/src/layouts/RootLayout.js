@@ -2,11 +2,18 @@ import styled, {createGlobalStyle} from 'styled-components';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { queryMade, populateMain, clearMain } from '../../slices/queryRecipesSlice';
-
+import { createContext, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SearchBar from '../components/searchBar/SearchBar';
 // import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/bw images/fast-food-doodles-hand-drawn-colorful-vector-symbols-objects_217204-778.jpg";
 import img from "../public/mainBackground.jpg"
 import rouletteWheel from "../public/rouletteWheel.svg"
+
+//custom hooks
+import useAuth from '../components/hooks/useAuth';
+
+// components 
+
 
 //add fonts here
 const GlobalStyle = createGlobalStyle`
@@ -24,7 +31,16 @@ const GlobalStyle = createGlobalStyle`
 }
 `;
 
+import AuthProvider from '../components/authentication/AuthProvider';
+
+
+
 const RootLayout = () => {
+  const navigate = useNavigate()
+  const { token, onLogout } = useAuth();
+  const location = useLocation();
+
+  console.log('Location', location);
 
   const dispatch = useDispatch();
   const queryRecipes = useSelector(state => state.queryRecipes.queryRecipes)
@@ -49,10 +65,16 @@ const RootLayout = () => {
         return res.json();
       })
       .then((data) => {
-        // console.log('-------> THEN DATA FROM ROOT LAYOUT: ', data);
+        console.log('-------> THEN DATA FROM ROOT LAYOUT: ', data);
+
+
+        // need to take the params from the search bar query
+
         dispatch(clearMain());
         dispatch(populateMain(data));
         dispatch(queryMade());
+        navigate('hello')
+        console.log('STATE----------------->',queryRecipes)
         // console.log('-------> RootLayout queryRecipes: ', queryRecipes);
       })
       .catch((error) => {
@@ -61,32 +83,48 @@ const RootLayout = () => {
   }
 
   return (
-    
+    <AuthProvider>
     <Layout src={img}>
       <GlobalStyle/>
 
           <Header>
         <Nav>
               <LogoLink  to='/'>Recipe Roulette</LogoLink>
-          <SearchBar onSubmit={onSubmit} />
+          {location.pathname != '/login' && location.pathname !='/signup' &&(<SearchBar onSubmit={onSubmit} />)}
+          {
+            token && (
+              <button type='button' onClick={onLogout}>Sign Out</button>
+              )
+          }
           <ButtonBox>
-              <LoginLink to='/login'>Login</LoginLink>
-              <SignUpLink to='/signup'>Signup</SignUpLink>
+            {!token && location.pathname =='/login' || location.pathname =='/signup'  ? (
+              <>
+                <LoginLink to='/login'>LogIn</LoginLink>
+                <SignUpLink to='/signup'>SignUp</SignUpLink>
+              </>
+            ) : (
+              <div>
+              <LogoutLink to='/login'>LogOut</LogoutLink>
+              <LogoutLink to='/profile'>Profile Page</LogoutLink>
+              </div>
+            )}
           </ButtonBox>
+
             </Nav>
           </Header>
 
       <Main>
         <Outlet/>
       </Main>
-    </Layout>
+      </Layout>
+      </AuthProvider>
   )
 }; 
 
 const Layout = styled.div`
 display: flex;
 flex-direction: column;
-background-image: ${({src}) => `url(${src})`};
+// background-image: ${({src}) => `url(${src})`};
 background-size: 50%;
 display:flex;
 align-items:center;
@@ -139,6 +177,17 @@ padding: 30px ;
 `;
 
 const LoginLink = styled(NavLink)`
+display: flex;
+justify-content: center;
+background-color: black;
+color: white;
+height: 60px;
+width: 80px;
+border-radius: 1rem;
+padding: 16px;
+backgroundImage : ${rouletteWheel};
+`
+const LogoutLink = styled(NavLink)`
 display: flex;
 justify-content: center;
 background-color: black;

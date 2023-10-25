@@ -3,9 +3,9 @@ import SearchBar from '../searchBar/SearchBar';
 
 const Navbar = ({children}) => {
   return (
-    <NavbarWrapper>
+    // <NavbarWrapper>
        <SearchBar/>
-    </NavbarWrapper>
+    // </NavbarWrapper>
 ); 
 }; 
 
@@ -16,7 +16,7 @@ justify-content: center;
 position:fixed;
 z-index: 400;
 width: 100%;
-height: 100px;
+height: auto;
 background: white;
 // border: 50px solid black;
 `; 
