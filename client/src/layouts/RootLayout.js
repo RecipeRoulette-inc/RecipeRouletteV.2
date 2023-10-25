@@ -61,11 +61,11 @@ const RootLayout = () => {
         if (!res.ok) {
           console.log('res not ok')
         }
-        
+        console.log('HERE ARE THE RECIPES FROM SEARCHBAR ROOTLAYOUT LINE 64')
         return res.json();
       })
       .then((data) => {
-        console.log('-------> THEN DATA FROM ROOT LAYOUT: ', data);
+        // console.log('-------> THEN DATA FROM ROOT LAYOUT: ', data);
 
 
         // need to take the params from the sea

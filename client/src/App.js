@@ -52,7 +52,7 @@ const App = () => {
         <Route path='login' element={<LoginPage />} />
         <Route path='signup' element={<SignupPage />} />
         <Route path='profile' element={<ProfilePage/>} />
-        <Route path='searchbarrecipe' element={<Test/>} />
+        <Route path='hello' element={<Test/>} />
        </Route>
       )
   );

@@ -62,6 +62,7 @@ const AuthProvider = ({ children }) => {
       .then((res) => {
         // if response status not 200
         if (!res.ok) {
+          console.log('AUTH PROVIDER LINE 65 FRONT END CHECK WHEN STATUS IS NOT 200')
           // parse response then destruct response body for error property
           return res.json().then(({ error }) => {
             // create an Error object from error property or response statusText
@@ -70,6 +71,7 @@ const AuthProvider = ({ children }) => {
         }
         // ! VERIFY the information being returned from the server, if not JSON, do not .json()
         // return res.json();
+        console.log('STATUS IS 200 AND GOOD LINE 74 AUTHPROVIDER')
         return res;
       })
       .then((data) => {

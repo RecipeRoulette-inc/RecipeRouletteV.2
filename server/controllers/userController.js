@@ -4,18 +4,20 @@ const userController = {};
 const pool = require('../database/connectToDb');
 
 userController.createUser = async (req, res, next) => {
-    const { username, password, email } = req.body;
+    const { username, password } = req.body;
     const currentTimestamp = new Date().toISOString();
+    console.log('THIS IS THE USERNAME AND PASSWORD LINE 9 USERCONTROLLER', username, password)
 
     // how can we create a pop up for an invalid username or password?
-    if (!username || !password || !email) {
+    if (!username || !password) {
         return res.status(401).send('Invalid username, password, or email');
     };
 
     try {
         // create a conditional to see if user already exists
+       
         const existingUser = await pool.query(`SELECT * FROM users WHERE username = $1`, [username]);
-
+        
         if (existingUser.rowCount >= 1) {
             return next({
                 log: 'User already exists',
@@ -30,10 +32,11 @@ userController.createUser = async (req, res, next) => {
         const bcryptPassword = await bcrypt.hash(password, salt);
 
         // create new user into database
+        console.log('CONSOLELOG BEFORE CREATING USER IN DB LINE 35 USERCONTROLLER')
         const createUserQuery = `INSERT INTO users (username, email, password, created_at) VALUES ($1, $2, $3, $4)`;
         const values = [username, email, bcryptPassword, currentTimestamp];
         const newUser = await pool.query(createUserQuery, values);
-
+        console.log('CONSOLELOG AFTER CREATING USER IN DB LINE 39 USERCONTROLLER')
         // persist user information to assign cookie / JWT 
         //reroute to login page instead of storing user 
         res.locals.user = newUser;
