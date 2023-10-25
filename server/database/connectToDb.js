@@ -9,9 +9,19 @@ const pool = new Pool({
     connectionString: pgURL,
 });
 
+pool.on('error', (err) => {
+    console.error('Unexpected error on idle client', err);
+});
+
 module.exports = {
-    query: (text, params, callback) => {
-        // console.log('executed query', text);
-        return pool.query(text, params, callback);
+    query: async (text, params, callback) => {
+        try {
+            const result = await pool.query(text, params);
+            return result;
+        } catch (error) {
+            // Customize error messages here
+            console.error('Error executing query:', error.message);
+            throw error;
+        }
     }
-}
+};

@@ -51,9 +51,8 @@ const App = () => {
           />
         <Route path='login' element={<LoginPage />} />
         <Route path='signup' element={<SignupPage />} />
-        <Route path='hello' element={<Test/>} />
         <Route path='profile' element={<ProfilePage/>} />
-        <Route path='*' element={<NoMatch/>} />
+        <Route path='searchbarrecipe' element={<Test/>} />
        </Route>
       )
   );

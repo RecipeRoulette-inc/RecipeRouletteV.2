@@ -50,6 +50,7 @@ userController.createUser = async (req, res, next) => {
 
 userController.verifyUser = async (req, res, next) => {
     const { username, password } = req.body;
+    console.log('YOU ARE HERE' ,username, password)
     if (!username || !password) {
         return res.status(401).send('Invalid username or password');
     };
@@ -59,11 +60,11 @@ userController.verifyUser = async (req, res, next) => {
 
     // console.log(existingUser, 'existing user');
     if (existingUser.rowCount === 0) {
-        return res.redirect('/signup');
+       return res.redirect('/signup');
     };
 
     console.log('made it to bcrypt in userController.verifyUser');
-    console.log(existingUser)
+
     try {
         bcrypt
             .compare(password, existingUser.rows[0].password)

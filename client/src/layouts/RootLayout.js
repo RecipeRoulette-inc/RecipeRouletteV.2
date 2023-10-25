@@ -68,7 +68,7 @@ const RootLayout = () => {
         console.log('-------> THEN DATA FROM ROOT LAYOUT: ', data);
 
 
-        // need to take the params from the search bar query
+        // need to take the params from the sea
 
         dispatch(clearMain());
         dispatch(populateMain(data));

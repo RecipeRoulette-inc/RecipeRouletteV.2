@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
 
   const handleLogin = async (data) => {
     console.log('make request');
-    fetch('http://localhost:3000/user/login', {
+    fetch('/user/login', {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(data),
@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const handleSignup = async (data) => {
-    fetch('http://localhost:3000/user/signup', {
+    fetch('/user/signup', {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(data),
