@@ -9,10 +9,8 @@ uploadRecipeController.uploadRecipe = async (req, res, next) => {
     const user_id = tokenBody.payload.user_id;
     const { ingredients, instructions, diets, country_origin, allergens, image, recipe_name } = req.body;
 
-    const addRecipeQuery = `INSERT INTO uploaded_recipes (user_recipe_id,ingredients, instructions, diets, country_origin, allergens, image, user_id, recipe_name)
+    const addRecipeQuery = `INSERT INTO uploaded_recipes (user_recipe_id, ingredients, instructions, diets, country_origin, allergens, image, user_id, recipe_name)
     VALUES (uuid_generate_v4(), $1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
-
-    // change data type of string - array
 
     const values = [ingredients, instructions, diets, country_origin, allergens, image, user_id, recipe_name];
 

@@ -22,10 +22,12 @@ userController.createUser = async (req, res, next) => {
         const saltRound = 10;
         const salt = await bcrypt.genSalt(saltRound);
         const bcryptPassword = await bcrypt.hash(password, salt);
+        const defaultImage = 'download.png'
 
         // create new user into database
-        const createUserQuery = `INSERT INTO users (username, password, created_at) VALUES ($1, $2, $3) RETURNING *`;
-        const values = [username, bcryptPassword, currentTimestamp];
+        const createUserQuery = `INSERT INTO users (username, password, profile_image, created_at) VALUES ($1, $2, $3, $4)`;
+
+        const values = [username, bcryptPassword, defaultImage, currentTimestamp];
         const newUser = await pool.query(createUserQuery, values);
         const user_id = newUser.rows[0].user_id;
 
