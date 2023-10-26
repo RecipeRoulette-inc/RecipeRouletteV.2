@@ -157,9 +157,9 @@ const SearchBar = ({onSubmit}) => {
 const Wrapper = styled.form`
 justify-content: center;
 align-items: center;
-height: 75px;
-background:white; 
-width: 70vw;
+height: 25px;
+// background:white; 
+width: 50vw;
 padding: 1em;
 box-shadow: 0 0 3em rgba(0,0,0,.15);
 position: relative;
@@ -171,12 +171,12 @@ z-index: 2000;
 
 const DoubleWrapped = styled.div`
 position: fixed;
-top: 10vh;
+top: 12vh;
 width: 100%;
 padding: 2em;
-width: calc(70vw - 40px);
+width: 40vw;
 z-index: 1000;
-background: white;
+background-color: rgba(255, 255, 255, 0.5);
 border-radius: 3px; 
 border: 1px solid black;
 display: none;
@@ -255,7 +255,7 @@ const SearchInput = styled.input`
   border: 0; 
   position: absolute; 
   top: 0; 
-  bottom: 0;
+
   left: 0; 
   opacity: 0;
   cursor: pointer; 

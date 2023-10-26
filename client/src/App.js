@@ -11,6 +11,7 @@ import { getRecipeInformationBulk } from './components/singleRecipePage/SingleRe
 import RootLayout from './layouts/RootLayout';
 
 //pages
+import AddRecipePage from './pages/AddRecipe';
 import ProfilePage from './pages/profile';
 import Test from './pages/RecipesFromSearchBar';
 import SignupPage from './pages/SignupPage';
@@ -53,6 +54,7 @@ const App = () => {
         <Route path='signup' element={<SignupPage />} />
         <Route path='profile' element={<ProfilePage/>} />
         <Route path='hello' element={<Test/>} />
+        <Route path='add-recipe' element={<AddRecipePage/>} />
        </Route>
       )
   );

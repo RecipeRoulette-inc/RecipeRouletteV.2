@@ -1,6 +1,7 @@
 import { useState, createContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
+
 export const AuthContext = createContext(null); 
 
 const AuthProvider = ({ children }) => {
@@ -10,7 +11,7 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
 
   const handleLogin = async (data) => {
-    console.log('make request');
+    // console.log('make request');
     fetch('/user/login', {
       method: 'POST',
       credentials: 'include',
@@ -32,7 +33,7 @@ const AuthProvider = ({ children }) => {
         return res;
       })
       .then((data) => {
-        console.log('success')
+        // console.log('success')
         // handle successful login
         // store token
         // update redux state
@@ -43,10 +44,11 @@ const AuthProvider = ({ children }) => {
       })
       .catch((error) => {
         // display error in console
-        console.error('There was a problem with the fetch operation:', error); 
+        console.error('There was a problem with the fetch operation from sign in:', error); 
         // display error to user
         alert(error);
       })
+      
  
   };
 
@@ -90,7 +92,9 @@ const AuthProvider = ({ children }) => {
   }
 
   const handleLogout = () => {
+    console.log('logging out')
     setToken(null);
+    navigate('/login')
   }; 
 
   const value = {

@@ -7,7 +7,6 @@ const SignupForm = () => {
   const { register, handleSubmit } = useForm();
   const { onSignup } = useAuth(); 
 
-  const navigate = useNavigate();
 
   return (
     <WrapForm>
@@ -41,7 +40,7 @@ border: 15px solid #2C1A1D;
 border-radius: 200px;
 box-shadow: 10px 5px 5px black;
 padding: 20px 20px; 
-background-color: #ee6352;
+background-color: rgba(255, 255, 255, 0.5);
 position: relative;
 top: 0px;
 left: 152px;
