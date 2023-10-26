@@ -152,7 +152,7 @@ box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
 position:absolute;
 backface-visibility:hidden;
 transform: rotateY(180deg);
-background-color: #EE6352;
+background-color: rgba(255, 255, 255, 0.5);
 display:flex;
 flex-direction: column;
 justify-content: center; 

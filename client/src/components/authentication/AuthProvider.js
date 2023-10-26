@@ -1,6 +1,7 @@
 import { useState, createContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
+
 export const AuthContext = createContext(null); 
 
 const AuthProvider = ({ children }) => {
@@ -10,8 +11,8 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
 
   const handleLogin = async (data) => {
-    console.log('make request');
-    fetch('http://localhost:3000/user/login', {
+    // console.log('make request');
+    fetch('/user/login', {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(data),
@@ -32,7 +33,7 @@ const AuthProvider = ({ children }) => {
         return res;
       })
       .then((data) => {
-        console.log('success')
+        // console.log('success')
         // handle successful login
         // store token
         // update redux state
@@ -43,15 +44,16 @@ const AuthProvider = ({ children }) => {
       })
       .catch((error) => {
         // display error in console
-        console.error('There was a problem with the fetch operation:', error); 
+        console.error('There was a problem with the fetch operation from sign in:', error); 
         // display error to user
         alert(error);
       })
+      
  
   };
 
   const handleSignup = async (data) => {
-    fetch('http://localhost:3000/user/signup', {
+    fetch('/user/signup', {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(data),
@@ -62,6 +64,7 @@ const AuthProvider = ({ children }) => {
       .then((res) => {
         // if response status not 200
         if (!res.ok) {
+          console.log('AUTH PROVIDER LINE 65 FRONT END CHECK WHEN STATUS IS NOT 200')
           // parse response then destruct response body for error property
           return res.json().then(({ error }) => {
             // create an Error object from error property or response statusText
@@ -70,6 +73,7 @@ const AuthProvider = ({ children }) => {
         }
         // ! VERIFY the information being returned from the server, if not JSON, do not .json()
         // return res.json();
+        console.log('STATUS IS 200 AND GOOD LINE 74 AUTHPROVIDER')
         return res;
       })
       .then((data) => {
@@ -88,7 +92,9 @@ const AuthProvider = ({ children }) => {
   }
 
   const handleLogout = () => {
+    console.log('logging out')
     setToken(null);
+    navigate('/login')
   }; 
 
   const value = {
