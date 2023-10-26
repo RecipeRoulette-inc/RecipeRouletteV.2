@@ -1,3 +1,5 @@
+/* MIGHT NOT BE MOST UP TO DATE -- REFER TO ELEPHANT SQL TO SEARCH FOR TABLE INFORMATION */
+
 CREATE TABLE users (
   user_id UUID PRIMARY KEY DEFAULT (uuid_generate_v4()),
   username VARCHAR(200) UNIQUE NOT NULL,
@@ -24,7 +26,8 @@ CREATE TABLE uploaded_recipes (
   country_origin VARCHAR,
   allergens VARCHAR[],
   image VARCHAR,
-  user_id UUID
+  user_id UUID,
+  recipe_name VARCHAR
 );
 
 CREATE TABLE recipes (

@@ -1,81 +1,83 @@
 const express = require('express');
 const Router = express.Router();
 
-const recipeController = require('../controllers/recipeController')
+const recipeController = require('../controllers/recipeController');
 const authenticationController = require('../controllers/authenticationController');
-const profileController = require('../controllers/profileController');
+const saveRecipesController = require('../controllers/saveRecipesController');
+const uploadRecipeController = require('../controllers/uploadRecipeController');
 
 // saved recipes
 Router.
   route('/getSavedRecipes')
-  .get(profileController.getSavedRecipes,
+  .get(saveRecipesController.getSavedRecipes,
     (req, res) => {
       return res.status(200).json(res.locals.savedRecipes);
     });
 
 Router.
   route('/addSavedRecipes')
-  .post(profileController.addSavedRecipes,
+  .post(saveRecipesController.addSavedRecipes,
     (req, res) => {
       return res.status(200).json(res.locals.addRecipe);
     });
 
 Router.
   route('/deleteSavedRecipes')
-  .delete(profileController.deleteSavedRecipes,
+  .delete(saveRecipesController.deleteSavedRecipes,
     (req, res) => {
-      return res.status(200).send('Deleted Recipe');
+      return res.status(200).send('Success: Deleted Recipe');
     });
-
 // saved recipes above
 
+// add your own recipe
 Router.
-  route('/randomRecipe')
-  .post((req, res) => {
-    console.log('Post Route')
-    console.log(req.body);
-  });
+  route('/uploadRecipe')
+  .post(uploadRecipeController.uploadRecipe,
+    (req, res) => {
+      return res.status(200).json(res.locals.uploadedRecipes);
+    });
+// add your own recipe above
 
 Router
   .route('/randomRecipe')
   .get(recipeController.getRandomRecipe,
     (req, res) => {
       return res.status(200).send(res.locals.randomRecipe)
-    })
+    });
 
 Router
   .route('/getRecipeInformationBulk')
   .get(recipeController.getRecipeInformationBulk,
     (req, res) => {
-      console.log('Search Recipe Complete')
       return res.status(200).send(res.locals.bulkRecipeInformation)
-    }
-  )
+    });
 
 Router
   .route('/getRecipeInformationBulk/:id')
   .get(recipeController.getRecipeInformationBulk,
     (req, res) => {
-      console.log('Search Recipe Complete :id')
       return res.status(200).json(res.locals.getRecipeInfo)
-    }
-  )
+    });
 
 Router
   .route('/searchRecipes')
   .post(recipeController.searchRecipes,
     (req, res) => {
-      console.log('Search Recipe Complete')
-      // console.log(res.locals.recipes)
       return res.status(200).json(res.locals.recipes)
-    }
-  )
+    });
 
-Router.route('/test').get((req, res) => {
-  console.log('test passed')
-  res.status(200).json('You shall pass')
-})
+Router
+  .route('/nutritionLabel/:recipeId')
+  .get(recipeController.getRecipeNutritionLabel,
+    (req, res) => {
+      return res.status(200).send(res.locals.nutritionLabel)
+    });
 
+Router.route('/searchByIngredients')
+  .patch(recipeController.searchByIngredient,
+    (req, res) => {
+      return res.status(200).send(res.locals.searchResults)
+    });
 
 
 module.exports = Router; 

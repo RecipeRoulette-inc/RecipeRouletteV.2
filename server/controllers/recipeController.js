@@ -181,6 +181,78 @@ recipeController.updateSavedRecipes = async (req, res, next) => {
   }
 }
 
+recipeController.getRecipeNutritionLabel = (req, res, next) => {
+  try {
+  console.log('-------> getRecipeNutritionLabel Controller');
+  let id = req.params.recipeId; // Number | The recipe id.
+  let opts = {
+    'showOptionalNutrients': false, // Boolean | Whether to show optional nutrients.
+    'showZeroValues': false, // Boolean | Whether to show zero values.
+    'showIngredients': false // Boolean | Whether to show a list of ingredients.
+  };
+
+  apiInstance.recipeNutritionLabelImage(id, opts, (error, data, response) => {
+    if (error) {
+      //console.error(error);
+      return next({
+        log: 'Error occured in recipeController.getRecipeNutritionLabel',
+        status: 404,
+        message: { err: `recipeController.getRecipeNutritionLabel null data: ${error}` }
+      });
+    } else {
+      res.locals.nutritionLabel = data;
+      return next()
+    }
+  });
+}
+catch (error) {
+  return next({
+    log: 'Error occured in recipeController.getRecipeNutritionLabel',
+    status: 400,
+    message: { err: `recipeController.getRecipeNutritionLabel: ${err}` }
+  });
+}
+} 
+
+recipeController.searchByIngredient = async (req, res, next) => {
+
+
+  try {
+    //nb : ingredients should be a string of ingredients separated by commas
+    //e.g. : apples,flour,sugar,milk
+    //stored on request.body.ingredients
+
+    const opts = {
+    'instructionsRequired': true, // Boolean | Whether the recipes must have instructions.
+    'includeNutrition': true,
+    'addRecipeInformation': true, 
+    'limitLicense': true, // Boolean | Whether the recipes should have an open license that allows display with proper attribution.
+    'number': 3,
+    'ignorePantry': true,
+    'ingredients' : req.body.ingredients
+    };
+    
+    console.log(opts.ingredients)
+    apiInstance.searchRecipesByIngredients(opts, (error, data, response) => {
+      if (error) {
+        console.log(error)
+        return next(error)
+      }
+      else {
+        res.locals.searchResults = data;
+        return next()
+      }
+    })
+    
+  } catch (error) {
+    //console.log(error)
+    return next({
+      log: "Error searching by ingredient",
+      status: 400,
+      message: { error: "Error in searchByIngredient" },
+  })
+  }
+}
 
 
 
