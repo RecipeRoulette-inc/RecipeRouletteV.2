@@ -15,7 +15,7 @@ Router
   .route('/randomRecipe')
   .get(recipeController.getRandomRecipe, 
   (req, res) => {
-    console.log('RES HERE', res)
+    //console.log('RES HERE', res)
     return res.status(200).send(res.locals.randomRecipe)
   })
 
@@ -66,8 +66,15 @@ Router
   .route('/nutritionLabel/:recipeId')
   .get(recipeController.getRecipeNutritionLabel, 
   (req, res) => {
-    console.log('RES HERE', res)
+    //console.log('RES HERE', res)
     return res.status(200).send(res.locals.nutritionLabel)
 })
+
+Router.route('/searchByIngredients')
+.patch(recipeController.searchByIngredient,
+  (req, res) => {
+    return res.status(200).send(res.locals.searchResults)
+  })
+
 
 module.exports = Router; 
