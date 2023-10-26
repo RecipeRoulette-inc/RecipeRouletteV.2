@@ -8,6 +8,7 @@ const { S3Client, PutObjectCommand, GetObjectCommand, DeleteObjectCommand } = re
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const multer = require('multer');
 const crypto = require('crypto');
+const { profile } = require('console');
 require('dotenv').config();
 
 app.use(cookieParser());
@@ -99,15 +100,13 @@ profileController.getImageURL = async (req, res, next) => {
       }
 };
 
-profileController.uploadImage = async (req, res) => {
-    console.log('entering upload image middleware');
-    console.log('image file', req.file);
+profileController.uploadImage = async (req, res, next) => {
 
   try {
 
     const photoName = crypto.randomBytes(32).toString('hex');
     const oldPhoto = res.locals.userInfo.image;
-    const text = 'UPDATE users SET image = $1 WHERE image = $2;'
+    const text = 'UPDATE users SET profile_image = $1 WHERE profile_image = $2;'
 
     const params = {
         Bucket: bucketName,
@@ -120,7 +119,7 @@ profileController.uploadImage = async (req, res) => {
     await s3.send(command);
     await pool.query(text, [photoName, oldPhoto])
 
-    next();
+    return next();
 
 } catch(err) {
     return next({
@@ -209,5 +208,25 @@ profileController.getPreferences = async (req, res, next) => {
         });
       }
 };
+
+profileController.getUploadedRecipes = async (req, res, next) => {
+    const user_id = res.locals.user_id;
+    const text = 'SELECT * FROM uploaded_recipes WHERE user_id=$1;'
+
+    pool.query(text, [user_id])
+      .then((data) => {
+        if (data.rows[0] != null) {
+            res.locals.userInfo.uploadedRecipes = data.rows[0]
+        } else {
+            res.locals.userInfo.uploadedRecipes = 'You have not uploaded any recipes yet.'
+        }
+      })
+      .then(() => next())
+      .catch((err) => {
+        return next((err) => err = {
+        log: 'An error occurred in the getUploadedRecipes middleware.'
+    })
+});
+}
 
 module.exports = profileController;

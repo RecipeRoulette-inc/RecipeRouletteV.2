@@ -17,24 +17,24 @@ export default function ProfilePage() {
       return res.json();
     })
     .then((res) => {
-      setUserInfo({username: res.username, image: res.imageURL, savedRecipes: res.savedRecipes, allergies: res.allergies, restrictions: res.restrictions})
+      setUserInfo({username: res.username, image: res.imageURL, savedRecipes: res.savedRecipes, allergies: res.allergies, restrictions: res.restrictions, uploadedRecipes: res.uploadedRecipes})
     })
     .then(() => setLoading(false))
 
   };
 
-  function uploadPhoto() {
+  // function uploadPhoto() {
 
-    fetch('/profile/uploadPhoto')
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        console.log('upload status', res)
-      })
-      .then(() => alert('Photo uploaded successfully'))
-      .catch((err) => alert('Error occurred while uploading photo'))
-  };
+  //   fetch('/profile/uploadPhoto')
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((res) => {
+  //       console.log('upload status', res)
+  //     })
+  //     .then(() => alert('Photo uploaded successfully'))
+  //     .catch((err) => alert('Error occurred while uploading photo'))
+  // };
 
 
   if (loading) {
@@ -43,10 +43,13 @@ export default function ProfilePage() {
 
   return (
     <div display='flex' justify-content='center' align-items='center'> 
-      <img src={userInfo.image}></img>
+      <img src={userInfo.image} width='auto' height='200px' style='margin-right:20%'></img>
       <p display='flex' justify-content='center' align-items='center'>{userInfo.username}</p>
       <br></br>
-      <button name='image' onClick={uploadPhoto}>add photo</button>
+      <form action="/profile/uploadPhoto" method='post' enctype="multipart/form-data">
+        <input type='file' id='image' name='image'/>
+        <input type='submit'/>
+      </form>
       <br></br>
       <h3>Saved Recipes</h3>
       <br></br>
@@ -61,6 +64,8 @@ export default function ProfilePage() {
       <h4>{userInfo.restrictions}</h4>
       <br></br>
       <h3>Uploaded Recipes</h3> 
+      <br></br>
+      <h4>{userInfo.uploadedRecipes}</h4>
 
     </div>
   )

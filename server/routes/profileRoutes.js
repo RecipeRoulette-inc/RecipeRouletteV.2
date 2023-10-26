@@ -29,7 +29,7 @@ const upload = multer({storage: storage});
 
 Router
   .route('/userInfo')
-  .get(profileController.getUserId, profileController.getUserInfo, profileController.getImageURL, profileController.getPreferences, (req, res) => {
+  .get(profileController.getUserId, profileController.getUserInfo, profileController.getImageURL, profileController.getPreferences, profileController.getUploadedRecipes, (req, res) => {
 
     // const getObjectParams = {
     //     Bucket: bucketName,
@@ -65,7 +65,7 @@ Router
     
         // await db.query(text, [photoName]);
 
-        res.sendStatus(200);
+        res.redirect('/profile');
     
       })
 
