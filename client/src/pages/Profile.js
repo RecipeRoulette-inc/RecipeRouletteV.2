@@ -43,7 +43,7 @@ export default function ProfilePage() {
 
   return (
     <div display='flex' justify-content='center' align-items='center'> 
-      <img src={userInfo.image} width='auto' height='200px' style='margin-right:20%'></img>
+      <img src={userInfo.image} width='auto' height='200px'></img>
       <p display='flex' justify-content='center' align-items='center'>{userInfo.username}</p>
       <br></br>
       <form action="/profile/uploadPhoto" method='post' enctype="multipart/form-data">
@@ -65,7 +65,7 @@ export default function ProfilePage() {
       <br></br>
       <h3>Uploaded Recipes</h3> 
       <br></br>
-      <h4>{userInfo.uploadedRecipes}</h4>
+      <h4>{userInfo.uploadedRecipes.recipe_name}</h4>
 
     </div>
   )
