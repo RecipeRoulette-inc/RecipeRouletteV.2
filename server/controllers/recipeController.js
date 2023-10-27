@@ -260,7 +260,6 @@ recipeController.updateHomepageCache = async (req, res, next) => {
 try {
 let currentDB = fs.readFileSync(PATH_TO_DB, 'utf-8')
 const currentDBParsed = (JSON.parse(currentDB))
-console.log(currentDBParsed.expiresAt, ' is expiresAt')
 if (new Date() > currentDBParsed.expiresAt) {
   newDBParsed = updateHomepage()
   response.locals.json = newDBParsed
