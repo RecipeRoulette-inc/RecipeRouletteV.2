@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from "styled-components";
-import { uploadRecipe, changeRecipeName, changeCountry, changeInstructions } from '../../slices/uploadRecipeSlice';
+import { uploadRecipe, changeRecipeName, changeCountry, changeInstructions, clearFields } from '../../slices/uploadRecipeSlice';
 
 const cuisine = ['African', 'Asian', 'American', 'British', 'Cajun', 'Caribbean', 'Chinese', 'Eastern European', 'European', 'French', 'German', 'Greek',
   'Indian', 'Irish', 'Italian', 'Japanese', 'Jewish', 'Korean', 'Latin American', 'Mediterranean', 'Mexican', 'Middle Eastern', 'Nordic',
@@ -67,20 +67,28 @@ function RecipeUploadForm() {
   });
 
   const handleRecipeChange = (e) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     dispatch(changeRecipeName(value));
-    console.log(value, 'inhandleinput')
+    console.log(value, 'input')
   };
 
   const handleInstructionsChange = (e) => {
     const { value } = e.target;
     dispatch(changeInstructions(value));
-  }
+    console.log(value, 'input')
+  };
 
   const handleCountryChange = (e) => {
     const { value } = e.target;
     dispatch(changeCountry(value));
-  }
+  };
+
+  const handleKeyPress = (e, actionCreator) => {
+    if (e.key === 'Backspace') {
+      e.preventDefault();
+      dispatch(actionCreator('Backspace'));
+    }
+  };
 
   const handleArrayInputChange = (e, type) => {
     const newValue = e.target.value;
@@ -127,6 +135,7 @@ function RecipeUploadForm() {
       .then((data) => {
         console.log('data', data);
         dispatch(uploadRecipe(data));
+        dispatch(clearFields());
         navigate('/profile');
       })
       .catch((err) => {
@@ -143,6 +152,7 @@ function RecipeUploadForm() {
           name="recipeName"
           value={testdata.recipeName}
           onChange={handleRecipeChange}
+          onKeyDown={(e) => handleKeyPress(e, changeRecipeName)}
           placeholder="Recipe Name"
         />
       </div>
@@ -165,6 +175,7 @@ function RecipeUploadForm() {
           name="instructions"
           value={testdata.instructions}
           onChange={handleInstructionsChange}
+          onKeyDown={(e) => handleKeyPress(e, changeInstructions)}
           placeholder="Recipe Instructions"
         />
       </div>
@@ -231,5 +242,4 @@ const StyledForm = styled.form`
   justify-content: center;
   align-items: center;
   width: 300px;
-
 `
