@@ -19,6 +19,7 @@ app.use(express.json());
 // All Route Folders
 const userRoutes = require('./routes/userRoutes');
 const recipeRoutes = require('./routes/recipeRoutes');
+const profileRoutes = require('./routes/profileRoutes');
 
 // serve the icon
 app.use('/favicon.ico', (req, res) => {
@@ -33,6 +34,7 @@ app.get('/', (req, res) => {
 
 
 // Redirect to Route Folders
+app.use('/profile', profileRoutes);
 app.use('/user', userRoutes);
 app.use('/recipes', recipeRoutes);
 

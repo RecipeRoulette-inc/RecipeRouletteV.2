@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { populateMain, clearMain, queryMade } from '../../slices/queryRecipesSlice';
-import FlipCard from '../components/flipCard/FlipCard';
 import  styled  from 'styled-components';
 
 
@@ -11,8 +10,8 @@ const Test = () => {
   console.log(hello)
  
 
-  const mapped = hello.queryRecipes.map((recipe) => (
-    <Wrapper>
+  const mapped = hello.queryRecipes.map((recipe, index) => (
+    <Wrapper key={index}>
     <Card>
     {recipe.title}
     </Card>
@@ -23,14 +22,14 @@ const Test = () => {
 
 
   return (
-  <bgContainer>
+  <BgContainer>
     {mapped}
-  </bgContainer>
+  </BgContainer>
   )
 };
 
 
-const bgContainer = styled.div`
+const BgContainer = styled.div`
 display: grid;
 grid-template-column: repeat(3, 1fr);
 grid-template-row: repeat(3,1fr);
@@ -82,7 +81,7 @@ box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
 position:absolute;
 backface-visibility:hidden;
 transform: rotateY(180deg);
-background-color: #EE6352;
+background-color: rgba(255, 255, 255, 0.5);
 display:flex;
 flex-direction: column;
 justify-content: center; 

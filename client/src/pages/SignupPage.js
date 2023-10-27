@@ -11,7 +11,8 @@ const SignupPage = () => {
 };
 
 const SignupWrap = styled.div`
-background-image: ${({src}) => `url(${src})`};
+// background-image: ${({src}) => `url(${src})`};
+background-color: rgba(255, 255, 255, 0.5);
 background-size: cover;
 display: flex;
 align-self: center 

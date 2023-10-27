@@ -4,18 +4,20 @@ const userController = {};
 const pool = require('../database/connectToDb');
 
 userController.createUser = async (req, res, next) => {
-    const { username, password, email } = req.body;
+    const { username, password } = req.body;
     const currentTimestamp = new Date().toISOString();
+    console.log('THIS IS THE USERNAME AND PASSWORD LINE 9 USERCONTROLLER', username, password)
 
     // how can we create a pop up for an invalid username or password?
-    if (!username || !password || !email) {
+    if (!username || !password) {
         return res.status(401).send('Invalid username, password, or email');
     };
 
     try {
         // create a conditional to see if user already exists
+       
         const existingUser = await pool.query(`SELECT * FROM users WHERE username = $1`, [username]);
-
+        
         if (existingUser.rowCount >= 1) {
             return next({
                 log: 'User already exists',
@@ -28,12 +30,13 @@ userController.createUser = async (req, res, next) => {
         const saltRound = 10;
         const salt = await bcrypt.genSalt(saltRound);
         const bcryptPassword = await bcrypt.hash(password, salt);
+        const defaultImage = 'download.png'
 
         // create new user into database
-        const createUserQuery = `INSERT INTO users (username, email, password, created_at) VALUES ($1, $2, $3, $4)`;
-        const values = [username, email, bcryptPassword, currentTimestamp];
+        const createUserQuery = `INSERT INTO users (username, password, profile_image, created_at) VALUES ($1, $2, $3, $4)`;
+        const values = [username, bcryptPassword, defaultImage, currentTimestamp];
         const newUser = await pool.query(createUserQuery, values);
-
+        console.log('CONSOLELOG AFTER CREATING USER IN DB LINE 39 USERCONTROLLER')
         // persist user information to assign cookie / JWT 
         //reroute to login page instead of storing user 
         res.locals.user = newUser;
@@ -50,6 +53,7 @@ userController.createUser = async (req, res, next) => {
 
 userController.verifyUser = async (req, res, next) => {
     const { username, password } = req.body;
+    console.log('YOU ARE HERE' ,username, password)
     if (!username || !password) {
         return res.status(401).send('Invalid username or password');
     };
@@ -59,11 +63,11 @@ userController.verifyUser = async (req, res, next) => {
 
     // console.log(existingUser, 'existing user');
     if (existingUser.rowCount === 0) {
-        return res.redirect('/signup');
+       return res.redirect('/signup');
     };
 
     console.log('made it to bcrypt in userController.verifyUser');
-    console.log(existingUser)
+
     try {
         bcrypt
             .compare(password, existingUser.rows[0].password)
