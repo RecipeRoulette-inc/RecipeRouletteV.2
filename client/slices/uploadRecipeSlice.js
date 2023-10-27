@@ -15,23 +15,29 @@ export const uploadRecipeSlice = createSlice({
             state.populateUserRecipe = { ...action.payload }
         },
         changeRecipeName: (state, action) => {
-            // back space doesn't work -- will need to fix this logic 
             if (action.payload === 'Backspace') {
                 state.recipeName = state.recipeName.slice(0, -1);
             } else {
-                state.recipeName += action.payload[action.payload.length - 1];
+                state.recipeName = action.payload;
                 console.log(state.recipeName)
             }
-            console.log(action.payload, 'after')
         },
         changeInstructions: (state, action) => {
-            state.recipeName += action.payload[action.payload.length - 1];
+            if (action.payload === 'Backspace') {
+                state.instructions = state.instructions.slice(0, -1);
+            } else {
+                state.instructions = action.payload;
+            }
         },
         changeCountry: (state, action) => {
             state.countryOfOrigin = action.payload;
         },
+        clearFields: (state) => {
+            state.recipeName = '';
+            state.instructions = '';
+        },
     },
 });
 
-export const { uploadRecipe, changeRecipeName, changeInstructions, changeCountry } = uploadRecipeSlice.actions;
+export const { uploadRecipe, changeRecipeName, changeInstructions, changeCountry, clearFields } = uploadRecipeSlice.actions;
 export default uploadRecipeSlice.reducer;

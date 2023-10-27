@@ -17,10 +17,13 @@ export default function ProfilePage() {
         return res.json();
       })
       .then((res) => {
+        console.log(res.uploadedRecipes, 'upload')
         setUserInfo({ username: res.username, image: res.imageURL, savedRecipes: res.savedRecipes, allergies: res.allergies, restrictions: res.restrictions, uploadedRecipes: res.uploadedRecipes.recipe_name })
       })
       .then(() => setLoading(false))
-
+      .catch((err) => {
+        console.log(`Error in FETCH /profile/userInfo: ${err}`);
+      });
   };
 
   // function uploadPhoto() {
