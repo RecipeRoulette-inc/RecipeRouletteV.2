@@ -39,16 +39,12 @@ const DailyRecipe = () => {
 
   return (
     <Wrapper>
-      <Photo>
         <DailyPhoto src={image}></DailyPhoto>
-        <center>
+        
             <h1>Recipe of the Day:</h1>
             <h2>{title}</h2>
             <h3>Ready in: {readyInMinutes} minutes</h3>
             <h3>Servings: {servings}</h3>
-        </center>
-        </Photo>
-
     </Wrapper>
   );
 };
@@ -57,7 +53,8 @@ const Wrapper = styled.div`
 direction: flex;
 flex-direction: row;
 align-items: center;
-width: 70vw;
+// width: 300px;
+// height: 150px;
 // background: var(--clr-bg);
 border-radius: 1rem;
 border: 4px solid rgba(0, 0, 0);
@@ -65,23 +62,25 @@ border: 4px solid rgba(0, 0, 0);
 
 const DailyPhoto = styled.img`
 display: flex;
-object-fit: contain;
+object-fit: cover;
 align-items: center;
-margin: 25px;
+height: 100px;
+width: 100px;
+// margin: 25px;
 border: 1px solid black;
 border-radius: 1rem;
 `
 
-const Photo = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-background-color: rgb(255,255,255);
-// border: 1px solid black;
-border-radius: 1rem;
-gap: 10px;
-`;
+// const Photo = styled.div`
+// display: flex;
+// flex-direction: column;
+// justify-content: center;
+// align-items: center;
+// background-color: rgb(255,255,255);
+// // border: 1px solid black;
+// border-radius: 1rem;
+// gap: 10px;
+// `;
 
 
 export default DailyRecipe; 

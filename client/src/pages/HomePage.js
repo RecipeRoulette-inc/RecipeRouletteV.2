@@ -45,11 +45,13 @@ const HomePage = () => {
 
   return (
     <Wrapper>
+    
       <DailyRecipe/>
       <ScrollBarRandom />
       <ScrollBarUnder30 />
       <ScrollBarVegan />
     </Wrapper>
+    
   )
 };
 

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { getRecipeInformationBulk } from '../singleRecipePage/SingleRecipePage';
 
 const FlipCard = ({ recipeInfo }) => {
-  const [nutritionLabel, setNutritionLabel] = useState({});
+  const [nutritionLabel, setNutritionLabel] = useState();
   const { savedRecipes } = useSelector((state) => state.savedRecipes);
   const { saved } = useSelector((state) => state.flipCard);
   const dispatch = useDispatch();
@@ -109,14 +109,14 @@ const FlipCard = ({ recipeInfo }) => {
 
 // height before: 500px
 const Wrapper = styled.div`
-width: 320px; 
-height: 380px; 
+width: 150px; 
+height: 150px; 
 perspective: 2000px; 
 `;
 
 // adjusted height and moved Card to 'top' of the wrapper to make room for save button and info
 const Card = styled.div`
-height: 270px;
+height: 150px;
 width: 100%; 
 position:relative; 
 transition: transform 1500ms;

@@ -3,7 +3,7 @@ import React, {useState, setState, useEffect } from "react";
 
 export default function ProfilePage() {
 
-  const [userInfo, setUserInfo] = useState({username: '', image: '', savedRecipes: '', allergies: '', restrictions: ''});
+  const [userInfo, setUserInfo] = useState({username: '', image: '', savedRecipes: '', allergies: '', restrictions: '', uploadedRecipes: ''});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

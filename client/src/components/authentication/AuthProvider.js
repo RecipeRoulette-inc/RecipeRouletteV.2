@@ -1,14 +1,17 @@
 import { useState, createContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
+import { loggingin, loggingout } from "../../../slices/authInputSlice";
 
 
 export const AuthContext = createContext(null); 
 
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const location = useLocation();
-
-  const [token, setToken] = useState(null);
+  const userlogin = useSelector((state) => state.authInput)
+ 
 
   const handleLogin = async (data) => {
     // console.log('make request');
@@ -38,9 +41,9 @@ const AuthProvider = ({ children }) => {
         // store token
         // update redux state
         // TODO: LINK GOES HERE 
-        setToken('NickChristinaJerelEdwin');
-        const origin = location.state?.from?.path || '/home'; 
-        navigate(origin);
+        
+        dispatch(loggingin());
+        navigate('/home');
       })
       .catch((error) => {
         // display error in console
@@ -93,12 +96,11 @@ const AuthProvider = ({ children }) => {
 
   const handleLogout = () => {
     console.log('logging out')
-    setToken(null);
-    navigate('/login')
+    dispatch(loggingout());
+    navigate('/login');
   }; 
 
   const value = {
-    token, 
     onLogin: handleLogin, 
     onSignup: handleSignup, 
     onLogout: handleLogout, 
