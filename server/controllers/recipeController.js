@@ -7,7 +7,8 @@ apiKeyScheme.apiKey = process.env.API_KEY
 console.log(apiKeyScheme)
 console.log(process.env.API_KEY)
 const apiInstance = new SpoonacularApi.RecipesApi();
-
+const fs = require('fs')
+const path = require('path')
 // JC Imports: To save recipe and update existing userDoc. Can move import and method to userController if more appropriate
 const User = require('../models/userModel');
 
@@ -41,6 +42,7 @@ return newData
 //   'number': 75 // Number | The maximum number of items to return (between 1 and 100). Defaults to 10.
 // };
 
+const PATH_TO_DB = path.resolve(__dirname, '../../data/homepage.json');
 const recipeController = {}; 
 
 // recipeController.getRecipeInformationBulk = (req, res, next) => {
@@ -75,7 +77,7 @@ recipeController.searchRecipes = (req, res, next) => {
   // console.log('Search Query NOW ------------>>', req.body)
   const {opts: data} = req.body;
   // console.log('this is the req.params', req.params)
-  console.log(req.body)
+  // console.log(req.body)
 
   let opts = {
     'instructionsRequired': true, // Boolean | Whether the recipes must have instructions.
@@ -92,7 +94,6 @@ recipeController.searchRecipes = (req, res, next) => {
 }
 
 // console.log('OPTS w. QUERY AFTER', opts)
-
   // remember that we changed 'opts' to 'data'
   apiInstance.searchRecipes(opts, (error, data, response) => {
     if (error) {
@@ -183,7 +184,7 @@ recipeController.updateSavedRecipes = async (req, res, next) => {
 
 recipeController.getRecipeNutritionLabel = (req, res, next) => {
   try {
-  console.log('-------> getRecipeNutritionLabel Controller');
+  //console.log('-------> getRecipeNutritionLabel Controller');
   let id = req.params.recipeId; // Number | The recipe id.
   let opts = {
     'showOptionalNutrients': false, // Boolean | Whether to show optional nutrients.
@@ -254,6 +255,146 @@ recipeController.searchByIngredient = async (req, res, next) => {
   }
 }
 
+recipeController.updateHomepageCache = async (req, res, next) => {
+
+try {
+let currentDB = fs.readFileSync(PATH_TO_DB, 'utf-8')
+const currentDBParsed = (JSON.parse(currentDB))
+console.log(currentDBParsed.expiresAt, ' is expiresAt')
+if (new Date() > currentDBParsed.expiresAt) {
+  newDBParsed = updateHomepage()
+  response.locals.json = newDBParsed
+}
+else {
+  response.locals.json = currentDB
+}
+
+  return next()
+}
+catch (error) {
+  return next({
+    log: 'Error occured in recipeController.updateHomepageCache',
+    status: 400,
+    message: { err: `recipeController.updateHomepageCache: ${err}` }
+  });
+}
+}
 
 
+
+getVegans = () => {
+  return new Promise((resolve, reject) => {
+    const opts = {
+      instructionsRequired: true,
+      addRecipeNutrition: true,
+      includeNutrition: true,
+      number: 10,
+      query: undefined,
+      diet: 'vegan',
+      sort: 'random'
+    };
+
+    apiInstance.searchRecipes(opts, (error, data, response) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        const ids = data.results.map((e) => e.id).toString();
+
+        apiInstance.getRecipeInformationBulk(ids, opts, (error, data, response) => {
+          if (error) {
+            console.error(error);
+            reject(error);
+          } else {
+            console.log('cached homepage successfully fetched vegans');
+            resolve(deconstruct(data));
+          }
+        });
+      }
+    });
+  });
+};
+getUnder30s = () => {
+  return new Promise((resolve, reject) => {
+    const opts = {
+      instructionsRequired: true,
+      addRecipeNutrition: true,
+      includeNutrition: true,
+      number: 10,
+      query: undefined,
+      maxReadyTime: '30',
+      sort: 'random'
+    };
+
+    apiInstance.searchRecipes(opts, (error, data, response) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        const ids = data.results.map((e) => e.id).toString();
+
+        apiInstance.getRecipeInformationBulk(ids, opts, (error, data, response) => {
+          if (error) {
+            console.error(error);
+            reject(error);
+          } else {
+            console.log('cached homepage successfully fetched under 30s');
+            resolve(deconstruct(data));
+          }
+        });
+      }
+    });
+  });
+};
+
+getRandoms = () => {
+  return new Promise((resolve, reject) => {
+    const opts = {
+      instructionsRequired: true,
+      addRecipeNutrition: true,
+      includeNutrition: true,
+      number: 10
+    };
+
+    apiInstance.getRandomRecipes(opts, (error, data, response) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        console.log('cached homepage successfully fetched random');
+        resolve(data);
+      }
+    });
+  });
+};
+
+
+updateHomepage = async () => {
+  const homepage = {}
+  //get the randoms...
+
+ 
+homepage.randoms = await getRandoms()
+
+homepage.underThirty = await getUnder30s();
+
+homepage.vegans = await getVegans();
+
+const currentDate = new Date();
+
+// Add 1 hour to the current date and time
+const oneHourFromNow = new Date(currentDate);
+oneHourFromNow.setHours(currentDate.getHours() + 1);
+
+homepage.expiresAt = oneHourFromNow;
+  console.log('homepage cached')
+  console.log(homepage)
+  homepageJSON = JSON.stringify(homepage)
+  fs.writeFile(PATH_TO_DB, homepageJSON, err => {
+    if (err) {
+      console.log("error in updateHomePage write: " , err)
+    }
+  })
+  return homepageJSON
+}
 module.exports = recipeController;
