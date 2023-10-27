@@ -262,15 +262,15 @@ let currentDB = fs.readFileSync(PATH_TO_DB, 'utf-8')
 const currentDBParsed = (JSON.parse(currentDB))
 if (new Date() > currentDBParsed.expiresAt) {
   newDBParsed = updateHomepage()
-  response.locals.json = newDBParsed
+  res.locals.json = newDBParsed
 }
 else {
-  response.locals.json = currentDB
+  res.locals.json = currentDB
 }
 
   return next()
 }
-catch (error) {
+catch (err) {
   return next({
     log: 'Error occured in recipeController.updateHomepageCache',
     status: 400,
