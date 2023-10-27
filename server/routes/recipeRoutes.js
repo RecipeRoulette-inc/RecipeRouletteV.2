@@ -77,4 +77,16 @@ Router.route('/searchByIngredients')
   })
 
 
+// Router.route('/fetchHomepage')
+// .get(recipeController.checkCachedHomepage,
+//   recipeController.refreshHomepage,
+//   recipeController.saveNewHomepage,
+//   (req, res) => {
+//     return res.status(200).send(res.locals.searchResults)
+//   })
+
+
+Router.route('/testHomepage')
+.get(recipeController.updateHomepageCache, (req, res) => {return res.status(200).send(res.locals.json)})
+
 module.exports = Router; 
