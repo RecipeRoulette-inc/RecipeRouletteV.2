@@ -15,15 +15,8 @@ Router
     .post(userController.verifyUser,
         authenticationController.createCookie,
         (req, res) => {
-            return res.sendStatus(200);
-        });
-
-Router
-    .route('/verifyUser')
-    .get(authenticationController.verifyCookie,
-        (req, res) => {
-            return res.sendStatus(200);
-        });
+            return res.sendStatus(200)
+        })
 
 Router
     .route('/logout')

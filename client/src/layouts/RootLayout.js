@@ -6,7 +6,7 @@ import { createContext, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SearchBar from '../components/searchBar/SearchBar';
 // import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/bw images/fast-food-doodles-hand-drawn-colorful-vector-symbols-objects_217204-778.jpg";
-import img from "../public/mainBackground.jpg"
+import img from "../public/brooke-lark-wMzx2nBdeng-unsplash.jpg"
 import rouletteWheel from "../public/rouletteWheel.svg"
 
 //custom hooks
@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
 * {
     // margin: auto; 
     // padding: 10px 10px; 
-    box-sizing: border-box;
+    // box-sizing: border-box;
     font-family: 'Chelsea Market';
 }
 
@@ -33,18 +33,26 @@ const GlobalStyle = createGlobalStyle`
 
 import AuthProvider from '../components/authentication/AuthProvider';
 
-
+const backgrounddiv = () => {
+  
+  return (
+    <div>
+      <img/>
+    </div>
+  )
+}
 
 const RootLayout = () => {
   const navigate = useNavigate()
   const { token, onLogout } = useAuth();
   const location = useLocation();
-
-  console.log('Location', location);
+  
+  // console.log('Location', location);
 
   const dispatch = useDispatch();
   const queryRecipes = useSelector(state => state.queryRecipes.queryRecipes)
   // console.log('RootLayout queryRecipes: ', queryRecipes);
+  
 
   const onSubmit = (data) => {
     // console.log('-------> BEFORE DATA FROM ROOT LAYOUT: ', data);
@@ -61,20 +69,20 @@ const RootLayout = () => {
         if (!res.ok) {
           console.log('res not ok')
         }
-        
+        console.log('HERE ARE THE RECIPES FROM SEARCHBAR ROOTLAYOUT LINE 64')
         return res.json();
       })
       .then((data) => {
-        console.log('-------> THEN DATA FROM ROOT LAYOUT: ', data);
+        // console.log('-------> THEN DATA FROM ROOT LAYOUT: ', data);
 
 
-        // need to take the params from the search bar query
+        // need to take the params from the sea
 
         dispatch(clearMain());
         dispatch(populateMain(data));
         dispatch(queryMade());
         navigate('hello')
-        console.log('STATE----------------->',queryRecipes)
+        // console.log('STATE----------------->',queryRecipes)
         // console.log('-------> RootLayout queryRecipes: ', queryRecipes);
       })
       .catch((error) => {
@@ -82,37 +90,38 @@ const RootLayout = () => {
     })
   }
 
+  const onSubmitProfile = () => {
+    navigate('/profile')
+  }
+
+  const onSubmitAddRecipe = () => {
+    navigate('/add-recipe')
+  }
+
   return (
     <AuthProvider>
     <Layout src={img}>
       <GlobalStyle/>
-
-          <Header>
         <Nav>
               <LogoLink  to='/'>Recipe Roulette</LogoLink>
-          {location.pathname != '/login' && location.pathname !='/signup' &&(<SearchBar onSubmit={onSubmit} />)}
-          {
-            token && (
+          <SearchBar onSubmit={onSubmit}/>
+            {token && (
               <button type='button' onClick={onLogout}>Sign Out</button>
               )
           }
-          <ButtonBox>
-            {!token && location.pathname =='/login' || location.pathname =='/signup'  ? (
-              <>
-                <LoginLink to='/login'>LogIn</LoginLink>
-                <SignUpLink to='/signup'>SignUp</SignUpLink>
-              </>
-            ) : (
-              <div>
-              <LogoutLink to='/login'>LogOut</LogoutLink>
-              <LogoutLink to='/profile'>Profile Page</LogoutLink>
+
+          {(!token && (location.pathname === '/login' || location.pathname === '/signup')) ? (
+            <div>
+              <LoginLink to='/login'>LogIn</LoginLink>
+              <SignUpLink to='/signup'>SignUp</SignUpLink>
               </div>
-            )}
-          </ButtonBox>
-
+          ): 
+          <ButtonBox>
+            <button type='button' onClick={onLogout}>Sign Out</button>
+            <button type='button' onClick={onSubmitProfile}>Profile</button>
+            <button type = 'button' onClick={onSubmitAddRecipe}>Add Recipe</button>
+            </ButtonBox>}
             </Nav>
-          </Header>
-
       <Main>
         <Outlet/>
       </Main>
@@ -122,99 +131,74 @@ const RootLayout = () => {
 }; 
 
 const Layout = styled.div`
-display: flex;
-flex-direction: column;
-// background-image: ${({src}) => `url(${src})`};
-background-size: 50%;
+background-image: ${({src}) => `url(${src})`};
+background-size: cover;
+background-position: right center;
+background-repeat: no-repeat;
+width: 100vw; 
+height: 100vh; 
 display:flex;
 align-items:center;
 justify-content: center;
-margin: auto;
-padding: 115px 50px;
 `;
 
-const Header = styled.header`
-position:fixed;
-top:0; 
+const ButtonBox = styled.div`
 display: flex;
-justify-content: center;
-align-text: center;
-margin: 0 auto;
-background: #ee6352;
-border-radius: 15px;
-padding: 15px 15px;
-z-index:1000;
-`;
-
+flex-direction: column;
+`
 const LogoLink = styled(NavLink)`
   display: flex;
-  justify-content: center;
-  background-color: black;
+  align-items: center; /* Center content vertically */
+
   color: white;
-  align-text: center;
+  font-size: 35px;
+  text-decoration: none;
+`;
+const Nav = styled.div`
+  top: 0;
+  position: fixed;
+  display: grid;
+  grid-template-columns: auto auto auto; /* Center column takes up more space */
   align-items: center;
-  font-size: 30px;  
-  border-radius: 1rem;
-  padding: 16px;
+  justify-content: space-evenly;
+
+  height: 100px;
+  width: 100%;
+  z-index: 2000;
 `;
 
-const Nav = styled.nav`
-display: flex;
-gap: 16px;
-justify-content: end
-max-width: 1200px;
-margin: 0 auto;
-`;
 
 const Main = styled.main`
 display: flex;
 justify-content: center;
 align-content: center;
-max-width: 1200px; 
-min-width: 600px;
-margin: 40px auto; 
-padding: 30px ;
+
 `;
 
 const LoginLink = styled(NavLink)`
 display: flex;
 justify-content: center;
-background-color: black;
+text-decoration: none;
 color: white;
-height: 60px;
-width: 80px;
+// height: 60px;
+// width: 80px;
 border-radius: 1rem;
 padding: 16px;
-backgroundImage : ${rouletteWheel};
+
 `
-const LogoutLink = styled(NavLink)`
-display: flex;
-justify-content: center;
-background-color: black;
-color: white;
-height: 60px;
-width: 80px;
-border-radius: 1rem;
-padding: 16px;
-backgroundImage : ${rouletteWheel};
-`
+
+
 const SignUpLink = styled(NavLink)`
 display: flex;
 justify-content: center;
 aliign-items: center;
-background-color: black;
+text-decoration: none;
 color: white;
-height: 60px;
-width: 80px;
+// height: 60px;
+// width: 80px;
 border-radius: 1rem;
 padding: 16px;
 `
 
-
-const ButtonBox = styled.div`
-display: flex;
-flex-direction: column;
-gap: 5px;
-`
 
 export default RootLayout;

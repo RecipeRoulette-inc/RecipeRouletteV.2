@@ -5,7 +5,7 @@ import img from "../public/plateForkKnife.jpeg";
 const LoginPage = () => {
 
   return (
-    <WrapPage src={img}>
+    <WrapPage>
       <LoginForm />
     </WrapPage>
   );
@@ -13,7 +13,8 @@ const LoginPage = () => {
 
 //fork and knife image
 const WrapPage = styled.div`
-background-image: ${({src}) => `url(${src})`};
+// background-image: ${({src}) => `url(${src})`};
+background-color: rgba(255, 255, 255, 0.5);
 background-size: cover;
 display: flex;
 align-self: center 

@@ -1,7 +1,8 @@
 import { useState, createContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-export const AuthContext = createContext(null); 
+
+export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
@@ -10,13 +11,13 @@ const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
 
   const handleLogin = async (data) => {
-    console.log('make request');
-    fetch('http://localhost:3000/user/login', {
+    // console.log('make request');
+    fetch('/user/login', {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(data),
       headers: {
-        'Content-Type':'application/json'
+        'Content-Type': 'application/json'
       }
     })
       .then((res) => {
@@ -25,33 +26,34 @@ const AuthProvider = ({ children }) => {
           // parse response then destruct response body for error property
           return res.json().then(({ error }) => {
             // create an Error object from error property or response statusText
-            throw new Error(error|| res.statusText)
+            throw new Error(error || res.statusText)
           })
         }
         // ! the response being sent from the server is not JSON
         return res;
       })
       .then((data) => {
-        console.log('success')
+        // console.log('success')
         // handle successful login
         // store token
         // update redux state
         // TODO: LINK GOES HERE 
-        setToken('NickChristinaJerelEdwin');
-        const origin = location.state?.from?.path || '/home'; 
+        setToken('SSID');
+        const origin = location.state?.from?.path || '/home';
         navigate(origin);
       })
       .catch((error) => {
         // display error in console
-        console.error('There was a problem with the fetch operation:', error); 
+        console.error('There was a problem with the fetch operation from sign in:', error);
         // display error to user
         alert(error);
       })
- 
+
+
   };
 
   const handleSignup = async (data) => {
-    fetch('http://localhost:3000/user/signup', {
+    fetch('/user/signup', {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(data),
@@ -62,14 +64,16 @@ const AuthProvider = ({ children }) => {
       .then((res) => {
         // if response status not 200
         if (!res.ok) {
+          console.log('AUTH PROVIDER LINE 65 FRONT END CHECK WHEN STATUS IS NOT 200')
           // parse response then destruct response body for error property
           return res.json().then(({ error }) => {
             // create an Error object from error property or response statusText
-            throw new Error(error|| res.statusText)
+            throw new Error(error || res.statusText)
           })
         }
         // ! VERIFY the information being returned from the server, if not JSON, do not .json()
         // return res.json();
+        console.log('STATUS IS 200 AND GOOD LINE 74 AUTHPROVIDER')
         return res;
       })
       .then((data) => {
@@ -77,30 +81,32 @@ const AuthProvider = ({ children }) => {
         // store token
         // update redux state
         // ? on successful signup redirect to login page. 
-        navigate('/login'); 
+        navigate('/login');
       })
       .catch((error) => {
         // display error in console
-        console.error('There was a problem with the fetch operation:', error); 
+        console.error('There was a problem with the fetch operation:', error);
         // display error to user
         alert(error);
       })
   }
 
   const handleLogout = () => {
+    console.log('logging out')
     setToken(null);
-  }; 
+    navigate('/login')
+  };
 
   const value = {
-    token, 
-    onLogin: handleLogin, 
-    onSignup: handleSignup, 
-    onLogout: handleLogout, 
+    token,
+    onLogin: handleLogin,
+    onSignup: handleSignup,
+    onLogout: handleLogout,
   }
 
   return (
-    <AuthContext.Provider value={ value } >
-      { children }
+    <AuthContext.Provider value={value} >
+      {children}
     </AuthContext.Provider>
   );
 };

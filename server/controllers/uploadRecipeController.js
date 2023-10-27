@@ -30,4 +30,36 @@ uploadRecipeController.uploadRecipe = async (req, res, next) => {
     };
 };
 
+uploadRecipeController.deleteUploadedRecipe = async (req, res, next) => {
+    const token = req.cookies.SSID;
+    const tokenBody = jwt.decode(token, { complete: true });
+    const user_id = tokenBody.payload.user_id;
+    const { user_recipe_id } = req.body;
+
+    const deleteUploadedRecipeQuery = `DELETE FROM uploaded_recipes
+    WHERE user_recipe_id = $1
+    AND user_id = $2`;
+
+    const values = [user_recipe_id, user_id];
+
+    try {
+        const result = await pool.query(deleteUploadedRecipeQuery, values);
+
+        if (result.rowCount <= 0) {
+            return res.status(404).json({ error: 'Could not find uploaded recipe to delete' });
+        }
+
+        return next();
+    } catch (error) {
+        console.error('Error executing query:', error);
+        return next({
+            log: 'Error occurred deleting an uploaded recipe',
+            status: 500,
+            message: {
+                err: 'Error in saveRecipesController.deleteUploadedRecipes'
+            },
+        });
+    };
+};
+
 module.exports = uploadRecipeController;

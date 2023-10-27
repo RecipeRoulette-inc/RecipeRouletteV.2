@@ -8,7 +8,6 @@ const saveRecipesController = {};
  We will have to use array logic to use the response body */
 
 // SAVE RECIPES FUNCTIONALITY  
-// can replace getSavedRecipes with dane's functionality of GET for user_preference tables
 saveRecipesController.getSavedRecipes = async (req, res, next) => {
     const token = req.cookies.SSID;
     const tokenBody = jwt.decode(token, { complete: true });
@@ -178,7 +177,7 @@ saveRecipesController.addAllergies = async (req, res, next) => {
         return next();
     } catch (error) {
         return next({
-            log: 'Error occurred in adding allergy',
+            log: 'Error occurred in adding an allergy',
             status: 500,
             message: {
                 err: 'Error in saveRecipesController.addAllergies'
@@ -209,7 +208,7 @@ saveRecipesController.deleteAllergies = async (req, res, next) => {
         return next();
     } catch (error) {
         return next({
-            log: 'Error occurred in deleting allergy',
+            log: 'Error occurred in deleting an allergy',
             status: 500,
             message: {
                 err: 'Error in saveRecipesController.deleteAllergies'

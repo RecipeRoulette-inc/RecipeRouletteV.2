@@ -25,10 +25,11 @@ userController.createUser = async (req, res, next) => {
         const defaultImage = 'download.png'
 
         // create new user into database
-        const createUserQuery = `INSERT INTO users (username, password, profile_image, created_at) VALUES ($1, $2, $3, $4)`;
+        const createUserQuery = `INSERT INTO users (username, password, profile_image, created_at) VALUES ($1, $2, $3, $4) RETURNING *`;
 
         const values = [username, bcryptPassword, defaultImage, currentTimestamp];
         const newUser = await pool.query(createUserQuery, values);
+
         const user_id = newUser.rows[0].user_id;
 
         //add the new user in user_preferences table
