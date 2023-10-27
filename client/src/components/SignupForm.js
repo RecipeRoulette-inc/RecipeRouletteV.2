@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {useNavigate, Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import { useForm } from "react-hook-form";
 import useAuth from "./hooks/useAuth";
 
@@ -24,6 +24,7 @@ const SignupForm = () => {
         />
         
       <Submit type='submit' >Sign up</Submit>
+      <p>Already have an Account?<NavLink to='/login'>Log in here</NavLink></p>
     </Form>
     </WrapForm>
   )
@@ -47,6 +48,7 @@ left: 152px;
 `; 
 
 const Header = styled.div`
+background-color: rgba(255, 255, 255, 0.5);
 display: flex; 
 align-items: center;
 justify-content: center;
