@@ -16,7 +16,15 @@ Router
         authenticationController.createCookie,
         (req, res) => {
             return res.sendStatus(200)
-        })
+        });
+
+Router
+    .route('/verifyUser')
+    .get(authenticationController.verifyCookie,
+        (req, res) => {
+            return res.sendStatus(200)
+        });
+
 
 Router
     .route('/logout')
