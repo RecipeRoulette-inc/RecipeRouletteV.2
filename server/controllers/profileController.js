@@ -157,7 +157,6 @@ profileController.removeImage = async (req, res, next) => {
       message: { err: `profileController.removeImage: ${err}` }
     });
   }
-
 }
 
 profileController.getPreferences = async (req, res, next) => {
@@ -206,8 +205,9 @@ profileController.getUploadedRecipes = async (req, res, next) => {
 
   pool.query(text, [user_id])
     .then((data) => {
+      console.log(data, 'data')
       if (data.rows[0] != null) {
-        res.locals.userInfo.uploadedRecipes = data.rows[0]
+        res.locals.userInfo.uploadedRecipes = data.rows;
       } else {
         res.locals.userInfo.uploadedRecipes = 'You have not uploaded any recipes yet.'
       }

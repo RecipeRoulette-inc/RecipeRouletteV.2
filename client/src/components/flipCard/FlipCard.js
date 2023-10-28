@@ -9,7 +9,8 @@ import { getRecipeInformationBulk } from '../singleRecipePage/SingleRecipePage';
 const FlipCard = ({ recipeInfo }) => {
   const [nutritionLabel, setNutritionLabel] = useState({});
   const { savedRecipes } = useSelector((state) => state.savedRecipes);
-  const { saved } = useSelector((state) => state.flipCard);
+  // const { saved } = useSelector((state) => state.flipCard);
+  const [save, setSave] = useState(false);
   const dispatch = useDispatch();
 
   const { id, title, image, servings, readyInMinutes } = recipeInfo;
@@ -23,36 +24,35 @@ const FlipCard = ({ recipeInfo }) => {
           method: 'GET',
           credentials: 'include',
         });
-  
+
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-  
+
         const blob = await response.blob();
         const dataUrl = URL.createObjectURL(blob);
-  
+
         setNutritionLabel(dataUrl);
-  
+
         console.log('dataUrl', dataUrl);
       } catch (error) {
         console.error('Error:', error);
       }
     }
-  
+
     getRecipeNutritionLabel();
   }, []);
-  
-  
+
+
 
   function handleSaveRecipe(e) {
     e.preventDefault();
 
     // JC: Save recipe if not saved.
     if (saved === false) {
-      // getRecipeNutritionLabel();
-      dispatch(save());
+      setSave(true);
+      dispatch(saveRecipe());
     }
-    // JC: Remove recipe if saved.
     else {
       // ----CURRENTLY TESTING JUST SAVE----
       // dispatch(unsave());
@@ -61,17 +61,16 @@ const FlipCard = ({ recipeInfo }) => {
     }
 
     const reqOptions = {
-      method: 'PATCH',
+      method: 'POST',
       credentials: 'include',
-      headers: { 
-        'Content-Type': 'application/json' 
+      headers: {
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(savedRecipes)
-        // Only want an individual recipe before sending
     };
 
-    fetch('http://localhost:3000/recipes/updateSavedRecipes', reqOptions)
-      .catch((err) => {throw new Error(err);});
+    fetch('http://localhost:3000/profile/addSavedRecipes', reqOptions)
+      .catch((err) => { throw new Error(err); });
   }
 
 
@@ -83,15 +82,15 @@ const FlipCard = ({ recipeInfo }) => {
         </Front>
 
         <Back>
-          <center style={{width: '320px', height: '270px'}}>
+          <center style={{ width: '320px', height: '270px' }}>
             {/* <h1>Ready In: {readyInMinutes} minutes</h1> */}
             {/* <h2>Servings: {servings}</h2> */}
             <img src={nutritionLabel}></img>
-    
+
             {/* <button onClick={getRecipeInformationBulk(id)}>LOADER TEST</button> */}
             {/* <Link to={'/' + id} >More Info</Link> */}
             {/* <h2><Link to='NEED PATH HERE'><button oncli>More Info</button></Link></h2> */}
-            
+
           </center>
         </Back>
 
@@ -100,7 +99,7 @@ const FlipCard = ({ recipeInfo }) => {
 
       <FrontHeader>
         <h3>{title}</h3>
-        <SaveButton onClick={(e)=>handleSaveRecipe(e)}>SAVE</SaveButton>
+        <SaveButton onClick={(e) => handleSaveRecipe(e)}>SAVE</SaveButton>
       </FrontHeader>
 
     </Wrapper>

@@ -94,7 +94,7 @@ Router.
 // CODE FOR UPLOADING RECIPES
 Router.
   route('/uploadRecipe')
-  .post(uploadRecipeController.uploadRecipe,
+  .post(upload.single('image'), uploadRecipeController.uploadRecipe,
     (req, res) => {
       return res.status(200).json(res.locals.uploadedRecipes);
     });
@@ -106,4 +106,13 @@ Router.
       return res.status(200).send('Success: Deleted Uploaded Recipe');
     });
 
+// Router.
+//   route('/uploadRecipeImage')
+//   .post(upload.single('image'), uploadRecipeController.getRecipeImage, uploadRecipeController.getImageURL,
+//     (req, res) => {
+//       return res.status(200).send('Success: Uploaded Recipe Image');
+//     });
+
 module.exports = Router;
+
+//uploadRecipeController.getImageURL, uploadRecipeController.uploadImage,
