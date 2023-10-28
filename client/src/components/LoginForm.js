@@ -8,29 +8,29 @@ import { login } from "../../slices/authInputSlice";
 
 const LoginForm = () => {
   const { register, handleSubmit } = useForm();
-  const { onLogin } = useAuth(); 
+  const { onLogin } = useAuth();
 
   return (
     <WrapForm>
       <Header>Log in</Header>
-    <Form onSubmit={handleSubmit((data)=> onLogin(data))}>
-      <Input
-        {...register('username', {required: 'This is required'})}
-        placeholder='Username'
+      <Form onSubmit={handleSubmit((data) => onLogin(data))}>
+        <Input
+          {...register('username', { required: 'This is required' })}
+          placeholder='Username'
         />
-    
-      <Input
-        {...register('password', {required: 'This is required'})}
+
+        <Input
+          {...register('password', { required: 'This is required' })}
           placeholder='Password'
           type="password"
         />
-        
-      <Submit type='submit' > Log in</Submit>
-      <p>Not a user? <NavLink to='/signup'>sign up here</NavLink></p>
+
+        <Submit type='submit' > Log in</Submit>
+        <p>Not a user? <NavLink to='/signup'>sign up here</NavLink></p>
       </Form>
     </WrapForm>
   )
-}; 
+};
 
 const WrapForm = styled.div`
 display: flex;
@@ -48,10 +48,10 @@ padding: 20px 20px;
 position: relative;
 top: 0px;
 left: 152px;
-`; 
+`;
 
 const Header = styled.div`
-background-color: rgba(255, 255, 255, 0.5);
+// background-color: rgba(255, 255, 255, 0.5);
 display: flex; 
 align-items: center;
 justify-content: center;
@@ -70,14 +70,14 @@ display: flex;
 flex-direction: column; 
 gap: 30px
 padding: 30px 30px;
-background-color: rgba(255, 255, 255, 0.5);
+// background-color: rgba(255, 255, 255, 0.5);
 `;
 
 const Input = styled.input`
 padding: 5px 5px;
 border: 1px solid black;
 border-radius: 2.5px;
-background-color: rgba(255, 255, 255, 0.5);
+// background-color: rgba(255, 255, 255, 0.5);
 `;
 
 const Label = styled.label``;
@@ -89,7 +89,6 @@ border: none;
 border-radius: 5px;
 background: #363636;
 cursor: pointer; 
-background-color: rgba(255, 255, 255, 0.5);
 
 &:hover {
   background: black;
