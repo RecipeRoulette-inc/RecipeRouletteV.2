@@ -118,7 +118,7 @@ background-size: cover;
 background-position: right center;
 background-repeat: no-repeat;
 width: 100vw; 
-height: 100%;
+height: 100vh;
 display:flex;
 flex-direction: column;
 align-items:center;

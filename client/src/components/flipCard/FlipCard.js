@@ -8,10 +8,10 @@ import { getRecipeInformationBulk } from '../singleRecipePage/SingleRecipePage';
 
 const FlipCard = ({ recipeInfo }) => {
   const [nutritionLabel, setNutritionLabel] = useState();
-  // const { savedRecipes } = useSelector((state) => state.savedRecipes);
+  const { savedRecipes } = useSelector((state) => state.savedRecipes);
   // const { saved } = useSelector((state) => state.flipCard);
-  // const [save, setSave] = useState(false);
-  // const dispatch = useDispatch();
+  const [save, setSave] = useState(false);
+  const dispatch = useDispatch();
 
   const { id, title, image } = recipeInfo;
   
@@ -49,17 +49,17 @@ const FlipCard = ({ recipeInfo }) => {
   function handleSaveRecipe(e) {
     e.preventDefault();
 
-    // // JC: Save recipe if not saved.
-    // if (saved === false) {
-    //   setSave(true);
-    //   dispatch(saveRecipe());
-    // }
-    // else {
-    //   // ----CURRENTLY TESTING JUST SAVE----
-    //   // dispatch(unsave());
-    //   // dispatch(removeRecipe(index));
-    //   // savedRecipes.slice(index, 1);
-    // }
+    // JC: Save recipe if not saved.
+    if (saved === false) {
+      setSave(true);
+      dispatch(saveRecipe());
+    }
+    else {
+      // ----CURRENTLY TESTING JUST SAVE----
+      // dispatch(unsave());
+      // dispatch(removeRecipe(index));
+      // savedRecipes.slice(index, 1);
+    }
 
     const reqOptions = {
       method: 'POST',
@@ -67,7 +67,7 @@ const FlipCard = ({ recipeInfo }) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({recipe_id: id})
+      body: JSON.stringify(savedRecipes)
     };
 
     fetch('http://localhost:3000/profile/addSavedRecipes', reqOptions)
@@ -89,7 +89,7 @@ const FlipCard = ({ recipeInfo }) => {
             <img src={nutritionLabel}></img>
 
             {/* <button onClick={getRecipeInformationBulk(id)}>LOADER TEST</button> */}
-            
+            {/* <Link to={'/' + id} >More Info</Link> */}
             {/* <h2><Link to='NEED PATH HERE'><button oncli>More Info</button></Link></h2> */}
 
           </center>
@@ -100,7 +100,6 @@ const FlipCard = ({ recipeInfo }) => {
 
       <FrontHeader>
         <h3>{title}</h3>
-        <Link to={'/' + id} >More Info</Link>
         <SaveButton onClick={(e) => handleSaveRecipe(e)}>SAVE</SaveButton>
       </FrontHeader>
 
