@@ -1,7 +1,15 @@
 const express = require('express');
 const Router = express.Router();
 
-const recipeController = require('../controllers/recipeController');
+const recipeController = require('../controllers/recipeController')
+const authenticationController = require('../controllers/authenticationController');
+const profileController= require ('../controllers/profileController')
+Router.
+  route('/randomRecipe')
+  .post((req, res) => {
+    console.log('Post Route')
+    console.log(req.body);
+  });
 
 Router
   .route('/randomRecipe')
@@ -26,10 +34,30 @@ Router
 
 Router
   .route('/searchRecipes')
-  .post(recipeController.searchRecipes,
-    (req, res) => {
-      return res.status(200).json(res.locals.recipes)
-    });
+  .post(profileController.getUserId,
+    recipeController.getAllergies, 
+    recipeController.searchRecipes,
+  (req,res) => {
+    console.log('Search Recipe Complete')
+    // console.log(res.locals.recipes)
+    return res.status(200).json(res.locals.recipes)
+  }
+)
+
+Router
+  .route('/updateSavedRecipes')
+  .patch(authenticationController.verifyCookie,
+  recipeController.updateSavedRecipes,
+  (req, res) => {
+    console.log('Out of Controllers for Save Recipe')
+    return res.status(200).send('Hi Pal')
+  }
+)
+
+Router.route('/test').get((req, res) => {
+  console.log('test passed')
+  res.status(200).json('You shall pass')
+})
 
 Router
   .route('/nutritionLabel/:recipeId')
@@ -55,6 +83,9 @@ Router.route('/searchByIngredients')
 
 
 Router.route('/testHomepage')
-.get(recipeController.updateHomepageCache, (req, res) => {return res.status(200).send(res.locals.json)})
+.get(profileController.getUserId,
+  recipeController.getAllergies, 
+  recipeController.updateHomepageCache, 
+  (req, res) => {return res.status(200).send(res.locals.json)})
 
 module.exports = Router; 
