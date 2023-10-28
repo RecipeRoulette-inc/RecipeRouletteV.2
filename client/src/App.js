@@ -12,7 +12,7 @@ import RootLayout from './layouts/RootLayout';
 
 //pages
 import AddRecipePage from './pages/AddRecipe';
-import ProfilePage from './pages/profile';
+import ProfilePage from './pages/Profile';
 import Test from './pages/RecipesFromSearchBar';
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';

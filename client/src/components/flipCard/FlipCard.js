@@ -13,12 +13,13 @@ const FlipCard = ({ recipeInfo }) => {
   const [save, setSave] = useState(false);
   const dispatch = useDispatch();
 
-  const { id, title, image, servings, readyInMinutes } = recipeInfo;
-  // console.log('-------> RECIPE INFO: ', recipeInfo);
-  // console.log('-------> ID: ', id);
+  const { id, title, image } = recipeInfo;
+  
 
   useEffect(() => {
     async function getRecipeNutritionLabel() {
+      console.log('-------> RECIPE INFO: ', recipeInfo);
+      console.log('-------> ID: ', id);
       try {
         const response = await fetch(`http://localhost:3000/recipes/nutritionLabel/${id}`, {
           method: 'GET',
