@@ -1,15 +1,21 @@
 import React, { useState, setState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function ProfilePage() {
-
+  const navigate  = useNavigate();
   const [userInfo, setUserInfo] = useState({ username: '', image: '', savedRecipes: '', allergies: '', restrictions: '', uploadedRecipes: [] });
   const [loading, setLoading] = useState(true);
   const [mappedRecipes, setMappedRecipes] = useState([]);
 
   useEffect(() => {
     getInfo()
-  }, [userInfo.savedRecipes]);
+  }, []);
+
+  function onSubmit(e) {
+    e.preventDefault();
+    navigate('/profile')
+  }
 
   function getInfo() {
     fetch('/profile/userInfo')
@@ -32,35 +38,35 @@ export default function ProfilePage() {
 
   console.log(userInfo.savedRecipes, 'saved recipes');
 
-  useEffect(() => {
-    const fetchRecipes = async () => {
-      if (!userInfo.savedRecipes || !Array.isArray(userInfo.savedRecipes)) {
-        console.error('saved recipes is not an array');
-        return;
-      }
-      try {
-        const recipesData = await Promise.all(userInfo.savedRecipes.map(id => getSavedRecipe(id)));
-        console.log(mappedRecipes, 'mappedrecipes');
-        setMappedRecipes(recipesData);
-      } catch (error) {
-        console.error('Error in mapping saved recipes:', error);
-      };
-      fetchRecipes();
-    };
-  }, [userInfo.savedRecipes]);
+  // useEffect(() => {
+  //   const fetchRecipes = async () => {
+  //     if (!userInfo.savedRecipes || !Array.isArray(userInfo.savedRecipes)) {
+  //       console.error('saved recipes is not an array');
+  //       return;
+  //     }
+  //     try {
+  //       const recipesData = await Promise.all(userInfo.savedRecipes.map(id => getSavedRecipe(id)));
+  //       console.log(mappedRecipes, 'mappedrecipes');
+  //       setMappedRecipes(recipesData);
+  //     } catch (error) {
+  //       console.error('Error in mapping saved recipes:', error);
+  //     };
+  //     fetchRecipes();
+  //   };
+  // }, [userInfo.savedRecipes]);
 
-  async function getSavedRecipe(id) {
-    const url = `http://localhost:3000/recipes/getRecipeInformationBulk/${id}`;
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log('id data', data);
-      return data;
-    } catch (error) {
-      console.error('ERROR FETCHING RECIPE:', error);
-      return null;
-    }
-  }
+  // async function getSavedRecipe(id) {
+  //   const url = `http://localhost:3000/recipes/getRecipeInformationBulk/${id}`;
+  //   try {
+  //     const response = await fetch(url);
+  //     const data = await response.json();
+  //     console.log('id data', data);
+  //     return data;
+  //   } catch (error) {
+  //     console.error('ERROR FETCHING RECIPE:', error);
+  //     return null;
+  //   }
+  // }
 
   // function uploadPhoto() {
 
@@ -72,9 +78,11 @@ export default function ProfilePage() {
   //       console.log('upload status', res)
   //     })
   //     .then(() => alert('Photo uploaded successfully'))
+
   //     .catch((err) => alert('Error occurred while uploading photo'))
   // };
 
+  
 
   if (loading) {
     return <div>loading ...</div>
@@ -86,7 +94,7 @@ export default function ProfilePage() {
           <div style={{ gridColumn: '1', gridRow: '1 / 5' }}>
             <img src={userInfo.image} width='auto' height='200px'></img>
             <p>{userInfo.username}</p>
-            <form action="/profile/uploadPhoto" method='post' enctype="multipart/form-data">
+            <form onSubmit={onSubmit}  action="/profile/uploadPhoto" method='post' enctype="multipart/form-data">
               <input type='file' id='image' name='image' style={{ marginBottom: '5px' }} />
               <input type='submit' />
             </form>
@@ -94,7 +102,7 @@ export default function ProfilePage() {
           <div>
             <h3>Saved Recipes</h3>
             {/* <h4>{userInfo.savedRecipes}</h4> */}
-            {mappedRecipes.map((recipe, index) => (
+            {/* {mappedRecipes.map((recipe, index) => (
               <>
                 <PhotoContainer>
                   <SinglePhoto src={recipe.image}></SinglePhoto>
@@ -103,7 +111,7 @@ export default function ProfilePage() {
                 <h2>Ready In: {recipe.readyInMinutes} minutes</h2>
                 <h2>Servings: {recipe.servings}</h2>
               </>
-            ))}
+            ))} */}
           </div>
           <div>
             <h3>Allergies</h3>
