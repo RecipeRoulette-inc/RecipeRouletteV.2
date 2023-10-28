@@ -88,6 +88,7 @@ font-size: 24px;
 const CardsContainer = styled.div`
 display: flex;
 flex-direction: row;
+height: 100px;
 width: 70vw;
 gap: 2rem; 
 flex-wrap:nowrap;

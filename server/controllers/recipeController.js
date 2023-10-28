@@ -130,11 +130,12 @@ recipeController.searchRecipes = (req, res, next) => {
 // If we decide to make a separate page, we will need this controller for additional calls
 // Otherwise this can be included in the earlier call nested
 recipeController.getRecipeInformationBulk = (req, res, next) => {
-  // console.log(req.body)
+
   // let ids = req.body.id
   // console.log('-------> from getRecipeInformationBulk');
   // console.log('REQ.PARAMS: ', req.params);
   let ids = req.params.id;
+  console.log('this is the ids',ids)
   const opts = {
     'instructionsRequired': true, // Boolean | Whether the recipes must have instructions.
   'addRecipeNutrition': true, // Boolean | If set to true, you get more information about the recipes returned.

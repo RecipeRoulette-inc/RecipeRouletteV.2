@@ -27,24 +27,17 @@ const GlobalStyle = createGlobalStyle`
 
 import AuthProvider from '../components/authentication/AuthProvider';
 
-const backgrounddiv = () => {
-
-  return (
-    <div>
-      <img />
-    </div>
-  )
-}
 
 const RootLayout = () => {
   const navigate = useNavigate()
   const { token, onLogout } = useAuth();
-  const location = useLocation();
-
+  const loggedin = useSelector((state) => state.authInput)
+  console.log(loggedin)
+ 
   // console.log('Location', location);
 
   const dispatch = useDispatch();
-  const queryRecipes = useSelector(state => state.queryRecipes.queryRecipes)
+
   // console.log('RootLayout queryRecipes: ', queryRecipes);
 
 
@@ -93,36 +86,29 @@ const RootLayout = () => {
   }
 
   return (
-    <AuthProvider>
-      <Layout src={img}>
-        <GlobalStyle />
-        <Nav>
-          <LogoLink to='/'>Recipe Roulette</LogoLink>
-          <SearchBar onSubmit={onSubmit} />
-          {token && (
-            <button type='button' onClick={onLogout}>Sign Out</button>
-          )
-          }
-
-          {(!token && (location.pathname === '/login' || location.pathname === '/signup')) ? (
-            <div>
-              <br></br>
-              <LoginLink to='/login'>Login</LoginLink>
-              <br></br>
-              <SignUpLink to='/signup'>SignUp</SignUpLink>
-            </div>
-          ) :
-            <ButtonBox>
+    
+    <Layout src={img}>
+      <GlobalStyle/>
+   
+          {loggedin.token ? (
+            <Nav>
+              <LogoLink  to='/'>Recipe Roulette</LogoLink>
+              <SearchBar onSubmit={onSubmit}/>
+              <ButtonBox>
               <button type='button' onClick={onLogout}>Sign Out</button>
               <button type='button' onClick={onSubmitProfile}>Profile</button>
-              <button type='button' onClick={onSubmitAddRecipe}>Add Recipe</button>
-            </ButtonBox>}
-        </Nav>
-        <Main>
-          <Outlet />
-        </Main>
+              <button type = 'button' onClick={onSubmitAddRecipe}>Add Recipe</button>
+              </ButtonBox>
+            </Nav>
+            ) : (
+              <div>
+              <LogoLinkBeforeLogin to='/'>Recipe Roulette</LogoLinkBeforeLogin>
+            </div>
+            )}
+            
+        <Outlet/>
       </Layout>
-    </AuthProvider>
+    
   )
 };
 
@@ -132,8 +118,9 @@ background-size: cover;
 background-position: right center;
 background-repeat: no-repeat;
 width: 100vw; 
-height: 100vh; 
+height: 100%;
 display:flex;
+flex-direction: column;
 align-items:center;
 justify-content: center;
 `;
@@ -144,17 +131,25 @@ flex-direction: column;
 `
 const LogoLink = styled(NavLink)`
   display: flex;
-  align-items: center; /* Center content vertically */
+  align-items: center; 
 
   color: white;
   font-size: 35px;
   text-decoration: none;
 `;
+
+const LogoLinkBeforeLogin = styled(NavLink)`
+  display: flex;
+  align-items: center; 
+  justfiy-content: center;
+  color: white;
+  font-size: 60px;
+  text-decoration: none;
+`;
 const Nav = styled.div`
   top: 0;
-  position: fixed;
   display: grid;
-  grid-template-columns: auto auto auto; /* Center column takes up more space */
+  grid-template-columns: auto auto auto; 
   align-items: center;
   justify-content: space-evenly;
 
@@ -164,33 +159,7 @@ const Nav = styled.div`
 `;
 
 
-const Main = styled.main`
-display: flex;
-justify-content: center;
-align-content: center;
-width: 85%;
-`;
 
-const LoginLink = styled(NavLink)`
-display: flex;
-justify-content: center;
-text-decoration: none;
-color: white;
-background-color: #425949;
-border-radius: 1rem;
-padding: 10px;
-`
-
-const SignUpLink = styled(NavLink)`
-display: flex;
-justify-content: center;
-aliign-items: center;
-text-decoration: none;
-color: white;
-background-color: #425949;
-border-radius: 1rem;
-padding: 10px;
-`
 
 
 export default RootLayout;

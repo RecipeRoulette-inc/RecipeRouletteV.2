@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import useAuth from "./hooks/useAuth";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../slices/authInputSlice";
 
@@ -26,6 +26,7 @@ const LoginForm = () => {
         />
         
       <Submit type='submit' > Log in</Submit>
+      <p>Not a user? <NavLink to='/signup'>sign up here</NavLink></p>
       </Form>
     </WrapForm>
   )
@@ -39,9 +40,9 @@ justify-content: center;
 text-align: center;
 width: 400px; 
 height: 400px;
-border: 15px solid #2C1A1D;
+// border: 15px solid #2C1A1D;
 border-radius: 200px;
-box-shadow: 10px 5px 5px black;
+// box-shadow: 10px 5px 5px black;
 padding: 20px 20px; 
 
 position: relative;
