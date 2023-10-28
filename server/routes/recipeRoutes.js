@@ -3,7 +3,7 @@ const Router = express.Router();
 
 const recipeController = require('../controllers/recipeController')
 const authenticationController = require('../controllers/authenticationController');
-
+const profileController= require ('../controllers/profileController')
 Router.
   route('/randomRecipe')
   .post((req, res) => {
@@ -39,7 +39,9 @@ Router
 
 Router
   .route('/searchRecipes')
-  .post(recipeController.searchRecipes,
+  .post(profileController.getUserId,
+    recipeController.getAllergies, 
+    recipeController.searchRecipes,
   (req,res) => {
     console.log('Search Recipe Complete')
     // console.log(res.locals.recipes)
@@ -87,6 +89,9 @@ Router.route('/searchByIngredients')
 
 
 Router.route('/testHomepage')
-.get(recipeController.updateHomepageCache, (req, res) => {return res.status(200).send(res.locals.json)})
+.get(profileController.getUserId,
+  recipeController.getAllergies, 
+  recipeController.updateHomepageCache, 
+  (req, res) => {return res.status(200).send(res.locals.json)})
 
 module.exports = Router; 
