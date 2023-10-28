@@ -1,10 +1,12 @@
-import React, { useState, useRef} from 'react';
+import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from "styled-components";
-
+import { uploadRecipe, changeRecipeName, changeCountry, changeInstructions } from '../../slices/uploadRecipeSlice';
 
 const cuisine = ['African', 'Asian', 'American', 'British', 'Cajun', 'Caribbean', 'Chinese', 'Eastern European', 'European', 'French', 'German', 'Greek',
-'Indian', 'Irish', 'Italian', 'Japanese', 'Jewish', 'Korean', 'Latin American', 'Mediterranean', 'Mexican', 'Middle Eastern', 'Nordic',
-'Southern', 'Spanish', 'Thai', 'Vietnamese'];
+  'Indian', 'Irish', 'Italian', 'Japanese', 'Jewish', 'Korean', 'Latin American', 'Mediterranean', 'Mexican', 'Middle Eastern', 'Nordic',
+  'Southern', 'Spanish', 'Thai', 'Vietnamese'];
 
 const cuisineMapped = cuisine.map((type, index) => (
   <option key={index} value={type}>
@@ -12,70 +14,80 @@ const cuisineMapped = cuisine.map((type, index) => (
   </option>
 ));
 
-const diets = [
-  "Gluten Free",
-  "Ketogenic",
-  "Vegetarian",
-  "Lacto-Vegetarian",
-  "Ovo-Vegetarian",
-  "Vegan",
-  "Pescetarian",
-  "Paleo",
-  "Primal",
-  "Low FODMAP",
-  "Whole30"
-];
+// const diets = [
+//   "Gluten Free",
+//   "Ketogenic",
+//   "Vegetarian",
+//   "Lacto-Vegetarian",
+//   "Ovo-Vegetarian",
+//   "Vegan",
+//   "Pescetarian",
+//   "Paleo",
+//   "Primal",
+//   "Low FODMAP",
+//   "Whole30"
+// ];
 
-const dietsMapped = diets.map((type, index) => (
-<option key={index + '2'} value={type}></option>
-));
+// const dietsMapped = diets.map((type, index) => (
+//   <option key={index + '2'} value={type}></option>
+// ));
 
-const intolerances = [
-  "Dairy",
-  "Egg",
-  "Gluten",
-  "Grain",
-  "Peanut",
-  "Seafood",
-  "Sesame",
-  "Shellfish",
-  "Soy",
-  "Sulfite",
-  "Tree Nut",
-  "Wheat"
-];
+// const intolerances = [
+//   "Dairy",
+//   "Egg",
+//   "Gluten",
+//   "Grain",
+//   "Peanut",
+//   "Seafood",
+//   "Sesame",
+//   "Shellfish",
+//   "Soy",
+//   "Sulfite",
+//   "Tree Nut",
+//   "Wheat"
+// ];
 
-const allergenMapped = intolerances.map((type, index) => (
-<option key={index  + '1'} value={{type}}></option>
-));
+// const allergenMapped = intolerances.map((type, index) => (
+//   <option key={index + '1'} value={{ type }}></option>
+// ));
 
 function RecipeUploadForm() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const testdata = useSelector((state) => state.uploadRecipes)
+  console.log(testdata)
   const [recipeData, setRecipeData] = useState({
     recipeName: '',
-    ingredients: [''],
-    instructions: [''],
-    dietTags: '',
-    allergyTags: '',
+    ingredients: [],
+    instructions: '',
+    dietTags: [],
+    allergyTags: [],
     countryOfOrigin: '',
-    image: null,
+    image: '',
   });
 
-  const handleInputChange = (e) => {
+  const handleRecipeChange = (e) => {
     const { name, value } = e.target;
-    setRecipeData({
-      ...recipeData,
-      [name]: value,
-    });
+    dispatch(changeRecipeName(value));
+    console.log(value, 'inhandleinput')
   };
 
-  const handleArrayInputChange = (e, index, type) => {
+  const handleInstructionsChange = (e) => {
+    const { value } = e.target;
+    dispatch(changeInstructions(value));
+  }
+
+  const handleCountryChange = (e) => {
+    const { value } = e.target;
+    dispatch(changeCountry(value));
+  }
+
+  const handleArrayInputChange = (e, type) => {
     const newValue = e.target.value;
-    const updatedArray = [...recipeData[type]];
-    updatedArray[index] = newValue;
 
     setRecipeData({
       ...recipeData,
-      [type]: updatedArray,
+      [type]: newValue.split(',').map((item) => item.trim()),
     });
   };
 
@@ -89,83 +101,102 @@ function RecipeUploadForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // const formData = new FormData();
+    // formData.append('image', recipeData.image);
 
+    fetch('http://localhost:3000/profile/uploadRecipe', {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        recipe_name: testdata.recipeName,
+        instructions: testdata.instructions,
+        country_origin: testdata.countryOfOrigin,
+        image: recipeData.image,
+        ingredients: recipeData.ingredients,
+        diets: recipeData.dietTags,
+        allergens: recipeData.allergyTags,
+      }),
+    }).
+      then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response failed');
+        };
+        return res.json();
+      })
+      .then((data) => {
+        console.log('data', data);
+        dispatch(uploadRecipe(data));
+        navigate('/profile');
+      })
+      .catch((err) => {
+        console.error('Error uploading recipe: ', err);
+      });
   };
 
   return (
-    <StyledForm>
+    <StyledForm onSubmit={handleSubmit}>
       <div>
         <label>Recipe Name</label>
         <input
           type="text"
           name="recipeName"
-          value={recipeData.recipeName}
-          onChange={handleInputChange}
+          value={testdata.recipeName}
+          onChange={handleRecipeChange}
           placeholder="Recipe Name"
         />
       </div>
 
       <div>
         <label>Ingredients</label>
-        {recipeData.ingredients.map((ingredient, index) => (
-          <input
-            key={index}
-            type="text"
-            value={ingredient}
-            onChange={(e) => handleArrayInputChange(e, index, 'ingredients')}
-            placeholder="Ingredient"
-          />
-        ))}
+        <input
+          type="text"
+          name="ingredients"
+          value={recipeData.ingredients.join(', ')}
+          onChange={(e) => handleArrayInputChange(e, 'ingredients')}
+          placeholder='Ingredients (comma-separated)'
+        />
       </div>
 
       <div>
         <label>Instructions</label>
-        {recipeData.instructions.map((instruction, index) => (
-          <textarea
-            key={index}
-            value={instruction}
-            onChange={(e) => handleArrayInputChange(e, index, 'instructions')}
-            placeholder="Instruction"
-          />
-        ))}
+        <input
+          type="text"
+          name="instructions"
+          value={testdata.instructions}
+          onChange={handleInstructionsChange}
+          placeholder="Recipe Instructions"
+        />
       </div>
 
       <div>
         <label>Diet Tags</label>
-        <select
+        <input
+          type="text"
           name="dietTags"
-          value={recipeData.dietTags}
-          onChange={handleInputChange}
-        >
-          <option value="">Select Diet Tags</option>
-          <option value="Vegan">Vegan</option>
-          <option value="Vegetarian">Vegetarian</option>
-          <option value="Paleo">Paleo</option>
-        </select>
+          value={recipeData.dietTags.join(', ')}
+          onChange={(e) => handleArrayInputChange(e, 'dietTags')}
+          placeholder="Diet Tags (comma-separated)"
+        />
       </div>
 
       <div>
-
         <label>Allergy Tags</label>
-        <select
+        <input
+          type="text"
           name="allergyTags"
-          value={recipeData.allergyTags}
-          onChange={handleInputChange}
-        >
-          <option value="">Select Allergy Tags</option>
-          <option value="Gluten-Free">Gluten-Free</option>
-          <option value="Nut-Free">Nut-Free</option>
-          <option value="Dairy-Free">Dairy-Free</option>
-          
-        </select>
+          value={recipeData.allergyTags.join(', ')}
+          onChange={(e) => handleArrayInputChange(e, 'allergyTags')}
+          placeholder="Allergy Tags (comma-separated)"
+        />
       </div>
 
       <div>
         <label>Country of Origin</label>
         <select
           name="countryOfOrigin"
-          value={recipeData.countryOfOrigin}
-          onChange={handleInputChange}
+          value={testdata.countryOfOrigin}
+          onChange={handleCountryChange}
         >
           <option value="">Select Country of Origin</option>
           {cuisineMapped}
@@ -182,9 +213,9 @@ function RecipeUploadForm() {
       </div>
 
       <button type="submit">Submit Recipe</button>
-      </StyledForm>
-  )
-}
+    </StyledForm>
+  );
+};
 
 export default RecipeUploadForm;
 
@@ -192,6 +223,7 @@ const StyledForm = styled.form`
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   opacity: 0.95;
   border-radius: 40px;
+  height: vh;
   padding: 20px;
   border: none;
   display: flex;

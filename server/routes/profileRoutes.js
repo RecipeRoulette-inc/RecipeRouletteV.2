@@ -1,15 +1,17 @@
-const express = require('express'); 
+const express = require('express');
 const Router = express.Router();
 const profileController = require('../controllers/profileController');
+const saveRecipesController = require('../controllers/saveRecipesController');
+const uploadRecipeController = require('../controllers/uploadRecipeController');
+
 // const { S3Client, PutObjectCommand, GetObjectCommand } = require("@aws-sdk/client-s3");
 // const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const multer = require('multer');
-// const db = require('../database/connectToDb');
 // const crypto = require('crypto');
 require('dotenv').config();
 
 const storage = multer.memoryStorage();
-const upload = multer({storage: storage});
+const upload = multer({ storage: storage });
 
 // const bucketName = process.env.BUCKET_NAME;
 // const bucketRegion = process.env.BUCKET_REGION;
@@ -43,33 +45,65 @@ Router
     // console.log('res locals', res.locals.userInfo);
 
     res.status(200).send(res.locals.userInfo);
-
   });
 
-  Router   
-    .route('/uploadPhoto')
-    .post(upload.single('image'), profileController.getUserId, profileController.getUserInfo, profileController.uploadImage, profileController.removeImage, (req, res) => {
+Router
+  .route('/uploadPhoto')
+  .post(upload.single('image'), profileController.getUserId, profileController.getUserInfo, profileController.uploadImage, profileController.removeImage, (req, res) => {
 
-        // const params = {
-        //     Bucket: bucketName,
-        //     Key: photoName,
-        //     Body: req.file.buffer,
-        //     ContentType: req.file.mimetype,
-        // }
-    
-        // const command = new PutObjectCommand(params)
-    
-        // await s3.send(command);
-        
-        // const text = 'INSERT INTO photo (photo_name) VALUES ($1);';
-    
-        // await db.query(text, [photoName]);
+    // const params = {
+    //     Bucket: bucketName,
+    //     Key: photoName,
+    //     Body: req.file.buffer,
+    //     ContentType: req.file.mimetype,
+    // }
 
-        res.redirect('/profile');
-    
-      })
+    // const command = new PutObjectCommand(params)
 
+    // await s3.send(command);
 
+    // const text = 'INSERT INTO photo (photo_name) VALUES ($1);';
 
+    // await db.query(text, [photoName]);
 
-module.exports = Router
+    res.redirect('/profile');
+  });
+
+// CODE FOR SAVING RECIPES 
+Router.
+  route('/getSavedRecipes')
+  .get(saveRecipesController.getSavedRecipes,
+    (req, res) => {
+      return res.status(200).json(res.locals.savedRecipes);
+    });
+
+Router.
+  route('/addSavedRecipes')
+  .post(saveRecipesController.addSavedRecipes,
+    (req, res) => {
+      return res.status(200).json(res.locals.addRecipe);
+    });
+
+Router.
+  route('/deleteSavedRecipes')
+  .delete(saveRecipesController.deleteSavedRecipes,
+    (req, res) => {
+      return res.status(200).send('Success: Deleted Recipe');
+    });
+
+// CODE FOR UPLOADING RECIPES
+Router.
+  route('/uploadRecipe')
+  .post(uploadRecipeController.uploadRecipe,
+    (req, res) => {
+      return res.status(200).json(res.locals.uploadedRecipes);
+    });
+
+Router.
+  route('/deleteUploadedRecipe')
+  .delete(uploadRecipeController.deleteUploadedRecipe,
+    (req, res) => {
+      return res.status(200).send('Success: Deleted Uploaded Recipe');
+    });
+
+module.exports = Router;
