@@ -66,7 +66,7 @@ Router
 
     // await db.query(text, [photoName]);
 
-    res.redirect('/profile');
+    res.redirect('/');
   });
 
 // CODE FOR SAVING RECIPES 
