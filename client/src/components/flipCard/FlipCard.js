@@ -50,16 +50,16 @@ const FlipCard = ({ recipeInfo }) => {
     e.preventDefault();
 
     // JC: Save recipe if not saved.
-    if (saved === false) {
-      setSave(true);
-      dispatch(saveRecipe());
-    }
-    else {
-      // ----CURRENTLY TESTING JUST SAVE----
-      // dispatch(unsave());
-      // dispatch(removeRecipe(index));
-      // savedRecipes.slice(index, 1);
-    }
+    // if (saved === false) {
+    //   setSave(true);
+    //   dispatch(saveRecipe());
+    // }
+    // else {
+    //   // ----CURRENTLY TESTING JUST SAVE----
+    //   // dispatch(unsave());
+    //   // dispatch(removeRecipe(index));
+    //   // savedRecipes.slice(index, 1);
+    // }
 
     const reqOptions = {
       method: 'POST',
@@ -67,7 +67,7 @@ const FlipCard = ({ recipeInfo }) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(savedRecipes)
+      body: JSON.stringify({recipe_id: id})
     };
 
     fetch('http://localhost:3000/profile/addSavedRecipes', reqOptions)
