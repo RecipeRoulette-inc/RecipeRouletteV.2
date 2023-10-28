@@ -98,6 +98,7 @@ const CardsContainer = styled.div`
 display: flex;
 flex-direction: row;
 width: 70vw;
+height: 100px;
 gap: 2rem; 
 flex-wrap:nowrap;
 overflow-x: auto;

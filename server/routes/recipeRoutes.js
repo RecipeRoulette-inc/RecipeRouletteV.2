@@ -1,9 +1,9 @@
-const express = require('express'); 
+const express = require('express');
 const Router = express.Router();
 
 const recipeController = require('../controllers/recipeController')
 const authenticationController = require('../controllers/authenticationController');
-
+const profileController= require ('../controllers/profileController')
 Router.
   route('/randomRecipe')
   .post((req, res) => {
@@ -13,33 +13,30 @@ Router.
 
 Router
   .route('/randomRecipe')
-  .get(recipeController.getRandomRecipe, 
-  (req, res) => {
-    //console.log('RES HERE', res)
-    return res.status(200).send(res.locals.randomRecipe)
-  })
+  .get(recipeController.getRandomRecipe,
+    (req, res) => {
+      return res.status(200).send(res.locals.randomRecipe)
+    });
 
 Router
   .route('/getRecipeInformationBulk')
   .get(recipeController.getRecipeInformationBulk,
-  (req,res) => {
-    console.log('Search Recipe Complete')
-    return res.status(200).send(res.locals.bulkRecipeInformation)
-  }
-)
+    (req, res) => {
+      return res.status(200).send(res.locals.bulkRecipeInformation)
+    });
 
 Router
   .route('/getRecipeInformationBulk/:id')
   .get(recipeController.getRecipeInformationBulk,
-  (req,res) => {
-    console.log('Search Recipe Complete :id')
-    return res.status(200).json(res.locals.getRecipeInfo)
-  }
-)
+    (req, res) => {
+      return res.status(200).json(res.locals.getRecipeInfo)
+    });
 
 Router
   .route('/searchRecipes')
-  .post(recipeController.searchRecipes,
+  .post(profileController.getUserId,
+    recipeController.getAllergies, 
+    recipeController.searchRecipes,
   (req,res) => {
     console.log('Search Recipe Complete')
     // console.log(res.locals.recipes)
@@ -64,17 +61,31 @@ Router.route('/test').get((req, res) => {
 
 Router
   .route('/nutritionLabel/:recipeId')
-  .get(recipeController.getRecipeNutritionLabel, 
-  (req, res) => {
-    //console.log('RES HERE', res)
-    return res.status(200).send(res.locals.nutritionLabel)
-})
+  .get(recipeController.getRecipeNutritionLabel,
+    (req, res) => {
+      return res.status(200).send(res.locals.nutritionLabel)
+    });
 
 Router.route('/searchByIngredients')
-.patch(recipeController.searchByIngredient,
-  (req, res) => {
-    return res.status(200).send(res.locals.searchResults)
-  })
+  .patch(recipeController.searchByIngredient,
+    (req, res) => {
+      return res.status(200).send(res.locals.searchResults)
+    });
 
+
+// Router.route('/fetchHomepage')
+// .get(recipeController.checkCachedHomepage,
+//   recipeController.refreshHomepage,
+//   recipeController.saveNewHomepage,
+//   (req, res) => {
+//     return res.status(200).send(res.locals.searchResults)
+//   })
+
+
+Router.route('/testHomepage')
+.get(profileController.getUserId,
+  recipeController.getAllergies, 
+  recipeController.updateHomepageCache, 
+  (req, res) => {return res.status(200).send(res.locals.json)})
 
 module.exports = Router; 

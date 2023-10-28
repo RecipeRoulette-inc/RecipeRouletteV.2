@@ -6,12 +6,14 @@ import flipCardReducer from '../slices/flipCardSlice';
 import randomRecipesReducer from '../slices/randomRecipesSlice';
 import queryRecipesReducer from '../slices/queryRecipesSlice';
 import dailyRecipeReducer from '../slices/dailyRecipeSlice';
+import uploadRecipeReducer from '../slices/uploadRecipeSlice'
 
 export const store = configureStore({
     reducer: {
         authInput: authInputReducer,
         query: queryReducer,
         savedRecipes: savedRecipesReducer,
+        uploadRecipes: uploadRecipeReducer,
         flipCard: flipCardReducer,
         randomRecipes: randomRecipesReducer,
         queryRecipes: queryRecipesReducer,

@@ -30,9 +30,9 @@ const Test = () => {
 
 
 const BgContainer = styled.div`
-display: grid;
-grid-template-column: repeat(3, 1fr);
-grid-template-row: repeat(3,1fr);
+display: flex;
+// grid-template-column: repeat(3, 1fr);
+// grid-template-row: repeat(3,1fr);
 `
 // height before: 500px
 const Wrapper = styled.div`

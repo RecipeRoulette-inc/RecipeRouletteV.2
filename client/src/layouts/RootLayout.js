@@ -1,4 +1,4 @@
-import styled, {createGlobalStyle} from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { queryMade, populateMain, clearMain } from '../../slices/queryRecipesSlice';
@@ -12,15 +12,9 @@ import rouletteWheel from "../public/rouletteWheel.svg"
 //custom hooks
 import useAuth from '../components/hooks/useAuth';
 
-// components 
-
-
 //add fonts here
 const GlobalStyle = createGlobalStyle`
 * {
-    // margin: auto; 
-    // padding: 10px 10px; 
-    // box-sizing: border-box;
     font-family: 'Chelsea Market';
 }
 
@@ -33,36 +27,29 @@ const GlobalStyle = createGlobalStyle`
 
 import AuthProvider from '../components/authentication/AuthProvider';
 
-const backgrounddiv = () => {
-  
-  return (
-    <div>
-      <img/>
-    </div>
-  )
-}
 
 const RootLayout = () => {
   const navigate = useNavigate()
   const { token, onLogout } = useAuth();
-  const location = useLocation();
-  
+  const loggedin = useSelector((state) => state.authInput)
+  console.log(loggedin)
+ 
   // console.log('Location', location);
 
   const dispatch = useDispatch();
-  const queryRecipes = useSelector(state => state.queryRecipes.queryRecipes)
+
   // console.log('RootLayout queryRecipes: ', queryRecipes);
-  
+
 
   const onSubmit = (data) => {
     // console.log('-------> BEFORE DATA FROM ROOT LAYOUT: ', data);
-    
+
     fetch('http://localhost:3000/recipes/searchRecipes', {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(data),
       headers: {
-        'Content-Type' : 'application/json'
+        'Content-Type': 'application/json'
       }
     })
       .then((res) => {
@@ -87,7 +74,7 @@ const RootLayout = () => {
       })
       .catch((error) => {
         console.error(error);
-    })
+      })
   }
 
   const onSubmitProfile = () => {
@@ -99,45 +86,41 @@ const RootLayout = () => {
   }
 
   return (
-    <AuthProvider>
+    
     <Layout src={img}>
       <GlobalStyle/>
-        <Nav>
+   
+          {loggedin.token ? (
+            <Nav>
               <LogoLink  to='/'>Recipe Roulette</LogoLink>
-          <SearchBar onSubmit={onSubmit}/>
-            {token && (
+              <SearchBar onSubmit={onSubmit}/>
+              <ButtonBox>
               <button type='button' onClick={onLogout}>Sign Out</button>
-              )
-          }
-
-          {(!token && (location.pathname === '/login' || location.pathname === '/signup')) ? (
-            <div>
-              <LoginLink to='/login'>LogIn</LoginLink>
-              <SignUpLink to='/signup'>SignUp</SignUpLink>
-              </div>
-          ): 
-          <ButtonBox>
-            <button type='button' onClick={onLogout}>Sign Out</button>
-            <button type='button' onClick={onSubmitProfile}>Profile</button>
-            <button type = 'button' onClick={onSubmitAddRecipe}>Add Recipe</button>
-            </ButtonBox>}
+              <button type='button' onClick={onSubmitProfile}>Profile</button>
+              <button type = 'button' onClick={onSubmitAddRecipe}>Add Recipe</button>
+              </ButtonBox>
             </Nav>
-      <Main>
+            ) : (
+              <div>
+              <LogoLinkBeforeLogin to='/'>Recipe Roulette</LogoLinkBeforeLogin>
+            </div>
+            )}
+            
         <Outlet/>
-      </Main>
       </Layout>
-      </AuthProvider>
+    
   )
-}; 
+};
 
 const Layout = styled.div`
-background-image: ${({src}) => `url(${src})`};
+background-image: ${({ src }) => `url(${src})`};
 background-size: cover;
 background-position: right center;
 background-repeat: no-repeat;
 width: 100vw; 
-height: 100vh; 
+height: 100%;
 display:flex;
+flex-direction: column;
 align-items:center;
 justify-content: center;
 `;
@@ -148,17 +131,25 @@ flex-direction: column;
 `
 const LogoLink = styled(NavLink)`
   display: flex;
-  align-items: center; /* Center content vertically */
+  align-items: center; 
 
   color: white;
   font-size: 35px;
   text-decoration: none;
 `;
+
+const LogoLinkBeforeLogin = styled(NavLink)`
+  display: flex;
+  align-items: center; 
+  justfiy-content: center;
+  color: white;
+  font-size: 60px;
+  text-decoration: none;
+`;
 const Nav = styled.div`
   top: 0;
-  position: fixed;
   display: grid;
-  grid-template-columns: auto auto auto; /* Center column takes up more space */
+  grid-template-columns: auto auto auto; 
   align-items: center;
   justify-content: space-evenly;
 
@@ -168,37 +159,7 @@ const Nav = styled.div`
 `;
 
 
-const Main = styled.main`
-display: flex;
-justify-content: center;
-align-content: center;
 
-`;
-
-const LoginLink = styled(NavLink)`
-display: flex;
-justify-content: center;
-text-decoration: none;
-color: white;
-// height: 60px;
-// width: 80px;
-border-radius: 1rem;
-padding: 16px;
-
-`
-
-
-const SignUpLink = styled(NavLink)`
-display: flex;
-justify-content: center;
-aliign-items: center;
-text-decoration: none;
-color: white;
-// height: 60px;
-// width: 80px;
-border-radius: 1rem;
-padding: 16px;
-`
 
 
 export default RootLayout;

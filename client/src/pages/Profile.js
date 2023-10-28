@@ -3,16 +3,21 @@ import ScrollBarSavedRecipes from "../components/scrollBar/ScrollBarSavedRecipes
 import DropDown from "../components/profile/DropDown";
 
 export default function ProfilePage() {
-
-  const [userInfo, setUserInfo] = useState({username: '', image: '', savedRecipes: '', allergies: '', restrictions: ''});
+  const navigate  = useNavigate();
+  const [userInfo, setUserInfo] = useState({ username: '', image: '', savedRecipes: '', allergies: '', restrictions: '', uploadedRecipes: [] });
   const [loading, setLoading] = useState(true);
+  const [mappedRecipes, setMappedRecipes] = useState([]);
 
   useEffect(() => {
     getInfo()
   }, []);
 
+  function onSubmit(e) {
+    e.preventDefault();
+    navigate('/profile')
+  }
+
   function getInfo() {
-    
     fetch('/profile/userInfo')
     .then((res) => {
       return res.json();
@@ -35,9 +40,11 @@ export default function ProfilePage() {
   //       console.log('upload status', res)
   //     })
   //     .then(() => alert('Photo uploaded successfully'))
+
   //     .catch((err) => alert('Error occurred while uploading photo'))
   // };
 
+  
 
   if (loading) {
     return <div>loading ...</div>
