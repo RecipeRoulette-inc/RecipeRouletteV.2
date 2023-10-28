@@ -33,7 +33,7 @@ const RootLayout = () => {
   const { token, onLogout } = useAuth();
   const loggedin = useSelector((state) => state.authInput)
   console.log(loggedin)
- 
+
   // console.log('Location', location);
 
   const dispatch = useDispatch();
@@ -86,29 +86,29 @@ const RootLayout = () => {
   }
 
   return (
-    
+
     <Layout src={img}>
-      <GlobalStyle/>
-   
-          {loggedin.token ? (
-            <Nav>
-              <LogoLink  to='/'>Recipe Roulette</LogoLink>
-              <SearchBar onSubmit={onSubmit}/>
-              <ButtonBox>
-              <button type='button' onClick={onLogout}>Sign Out</button>
-              <button type='button' onClick={onSubmitProfile}>Profile</button>
-              <button type = 'button' onClick={onSubmitAddRecipe}>Add Recipe</button>
-              </ButtonBox>
-            </Nav>
-            ) : (
-              <div>
-              <LogoLinkBeforeLogin to='/'>Recipe Roulette</LogoLinkBeforeLogin>
-            </div>
-            )}
-            
-        <Outlet/>
-      </Layout>
-    
+      <GlobalStyle />
+
+      {loggedin.token ? (
+        <Nav>
+          <LogoLink to='/'>Recipe Roulette</LogoLink>
+          <SearchBar onSubmit={onSubmit} />
+          <ButtonBox>
+            <button type='button' onClick={onLogout}>Sign Out</button>
+            <button type='button' onClick={onSubmitProfile}>Profile</button>
+            <button type='button' onClick={onSubmitAddRecipe}>Add Recipe</button>
+          </ButtonBox>
+        </Nav>
+      ) : (
+        <div>
+          <LogoLinkBeforeLogin to='/'>Recipe Roulette</LogoLinkBeforeLogin>
+        </div>
+      )}
+
+      <Outlet />
+    </Layout>
+
   )
 };
 
@@ -118,7 +118,7 @@ background-size: cover;
 background-position: right center;
 background-repeat: no-repeat;
 width: 100vw; 
-height: 100%;
+height: 100vh;
 display:flex;
 flex-direction: column;
 align-items:center;
