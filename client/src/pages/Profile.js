@@ -3,19 +3,13 @@ import ScrollBarSavedRecipes from "../components/scrollBar/ScrollBarSavedRecipes
 import DropDown from "../components/profile/DropDown";
 
 export default function ProfilePage() {
-  const navigate  = useNavigate();
   const [userInfo, setUserInfo] = useState({ username: '', image: '', savedRecipes: '', allergies: '', restrictions: '', uploadedRecipes: [] });
   const [loading, setLoading] = useState(true);
-  const [mappedRecipes, setMappedRecipes] = useState([]);
 
   useEffect(() => {
     getInfo()
   }, []);
 
-  function onSubmit(e) {
-    e.preventDefault();
-    navigate('/profile')
-  }
 
   function getInfo() {
     fetch('/profile/userInfo')
@@ -27,7 +21,6 @@ export default function ProfilePage() {
       setUserInfo({username: res.username, image: res.imageURL, savedRecipes: res.savedRecipes, allergies: res.allergies, restrictions: res.restrictions, uploadedRecipes: res.uploadedRecipes})
     })
     .then(() => setLoading(false))
-
   };
 
   // function uploadPhoto() {
