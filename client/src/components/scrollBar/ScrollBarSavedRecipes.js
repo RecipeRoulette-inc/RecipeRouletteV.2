@@ -9,7 +9,7 @@ import { saveRecipe, removeRecipe } from '../../../slices/savedRecipesSlice'
 
 const ScrollBarSavedRecipes = (id) => {
   // const { savedRecipes } = useSelector((state) => state.savedRecipes);
-  const [savedRecipes, setSavedRecipes] = useState({});
+  const [savedRecipes, setSavedRecipes] = useState([]);
   // const dispatch = useDispatch();
 
   // Upon the page loading, get request to API and render cards
@@ -29,10 +29,10 @@ const ScrollBarSavedRecipes = (id) => {
       const data = await response.json();
       // dispatch(removeRecipe());
       // dispatch(saveRecipe(data));
-      console.log('DATA1', data[0])
-      console.log('DATA1', data[1])
+      
       for (let i = 0; i < data.length; i++) {
-        setSavedRecipes([data[0], data[1]])
+        console.log('DATA1', data[i])
+        setSavedRecipes((savedRecipes) => [...savedRecipes, data[i]])
         console.log('SAVEDRECIPES', savedRecipes)
       }
     }
