@@ -2,7 +2,7 @@ import { useState, createContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 
-export const AuthContext = createContext(null); 
+export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
       credentials: 'include',
       body: JSON.stringify(data),
       headers: {
-        'Content-Type':'application/json'
+        'Content-Type': 'application/json'
       }
     })
       .then((res) => {
@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
           // parse response then destruct response body for error property
           return res.json().then(({ error }) => {
             // create an Error object from error property or response statusText
-            throw new Error(error|| res.statusText)
+            throw new Error(error || res.statusText)
           })
         }
         // ! the response being sent from the server is not JSON
@@ -38,18 +38,18 @@ const AuthProvider = ({ children }) => {
         // store token
         // update redux state
         // TODO: LINK GOES HERE 
-        setToken('NickChristinaJerelEdwin');
-        const origin = location.state?.from?.path || '/home'; 
+        setToken('SSID');
+        const origin = location.state?.from?.path || '/home';
         navigate(origin);
       })
       .catch((error) => {
         // display error in console
-        console.error('There was a problem with the fetch operation from sign in:', error); 
+        console.error('There was a problem with the fetch operation from sign in:', error);
         // display error to user
         alert(error);
       })
-      
- 
+
+
   };
 
   const handleSignup = async (data) => {
@@ -68,7 +68,7 @@ const AuthProvider = ({ children }) => {
           // parse response then destruct response body for error property
           return res.json().then(({ error }) => {
             // create an Error object from error property or response statusText
-            throw new Error(error|| res.statusText)
+            throw new Error(error || res.statusText)
           })
         }
         // ! VERIFY the information being returned from the server, if not JSON, do not .json()
@@ -81,11 +81,11 @@ const AuthProvider = ({ children }) => {
         // store token
         // update redux state
         // ? on successful signup redirect to login page. 
-        navigate('/login'); 
+        navigate('/login');
       })
       .catch((error) => {
         // display error in console
-        console.error('There was a problem with the fetch operation:', error); 
+        console.error('There was a problem with the fetch operation:', error);
         // display error to user
         alert(error);
       })
@@ -95,18 +95,18 @@ const AuthProvider = ({ children }) => {
     console.log('logging out')
     setToken(null);
     navigate('/login')
-  }; 
+  };
 
   const value = {
-    token, 
-    onLogin: handleLogin, 
-    onSignup: handleSignup, 
-    onLogout: handleLogout, 
+    token,
+    onLogin: handleLogin,
+    onSignup: handleSignup,
+    onLogout: handleLogout,
   }
 
   return (
-    <AuthContext.Provider value={ value } >
-      { children }
+    <AuthContext.Provider value={value} >
+      {children}
     </AuthContext.Provider>
   );
 };

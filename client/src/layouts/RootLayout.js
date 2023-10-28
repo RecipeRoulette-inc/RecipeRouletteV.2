@@ -1,4 +1,4 @@
-import styled, {createGlobalStyle} from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { queryMade, populateMain, clearMain } from '../../slices/queryRecipesSlice';
@@ -12,15 +12,9 @@ import rouletteWheel from "../public/rouletteWheel.svg"
 //custom hooks
 import useAuth from '../components/hooks/useAuth';
 
-// components 
-
-
 //add fonts here
 const GlobalStyle = createGlobalStyle`
 * {
-    // margin: auto; 
-    // padding: 10px 10px; 
-    // box-sizing: border-box;
     font-family: 'Chelsea Market';
 }
 
@@ -34,10 +28,10 @@ const GlobalStyle = createGlobalStyle`
 import AuthProvider from '../components/authentication/AuthProvider';
 
 const backgrounddiv = () => {
-  
+
   return (
     <div>
-      <img/>
+      <img />
     </div>
   )
 }
@@ -46,23 +40,23 @@ const RootLayout = () => {
   const navigate = useNavigate()
   const { token, onLogout } = useAuth();
   const location = useLocation();
-  
+
   // console.log('Location', location);
 
   const dispatch = useDispatch();
   const queryRecipes = useSelector(state => state.queryRecipes.queryRecipes)
   // console.log('RootLayout queryRecipes: ', queryRecipes);
-  
+
 
   const onSubmit = (data) => {
     // console.log('-------> BEFORE DATA FROM ROOT LAYOUT: ', data);
-    
+
     fetch('http://localhost:3000/recipes/searchRecipes', {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(data),
       headers: {
-        'Content-Type' : 'application/json'
+        'Content-Type': 'application/json'
       }
     })
       .then((res) => {
@@ -87,7 +81,7 @@ const RootLayout = () => {
       })
       .catch((error) => {
         console.error(error);
-    })
+      })
   }
 
   const onSubmitProfile = () => {
@@ -100,38 +94,40 @@ const RootLayout = () => {
 
   return (
     <AuthProvider>
-    <Layout src={img}>
-      <GlobalStyle/>
+      <Layout src={img}>
+        <GlobalStyle />
         <Nav>
-              <LogoLink  to='/'>Recipe Roulette</LogoLink>
-          <SearchBar onSubmit={onSubmit}/>
-            {token && (
-              <button type='button' onClick={onLogout}>Sign Out</button>
-              )
+          <LogoLink to='/'>Recipe Roulette</LogoLink>
+          <SearchBar onSubmit={onSubmit} />
+          {token && (
+            <button type='button' onClick={onLogout}>Sign Out</button>
+          )
           }
 
           {(!token && (location.pathname === '/login' || location.pathname === '/signup')) ? (
             <div>
-              <LoginLink to='/login'>LogIn</LoginLink>
+              <br></br>
+              <LoginLink to='/login'>Login</LoginLink>
+              <br></br>
               <SignUpLink to='/signup'>SignUp</SignUpLink>
-              </div>
-          ): 
-          <ButtonBox>
-            <button type='button' onClick={onLogout}>Sign Out</button>
-            <button type='button' onClick={onSubmitProfile}>Profile</button>
-            <button type = 'button' onClick={onSubmitAddRecipe}>Add Recipe</button>
+            </div>
+          ) :
+            <ButtonBox>
+              <button type='button' onClick={onLogout}>Sign Out</button>
+              <button type='button' onClick={onSubmitProfile}>Profile</button>
+              <button type='button' onClick={onSubmitAddRecipe}>Add Recipe</button>
             </ButtonBox>}
-            </Nav>
-      <Main>
-        <Outlet/>
-      </Main>
+        </Nav>
+        <Main>
+          <Outlet />
+        </Main>
       </Layout>
-      </AuthProvider>
+    </AuthProvider>
   )
-}; 
+};
 
 const Layout = styled.div`
-background-image: ${({src}) => `url(${src})`};
+background-image: ${({ src }) => `url(${src})`};
 background-size: cover;
 background-position: right center;
 background-repeat: no-repeat;
@@ -172,7 +168,7 @@ const Main = styled.main`
 display: flex;
 justify-content: center;
 align-content: center;
-
+width: 85%;
 `;
 
 const LoginLink = styled(NavLink)`
@@ -180,13 +176,10 @@ display: flex;
 justify-content: center;
 text-decoration: none;
 color: white;
-// height: 60px;
-// width: 80px;
+background-color: #425949;
 border-radius: 1rem;
-padding: 16px;
-
+padding: 10px;
 `
-
 
 const SignUpLink = styled(NavLink)`
 display: flex;
@@ -194,10 +187,9 @@ justify-content: center;
 aliign-items: center;
 text-decoration: none;
 color: white;
-// height: 60px;
-// width: 80px;
+background-color: #425949;
 border-radius: 1rem;
-padding: 16px;
+padding: 10px;
 `
 
 
