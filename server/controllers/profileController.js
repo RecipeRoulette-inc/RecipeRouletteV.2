@@ -207,7 +207,7 @@ profileController.getUploadedRecipes = async (req, res, next) => {
   pool.query(text, [user_id])
     .then((data) => {
       if (data.rows[0] != null) {
-        res.locals.userInfo.uploadedRecipes = data.rows[0]
+        res.locals.userInfo.uploadedRecipes = data.rows;
       } else {
         res.locals.userInfo.uploadedRecipes = 'You have not uploaded any recipes yet.'
       }
