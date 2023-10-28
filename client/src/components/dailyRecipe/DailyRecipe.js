@@ -20,13 +20,13 @@ const DailyRecipe = () => {
       const reqOptions = {
         method: 'GET',
         credentials: 'include',
-        headers: { 
-          'Content-Type': 'application/json' 
+        headers: {
+          'Content-Type': 'application/json'
         }
       };
 
       const response = await fetch('http://localhost:3000/recipes/randomRecipe', reqOptions)
-        .catch((err) => {throw new Error(err);});
+        .catch((err) => { throw new Error(err); });
       const data = await response.json();
       dispatch(clearDaily());
       // using data.recipes[0] because it'll return an array of whatever the number opts is in the recipe controller.
@@ -39,12 +39,15 @@ const DailyRecipe = () => {
 
   return (
     <Wrapper>
-        <DailyPhoto src={image}></DailyPhoto>
-        
-            <h1>Recipe of the Day:</h1>
-            <h2>{title}</h2>
-            <h3>Ready in: {readyInMinutes} minutes</h3>
-            <h3>Servings: {servings}</h3>
+      <StyledDiv>
+        <DailyPhoto src={image} width='auto' height='200px'></DailyPhoto>
+        <div>
+          <h1>Recipe of the Day:</h1>
+          <h2>{title}</h2>
+          <h3>Ready in: {readyInMinutes} minutes</h3>
+          <h3>Servings: {servings}</h3>
+        </div>
+      </StyledDiv>
     </Wrapper>
   );
 };
@@ -57,18 +60,25 @@ align-items: center;
 // height: 150px;
 // background: var(--clr-bg);
 border-radius: 1rem;
+background-color: white;
 border: 4px solid rgba(0, 0, 0);
 `;
 
 const DailyPhoto = styled.img`
 display: flex;
-object-fit: cover;
+    object-fit: cover;
+    align-items: center;
+    height: 150px;
+    width: auto;
+    border: 1px solid black;
+    border-radius: 1rem;
+    margin-right: 10px;
+`
+const StyledDiv = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: center;
 align-items: center;
-height: 100px;
-width: 100px;
-// margin: 25px;
-border: 1px solid black;
-border-radius: 1rem;
 `
 
 // const Photo = styled.div`
