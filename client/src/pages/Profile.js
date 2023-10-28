@@ -1,5 +1,6 @@
 import React, {useState, setState, useEffect } from "react";
-
+import ScrollBarSavedRecipes from "../components/scrollBar/ScrollBarSavedRecipes";
+import DropDown from "../components/profile/DropDown";
 
 export default function ProfilePage() {
 
@@ -17,6 +18,7 @@ export default function ProfilePage() {
       return res.json();
     })
     .then((res) => {
+      console.log(res)
       setUserInfo({username: res.username, image: res.imageURL, savedRecipes: res.savedRecipes, allergies: res.allergies, restrictions: res.restrictions, uploadedRecipes: res.uploadedRecipes})
     })
     .then(() => setLoading(false))
@@ -53,11 +55,12 @@ export default function ProfilePage() {
       <br></br>
       <h3>Saved Recipes</h3>
       <br></br>
-      <h4>{userInfo.savedRecipes}</h4>
+      <ScrollBarSavedRecipes id={userInfo.savedRecipes}/>
       <br></br>
       <h3>Allergies</h3>
       <br></br>
       <h4>{userInfo.allergies}</h4>
+      <DropDown />
       <br></br>
       <h3>Dietary Restrictions</h3>
       <br></br>
@@ -66,7 +69,7 @@ export default function ProfilePage() {
       <h3>Uploaded Recipes</h3> 
       <br></br>
       <h4>{userInfo.uploadedRecipes.recipe_name}</h4>
-
+      <br></br>
     </div>
   )
 }

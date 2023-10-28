@@ -7,17 +7,18 @@ import { Link } from 'react-router-dom';
 import { getRecipeInformationBulk } from '../singleRecipePage/SingleRecipePage';
 
 const FlipCard = ({ recipeInfo }) => {
-  const [nutritionLabel, setNutritionLabel] = useState({});
+  const [nutritionLabel, setNutritionLabel] = useState();
   const { savedRecipes } = useSelector((state) => state.savedRecipes);
   const { saved } = useSelector((state) => state.flipCard);
   const dispatch = useDispatch();
 
-  const { id, title, image, servings, readyInMinutes } = recipeInfo;
-  // console.log('-------> RECIPE INFO: ', recipeInfo);
-  // console.log('-------> ID: ', id);
+  const { id, title, image } = recipeInfo;
+  
 
   useEffect(() => {
     async function getRecipeNutritionLabel() {
+      console.log('-------> RECIPE INFO: ', recipeInfo);
+      console.log('-------> ID: ', id);
       try {
         const response = await fetch(`http://localhost:3000/recipes/nutritionLabel/${id}`, {
           method: 'GET',
