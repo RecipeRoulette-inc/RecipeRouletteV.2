@@ -1,4 +1,4 @@
-import styled, {createGlobalStyle} from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { queryMade, populateMain, clearMain } from '../../slices/queryRecipesSlice';
@@ -12,15 +12,9 @@ import rouletteWheel from "../public/rouletteWheel.svg"
 //custom hooks
 import useAuth from '../components/hooks/useAuth';
 
-// components 
-
-
 //add fonts here
 const GlobalStyle = createGlobalStyle`
 * {
-    // margin: auto; 
-    // padding: 10px 10px; 
-    // box-sizing: border-box;
     font-family: 'Chelsea Market';
 }
 
@@ -45,17 +39,17 @@ const RootLayout = () => {
   const dispatch = useDispatch();
 
   // console.log('RootLayout queryRecipes: ', queryRecipes);
-  
+
 
   const onSubmit = (data) => {
     // console.log('-------> BEFORE DATA FROM ROOT LAYOUT: ', data);
-    
+
     fetch('http://localhost:3000/recipes/searchRecipes', {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify(data),
       headers: {
-        'Content-Type' : 'application/json'
+        'Content-Type': 'application/json'
       }
     })
       .then((res) => {
@@ -80,7 +74,7 @@ const RootLayout = () => {
       })
       .catch((error) => {
         console.error(error);
-    })
+      })
   }
 
   const onSubmitProfile = () => {
@@ -116,10 +110,10 @@ const RootLayout = () => {
       </Layout>
     
   )
-}; 
+};
 
 const Layout = styled.div`
-background-image: ${({src}) => `url(${src})`};
+background-image: ${({ src }) => `url(${src})`};
 background-size: cover;
 background-position: right center;
 background-repeat: no-repeat;
