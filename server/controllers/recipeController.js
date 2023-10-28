@@ -9,6 +9,7 @@ console.log(process.env.API_KEY)
 const apiInstance = new SpoonacularApi.RecipesApi();
 const fs = require('fs')
 const path = require('path')
+const pool = require('../database/connectToDb');
 // JC Imports: To save recipe and update existing userDoc. Can move import and method to userController if more appropriate
 const User = require('../models/userModel');
 
@@ -257,19 +258,36 @@ recipeController.searchByIngredient = async (req, res, next) => {
 }
 
 recipeController.updateHomepageCache = async (req, res, next) => {
-
+//if user has no preferences, do this.
+//else, fetch homepage content
 try {
+  console.log('WE IN THE CACHED TIMELINE')
+  if (res.locals.allergies == undefined) {
 let currentDB = fs.readFileSync(PATH_TO_DB, 'utf-8')
 const currentDBParsed = (JSON.parse(currentDB))
 if (new Date() > currentDBParsed.expiresAt) {
+  console.log('new cache')
   newDBParsed = updateHomepage()
   res.locals.json = newDBParsed
 }
 else {
+  console.log('old cache')
   res.locals.json = currentDB
 }
 
   return next()
+}
+else {
+  //manual search time qq
+  console.log('MANUAL SEARCH TIME BABY')
+  const homepage = {}
+  homepage.vegans = await manualSearch({diet:'vegan', allergies: res.locals.allergies})
+  homepage.underThirty = await manualSearch({readyTime: '30', allergies: res.locals.allergies})
+  homepage.randoms = await getRandoms()
+  homepageJSON = JSON.stringify(homepage)
+  res.locals.json = homepageJSON;
+  return next()
+}
 }
 catch (err) {
   return next({
@@ -280,7 +298,33 @@ catch (err) {
 }
 }
 
+recipeController.getAllergies = async (req, res, next) => {
 
+  try {
+    console.log('getAllergies')
+    const user_id = res.locals.user_id;
+
+    const text = 'SELECT allergies FROM user_preferences WHERE user_id =$1;';
+
+    pool.query(text, [user_id])
+      .then((data) => {
+        res.locals.allergies = data.rows[0].allergies 
+            
+
+      })
+      .then((data) => console.log('res.locals', res.locals.userInfo))
+      .then(() => next())
+      .catch((err) => {
+        console.log('An error occurred in the getUserInfo middleware.')
+        return next((err) => err = {
+            log: 'An error occurred in the getUserInfo middleware.'
+        })
+    })
+  } catch (error) {
+    console.log('wah!')
+    console.log(error)
+  }
+}
 
 getVegans = () => {
   return new Promise((resolve, reject) => {
@@ -396,5 +440,46 @@ homepage.expiresAt = oneHourFromNow;
     }
   })
   return homepageJSON
+}
+
+manualSearch = async (options) => {
+  return new Promise((resolve, reject) => {
+    const opts = {
+      instructionsRequired: true,
+      addRecipeNutrition: true,
+      includeNutrition: true,
+      number: 10,
+      query: undefined,
+      maxReadyTime: '30',
+      sort: 'random'
+    };
+    if (options.readyTime) {
+      opts.maxReadyTime = options.readyTime;
+    }
+    if (options.diet) {
+      opts.diet = options.diet
+    }
+    if (options.allergies) {
+      opts.allergies = options.allergies
+    }
+    apiInstance.searchRecipes(opts, (error, data, response) => {
+      if (error) {
+        console.error(error);
+        reject(error);
+      } else {
+        const ids = data.results.map((e) => e.id).toString();
+
+        apiInstance.getRecipeInformationBulk(ids, opts, (error, data, response) => {
+          if (error) {
+            console.error(error);
+            reject(error);
+          } else {
+            console.log('cached homepage successfully fetched under 30s');
+            resolve(deconstruct(data));
+          }
+        });
+      }
+    });
+  });
 }
 module.exports = recipeController;
