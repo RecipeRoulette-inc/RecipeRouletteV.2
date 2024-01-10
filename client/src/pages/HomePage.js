@@ -1,6 +1,9 @@
 // libraries
+import { useContext } from 'react';
 import styled from 'styled-components';
 import { useLoaderData, Link } from 'react-router-dom';
+
+import { AuthContext } from '../App';
 
 // components
 import SearchBar from '../components/searchBar/SearchBar';
@@ -9,8 +12,12 @@ import ScrollBarUnder30 from '../components/scrollBar/ScrollBarUnder30';
 import ScrollBarVegan from '../components/scrollBar/ScrollBarVegan';
 import ScrollBarGlutenFree from '../components/scrollBar/ScrollBarGlutenFree';
 import DailyRecipe from '../components/dailyRecipe/DailyRecipe';
+
+// hooks 
+import useAuth from '../components/hooks/useAuth';
   
 const HomePage = () => {
+  const { token } = useAuth();
 
   const handleGetRandomRecipe = () => {
 
@@ -38,12 +45,13 @@ const HomePage = () => {
 
   return (
     <Wrapper>
+    
       <DailyRecipe/>
       <ScrollBarRandom />
       <ScrollBarUnder30 />
       <ScrollBarVegan />
-      <ScrollBarGlutenFree />
     </Wrapper>
+    
   )
 };
 

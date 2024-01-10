@@ -20,13 +20,13 @@ const DailyRecipe = () => {
       const reqOptions = {
         method: 'GET',
         credentials: 'include',
-        headers: { 
-          'Content-Type': 'application/json' 
+        headers: {
+          'Content-Type': 'application/json'
         }
       };
 
       const response = await fetch('http://localhost:3000/recipes/randomRecipe', reqOptions)
-        .catch((err) => {throw new Error(err);});
+        .catch((err) => { throw new Error(err); });
       const data = await response.json();
       dispatch(clearDaily());
       // using data.recipes[0] because it'll return an array of whatever the number opts is in the recipe controller.
@@ -39,16 +39,15 @@ const DailyRecipe = () => {
 
   return (
     <Wrapper>
-
-        <Photo bg={image}></Photo>
-
-        <center>
-            <h1>Recipe of the Day:</h1>
-            <h2>{title}</h2>
-            <h3>Ready in: {readyInMinutes} minutes</h3>
-            <h3>Servings: {servings}</h3>
-        </center>
-
+      <StyledDiv>
+        <DailyPhoto src={image} width='auto' height='200px'></DailyPhoto>
+        <div>
+          <h1>Recipe of the Day:</h1>
+          <h2>{title}</h2>
+          <h3>Ready in: {readyInMinutes} minutes</h3>
+          <h3>Servings: {servings}</h3>
+        </div>
+      </StyledDiv>
     </Wrapper>
   );
 };
@@ -57,23 +56,41 @@ const Wrapper = styled.div`
 direction: flex;
 flex-direction: row;
 align-items: center;
-width: 70vw;
-background: var(--clr-bg);
+// width: 300px;
+// height: 150px;
+// background: var(--clr-bg);
 border-radius: 1rem;
+background-color: white;
 border: 4px solid rgba(0, 0, 0);
 `;
 
+const DailyPhoto = styled.img`
+display: flex;
+    object-fit: cover;
+    align-items: center;
+    height: 150px;
+    width: auto;
+    border: 1px solid black;
+    border-radius: 1rem;
+    margin-right: 10px;
+`
+const StyledDiv = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+`
 
-const Photo = styled.div`
-height: 600px;
-background-image: url(${(props) => props.bg});
-border-radius: 1rem; 
-// border: 4px solid rgba(0, 0, 0, 0.50);
-border-style: solid;
-// box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
-background-repeat: no-repeat;
-background-size: cover;
-`;
+// const Photo = styled.div`
+// display: flex;
+// flex-direction: column;
+// justify-content: center;
+// align-items: center;
+// background-color: rgb(255,255,255);
+// // border: 1px solid black;
+// border-radius: 1rem;
+// gap: 10px;
+// `;
 
 
 export default DailyRecipe; 

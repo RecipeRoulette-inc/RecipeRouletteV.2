@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import LoginForm from "../components/LoginForm";
-// import img from "/Users/christinaraether/Desktop/PTRI12/scratch_project/images/final_image.jpeg";
-import img from "../public/plateForkKnife.jpeg"
+import img from "../public/plateForkKnife.jpeg";
+import { NavLink } from "react-router-dom";
+
 const LoginPage = () => {
 
   return (
-    <WrapPage src={img}>
+    <WrapPage>
       <LoginForm />
     </WrapPage>
   );
@@ -13,26 +14,19 @@ const LoginPage = () => {
 
 //fork and knife image
 const WrapPage = styled.div`
-background-image: ${({src}) => `url(${src})`};
-// background-color: blue;
-background-size: cover;
-// max-width: 100vw;
-// min-width: 50vw;
-// max-height: 100vh;
-// min-height: 50vh;
+// background-image: ${({src}) => `url(${src})`};
+// background-color: rgba(255, 255, 255, 0.5);
+// background-size: cover;
 display: flex;
 align-self: center 
 position: relative;
 align-items: center;
-// justify-content: center;
 height: 100vh; 
 width: 50vw; 
-border: black;
-border-style: solid;
-border-width: 10px 10px 10px;
-// overflow: scroll; 
+// border: black;
+// border-style: solid;
+// border-width: 10px 10px 10px;
 border-radius: 35px;
-// padding 30px 30px: 
 `;
 
 export default LoginPage; 
